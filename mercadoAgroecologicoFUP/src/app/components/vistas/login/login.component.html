@@ -1,0 +1,11 @@
+
+  <div class="formContent">
+
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm.value)" >
+      <input type="text"  id="use_cc" class="fadeIn second" formControlName="use_cc" placeholder="cc">
+      <input type="password"  id="use_password" class="fadeIn third" formControlName="use_password" placeholder="password">
+      <input type="submit" class="btn btn-success" value="Ingresar">
+    </form>
+
+  </div>
+

@@ -1,0 +1,19 @@
+.formContent{
+  width: 100%;
+  background: transparent;
+  height: 30vh;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  margin: 30px auto;
+  gap: 10px;
+  width: 50%;
+
+}
+
+form input{
+  text-align: center;
+  border: 1px solid darkolivegreen;
+}

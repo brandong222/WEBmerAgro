@@ -1,0 +1,7 @@
+<form  [formGroup]="CategoryForm" (ngSubmit)="GuardarCategory(CategoryForm.value)">
+
+<input type="text" formControlName="cat_name" placeholder="name">
+<input type="text" formControlName="cat_description" placeholder="descripcion">
+<input type="text" formControlName="cat_image" placeholder="url imagen">
+<input type="submit" value="enviar">
+</form>

@@ -25,6 +25,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -64,6 +65,7 @@
             },
             "development": {
               "browserTarget": "mercadoAgroecologicoFUP:build:development"
+
             }
           },
           "defaultConfiguration": "development"
@@ -96,6 +98,6 @@
     }
   },
   "cli": {
-    "analytics": "918e23eb-7ed9-4279-9a61-7ba3f5c425bc"
+    "analytics": false
   }
 }
