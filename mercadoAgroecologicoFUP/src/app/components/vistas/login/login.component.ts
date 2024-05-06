@@ -11,13 +11,25 @@ import { responsiveI } from 'src/app/models/response.interface';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   loginForm = new FormGroup({
     use_cc: new FormControl('', Validators.required),
     use_password: new FormControl('', Validators.required),
   });
 
   constructor(private loginS: LoginService, private router: Router) {}
+
+
+  ngOnInit(): void {
+  this.revisarToken();
+  }
+
+
+  revisarToken(){
+    if(localStorage.getItem('token')){
+      this.router.navigate(['home']);
+    }
+  }
 
   onLogin(form: loginI) {
     this.loginS.loginCC(form).subscribe(

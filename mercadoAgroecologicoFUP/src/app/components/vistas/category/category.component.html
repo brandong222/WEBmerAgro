@@ -1,7 +1,19 @@
-<form  [formGroup]="CategoryForm" (ngSubmit)="GuardarCategory(CategoryForm.value)">
-
-<input type="text" formControlName="cat_name" placeholder="name">
-<input type="text" formControlName="cat_description" placeholder="descripcion">
-<input type="text" formControlName="cat_image" placeholder="url imagen">
-<input type="submit" value="enviar">
-</form>
+<div class="container">
+  <button class="btn btn-primary" (click)="agregarCategory()">Nueva categoría</button>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Imagen</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of categories" (click)="editarCategory(item.id)">
+        <td>{{ item.cat_name }}</td>
+        <td>{{ item.cat_description }}</td>
+        <td> {{  item.cat_image}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

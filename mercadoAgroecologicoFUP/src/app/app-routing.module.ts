@@ -5,6 +5,7 @@ import { ProductComponent } from './components/vistas/product/product.component'
 import { HomeComponent } from './components/vistas/home/home.component';
 import { MainComponent } from './components/vistas/main/main.component';
 import { CategoryComponent } from './components/vistas/category/category.component';
+import { CategoryADDComponent } from './components/vistas/category-add/category-add.component';
 
 const routes: Routes = [
   {path: "" , component: MainComponent},
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'product', component: ProductComponent},
   {path: 'home', component: HomeComponent},
   {path: 'category', component: CategoryComponent},
+  {path: 'category/add', component: CategoryADDComponent},
   {path: '**', pathMatch: 'full', redirectTo: ''}
 ];
 

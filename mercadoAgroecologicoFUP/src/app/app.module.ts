@@ -16,6 +16,7 @@ import { ProductComponent } from './components/vistas/product/product.component'
 import { MainComponent } from './components/vistas/main/main.component';
 import { LoginComponent } from './components/vistas/login/login.component';
 import { CategoryComponent } from './components/vistas/category/category.component';
+import { CategoryADDComponent } from './components/vistas/category-add/category-add.component';
 
 
 
@@ -30,7 +31,8 @@ import { CategoryComponent } from './components/vistas/category/category.compone
     ProductComponent,
     MainComponent,
     LoginComponent,
-    CategoryComponent
+    CategoryComponent,
+    CategoryADDComponent
   ],
   imports: [
     BrowserModule,

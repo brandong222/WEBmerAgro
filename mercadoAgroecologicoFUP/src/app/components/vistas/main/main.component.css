@@ -1,5 +1,4 @@
-
-.container_login{
+.container_login {
   height: 100vh;
   width: 100%;
   background: transparent;
@@ -9,22 +8,34 @@
   justify-content: center;
 }
 
-.container_login img{
-  width: 600px;
+.container_login img {
+  width: 100%; /* Ajusta el ancho para que sea responsive */
+  max-width: 600px; /* Máximo ancho para dispositivos grandes */
   margin-bottom: 40px;
 }
 
-
-.container_login button{
+.container_login button {
   padding: 5px;
   border: 1px solid transparent;
   border-radius: 45px;
-  width: 200px;
+  width: 100%; /* Ajusta el ancho para que sea responsive */
+  max-width: 200px; /* Máximo ancho para dispositivos grandes */
   margin: 10px 0;
 }
 
-.container_login button a{
+.container_login button a {
   color: white;
   font-size: 18px;
   text-decoration: none;
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 768px) {
+ .container_login img {
+    max-width: 100%; /* Ajusta el ancho máximo para dispositivos móviles */
+  }
+
+ .container_login button {
+    max-width: 100%; /* Ajusta el ancho máximo para dispositivos móviles */
+  }
 }

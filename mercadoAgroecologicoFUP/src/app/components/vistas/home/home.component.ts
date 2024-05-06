@@ -1,10 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login/login.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+  constructor(private loginS: LoginService, private route: Router) {}
 
+
+  ngOnInit(): void {
+    const token = localStorage.getItem('token');
+    if(token){
+      alert('welcome');
+    }else{
+      this.route.navigate(['']);
+    }
+  }
+
+  cerrarSesion() {
+    this.loginS.logout().subscribe((data) => {
+      localStorage.removeItem('token');
+      this.route.navigate([''])
+    });
+  }
 }

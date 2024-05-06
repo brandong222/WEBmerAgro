@@ -12,9 +12,21 @@ export class CategoryService {
 
   private apiUrl: string = 'http://127.0.0.1:8000/api/category';
 
-  AddCategory(form: categoryI): Observable<any> {
 
-    console.log(form)
-    return this.http.post<any>(this.apiUrl, form);
+  //para traer datos de la api y db
+  getCategory(): Observable<categoryI[]>{
+    const token = localStorage.getItem('token');
+    const headers = {'Authorization': `Bearer ${token}`};
+
+
+    return this.http.get<categoryI[]>(this.apiUrl, { headers });
+
+  }
+
+  //para añadir una category nueva
+  AddCategory(form: categoryI): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = {'Authorization': `Bearer ${token}`};
+    return this.http.post<any>(this.apiUrl, form , {headers});
   }
 }

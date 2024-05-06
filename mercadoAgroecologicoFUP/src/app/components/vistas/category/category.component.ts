@@ -1,28 +1,32 @@
-import { categoryI } from './../../../models/category.interface';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CategoryService } from 'src/app/services/category/category.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { categoryI } from 'src/app/models/category.interface';
 
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
-  styleUrls: ['./category.component.css']
+  styleUrls: ['./category.component.css'],
 })
-export class CategoryComponent {
+export class CategoryComponent implements OnInit {
 
-    CategoryForm = new FormGroup({
-      cat_name: new FormControl('', Validators.required),
-      cat_description: new FormControl('', Validators.required),
-      cat_image: new FormControl('', Validators.required),
+  categories: categoryI[] =[];
+  constructor(private categoryS: CategoryService, private route: Router) {}
 
-    });
-
-  constructor(private categoryS: CategoryService){}
-
-  GuardarCategory(form: categoryI) {
-    this.categoryS.AddCategory(form).subscribe((data) => {
+  ngOnInit() {
+    this.categoryS.getCategory().subscribe((data) => {
+      this.categories = data;
       console.log(data);
     });
   }
+
+  editarCategory(id:any){
+  //  this.route.navigate(['category/add', id]);
+  }
+
+  agregarCategory(){
+    this.route.navigate(['category/add']);
+  }
+
 
 }
