@@ -1,19 +1,63 @@
 .formContent{
   width: 100%;
   background: transparent;
-  height: 30vh;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h3{
+  color: seagreen;
+  width: 60%;
+  text-align: center;
+  margin-bottom: 30PX;
 }
 
 form{
   display: flex;
   flex-direction: column;
-  margin: 30px auto;
-  gap: 10px;
-  width: 50%;
+  justify-content: space-around;
+  align-items: center;
+  width: 40%;
+  height: 60vh;
+  background: white;
+  padding: 60px;
+  box-shadow: -2px 2px 20px seagreen, 13px 13px 40px seagreen;
+
+}
+form label{
+  color: black;
+  font-size: 18px;
+  width: 60%;
+  text-align: left;
 
 }
 
 form input{
-  text-align: center;
-  border: 1px solid darkolivegreen;
+  margin: 5px 0px;
+  width: 60%;
+  height: auto;
+  padding: 5px;
+  font-size: 14px;
+  text-align: left;
+  border: 1px solid rgba(0, 0, 0, 0.466);
 }
+
+form .btn{
+  text-align: center;
+  border: 1px solid transparent;
+  margin: 15px 0px;
+}
+
+
+form span a{
+  text-decoration: underline;
+  color: black;
+}
+
+form span a:hover{
+  text-decoration: none;
+  color: seagreen;
+}
+

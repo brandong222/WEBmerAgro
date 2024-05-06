@@ -7,13 +7,17 @@ import { MainComponent } from './components/vistas/main/main.component';
 import { CategoryComponent } from './components/vistas/category/category.component';
 import { CategoryADDComponent } from './components/vistas/category-add/category-add.component';
 
+//guardian de rutas
+import { AuthGuard } from './services/login/auth.guard'; // Asegúrate de importar tu AuthGuard
+
+
 const routes: Routes = [
   {path: "" , component: MainComponent},
   {path: "login" , component: LoginComponent},
-  {path: 'product', component: ProductComponent},
-  {path: 'home', component: HomeComponent},
-  {path: 'category', component: CategoryComponent},
-  {path: 'category/add', component: CategoryADDComponent},
+  {path: 'product', component: ProductComponent,canActivate:[AuthGuard]},
+  {path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
+  {path: 'category', component: CategoryComponent, canActivate:[AuthGuard]},
+  {path: 'category/add', component: CategoryADDComponent, canActivate:[AuthGuard]},
   {path: '**', pathMatch: 'full', redirectTo: ''}
 ];
 

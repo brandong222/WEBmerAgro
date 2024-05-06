@@ -2,9 +2,14 @@
   <div class="formContent">
 
     <form [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm.value)" >
-      <input type="text"  id="use_cc" class="fadeIn second" formControlName="use_cc" placeholder="cc">
+      <h3>Bienvenido</h3>
+      <label for="">Número de identificación</label>
+      <input type="text"  id="use_cc" class="fadeIn second" formControlName="use_cc" placeholder="ingrese su número de cedula">
+      <label for="">Contraseña</label>
       <input type="password"  id="use_password" class="fadeIn third" formControlName="use_password" placeholder="password">
       <input type="submit" class="btn btn-success" value="Ingresar">
+
+      <span>¿No tienes una cuenta ? <a href="">registrarse</a></span>
     </form>
 
   </div>

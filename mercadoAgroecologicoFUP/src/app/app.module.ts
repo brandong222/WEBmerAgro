@@ -17,6 +17,14 @@ import { MainComponent } from './components/vistas/main/main.component';
 import { LoginComponent } from './components/vistas/login/login.component';
 import { CategoryComponent } from './components/vistas/category/category.component';
 import { CategoryADDComponent } from './components/vistas/category-add/category-add.component';
+import { PeopleComponent } from './components/vistas/people/people.component';
+import { PeopleADDComponent } from './components/vistas/people-add/people-add.component';
+import { UserComponent } from './components/vistas/user/user.component';
+import { UserADDComponent } from './components/vistas/user-add/user-add.component';
+import { ProviderComponent } from './components/vistas/provider/provider.component';
+import { ProviderADDComponent } from './components/vistas/provider-add/provider-add.component';
+import { ProductADDComponent } from './components/vistas/product-add/product-add.component';
+import { CertificationComponent } from './components/vistas/certification/certification.component';
 
 
 
@@ -32,7 +40,15 @@ import { CategoryADDComponent } from './components/vistas/category-add/category-
     MainComponent,
     LoginComponent,
     CategoryComponent,
-    CategoryADDComponent
+    CategoryADDComponent,
+    PeopleComponent,
+    PeopleADDComponent,
+    UserComponent,
+    UserADDComponent,
+    ProviderComponent,
+    ProviderADDComponent,
+    ProductADDComponent,
+    CertificationComponent
   ],
   imports: [
     BrowserModule,
