@@ -9,15 +9,33 @@ import { CategoryADDComponent } from './components/vistas/category-add/category-
 
 //guardian de rutas
 import { AuthGuard } from './services/login/auth.guard'; // Asegúrate de importar tu AuthGuard
+import { ProductADDComponent } from './components/vistas/product-add/product-add.component';
+import { ProviderComponent } from './components/vistas/provider/provider.component';
+import { ProviderADDComponent } from './components/vistas/provider-add/provider-add.component';
+import { UserComponent } from './components/vistas/user/user.component';
+import { UserADDComponent } from './components/vistas/user-add/user-add.component';
 
 
 const routes: Routes = [
   {path: "" , component: MainComponent},
   {path: "login" , component: LoginComponent},
-  {path: 'product', component: ProductComponent,canActivate:[AuthGuard]},
   {path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
+
+  {path: "user" , component: UserComponent},
+  {path: "user/add" , component: UserADDComponent},
+
+  {path: 'product', component: ProductComponent,canActivate:[AuthGuard]},
+  {path: 'product/add', component: ProductADDComponent,canActivate:[AuthGuard]},
+
   {path: 'category', component: CategoryComponent, canActivate:[AuthGuard]},
   {path: 'category/add', component: CategoryADDComponent, canActivate:[AuthGuard]},
+
+  {path: 'people', component: CategoryComponent, canActivate:[AuthGuard]},
+  {path: 'people/add', component: CategoryADDComponent, canActivate:[AuthGuard]},
+
+  {path: 'provider', component: ProviderComponent, canActivate:[AuthGuard]},
+  {path: 'provider/add', component: ProviderADDComponent, canActivate:[AuthGuard]},
+
   {path: '**', pathMatch: 'full', redirectTo: ''}
 ];
 
