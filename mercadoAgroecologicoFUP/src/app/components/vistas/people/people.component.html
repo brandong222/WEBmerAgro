@@ -1,1 +1,26 @@
-<p>people works!</p>
+<div class="container">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Ubicación</th>
+        <th>Fecha de nacimiento</th>
+        <th>Número de telefono</th>
+        <th>Correo</th>
+        <th>Imagen</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of peopleArray">
+        <td>{{ item.peo_name }}</td>
+        <td>{{ item.peo_lastName }}</td>
+        <td> {{item.peo_adress }}</td>
+        <td>{{ item.peo_dateBirth }}</td>
+        <td>{{ item.peo_phone }}</td>
+        <td>{{ item.peo_mail }}</td>
+        <td> <img class="imagen_temporal" src="{{ item.peo_image }}" alt=""></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

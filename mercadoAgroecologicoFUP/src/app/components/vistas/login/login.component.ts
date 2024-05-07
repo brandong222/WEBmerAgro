@@ -19,17 +19,12 @@ export class LoginComponent implements OnInit {
 
   constructor(private loginS: LoginService, private router: Router) {}
 
-
   ngOnInit(): void {
-  this.revisarToken();
+    this.revisarToken();
   }
 
-  navigateToRegister(){
-    this.router.navigate(['/people/add']);
-  }
-
-  revisarToken(){
-    if(localStorage.getItem('token')){
+  revisarToken() {
+    if (localStorage.getItem('token')) {
       this.router.navigate(['home']);
     }
   }
@@ -49,5 +44,10 @@ export class LoginComponent implements OnInit {
         alert('Error al intentar iniciar sesión:');
       }
     );
+  }
+
+  //navegación
+  navigateToRegister() {
+    this.router.navigate(['/people/add']);
   }
 }

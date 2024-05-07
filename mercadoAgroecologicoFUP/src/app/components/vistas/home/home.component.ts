@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
   cerrarSesion() {
     this.loginS.logout().subscribe((data) => {
       localStorage.removeItem('token');
-      this.route.navigate([''])
+      this.ngOnInit();
     });
   }
 }

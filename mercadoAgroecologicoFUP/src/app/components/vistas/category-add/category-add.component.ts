@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 import { CategoryService } from 'src/app/services/category/category.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { categoryI } from 'src/app/models/category.interface';

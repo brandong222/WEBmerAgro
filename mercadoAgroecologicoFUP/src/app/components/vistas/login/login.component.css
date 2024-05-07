@@ -43,7 +43,7 @@ form input {
   border: 1px solid rgba(0, 0, 0, 0.466);
 }
 
-form.btn {
+form .btn {
   text-align: center;
   border: 1px solid transparent;
   margin: 15px 0px;

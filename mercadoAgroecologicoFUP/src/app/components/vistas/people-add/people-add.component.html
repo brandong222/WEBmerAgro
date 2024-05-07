@@ -1,35 +1,38 @@
 <div class="container-sm">
   <h2 class="text-center">Formulario de registro</h2>
-  <form action="" class="form">
+  <form [formGroup]="peopleForm" (ngSubmit)="guardarPersona(peopleForm.value)">
     <div class="data">
       <div class="lado-izq">
         <div class="form-group">
           <label for="nombre">Nombre</label>
-          <input type="text" class="form-control" id="nombre" />
+          <input type="text" class="form-control" id="nombre" formControlName="peo_name"/>
         </div>
         <div class="form-group">
           <label for="apellido">Apellido</label>
-          <input type="text" class="form-control" id="apellido" />
+          <input type="text" class="form-control" id="apellido" formControlName="peo_lastName"/>
         </div>
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" class="form-control" id="email" />
+          <input type="email" class="form-control" id="email" formControlName="peo_mail" />
         </div>
         <div class="form-group">
           <label for="telefono">Telefono</label>
-          <input type="text" class="form-control" id="telefono" />
+          <input type="text" class="form-control" id="telefono" formControlName="peo_phone"/>
         </div>
         <div class="form-group">
           <label for="fecha">fecha</label>
-          <input type="date" class="form-control" id="fecha" />
+          <input type="date" class="form-control" id="fecha" formControlName="peo_dateBirth"/>
         </div>
         <div class="form-group">
           <label for="ubicacion">Ubicación</label>
-          <select name="" id="ubicacion" class="form-control">
-            <option value="">Selecione</option>
-            <option value="popayan">POPAYÁN</option>
-            <option value="calibío">CALIBÍO</option>
-            <option value="otra">OTRA</option>
+          <select name="" id="ubicacion" class="form-control" formControlName="peo_adress">
+            <option value="popayan">Seleccione</option>
+            <option value="calibío">Calibío</option>
+            <option value="otra">Popayán</option>
+            <option value="arauca">Timbío</option>
+            <option value="belen">El tambo</option>
+            <option value="cartago">Otra</option>
+
           </select>
         </div>
       </div>
@@ -42,14 +45,14 @@
           style="max-width: 100%"
         />
         <label for="formFile" class="form-label">Foto de perfil</label>
-    <input class="form-control" type="file" id="formFile">
+    <input class="form-control" type="text"  formControlName="peo_image">
       </div>
     </div>
     <input type="submit" class="btn btn-success boton_style" value="Siguiente">
   </form>
 
   <div class="regresar_btn">
-    <input type="submit" class="btn btn-primary boton_style" value="regresar">
+    <input type="submit" class="btn btn-primary boton_style" (click)="navegateToRegresar()" value="regresar">
 
   </div>
 </div>

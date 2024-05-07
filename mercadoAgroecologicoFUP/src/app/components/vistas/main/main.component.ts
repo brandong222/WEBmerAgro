@@ -11,6 +11,11 @@ export class MainComponent {
 
   constructor(private router: Router) { }
 
+
+
+
+
+  //navegacion
   navigateToLogin() {
     this.router.navigate(['/login']);
    }
@@ -18,6 +23,4 @@ export class MainComponent {
    navigateToRegister(){
     this.router.navigate(['/people/add']);
    }
-
-
 }
