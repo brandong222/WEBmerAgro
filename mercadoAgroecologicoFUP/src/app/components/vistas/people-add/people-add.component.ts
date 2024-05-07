@@ -37,9 +37,7 @@ export class PeopleADDComponent {
 
         if (dataR.status) {
          console.log('se guardo');
-
-         console.log(dataR.data.id);
-         this.route.navigate(['/user/add']);
+         this.route.navigate(['/user/add/',dataR.data.id]);
         }
       },
       (error) => {
