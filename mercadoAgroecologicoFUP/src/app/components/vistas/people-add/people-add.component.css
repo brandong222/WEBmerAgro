@@ -1,0 +1,91 @@
+h2{
+  color: seagreen;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.data{
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: var(--fondo-card);
+  margin: 20px;
+  padding: 20px;
+
+}
+
+.data .lado-izq{
+  flex: 4;
+  width: 80%;
+  margin: 20px;
+  background: transparent;
+}
+
+
+
+.data .lado-der{
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 40vh;
+  width: 50%;
+  background: transparent;
+}
+
+.data .lado-der img{
+width: 50%;
+height: 30vh;
+border: 1px solid transparent;
+border-radius: 50%;
+}
+
+form a{
+  float: right;
+}
+
+.regresar_btn{
+  width: 100%;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+}
+
+.boton_style{
+  width: 20%;
+  margin: 10px;
+  padding: 5px;
+
+}
+
+
+/*RESPONSIVE*/
+
+@media (max-width: 768px) {
+
+.data{
+  display: flex;
+  flex-direction: column;
+}
+
+.data .lado-der img{
+  width: 90%;
+  height: 20vh;
+  border: 1px solid black;
+  border-radius: 50%;
+  }
+
+
+  .boton_style{
+    width: 60%;
+    margin: 10px;
+    padding: 5px;
+
+  }
+
+}

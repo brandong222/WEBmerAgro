@@ -16,7 +16,7 @@ export class MainComponent {
    }
 
    navigateToRegister(){
-    this.router.navigate(['/']);
+    this.router.navigate(['/people/add']);
    }
 
 

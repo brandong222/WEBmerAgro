@@ -1,1 +1,55 @@
-<p>people-add works!</p>
+<div class="container-sm">
+  <h2 class="text-center">Formulario de registro</h2>
+  <form action="" class="form">
+    <div class="data">
+      <div class="lado-izq">
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" class="form-control" id="nombre" />
+        </div>
+        <div class="form-group">
+          <label for="apellido">Apellido</label>
+          <input type="text" class="form-control" id="apellido" />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" />
+        </div>
+        <div class="form-group">
+          <label for="telefono">Telefono</label>
+          <input type="text" class="form-control" id="telefono" />
+        </div>
+        <div class="form-group">
+          <label for="fecha">fecha</label>
+          <input type="date" class="form-control" id="fecha" />
+        </div>
+        <div class="form-group">
+          <label for="ubicacion">Ubicación</label>
+          <select name="" id="ubicacion" class="form-control">
+            <option value="">Selecione</option>
+            <option value="popayan">POPAYÁN</option>
+            <option value="calibío">CALIBÍO</option>
+            <option value="otra">OTRA</option>
+          </select>
+        </div>
+      </div>
+      <div class="lado-der">
+        <img
+          id="mostrar_imagen"
+          src=""
+          alt=" "
+          class="img-thumbnail"
+          style="max-width: 100%"
+        />
+        <label for="formFile" class="form-label">Foto de perfil</label>
+    <input class="form-control" type="file" id="formFile">
+      </div>
+    </div>
+    <input type="submit" class="btn btn-success boton_style" value="Siguiente">
+  </form>
+
+  <div class="regresar_btn">
+    <input type="submit" class="btn btn-primary boton_style" value="regresar">
+
+  </div>
+</div>

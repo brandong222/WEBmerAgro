@@ -24,6 +24,9 @@ export class LoginComponent implements OnInit {
   this.revisarToken();
   }
 
+  navigateToRegister(){
+    this.router.navigate(['/people/add']);
+  }
 
   revisarToken(){
     if(localStorage.getItem('token')){

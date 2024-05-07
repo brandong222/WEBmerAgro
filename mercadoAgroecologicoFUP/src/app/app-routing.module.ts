@@ -14,6 +14,8 @@ import { ProviderComponent } from './components/vistas/provider/provider.compone
 import { ProviderADDComponent } from './components/vistas/provider-add/provider-add.component';
 import { UserComponent } from './components/vistas/user/user.component';
 import { UserADDComponent } from './components/vistas/user-add/user-add.component';
+import { PeopleADDComponent } from './components/vistas/people-add/people-add.component';
+import { PeopleComponent } from './components/vistas/people/people.component';
 
 
 const routes: Routes = [
@@ -30,8 +32,8 @@ const routes: Routes = [
   {path: 'category', component: CategoryComponent, canActivate:[AuthGuard]},
   {path: 'category/add', component: CategoryADDComponent, canActivate:[AuthGuard]},
 
-  {path: 'people', component: CategoryComponent, canActivate:[AuthGuard]},
-  {path: 'people/add', component: CategoryADDComponent, canActivate:[AuthGuard]},
+  {path: 'people', component: PeopleComponent, canActivate:[AuthGuard]},
+  {path: 'people/add', component: PeopleADDComponent},
 
   {path: 'provider', component: ProviderComponent, canActivate:[AuthGuard]},
   {path: 'provider/add', component: ProviderADDComponent, canActivate:[AuthGuard]},
