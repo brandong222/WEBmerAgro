@@ -29,14 +29,14 @@ export class PeopleADDComponent {
   //guardar en db una persona
 
   guardarPersona(form: PeopleI){
-
-   console.log(form);
     this.peopleS.addPeople(form).subscribe(
       (data) => {
         let dataR: responsiveI = data;
 
         if (dataR.status) {
-         console.log('se guardo');
+         console.log(dataR.message);
+         console.log(dataR.status);
+
          this.route.navigate(['/user/add/',dataR.data.id]);
         }
       },

@@ -1,8 +1,9 @@
 export interface UserI {
-  id?: number;
-  use_cc: string;
-  use_password: string;
-  use_rol: string;
-  use_status: boolean;
-  people_id: number;
+  id?: number | null;
+  use_cc?: string | null;
+  use_password?: string | null;
+  use_rol?: string | null;
+  use_status?: number | null;
+  people_id?: number | null ;
+
 }
