@@ -1,1 +1,23 @@
-<p>provider works!</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Ranking</th>
+      <th>Grupo</th>
+      <th>Descripción</th>
+      <th>Estado</th>
+      <th>PEO ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let provider of providerArray">
+      <td>{{ provider.id }}</td>
+      <td>{{ provider.prov_ranking }}</td>
+      <td>{{ provider.prov_group }}</td>
+      <td>{{ provider.prov_description }}</td>
+      <td>{{ provider.prov_status? 'Activo' : 'Inactivo' }}</td>
+      <td>{{ provider.people_peo_id }}</td>
+    </tr>
+  </tbody>
+</table>
+
