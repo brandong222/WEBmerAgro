@@ -1,8 +1,8 @@
 export interface RequestI {
-  id?: number;
-  req_dateRequest: string;
-  req_type: string;
-  req_description: string;
-  req_status: boolean;
-  people_id: number;
+  id?: number | null;
+  req_dateRequest: string | null;
+  req_type: string | null;
+  req_description: string | null;
+  req_status: boolean | null;
+  people_id: number | null;
 }

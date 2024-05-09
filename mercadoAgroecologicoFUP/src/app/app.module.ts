@@ -25,6 +25,8 @@ import { ProviderComponent } from './components/vistas/provider/provider.compone
 import { ProviderADDComponent } from './components/vistas/provider-add/provider-add.component';
 import { ProductADDComponent } from './components/vistas/product-add/product-add.component';
 import { CertificationComponent } from './components/vistas/certification/certification.component';
+import { RequestappComponent } from './components/vistas/requestapp/requestapp.component';
+import { RequestappADDComponent } from './components/vistas/requestapp-add/requestapp-add.component';
 
 
 
@@ -48,7 +50,9 @@ import { CertificationComponent } from './components/vistas/certification/certif
     ProviderComponent,
     ProviderADDComponent,
     ProductADDComponent,
-    CertificationComponent
+    CertificationComponent,
+    RequestappComponent,
+    RequestappADDComponent
   ],
   imports: [
     BrowserModule,

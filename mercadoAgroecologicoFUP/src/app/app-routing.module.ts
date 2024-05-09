@@ -8,7 +8,8 @@ import { CategoryComponent } from './components/vistas/category/category.compone
 import { CategoryADDComponent } from './components/vistas/category-add/category-add.component';
 
 //guardian de rutas
-import { AuthGuard } from './services/login/auth.guard'; // Asegúrate de importar tu AuthGuard
+import { AuthGuard } from './services/login/auth.guard'; // guardian de rutas
+
 import { ProductADDComponent } from './components/vistas/product-add/product-add.component';
 import { ProviderComponent } from './components/vistas/provider/provider.component';
 import { ProviderADDComponent } from './components/vistas/provider-add/provider-add.component';
@@ -16,6 +17,8 @@ import { UserComponent } from './components/vistas/user/user.component';
 import { UserADDComponent } from './components/vistas/user-add/user-add.component';
 import { PeopleADDComponent } from './components/vistas/people-add/people-add.component';
 import { PeopleComponent } from './components/vistas/people/people.component';
+import { RequestappComponent } from './components/vistas/requestapp/requestapp.component';
+import { RequestappADDComponent } from './components/vistas/requestapp-add/requestapp-add.component';
 
 
 const routes: Routes = [
@@ -28,6 +31,10 @@ const routes: Routes = [
 
   {path: 'product', component: ProductComponent,canActivate:[AuthGuard]},
   {path: 'product/add', component: ProductADDComponent,canActivate:[AuthGuard]},
+
+  {path: 'request', component: RequestappComponent,canActivate:[AuthGuard]},
+  {path: 'request/add', component: RequestappADDComponent,canActivate:[AuthGuard]},
+
 
   {path: 'category', component: CategoryComponent, canActivate:[AuthGuard]},
   {path: 'category/add', component: CategoryADDComponent, canActivate:[AuthGuard]},
