@@ -15,13 +15,13 @@ export class ProviderService {
   //mostrar datos de provider
   getProvider():Observable<ProviderI[]>{
     const token = localStorage.getItem('token');
-    const headers = {Authorization: `Beares ${token}`};
+    const headers = {Authorization: `Bearer ${token}`};
   return this.http.get<ProviderI[]>(this.apiUrl, {headers});
   }
 
   addProvider(form: ProviderI): Observable<responsiveI>{
     const token = localStorage.getItem('token');
-    const headers = {Authorization: `Beares ${token}`};
+    const headers = {Authorization: `Bearer ${token}`};
     return this.http.post<responsiveI>(this.apiUrl, form, {headers});
   }
 }
