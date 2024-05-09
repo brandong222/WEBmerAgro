@@ -1,1 +1,20 @@
-<p>requestapp works!</p>
+<div class="container">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>persona id</th>
+        <th>descripcion</th>
+        <th>certificado</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let item of requestArray">
+        <td>{{item.people_id}}</td>
+        <td>{{ item.req_description }}</td>
+        <td>{{ item.req_type }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
