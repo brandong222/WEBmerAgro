@@ -18,6 +18,7 @@ export class ProviderComponent implements OnInit {
   ngOnInit(): void {
     this.providerS.getProvider().subscribe(data=>{
       console.log(data);
+      this.providerArray = data;
     })
   }
 
