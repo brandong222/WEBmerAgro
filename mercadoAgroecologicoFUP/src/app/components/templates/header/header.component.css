@@ -1,8 +1,8 @@
 
 .navbar {
-  background: #ffffff!important;
-  position: fixed;
-  top: 0;
+  background: #ffffff;
+  position: sticky;
+  top: 0px;
 }
 
 .dropdown{
