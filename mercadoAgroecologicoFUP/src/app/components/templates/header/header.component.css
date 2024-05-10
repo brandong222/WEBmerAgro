@@ -1,55 +1,104 @@
-
 .navbar {
   background: #ffffff;
   position: sticky;
   top: 0px;
 }
 
-.dropdown{
-  border-radius:0;
-  border:0;
+
+.dropdown {
+  border-radius: 0;
+  border: 0;
 }
-.dropdown-menu{
+
+.dropdown-menu {
   background: #ffffff;
-  border:0;
-  top:80%;
-  border-radius:0px 0px 5px 5px;
-}
-.dropdown-item:hover{
-  background:#0a8138;
-  color:#186d2a;
-}
-.dropdown-menu a{
-  color:#000000;
-}
-.navbar .nav-item .nav-link{
-  color:#000000 !important;
-  font-family: 'Times New Roman', Times, serif, "Helvetica Neue", Helvetica, sans-serif;
-  font-size: 120%;
-}
-.navbar .nav-item .nav-link:hover .navbar .nav-item .nav-link{
-  color:red !important;
+  border: 0;
+  top: 80%;
+  border-radius: 0px 0px 5px 5px;
 }
 
+.dropdown-item{
+  font-size: 18px;
+}
+
+.dropdown-item:hover {
+  background: #24dd6b;
+  cursor: pointer;
+}
+
+.dropdown-menu a {
+  color: #000000;
+}
+
+/*para dar espacio entre items del menu */
+.nav-item{
+  margin: 0px 30px;
+  font-size: 20px;
+}
+
+.nav-link{
+  color: black;
+}
+
+.nav-link:hover , .nav-link:active{
+  color: seagreen;
+  text-decoration: underline seagreen;
+}
+
+
+/*para separar del logo*/
+.container-fluid{
+margin-left: 120px;
+}
+
+
+
+/* Ajusta el margen derecho del menú desplegable del usuario para evitar que se superponga con la imagen */
 .nav-item.dropdown.user.dropdown-menu {
-  margin-right: 100px; /* Ajusta este valor según el espacio deseado */
+  margin-right: 100px;
+  /* Ajusta este valor según el espacio deseado */
 }
 
-img{
-  width: 12%;
-  margin-bottom: 0%;
+img {
+  width: 15%;
+  height: auto;
+  padding: 5px;
 }
 
-.boton:active,.boton:focus {
+.boton:active,
+.boton:focus {
   background-color: #24dd6b;
   border-radius: 15px;
 }
 
-.custom-dropdown:active,.custom-dropdown:focus {
+.custom-dropdown:active,
+.custom-dropdown:focus {
   background-color: #24dd6b;
   border-radius: 15px;
 }
 
-.usuario{
-  float: right;
+
+
+
+
+/* Oculta el menú en dispositivos pequeños */
+@media (max-width: 768px) {
+.container-fluid{
+  margin-left: 0;
+}
+
+  .navbar.navbar-collapse {
+    display: none;
+  }
+
+  .navbar-toggler {
+    display: block;
+    width: 100%;
+  }
+
+  img {
+    width: 90%;
+    height: auto;
+  }
+
 }
