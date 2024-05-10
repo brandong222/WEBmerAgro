@@ -22,13 +22,20 @@
 }
 
 .dropdown-item:hover {
-  background: #24dd6b;
+  color: seagreen;
   cursor: pointer;
+  text-decoration: underline;
+}
+/*para cerrar sesion*/
+.usuario{
+  color: red;
 }
 
-.dropdown-menu a {
-  color: #000000;
+.usuario:hover{
+  color: lightcoral;
 }
+
+
 
 /*para dar espacio entre items del menu */
 .nav-item{
@@ -52,11 +59,8 @@ margin-left: 120px;
 }
 
 
-
-/* Ajusta el margen derecho del menú desplegable del usuario para evitar que se superponga con la imagen */
 .nav-item.dropdown.user.dropdown-menu {
   margin-right: 100px;
-  /* Ajusta este valor según el espacio deseado */
 }
 
 img {

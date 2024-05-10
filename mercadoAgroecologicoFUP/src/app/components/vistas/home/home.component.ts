@@ -8,7 +8,7 @@ import { LoginService } from 'src/app/services/login/login.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private loginS: LoginService, private route: Router) {}
+  constructor( private route: Router) {}
 
 
   ngOnInit(): void {
@@ -19,10 +19,4 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  cerrarSesion() {
-    this.loginS.logout().subscribe((data) => {
-      localStorage.removeItem('token');
-      this.ngOnInit();
-    });
-  }
 }
