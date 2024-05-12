@@ -1,0 +1,30 @@
+section{
+  width: 100%;
+  height: auto;
+  background: transparent;
+  padding: 30px;
+}
+
+.main_product{
+  background: transparent;
+  padding: 30px;
+  border: 1.5px solid gray;
+display: flex;
+align-items: center;
+justify-content: space-around;
+
+}
+
+.card{
+  width: 20%;
+  text-align: center;
+  align-items: center;
+}
+
+.card img{
+  width: 200px;
+  height: auto;
+
+  overflow: hidden;
+
+}

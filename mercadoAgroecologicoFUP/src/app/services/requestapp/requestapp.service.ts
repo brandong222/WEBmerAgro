@@ -18,15 +18,34 @@ export class RequestappService {
     const token = localStorage.getItem('token');
     const headers = { Authorization: `Bearer ${token}` };
 
-    return this.http.get<RequestI[]>(this.apiUrl, {headers});
+    return this.http.get<RequestI[]>(this.apiUrl, { headers });
   }
 
-  addRequestapp(form: RequestI): Observable<responsiveI>{
+  addRequestapp(form: RequestI): Observable<responsiveI> {
     const token = localStorage.getItem('token');
     const headers = { Authorization: `Bearer ${token}` };
-  return this.http.post<responsiveI>(this.apiUrl, form, {headers});
-
+    return this.http.post<responsiveI>(this.apiUrl, form, { headers });
   }
 
+  // para obtener una solicitud de aplicación por ID
+  getRequestAppId(id: number): Observable<responsiveI> {
+    const token = localStorage.getItem('token');
+    const headers = { Authorization: `Bearer ${token}` };
+    return this.http.get<responsiveI>(`${this.apiUrl}/${id}`, { headers });
+  }
+  // para actualizar una solicitud de aplicación
+  updateRequestApp(id: number, form: RequestI): Observable<responsiveI> {
+    const token = localStorage.getItem('token');
+    const headers = { Authorization: `Bearer ${token}` };
+    return this.http.put<responsiveI>(`${this.apiUrl}/${id}`, form, {
+      headers,
+    });
+  }
 
+  // para eliminar una solicitud de aplicación
+  deleteRequestApp(id: number): Observable<responsiveI> {
+    const token = localStorage.getItem('token');
+    const headers = { Authorization: `Bearer ${token}` };
+    return this.http.delete<responsiveI>(`${this.apiUrl}/${id}`, { headers });
+  }
 }

@@ -23,7 +23,8 @@ form {
   height: 60vh;
   background: white;
   padding: 60px;
-  box-shadow: -2px 2px 20px seagreen, 13px 13px 40px seagreen;
+  /*box-shadow: -2px 2px 20px seagreen, 13px 13px 40px seagreen; */
+
 }
 
 form label {

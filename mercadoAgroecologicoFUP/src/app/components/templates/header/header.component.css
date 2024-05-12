@@ -1,5 +1,8 @@
+nav{
+  margin-bottom: 20px;
+}
+
 .navbar {
-  background: #ffffff;
   position: sticky;
   top: 0px;
 }

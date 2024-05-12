@@ -5,6 +5,7 @@ import { loginI } from 'src/app/models/login.interface';
 
 import { Router } from '@angular/router';
 import { responsiveI } from 'src/app/models/response.interface';
+import { PeopleService } from 'src/app/services/people/people.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,11 @@ export class LoginComponent implements OnInit {
     use_password: new FormControl('', Validators.required),
   });
 
-  constructor(private loginS: LoginService, private router: Router) {}
+  constructor(
+    private loginS: LoginService,
+    private router: Router,
+    private fkpeopleS: PeopleService
+  ) {}
 
   ngOnInit(): void {
     this.revisarToken();
@@ -36,6 +41,14 @@ export class LoginComponent implements OnInit {
 
         if (data.status) {
           localStorage.setItem('token', dataR.token);
+
+          //traer datos de persona para poner el nombre
+          let fk_people_Id = dataR.data.people_id;
+          this.fkpeopleS.getPersonById(fk_people_Id).subscribe((people) => {
+            //guardar en localstorage
+            localStorage.setItem('user_name', people.data.peo_name);
+          });
+
           this.router.navigate(['home']);
         }
       },

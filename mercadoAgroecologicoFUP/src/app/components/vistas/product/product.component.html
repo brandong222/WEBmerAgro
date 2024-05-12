@@ -1,3 +1,38 @@
 <app-header></app-header>
 
-<h4>producto</h4>
+<section>
+  <div class="main_product">
+    <div class="card" *ngFor="let item of productArray">
+      <img
+        src="https://th.bing.com/th/id/R.8558e156de448a280d489af540af7700?rik=8xc66llq3q8hlQ&riu=http%3a%2f%2fpngimg.com%2fuploads%2fapple%2fapple_PNG12405.png&ehk=1QYlrxUD9Canji%2bd6Al3MZZvDH%2fdl1MuChmNOHoG4Ig%3d&risl=1&pid=ImgRaw&r=0"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title">
+          <strong>{{ item.pro_name }}</strong>
+        </h5>
+        <p class="card-text">{{ item.pro_description }}</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <span>$ {{ item.pro_price }} {{ item.pro_unit }}</span>
+        </li>
+        <li class="list-group-item">
+          La puedes encontrar en <span> ####</span>
+        </li>
+      </ul>
+      <div class="card-body">
+        <a href="" class="card-link">ver</a>
+      </div>
+
+      <div
+        [ngStyle]="{
+          'display': item.pro_certs == 'certificado' ? 'block' : 'none'
+        }"
+      >
+        {{ item.pro_certs }}
+      </div>
+    </div>
+  </div>
+</section>

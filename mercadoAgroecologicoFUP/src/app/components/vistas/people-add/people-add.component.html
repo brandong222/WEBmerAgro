@@ -35,24 +35,30 @@
 
           </select>
         </div>
+
+
       </div>
+
       <div class="lado-der">
         <img
           id="mostrar_imagen"
-          src=""
+        src=""
           alt=" "
           class="img-thumbnail"
           style="max-width: 100%"
         />
         <label for="formFile" class="form-label">Foto de perfil</label>
-    <input class="form-control" type="text"  formControlName="peo_image">
+        <input class="form-control" type="file" (change)="onFileSelected($event)"  >
       </div>
     </div>
     <input type="submit" class="btn btn-success boton_style" value="Siguiente">
   </form>
-
+<button class="btn btn-dark"  (click)="subirImagen()"> subir imagen</button>
   <div class="regresar_btn">
     <input type="submit" class="btn btn-primary boton_style" (click)="navegateToRegresar()" value="regresar">
+
+
+
 
   </div>
 </div>

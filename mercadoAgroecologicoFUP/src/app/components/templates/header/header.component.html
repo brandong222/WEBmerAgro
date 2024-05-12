@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+<nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
   <img src="/assets/img/logoVF.png" alt="Logo" class="logo">
   <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -45,8 +45,8 @@
 
           <li class="nav-item dropdown">
             <a class="nav-link dropdown custom-dropdown" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              nombre_usuario
+              data-bs-toggle="dropdown" style="color: darkgreen; text-shadow: 2px 2px 5px rgba(21, 235, 32, 0.438);" >
+              {{ FKusuarioName }}
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item usuario" (click)="cerrarSesion()" >Cerrar sesión</a></li>

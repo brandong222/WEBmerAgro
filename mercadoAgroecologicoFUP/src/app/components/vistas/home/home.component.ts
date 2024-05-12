@@ -11,9 +11,14 @@ export class HomeComponent implements OnInit {
   constructor( private route: Router) {}
 
 
+
   ngOnInit(): void {
     const token = localStorage.getItem('token');
+
+
+
     if(token){
+
     }else{
       this.route.navigate(['']);
     }

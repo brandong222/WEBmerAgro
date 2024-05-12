@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login/login.service';
 
@@ -7,9 +7,22 @@ import { LoginService } from 'src/app/services/login/login.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
 
 constructor(private route:Router, private loginS: LoginService){}
+
+FKusuarioName: string = '';
+
+ngOnInit(): void {
+  const user_name = localStorage.getItem('user_name');
+  if (user_name) {
+    this.FKusuarioName =user_name;
+  } else{
+    this.FKusuarioName = "usuario";
+  }
+}
+
+
 
 //**NAVEGACIÓN****//
 
@@ -55,6 +68,7 @@ navVerCategorias(){
 cerrarSesion() {
   this.loginS.logout().subscribe((data) => {
     localStorage.removeItem('token');
+    localStorage.removeItem('user_name');
     this.route.navigate(['']);
   });
 }

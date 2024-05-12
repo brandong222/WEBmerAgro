@@ -10,13 +10,14 @@ import { Router } from '@angular/router';
 })
 export class ProductComponent implements OnInit {
   //primero se crea arreglo usando interfaz de product
-  products: ProductI[] = [];
+  productArray: ProductI[] = [];
   //segundo se inyecta las dependencias de servicio y rutas
   constructor(private productS: ProductService, private route: Router) {}
 
   ngOnInit(): void {
     this.productS.getproductos().subscribe(data=>{
       console.log(data);
+      this.productArray = data;
     })
   }
 }

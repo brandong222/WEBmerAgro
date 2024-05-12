@@ -36,6 +36,10 @@
   }
 
  .container_login button {
-    max-width: 100%; /* Ajusta el ancho máximo para dispositivos móviles */
+    max-width: 80%;
+  }
+
+  .container_login{
+    margin: 10px 20px;
   }
 }

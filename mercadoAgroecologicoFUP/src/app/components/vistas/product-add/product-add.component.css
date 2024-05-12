@@ -1,0 +1,12 @@
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.formulario_style{
+  width: 80%;
+  margin: 20px;
+  background: transparent;
+}

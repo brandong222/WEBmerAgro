@@ -22,6 +22,28 @@ export class UserService {
   //para guardar los usuarios
   AddUser(form: UserI): Observable<responsiveI> {
     return this.http.post<responsiveI>(this.apiUrl, form);
+  }
 
+  // para obtener un usuario por ID
+  getUserId(id: number): Observable<responsiveI> {
+    const token = localStorage.getItem('token');
+    const headers = { Authorization: `Bearer ${token}` };
+    return this.http.get<responsiveI>(`${this.apiUrl}/${id}`, { headers });
+  }
+
+  // para eliminar un usuario
+  deleteUser(id: number): Observable<responsiveI> {
+    const token = localStorage.getItem('token');
+    const headers = { Authorization: `Bearer ${token}` };
+    return this.http.delete<responsiveI>(`${this.apiUrl}/${id}`, { headers });
+  }
+
+  // para actualizar un usuario
+  updateUser(id: number, form: UserI): Observable<responsiveI> {
+    const token = localStorage.getItem('token');
+    const headers = { Authorization: `Bearer ${token}` };
+    return this.http.put<responsiveI>(`${this.apiUrl}/${id}`, form, {
+      headers,
+    });
   }
 }

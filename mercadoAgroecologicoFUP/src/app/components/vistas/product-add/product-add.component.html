@@ -1,1 +1,87 @@
-<p>product-add works!</p>
+<app-header></app-header>
+
+<div class="container-sm">
+
+<form [formGroup]="productForm" (ngSubmit)="guardarProducto(productForm.value)">
+  <div class="formulario_style">
+  <div class="form-group">
+    <label for="pro_name">Nombre:</label>
+    <input id="pro_name" type="text" formControlName="pro_name" class="form-control" >
+  </div>
+
+  <div class="form-group">
+    <label for="pro_type">tipo:</label>
+    <input id="pro_type" type="text" formControlName="pro_type" class="form-control" >
+  </div>
+
+
+  <div class="form-group">
+    <label for="pro_price">Precio: (COP)</label>
+    <input id="pro_price" type="number" formControlName="pro_price" class="form-control" >
+
+  </div>
+
+  <div class="form-group">
+    <label for="pro_certs">Certificados:</label>
+    <input id="pro_certs" type="text" formControlName="pro_certs" class="form-control" >
+
+  </div>
+
+  <div class="form-group">
+    <label for="pro_image">Imagen:</label>
+    <input id="pro_image" type="text" formControlName="pro_image" class="form-control" >
+  </div>
+
+
+  <div class="form-group">
+    <label for="pro_unit">Unidad:</label>
+
+    <select name="" id="" class="form-control">
+
+      <option value="0">seleccione</option>
+      <option value="0">Libra</option>
+      <option value="0">Kilogramo</option>
+      <option value="0">Caja</option>
+      <option value="0">Lote</option>
+      <option value="0">Otra</option>
+
+
+    </select>
+
+  </div>
+
+
+  <div class="form-group">
+    <label for="pro_description">Descripción:</label>
+    <textarea formControlName="pro_description" class="form-control" ></textarea>
+
+  </div>
+
+
+  <div class="form-group">
+    <label for="pro_status">Estado:</label>
+    <input id="pro_status" type="number" formControlName="pro_status" class="form-control" >
+
+  </div>
+
+  <div class="form-group">
+    <label for="provider_id">Proveedor ID:</label>
+    <input id="provider_id" type="number" formControlName="provider_id" class="form-control" >
+
+  </div>
+
+  <div class="form-group">
+    <label for="categories_id">Categoria: </label>
+    <select class="form-control" >
+      <option value="0">seleccione</option>
+      <option *ngFor="let item of fkCategoryList" [value]="item.id">
+        {{ item.cat_name }}
+      </option>
+    </select>
+  </div>
+
+
+  <button type="submit" class="btn btn-success">Guardar</button>
+</div>
+</form>
+</div>

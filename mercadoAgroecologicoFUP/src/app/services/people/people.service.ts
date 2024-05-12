@@ -18,8 +18,19 @@ export class PeopleService {
   }
 
   //para guardar una persona
-  addPeople(form: PeopleI): Observable<responsiveI>
-  {
+  addPeople(form: PeopleI): Observable<responsiveI> {
     return this.http.post<responsiveI>(this.apiUrl, form);
+  }
+
+  getPersonById(id: number): Observable<responsiveI> {
+    return this.http.get<responsiveI>(`${this.apiUrl}/${id}`);
+  }
+
+  updatePerson(id: number, form: PeopleI): Observable<responsiveI> {
+    return this.http.put<responsiveI>(`${this.apiUrl}/${id}`, form);
+  }
+
+  deletePerson(id: number): Observable<responsiveI> {
+    return this.http.delete<responsiveI>(`${this.apiUrl}/${id}`);
   }
 }
