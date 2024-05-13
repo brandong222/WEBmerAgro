@@ -1,7 +1,18 @@
 <app-header></app-header>
 <div class="container-sm">
+
+  <button class="btn btn-dark"  (click)="subirImagen()"> subir imagen</button>
+
   <form [formGroup]="productForm" (ngSubmit)="guardarProducto(productForm.value)">
+
+
     <div class="formulario_style">
+
+      <div class="form-group">
+        <label for="pro_image">Imagen:</label>
+        <input class="form-control" type="file" (change)="onFileSelected($event)"  >
+      </div>
+
       <div class="form-group">
         <label for="pro_name">Nombre:</label>
         <input
@@ -42,15 +53,7 @@
          />
       </div>
 
-      <div class="form-group">
-        <label for="pro_image">Imagen:</label>
-        <input
-          id="pro_image"
-          type="text"
-          formControlName="pro_image"
-          class="form-control"
-        />
-      </div>
+
 
       <div class="form-group">
         <label for="pro_unit">Unidad:</label>
@@ -108,4 +111,7 @@
       <button type="submit" class="btn btn-success">Guardar</button>
     </div>
   </form>
+
+
+
 </div>

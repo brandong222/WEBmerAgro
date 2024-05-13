@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit {
           this.fkpeopleS.getPersonById(fk_people_Id).subscribe((people) => {
             //guardar en localstorage
             localStorage.setItem('user_name', people.data.peo_name);
+            localStorage.setItem('id_user', people.data.id);
           });
 
           this.router.navigate(['home']);

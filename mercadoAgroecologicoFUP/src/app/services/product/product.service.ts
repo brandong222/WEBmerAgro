@@ -19,14 +19,18 @@ export class ProductService {
     return this.http.get<ProductI[]>(this.apiUrl, { headers });
   }
 
+  getproductosList(): Observable<ProductI> {
+    const token = localStorage.getItem('token');
+    const headers = { Authorization: `Bearer ${token}` };
+    return this.http.get<ProductI>(this.apiUrl, { headers });
+  }
+
   //guardar producto
 
   addProduct(form: ProductI): Observable<any> {
-
     const token = localStorage.getItem('token');
     const headers = { Authorization: `Bearer ${token}` };
-    return this.http.post<any>(this.apiUrl, form, { headers })
-
+    return this.http.post<any>(this.apiUrl, form, { headers });
   }
 
   // para obtener un producto por ID
@@ -51,4 +55,7 @@ export class ProductService {
       headers,
     });
   }
+
+  //traer datos relacionados
+
 }
