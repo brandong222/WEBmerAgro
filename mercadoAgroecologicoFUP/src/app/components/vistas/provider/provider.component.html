@@ -1,23 +1,17 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Ranking</th>
-      <th>Grupo</th>
-      <th>Descripción</th>
-      <th>Estado</th>
-      <th>PEO ID</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let provider of providerArray">
-      <td>{{ provider.id }}</td>
-      <td>{{ provider.prov_ranking }}</td>
-      <td>{{ provider.prov_group }}</td>
-      <td>{{ provider.prov_description }}</td>
-      <td>{{ provider.prov_status? 'Activo' : 'Inactivo' }}</td>
-      <td>{{ provider.people_peo_id }}</td>
-    </tr>
-  </tbody>
-</table>
-
+<div class="provider-container">
+  <div *ngFor="let people of peopleData">
+    <div class="imagen">
+      <img [src]="people.peo_image" alt="Imagen de {{people.peo_name}}">
+    </div>
+    <div class="informacion">
+      <h2>{{people.peo_name}} {{people.peo_lastName}}</h2>
+      <p>{{people.peo_adress}}</p>
+    </div>
+    <div class="acciones">
+      <a href="#" class="ver-perfil">Ver perfil</a>
+    </div>
+  </div>
+  <div *ngFor="let provider of providerArray">
+    <p>{{ provider.prov_description }}</p>
+  </div>
+</div>
