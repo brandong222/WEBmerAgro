@@ -16,6 +16,9 @@ export class PeopleService {
   getPeople(): Observable<PeopleI[]> {
     return this.http.get<PeopleI[]>(this.apiUrl);
   }
+  getPeopleList(): Observable<PeopleI> {
+    return this.http.get<PeopleI>(this.apiUrl);
+  }
 
   //para guardar una persona
   addPeople(form: PeopleI): Observable<responsiveI> {
