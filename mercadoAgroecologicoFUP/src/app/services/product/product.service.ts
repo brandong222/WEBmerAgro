@@ -21,10 +21,12 @@ export class ProductService {
 
   //guardar producto
 
-  addProduct(form: ProductI): Observable<responsiveI> {
+  addProduct(form: ProductI): Observable<any> {
+
     const token = localStorage.getItem('token');
     const headers = { Authorization: `Bearer ${token}` };
-    return this.http.post<responsiveI>(this.apiUrl, form, { headers });
+    return this.http.post<any>(this.apiUrl, form, { headers })
+
   }
 
   // para obtener un producto por ID

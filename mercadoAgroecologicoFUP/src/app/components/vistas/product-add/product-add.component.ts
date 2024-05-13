@@ -12,27 +12,27 @@ import { CategoryService } from 'src/app/services/category/category.service';
   styleUrls: ['./product-add.component.css'],
 })
 export class ProductADDComponent implements OnInit {
-  productForm: FormGroup;
   fkCategoryList: categoryI[] = [];
+
+  productForm = new FormGroup({
+    pro_name: new FormControl('', Validators.required),
+    pro_type: new FormControl('', Validators.required),
+    pro_price: new FormControl( null,Validators.required),
+    pro_certs: new FormControl('No', Validators.required),
+    pro_image: new FormControl('', Validators.required),
+    pro_unit: new FormControl('', Validators.required),
+    pro_description: new FormControl('', Validators.required),
+    pro_status: new FormControl(1, Validators.required),
+    providers_id: new FormControl(null, Validators.required),
+    categories_id: new FormControl(0 , Validators.required),
+  });
+
 
   constructor(
     private productS: ProductService,
     private route: Router,
     private fkcategoryS: CategoryService
-  ) {
-    this.productForm = new FormGroup({
-      pro_name: new FormControl('', Validators.required),
-      pro_type: new FormControl('', Validators.required),
-      pro_price: new FormControl('', Validators.required),
-      pro_certs: new FormControl('', Validators.required),
-      pro_image: new FormControl(''),
-      pro_unit: new FormControl('', Validators.required),
-      pro_description: new FormControl('', Validators.required),
-      pro_status: new FormControl(1, Validators.required),
-      provider_id: new FormControl(1, Validators.required),
-      categories_id: new FormControl('', Validators.required),
-    });
-  }
+  ) {}
 
   ngOnInit(): void {
     this.getCategories();
@@ -41,15 +41,22 @@ export class ProductADDComponent implements OnInit {
   //para traer las categorias y luego mostrar en un select en html
   getCategories() {
     this.fkcategoryS.getCategory().subscribe((data) => {
-      console.log(data);
       this.fkCategoryList = data;
     });
   }
 
   guardarProducto(form: ProductI) {
-    this.productS.addProduct(form).subscribe((data) => {
-      console.log(data.message);
-      console.log(data.status);
+    const numericCategoriesId = Number(form.categories_id);
+
+    // Actualizar el valor de categories_id en el formulario
+    this.productForm.patchValue({
+      categories_id: numericCategoriesId
+    });
+
+    // Ahora, puedes enviar el formulario actualizado
+    console.log(this.productForm.value);
+    this.productS.addProduct(this.productForm.value).subscribe((data) => {
+      console.log(data);
     });
   }
 }

@@ -1,13 +1,13 @@
 export interface ProductI {
-  id?: number;
-  pro_name?: string;
-  pro_type?: string;
-  pro_price?: number;
-  pro_certs?: string;
-  pro_image?: string;
-  pro_unit?: string;
-  pro_description?: string;
-  pro_status?: boolean;
-  providers_id?: number;
-  categories_id?: number;
+  id?: number | null;
+  pro_name?: string | null;
+  pro_type?: string | null;
+  pro_price?: number | null;
+  pro_certs?: string | null;
+  pro_image?: string | null;
+  pro_unit?: string | null;
+  pro_description?: string | null;
+  pro_status?: number | null;
+  providers_id?: number | null;
+  categories_id?: number | null;
 }

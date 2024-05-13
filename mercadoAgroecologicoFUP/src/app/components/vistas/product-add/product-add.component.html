@@ -1,87 +1,111 @@
 <app-header></app-header>
-
 <div class="container-sm">
+  <form [formGroup]="productForm" (ngSubmit)="guardarProducto(productForm.value)">
+    <div class="formulario_style">
+      <div class="form-group">
+        <label for="pro_name">Nombre:</label>
+        <input
+          id="pro_name"
+          type="text"
+          formControlName="pro_name"
+          class="form-control"
+        />
+      </div>
 
-<form [formGroup]="productForm" (ngSubmit)="guardarProducto(productForm.value)">
-  <div class="formulario_style">
-  <div class="form-group">
-    <label for="pro_name">Nombre:</label>
-    <input id="pro_name" type="text" formControlName="pro_name" class="form-control" >
-  </div>
-
-  <div class="form-group">
-    <label for="pro_type">tipo:</label>
-    <input id="pro_type" type="text" formControlName="pro_type" class="form-control" >
-  </div>
-
-
-  <div class="form-group">
-    <label for="pro_price">Precio: (COP)</label>
-    <input id="pro_price" type="number" formControlName="pro_price" class="form-control" >
-
-  </div>
-
-  <div class="form-group">
-    <label for="pro_certs">Certificados:</label>
-    <input id="pro_certs" type="text" formControlName="pro_certs" class="form-control" >
-
-  </div>
-
-  <div class="form-group">
-    <label for="pro_image">Imagen:</label>
-    <input id="pro_image" type="text" formControlName="pro_image" class="form-control" >
-  </div>
+      <div class="form-group">
+        <label for="pro_type">tipo de venta:</label>
+        <select formControlName="pro_type" id="pro_type" class="form-select">
+          <option value="venta">Venta</option>
+          <option value="venta_o_trueque">Trueque</option>
+          <option value="trueque">Venta / Trueque</option>
+        </select>
+      </div>
 
 
-  <div class="form-group">
-    <label for="pro_unit">Unidad:</label>
+      <div class="form-group">
+        <label for="pro_price">Precio: (COP)</label>
+        <input
+          id="pro_price"
+          type="number"
+          formControlName="pro_price"
+          class="form-control"
+        />
+      </div>
 
-    <select name="" id="" class="form-control">
+      <div class="form-group" hidden>
+        <label for="pro_certs">Certificados:</label>
+        <input
+          id="pro_certs"
+          type="text"
+          formControlName="pro_certs"
+          class="form-control"
+         />
+      </div>
 
-      <option value="0">seleccione</option>
-      <option value="0">Libra</option>
-      <option value="0">Kilogramo</option>
-      <option value="0">Caja</option>
-      <option value="0">Lote</option>
-      <option value="0">Otra</option>
+      <div class="form-group">
+        <label for="pro_image">Imagen:</label>
+        <input
+          id="pro_image"
+          type="text"
+          formControlName="pro_image"
+          class="form-control"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="pro_unit">Unidad:</label>
+
+        <select formControlName="pro_unit" class="form-select">
+          <option value="null">seleccione</option>
+          <option value="L">Libra</option>
+          <option value="Kg">Kilogramo</option>
+          <option value="Caja">Caja</option>
+          <option value="Lote">Lote</option>
+          <option value="otra">Otra</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="pro_description">Descripción:</label>
+        <input
+          formControlName="pro_description"
+          class="form-control"        >
+      </div>
+
+      <div class="form-group" hidden>
+        <label for="pro_status">Estado:</label>
+        <input
+          id="pro_status"
+          type="number"
+          formControlName="pro_status"
+          class="form-control"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="provider_id">Proveedor ID:</label>
+        <input
+          id="provider_id"
+          type="number"
+          formControlName="providers_id"
+          class="form-control"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="categories_id">Categoria: </label>
+        <select class="form-select" formControlName="categories_id">
+          <option value=0>seleccione</option>
+          <option *ngFor="let item of fkCategoryList" [value]="item.id">
+            {{ item.cat_name }}
+          </option>
+        </select>
+      </div>
 
 
-    </select>
-
-  </div>
 
 
-  <div class="form-group">
-    <label for="pro_description">Descripción:</label>
-    <textarea formControlName="pro_description" class="form-control" ></textarea>
-
-  </div>
-
-
-  <div class="form-group">
-    <label for="pro_status">Estado:</label>
-    <input id="pro_status" type="number" formControlName="pro_status" class="form-control" >
-
-  </div>
-
-  <div class="form-group">
-    <label for="provider_id">Proveedor ID:</label>
-    <input id="provider_id" type="number" formControlName="provider_id" class="form-control" >
-
-  </div>
-
-  <div class="form-group">
-    <label for="categories_id">Categoria: </label>
-    <select class="form-control" >
-      <option value="0">seleccione</option>
-      <option *ngFor="let item of fkCategoryList" [value]="item.id">
-        {{ item.cat_name }}
-      </option>
-    </select>
-  </div>
-
-
-  <button type="submit" class="btn btn-success">Guardar</button>
-</div>
-</form>
+      <button type="submit" class="btn btn-success">Guardar</button>
+    </div>
+  </form>
 </div>
