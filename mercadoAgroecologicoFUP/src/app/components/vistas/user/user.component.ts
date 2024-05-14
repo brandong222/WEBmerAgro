@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserI } from 'src/app/models/user.interface';
+import { JoinService } from 'src/app/services/join/join.service';
 import { PeopleService } from 'src/app/services/people/people.service';
 import { UserService } from 'src/app/services/user/user.service';
 
@@ -15,7 +16,11 @@ export class UserComponent  implements OnInit{
       this.traerDatosDeSesion();
   }
 
-  constructor(private peopleS:PeopleService ){}
+  constructor(
+    private peopleS:PeopleService ,
+    private fkJoinS: JoinService,
+
+  ){}
 
 
   traerDatosDeSesion() {
@@ -27,9 +32,13 @@ export class UserComponent  implements OnInit{
       // Convertir la cadena JSON de vuelta a un objeto JavaScript
       const dataR: UserI = JSON.parse(datosGuardados);
       console.log(dataR.people_id);
+      const fk_people_id = Number(dataR.people_id);
 
-      this.peopleS.getPersonById(Number(dataR.people_id)).subscribe(data=>{
-        console.log(data);
+      this.fkJoinS.getProdProvPeopleID(fk_people_id).subscribe(data=>{
+        console.log(data.status);
+        console.log(data.data);
+
+
       })
 
     } else {
