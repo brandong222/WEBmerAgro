@@ -1,59 +1,63 @@
-.contenedor {
+/* Estilos generales */
+.main_provider {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 20px;
 }
 
-.productor {
+.provider {
+  display: flex;
+  border: 2px solid #1d5a26;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 1200px;
+  margin: 10px auto;
+  background-color: #1e92451e; /* Color de fondo para cada tarjeta */
+  padding: 20px; /* Espaciado interno de la tarjeta */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sombra suave alrededor de la tarjeta */
+}
+
+.imagen{
+  flex: 2;
+}
+
+/* Estilos para la imagen */
+.imagen img {
+  border-radius: 10px;
+  width: 80%;
+  height: auto; /* Asegura que la imagen mantenga su proporción */
+}
+
+/* Estilos para la información */
+.informacion {
+  flex: 2;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  margin: 10px;
-  width: 100%;
-  max-width: 300px; /* Ajusta según sea necesario */
+  justify-content: space-between;
+  width: 60%;
 }
 
-.imagen {
-  width: 100%;
-  height: auto;
+.informacion h2 {
+  font-size: 24px; /* Tamaño de fuente para el nombre */
+  margin-bottom: 10px; /* Espaciado debajo del nombre */
 }
 
-.informacion {
-  margin-top: 10px;
+.informacion p {
+  font-size: 16px; /* Tamaño de fuente para el texto */
+  margin-bottom: 5px; /* Espaciado debajo del texto */
 }
 
-.estrellas {
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
+.description{
+  flex: 4;
+  text-align: left;
 }
 
 .acciones {
-  margin-top: 10px;
+  flex: 2;
+  align-items: center;
+  display: flex;
+  justify-content: flex-end; /* Alinea los elementos a la derecha */
+  width: 20%;
 }
 
-.ver-perfil {
-  display: inline-block;
-  background-color: #007bff;
-  color: white;
-  text-decoration: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-}
 
-@media (min-width: 768px) {
- .productor {
-    flex-direction: row;
-    align-items: center;
-  }
-
- .imagen {
-    width: 50px; /* Ajusta según sea necesario */
-    height: auto;
-  }
-
- .informacion {
-    margin-left: 20px;
-  }
-}

@@ -1,17 +1,22 @@
-<div class="provider-container">
-  <div *ngFor="let people of peopleData">
+<app-header></app-header>
+<section>
+<div class="main_provider">
+  <div *ngFor="let provider of providerArray;" class="provider">
     <div class="imagen">
-      <img [src]="people.peo_image" alt="Imagen de {{people.peo_name}}">
+      <img src="https://th.bing.com/th/id/OIP.sOAIoiZfxpt0CBhfMhYcswHaE8?w=225&h=180&c=7&r=0&o=5&pid=1.7" alt="Imagen">
     </div>
     <div class="informacion">
-      <h2>{{people.peo_name}} {{people.peo_lastName}}</h2>
-      <p>{{people.peo_adress}}</p>
+      <h2>{{provider.peo_name}} {{provider.peo_lastname}}</h2>
+      <p>{{provider.prov_group}}</p>
+      <p>{{provider.peo_adress}}</p>
+      <p>Estrellas: {{provider.prov_ranking}}</p>
+    </div>
+    <div class="description">
+      <p>{{ provider.prov_description }}</p>
     </div>
     <div class="acciones">
-      <a href="#" class="ver-perfil">Ver perfil</a>
+      <a href="#" class="btn btn-primary">Ver perfil</a>
     </div>
   </div>
-  <div *ngFor="let provider of providerArray">
-    <p>{{ provider.prov_description }}</p>
-  </div>
 </div>
+</section>
