@@ -1,12 +1,27 @@
 <app-header></app-header>
 
+
+<div class="barra_busqueda">
+
+  <select name="filtros" class="form-select-sm">
+    <option value="none">Filtrar</option>
+    <option value="nombre">Nombre</option>
+    <option value="menor">Precio de menor a mayor</option>
+    <option value="mayor">Precio de mayor a menor</option>
+    <option value="certificado">certificado</option>
+
+  </select>
+  <input class="form-control me-2" type="search" placeholder="Buscar producto" aria-label="Search">
+</div>
+
 <section>
   <div class="main_product">
     <div class="card" *ngFor="let item of productArray">
+
       <img
-        src="https://th.bing.com/th/id/R.8558e156de448a280d489af540af7700?rik=8xc66llq3q8hlQ&riu=http%3a%2f%2fpngimg.com%2fuploads%2fapple%2fapple_PNG12405.png&ehk=1QYlrxUD9Canji%2bd6Al3MZZvDH%2fdl1MuChmNOHoG4Ig%3d&risl=1&pid=ImgRaw&r=0"
+        [src]="item.pro_image"
         class="card-img-top"
-        alt="..."
+        alt=""
       />
       <div class="card-body">
         <h5 class="card-title">
@@ -14,28 +29,26 @@
         </h5>
         <p class="card-text">{{ item.pro_description }}</p>
       </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">
+      <ul class="">
+        <li class="list-group-item" *ngIf="item.pro_price > 0">
           <span>$ {{ item.pro_price }} {{ item.pro_unit }}</span>
         </li>
+        <li class="list-group-item"  *ngIf="item.pro_price <= 0">Negociable</li>
         <li class="list-group-item">
-          La puedes encontrar en
+          Ubicación:
           <span>
             {{ item.peo_adress }}
           </span>
         </li>
       </ul>
       <div class="card-body">
-        <a href="" class="card-link">ver</a>
+        <a href="" class="btn btn-success">ver</a>
       </div>
 
-      <div
-        [ngStyle]="{
-          display: item.pro_certs == 'certificado' ? 'block' : 'none'
-        }"
-      >
-        {{ item.pro_certs }}
+      <div [ngClass]="{'mostrar_certificado': item.pro_certs == 'certificado'}">
+
       </div>
+
     </div>
   </div>
 </section>

@@ -10,3 +10,20 @@ form {
   margin: 20px;
   background: transparent;
 }
+
+
+/*para imagenes subir*/
+.container_imagen{
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container_imagen input{
+  width: 400px;
+  margin: 10px 0px;
+
+}
+

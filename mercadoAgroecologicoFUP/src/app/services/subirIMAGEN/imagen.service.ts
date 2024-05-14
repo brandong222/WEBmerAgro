@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ImagenService {
 
-  private apiUrl: string = 'http://127.0.0.1:8000/api/imagen';
+  private apiUrl: string = 'http://127.0.0.1:8000/api/imagen/';
 
   constructor(private http: HttpClient) { }
 
@@ -19,8 +19,8 @@ export class ImagenService {
     return this.http.post<any>(this.apiUrl, formData);
   }
 
-  getImageUrl(urlImage: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${urlImage}`);
+  getImageUrl(urlImage: string): Observable<string> {
+    return this.http.get<string>(`${this.apiUrl}/${urlImage}`);
   }
 
 }

@@ -43,4 +43,9 @@ export class ProductComponent implements OnInit {
    })
 
   }
+
+  mostrarImagen(){
+
+  }
+
 }

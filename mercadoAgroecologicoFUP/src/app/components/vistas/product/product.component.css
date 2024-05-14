@@ -1,30 +1,88 @@
-section{
+
+/*barra de busqueda*/
+.barra_busqueda{
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  background: transparent;
+}
+
+.barra_busqueda input{
+  width: 20%;
+  margin-right: 400px;
+
+}
+
+section {
   width: 100%;
   height: auto;
   background: transparent;
   padding: 30px;
 }
 
-.main_product{
+.main_product {
   background: transparent;
   padding: 30px;
-  border: 1.5px solid gray;
-display: flex;
-align-items: center;
-justify-content: space-around;
+  border: 1.5px solid seagreen;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 20px;
 
 }
 
-.card{
+.card {
+  padding: 10px;
   width: 20%;
+  height: auto;
   text-align: center;
   align-items: center;
+  background: lightcyan;
 }
 
-.card img{
-  width: 200px;
+.card img {
+  width: 80%;
   height: auto;
-
+position: relative;
   overflow: hidden;
 
 }
+
+
+span{
+  color: seagreen;
+}
+
+/*para certificado en caso de cumplirse*/
+.mostrar_certificado::before {
+  content: "certificado";
+  position: absolute;
+  top: 10%; /* Ajusta según sea necesario */
+  left: 5%;
+  background: seagreen;
+  color: white;
+  box-shadow: 2px 2px 20px seagreen;
+  padding: 5px 10px;
+  transform: rotate(-40deg);
+  transform-origin: top left;
+}
+
+
+@media (max-width: 768px) {
+
+
+  .barra_busqueda {
+    width: 100%;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+   }
+
+  .barra_busqueda input, select {
+     margin-right: 0;
+     width: 90%;
+   }
+ }
+

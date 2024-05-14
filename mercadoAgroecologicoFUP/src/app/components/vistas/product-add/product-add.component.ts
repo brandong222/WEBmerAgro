@@ -60,7 +60,7 @@ export class ProductADDComponent implements OnInit {
       this.imagenS.uploadFile(this.selectedFile).subscribe((data) => {
         console.log(data.data);
         this.imageURL = data.data;
-        this.productForm.get('peo_image')?.setValue(this.imageURL || '');
+        this.productForm.get('pro_image')?.setValue(this.imageURL || '');
       });
     } else {
       alert('imagen no se pudo cargar');
@@ -83,9 +83,12 @@ export class ProductADDComponent implements OnInit {
     });
 
     // Ahora, puedes enviar el formulario actualizado
-    console.log(this.productForm.value);
-    this.productS.addProduct(this.productForm.value).subscribe((data) => {
+    console.log(form);
+
+    this.productS.addProduct(form).subscribe((data) => {
       console.log(data);
+      console.log(data.data);
+      this.route.navigate(['/product']);
     });
   }
 }

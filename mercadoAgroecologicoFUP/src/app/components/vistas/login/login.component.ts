@@ -44,6 +44,10 @@ export class LoginComponent implements OnInit {
 
           //traer datos de persona para poner el nombre
           let fk_people_Id = dataR.data.people_id;
+
+          //guardar datos de sesion en almacenamiento de sesion
+          window.sessionStorage.setItem('usuario_login', JSON.stringify(dataR.data));
+
           this.fkpeopleS.getPersonById(fk_people_Id).subscribe((people) => {
             //guardar en localstorage
             localStorage.setItem('user_name', people.data.peo_name);
