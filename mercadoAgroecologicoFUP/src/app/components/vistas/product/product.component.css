@@ -9,8 +9,8 @@
 }
 
 .barra_busqueda input{
-  width: 20%;
-  margin-right: 400px;
+  width: 60%;
+  margin-right: 0px;
 
 }
 
@@ -42,11 +42,16 @@ section {
   background: lightcyan;
 }
 
-.card img {
-  width: 80%;
-  height: auto;
-position: relative;
+.card .cont_imag{
+  width: 90%;
+  height: 200px ;
   overflow: hidden;
+  background: black;
+}
+
+.card .cont_imag img {
+  width: 100%;
+  height: auto;
 
 }
 
@@ -70,19 +75,21 @@ span{
 }
 
 
-@media (max-width: 768px) {
-
-
+@media screen and (max-width: 768px) {
   .barra_busqueda {
-    width: 100%;
+     width: 100%;
+   }
+
+  .barra_busqueda input {
+     width: 80%;
+   }
+
+  .main_product {
      flex-direction: column;
-     justify-content: center;
-     align-items: center;
    }
 
-  .barra_busqueda input, select {
-     margin-right: 0;
-     width: 90%;
+  .card {
+     width: 100%;
    }
+
  }
-

@@ -18,11 +18,14 @@
   <div class="main_product">
     <div class="card" *ngFor="let item of productArray">
 
-      <img
+      <div class="cont_imag">
+        <img
         [src]="item.pro_image"
         class="card-img-top"
         alt=""
       />
+      </div>
+
       <div class="card-body">
         <h5 class="card-title">
           <strong>{{ item.pro_name }}</strong>
