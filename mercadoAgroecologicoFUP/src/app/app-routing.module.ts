@@ -19,6 +19,10 @@ import { PeopleADDComponent } from './components/vistas/people-add/people-add.co
 import { PeopleComponent } from './components/vistas/people/people.component';
 import { RequestappComponent } from './components/vistas/requestapp/requestapp.component';
 import { RequestappADDComponent } from './components/vistas/requestapp-add/requestapp-add.component';
+import { UserEditComponent } from './components/vistas/user-edit/user-edit.component';
+import { ProductEditComponent } from './components/vistas/product-edit/product-edit.component';
+import { CategoryEditComponent } from './components/vistas/category-edit/category-edit.component';
+import { ProviderEditComponent } from './components/vistas/provider-edit/provider-edit.component';
 
 
 const routes: Routes = [
@@ -28,9 +32,13 @@ const routes: Routes = [
 
   {path: "user" , component: UserComponent},
   {path: "user/add/:id" , component: UserADDComponent},
+  {path: "user/edit/:id" , component: UserEditComponent},
+
 
   {path: 'product', component: ProductComponent,canActivate:[AuthGuard]},
   {path: 'product/add', component: ProductADDComponent,canActivate:[AuthGuard]},
+  {path: 'product/edit/:id', component: ProductEditComponent,canActivate:[AuthGuard]},
+
 
   {path: 'request', component: RequestappComponent,canActivate:[AuthGuard]},
   {path: 'request/add', component: RequestappADDComponent,canActivate:[AuthGuard]},
@@ -38,12 +46,16 @@ const routes: Routes = [
 
   {path: 'category', component: CategoryComponent, canActivate:[AuthGuard]},
   {path: 'category/add', component: CategoryADDComponent, canActivate:[AuthGuard]},
+  {path: 'category/edit/:id', component: CategoryEditComponent, canActivate:[AuthGuard]},
+
 
   {path: 'people', component: PeopleComponent, canActivate:[AuthGuard]},
   {path: 'people/add', component: PeopleADDComponent},
 
   {path: 'provider', component: ProviderComponent, canActivate:[AuthGuard]},
   {path: 'provider/add', component: ProviderADDComponent, canActivate:[AuthGuard]},
+  {path: 'provider/edit/:id', component: ProviderEditComponent, canActivate:[AuthGuard]},
+
 
   {path: '**', pathMatch: 'full', redirectTo: ''}
 ];

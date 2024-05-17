@@ -27,6 +27,11 @@ import { ProductADDComponent } from './components/vistas/product-add/product-add
 import { CertificationComponent } from './components/vistas/certification/certification.component';
 import { RequestappComponent } from './components/vistas/requestapp/requestapp.component';
 import { RequestappADDComponent } from './components/vistas/requestapp-add/requestapp-add.component';
+import { CategoryEditComponent } from './components/vistas/category-edit/category-edit.component';
+import { PeopleEditComponent } from './components/vistas/people-edit/people-edit.component';
+import { ProductEditComponent } from './components/vistas/product-edit/product-edit.component';
+import { ProviderEditComponent } from './components/vistas/provider-edit/provider-edit.component';
+import { UserEditComponent } from './components/vistas/user-edit/user-edit.component';
 
 
 
@@ -52,7 +57,12 @@ import { RequestappADDComponent } from './components/vistas/requestapp-add/reque
     ProductADDComponent,
     CertificationComponent,
     RequestappComponent,
-    RequestappADDComponent
+    RequestappADDComponent,
+    CategoryEditComponent,
+    PeopleEditComponent,
+    ProductEditComponent,
+    ProviderEditComponent,
+    UserEditComponent
   ],
   imports: [
     BrowserModule,

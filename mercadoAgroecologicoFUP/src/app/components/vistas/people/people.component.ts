@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PeopleI } from 'src/app/models/people.interface';
+import { superInterfazI } from 'src/app/models/superInterfaz.interface';
 import { UserI } from 'src/app/models/user.interface';
 import { JoinService } from 'src/app/services/join/join.service';
 import { PeopleService } from 'src/app/services/people/people.service';
@@ -10,7 +11,7 @@ import { PeopleService } from 'src/app/services/people/people.service';
   styleUrls: ['./people.component.css'],
 })
 export class PeopleComponent implements OnInit {
-  peopleArray: any[] = [];
+  peopleArray: superInterfazI[] = [];
 
   constructor(
     private peopleS: PeopleService,
