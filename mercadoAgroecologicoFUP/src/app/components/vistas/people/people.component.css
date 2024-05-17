@@ -1,4 +1,95 @@
-.imagen_temporal{
-  width: 200px;
-  height: auto;
+section {
+  background: lightgray;
+  padding: 10px;
+}
+
+section form {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+
+/*parte izquierda contenido */
+.parte_izquierda {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  background: transparent;
+
+}
+
+
+.parte_izquierda div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 10px;
+}
+
+
+/*parte derecha */
+.parte_derecha {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background: transparent;
+}
+
+.parte_derecha div{
+background: transparent;
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.parte_derecha div img {
+  width: 250px;
+  height: 240px;
+  border-radius: 100%;
+  border: 5px solid white;
+}
+
+
+/*botones para navegar*/
+
+.botones_navegacion{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 30px 0px 30px;
+  background: transparent;
+}
+
+
+@media (max-width: 768px) {
+  /* Cambiar la dirección de la flexión a columna para que los elementos se apilen verticalmente */
+  section form {
+    flex-direction: column-reverse;
+  }
+
+  /* Ajustar el tamaño de la parte izquierda y derecha */
+ .parte_izquierda,.parte_derecha {
+    flex: 1;
+  }
+
+  .parte_derecha, .parte_izquierda div input, select{
+    text-align: center;
+  }
+
+  /* Ajustar el tamaño de las imágenes en la parte derecha */
+ .parte_derecha div img {
+    width: 120px;
+    height: 120px;
+  }
+
+  /* Ajustar los botones de navegación para que se muestren uno debajo del otro */
+ .botones_navegacion {
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+  }
 }
