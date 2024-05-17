@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { responsiveI } from 'src/app/models/response.interface';
 import { HttpClient } from '@angular/common/http';
+import { superInterfazI } from 'src/app/models/superInterfaz.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -14,6 +15,8 @@ export class JoinService {
   private apiJOIN3: string =    'http://127.0.0.1:8000/api/joinProdProvPeopleID';
   private apiJOIN4: string =    'http://127.0.0.1:8000/api/joinReqPeoUsu';
   private apiJOIN5: string =    'http://127.0.0.1:8000/api/joinUserPeople';
+  private apiJOIN6: string =    'http://127.0.0.1:8000/api/joinProvedorpeopleID';
+
 
 
 
@@ -40,6 +43,9 @@ export class JoinService {
 
   getjoinUserPeople(id:number): Observable<responsiveI>{
     return this.http.get<responsiveI>(`${this.apiJOIN5}/${id}`);
+  }
+  joinProvedorpeopleID(id:number): Observable<responsiveI>{
+    return this.http.get<responsiveI>(`${this.apiJOIN6}/${id}`);
   }
 
 

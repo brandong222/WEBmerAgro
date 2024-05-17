@@ -6,6 +6,12 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { categoryI } from 'src/app/models/category.interface';
 import { CategoryService } from 'src/app/services/category/category.service';
 import { ImagenService } from 'src/app/services/subirIMAGEN/imagen.service';
+import { superInterfazI } from 'src/app/models/superInterfaz.interface';
+import { JoinService } from 'src/app/services/join/join.service';
+import { UserI } from 'src/app/models/user.interface';
+import { ProviderI } from 'src/app/models/provider.interface';
+import { PeopleI } from 'src/app/models/people.interface';
+import { responsiveI } from 'src/app/models/response.interface';
 
 @Component({
   selector: 'app-product-add',
@@ -16,45 +22,43 @@ export class ProductADDComponent implements OnInit {
   fkCategoryList: categoryI[] = [];
   selectedFile: File | null = null;
   public imageURL: string = 'API image';
+
   productForm: FormGroup;
-
-
-
 
   constructor(
     private productS: ProductService,
     private route: Router,
     private fkcategoryS: CategoryService,
-    private imagenS: ImagenService
+    private imagenS: ImagenService,
+    private fkjoinS: JoinService
   ) {
-
     this.productForm = new FormGroup({
       pro_name: new FormControl('', Validators.required),
       pro_type: new FormControl('', Validators.required),
-      pro_price: new FormControl( null,Validators.required),
+      pro_price: new FormControl(null, Validators.required),
       pro_certs: new FormControl('No', Validators.required),
       pro_image: new FormControl(''),
       pro_unit: new FormControl('', Validators.required),
       pro_description: new FormControl('', Validators.required),
       pro_status: new FormControl(1, Validators.required),
-      providers_id: new FormControl(null, Validators.required),
-      categories_id: new FormControl(0 , Validators.required),
+      providers_id: new FormControl(null),
+      categories_id: new FormControl(0, Validators.required),
     });
   }
 
   ngOnInit(): void {
     this.getCategories();
+
+    //test
+    this.getproviderID();
   }
-
-
-
   //para guardar imagen en la base datos y retornar su url
   onFileSelected(event: Event) {
     const target = event.target as HTMLInputElement;
     this.selectedFile = target.files ? target.files[0] : null;
   }
 
-  subirImagen(){
+  subirImagen() {
     if (this.selectedFile) {
       console.log(this.selectedFile);
       this.imagenS.uploadFile(this.selectedFile).subscribe((data) => {
@@ -74,12 +78,25 @@ export class ProductADDComponent implements OnInit {
     });
   }
 
+
+  //para traer el id de provedor para guardar en formulario
+  getproviderID()  {
+    const id_provedor: UserI = this.traerDatosSesion();
+    this.fkjoinS
+      .joinProvedorpeopleID(Number(id_provedor.people_id))
+      .subscribe((data) => {
+        const id_provedor: any = data.data[0];
+        this.productForm.get('providers_id')?.setValue(id_provedor.provider_id || null);
+      });
+
+  }
+
   guardarProducto(form: ProductI) {
     const numericCategoriesId = Number(form.categories_id);
 
     // Actualizar el valor de categories_id en el formulario
     this.productForm.patchValue({
-      categories_id: numericCategoriesId
+      categories_id: numericCategoriesId,
     });
 
     // Ahora, puedes enviar el formulario actualizado
@@ -90,5 +107,13 @@ export class ProductADDComponent implements OnInit {
       console.log(data.data);
       this.route.navigate(['/product']);
     });
+  }
+
+  traerDatosSesion() {
+    const usuarioData = sessionStorage.getItem('usuario_login');
+
+    if (usuarioData) {
+      return JSON.parse(usuarioData);
+    }
   }
 }
