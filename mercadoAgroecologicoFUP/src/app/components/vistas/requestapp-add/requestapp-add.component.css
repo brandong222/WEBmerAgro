@@ -1,0 +1,36 @@
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.103);
+  border-radius: 25px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#checklistProductor {
+  display: none;
+}
+
+#tipoSolicitud:focus {
+  outline: none;
+}
+
+#tipoSolicitud[value="serProductor"]:focus + #checklistProductor {
+  display: block;
+}
