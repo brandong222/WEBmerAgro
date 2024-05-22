@@ -3,7 +3,7 @@ nav{
 }
 
 nav .logo{
-  margin-left: 40px;
+  margin-left: 20px;
 }
 
 .navbar {
@@ -96,6 +96,7 @@ img {
 @media (max-width: 768px) {
 .container-fluid{
   margin-left: 0;
+
 }
 
 .navbar {
