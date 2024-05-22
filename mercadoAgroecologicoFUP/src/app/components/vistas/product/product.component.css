@@ -24,7 +24,7 @@ section {
 .main_product {
   background: transparent;
   padding: 30px;
-  border: 1.5px solid seagreen;
+  border: 1.5px solid white;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -36,22 +36,26 @@ section {
 .card {
   padding: 10px;
   width: 20%;
-  height: auto;
+  height: 400px;
   text-align: center;
   align-items: center;
-  background: lightcyan;
+  background: white;
+  box-shadow: 5px 5px 18px black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .card .cont_imag{
   width: 90%;
-  height: 200px ;
+  height: auto;
+  max-height: 300px;
   overflow: hidden;
-  background: black;
 }
 
 .card .cont_imag img {
-  width: 100%;
-  height: auto;
+  width: auto;
+  height: 100%;
 
 }
 
@@ -64,8 +68,8 @@ span{
 .mostrar_certificado::before {
   content: "certificado";
   position: absolute;
-  top: 10%; /* Ajusta según sea necesario */
-  left: 5%;
+  top: 15%;
+  left: 2%;
   background: seagreen;
   color: white;
   box-shadow: 2px 2px 20px seagreen;

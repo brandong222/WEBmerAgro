@@ -30,22 +30,27 @@
         <h5 class="card-title">
           <strong>{{ item.pro_name }}</strong>
         </h5>
-        <p class="card-text">{{ item.pro_description }}</p>
       </div>
       <ul class="">
-        <li class="list-group-item" *ngIf="item.pro_price > 0">
-          <span>$ {{ item.pro_price }} {{ item.pro_unit }}</span>
-        </li>
-        <li class="list-group-item"  *ngIf="item.pro_price <= 0">Negociable</li>
+
+        <li class="list-group-item">Unidad:
+          <span> {{ item.pro_unit }} </span></li>
+
         <li class="list-group-item">
           Ubicación:
           <span>
             {{ item.peo_adress }}
           </span>
         </li>
+        <li class="list-group-item"  *ngIf="item.pro_price <= 0">
+          <span style="font-size: 30px;">Negociable </span>
+          </li>
+        <li class="list-group-item" *ngIf="item.pro_price > 0">
+          <span style="font-size: 30px;">$ {{ item.pro_price }} </span>
+        </li>
       </ul>
-      <div class="card-body">
-        <a href="" class="btn btn-success">ver</a>
+      <div class="card-body" style="width: 100%; ">
+        <a style="width: 90%;" class="btn btn-success">ver</a>
       </div>
 
       <div [ngClass]="{'mostrar_certificado': item.pro_certs == 'certificado'}">
