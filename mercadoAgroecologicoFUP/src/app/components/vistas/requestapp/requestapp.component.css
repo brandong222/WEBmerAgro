@@ -1,0 +1,15 @@
+.idPersonaTH{
+display: none;
+}
+
+.idPersonaTB{
+display: none;
+}
+
+th{
+  background-color: rgb(46, 187, 65);
+}
+
+.btn{
+  width: 120%;
+}
