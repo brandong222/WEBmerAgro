@@ -13,16 +13,21 @@
              aria-expanded="false"(click)="navInicio()" >Inicio</a>
         </li>
 
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown"  *ngIf="RolUser !== 'usuario'">
           <a class="nav-link dropdown custom-dropdown"  role="button"
-            data-bs-toggle="dropdown" aria-expanded="false">
+            data-bs-toggle="dropdown" aria-expanded="false" >
             Productos
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" (click)="navVerProductos()" >Ver productos</a></li>
-            <li><a class="dropdown-item">Mis productos</a></li>
-            <li><a class="dropdown-item" (click)="navSubirProductos()">Subir productos</a></li>
+            <li><a class="dropdown-item" >Mis productos</a></li>
+            <li><a class="dropdown-item" (click)="navSubirProductos()"   >Subir productos</a></li>
           </ul>
+        </li>
+
+        <li class="nav-item"  *ngIf="RolUser === 'usuario'">
+          <a class="nav-link" aria-current="page" role="button"
+             aria-expanded="false" (click)="navVerProductos()">Productos</a>
         </li>
 
         <li class="nav-item">
@@ -37,8 +42,9 @@
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" (click)="navVerPeople()">Mi perfil</a></li>
-            <li><a class="dropdown-item" (click)="navverRequest()" >Solicitudes</a></li>
-            <li><a class="dropdown-item" (click)="navVerCategorias()">Categorías</a></li>
+            <li><a class="dropdown-item" (click)="navEnviarSolicitud()" >Enviar solicitud</a></li>
+            <li><a class="dropdown-item" (click)="navverRequest()" *ngIf="RolUser !== 'usuario'">Solicitudes</a></li>
+            <li><a class="dropdown-item" (click)="navVerCategorias()" *ngIf="RolUser !== 'usuario'">Categorías</a></li>
           </ul>
         </li>
 

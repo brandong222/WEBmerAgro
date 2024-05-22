@@ -1,5 +1,9 @@
 nav{
-  margin-bottom: 20px;
+  padding: 10px;
+}
+
+nav .logo{
+  margin-left: 40px;
 }
 
 .navbar {
@@ -94,6 +98,9 @@ img {
   margin-left: 0;
 }
 
+.navbar {
+  position: relative;
+}
   .navbar.navbar-collapse {
     display: none;
   }

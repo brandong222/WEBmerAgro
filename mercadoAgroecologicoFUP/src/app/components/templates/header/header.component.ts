@@ -1,76 +1,89 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserI } from 'src/app/models/user.interface';
 import { LoginService } from 'src/app/services/login/login.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
+  RolUser: string = 'usuario';
 
-constructor(private route:Router, private loginS: LoginService){}
+  constructor(private route: Router, private loginS: LoginService) {}
 
-FKusuarioName: string = '';
+  FKusuarioName: string = '';
 
-ngOnInit(): void {
-  const user_name = localStorage.getItem('user_name');
-  if (user_name) {
-    this.FKusuarioName =user_name;
-  } else{
-    this.FKusuarioName = "usuario";
+  ngOnInit(): void {
+    let datosSesion = sessionStorage.getItem('usuario_login');
+    if (datosSesion) {
+      let usuarioLogin: UserI = JSON.parse(datosSesion);
+      console.log(usuarioLogin);
+      console.log(usuarioLogin.use_rol);
+      this.RolUser = String(usuarioLogin.use_rol);
+    } else {
+      console.log('No hay datos en el almacenamiento de sesión.');
+    }
+
+    const user_name = localStorage.getItem('user_name');
+    if (user_name) {
+      this.FKusuarioName = user_name;
+    } else {
+      this.FKusuarioName = 'usuario';
+    }
   }
-}
 
 
+  //**NAVEGACIÓN****//
 
-//**NAVEGACIÓN****//
+  //para volver al inicio
+  navInicio() {
+    this.route.navigate(['/home']);
+  }
 
-//para volver al inicio
-navInicio(){
-  this.route.navigate(['/home']);
-}
+  //ver productos
+  navVerProductos() {
+    this.route.navigate(['/product']);
+  }
 
-//ver productos
-navVerProductos(){
-  this.route.navigate(['/product'])
-}
+  //mis productos <- por implementar
 
-//mis productos <- por implementar
+  //subir un producto
+  navSubirProductos() {
+    this.route.navigate(['/product/add']);
+  }
 
-//subir un producto
-navSubirProductos(){
-  this.route.navigate(['/product/add'])
-}
+  //ver provedores
+  navVerProvedores() {
+    this.route.navigate(['/provider']);
+  }
 
-//ver provedores
-navVerProvedores(){
-  this.route.navigate(['/provider']);
-}
+  navEnviarSolicitud(){
+    this.route.navigate(['/request/add']);
+  }
 
+  //ver perfil
+  navVerPeople() {
+    this.route.navigate(['/people']);
+  }
 
-//ver perfil
-navVerPeople(){
-  this.route.navigate(['/people']);
-}
+  //ver solicitudes requestApp
+  navverRequest() {
+    this.route.navigate(['/request']);
+  }
 
-//ver solicitudes requestApp
-navverRequest(){
-  this.route.navigate(['/request']);
-}
+  //ver categorias
+  navVerCategorias() {
+    this.route.navigate(['/category']);
+  }
 
-//ver categorias
-navVerCategorias(){
-  this.route.navigate(['/category']);
-}
-
-//cerrar sesion borrar token
-cerrarSesion() {
-  this.loginS.logout().subscribe((data) => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user_name');
-    this.route.navigate(['']);
-  });
-}
-
+  //cerrar sesion borrar token
+  cerrarSesion() {
+    this.loginS.logout().subscribe((data) => {
+      localStorage.removeItem('token');
+      localStorage.removeItem('user_name');
+      this.route.navigate(['']);
+    });
+  }
 }
