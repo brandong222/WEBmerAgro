@@ -1,18 +1,39 @@
+<app-header></app-header>
 <div class="container">
   <table class="table table-hover">
-    <thead>
+    <thead class="contenedor">
       <tr>
-        <th>persona id</th>
-        <th>descripcion</th>
-        <th>certificado</th>
+        <th class="idPersonaTH">persona id</th>
+        <th>Tipo de Solicitud</th>
+        <th>Telefono</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Ubicación</th>
+        <th>Rol</th>
+        <th>Estado</th>
       </tr>
     </thead>
 
     <tbody>
       <tr *ngFor="let item of requestArray">
-        <td>{{item.people_id}}</td>
-        <td>{{ item.req_description }}</td>
+        <td class="idPersonaTB">{{item.people_id}}</td>
         <td>{{ item.req_type }}</td>
+        <td>{{ item.peo_phone }}</td>
+        <td>{{ item.peo_name }}</td>
+        <td>{{ item.peo_lastname }}</td>
+        <td>{{ item.peo_adress }}</td>
+        <td>{{ item.use_rol }}</td>
+        <td *ngIf="item.req_status === 0"
+          style="background-color: rgb(255, 66, 66); color: white;">Eliminado</td>
+        <td *ngIf="item.req_status === 1"
+          style="background-color: rgb(236, 188, 31); color: white;">Pendiente</td>
+        <td *ngIf="item.req_status === 2"
+          style="background-color: rgb(49, 145, 255); color: white;">En proceso</td>
+        <td *ngIf="item.req_status === 3"
+          style="background-color: rgb(0, 214, 0); color: white;">Aprobado</td>
+        <td *ngIf="item.req_status === 4"
+          style="background-color: rgb(255, 66, 66); color: white;">No aprobado</td>
+        <button class="btn btn-primary">ver</button>
       </tr>
     </tbody>
   </table>
