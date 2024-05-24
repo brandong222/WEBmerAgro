@@ -33,7 +33,7 @@ const routes: Routes = [
 
   {path: "user" , component: UserComponent},
   {path: "user/add/:id" , component: UserADDComponent},
-  {path: "user/edit/:id" , component: UserEditComponent},
+  {path: "user/edit" , component: UserEditComponent},
 
 
   {path: 'product', component: ProductComponent,canActivate:[AuthGuard]},

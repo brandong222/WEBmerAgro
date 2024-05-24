@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PeopleI } from 'src/app/models/people.interface';
 import { superInterfazI } from 'src/app/models/superInterfaz.interface';
 import { UserI } from 'src/app/models/user.interface';
@@ -14,6 +15,7 @@ export class PeopleComponent implements OnInit {
   peopleArray: superInterfazI[] = [];
 
   constructor(
+    private route: Router,
     private peopleS: PeopleService,
     private fkjoinS: JoinService
   ) {}
@@ -40,6 +42,15 @@ export class PeopleComponent implements OnInit {
     if (usuarioData) {
       return JSON.parse(usuarioData);
     }
+  }
+
+
+  //NAVEGACION
+
+  //ver datos de sesion
+  navDatosSesion(){
+    const user_login: UserI = this.traerDatosSesion();
+    this.route.navigate(['/user/']);
   }
 
 

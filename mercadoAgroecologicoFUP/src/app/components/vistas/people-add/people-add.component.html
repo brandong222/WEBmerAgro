@@ -1,8 +1,9 @@
 <div class="container-sm">
   <h2 class="text-center">Formulario de Información personal</h2>
-  <form [formGroup]="peopleForm" (ngSubmit)="guardarPersona(peopleForm.value)">
+  <div class="contenedor">
     <div class="data">
       <div class="lado-izq">
+        <form [formGroup]="peopleForm" (ngSubmit)="guardarPersona(peopleForm.value)">
         <div class="form-group">
           <label for="nombre">Nombre</label>
           <input type="text" class="form-control" id="nombre" formControlName="peo_name"/>
@@ -35,8 +36,8 @@
 
           </select>
         </div>
-
-
+        <input type="submit" class="btn btn-success boton_style" value="Siguiente">
+      </form>
       </div>
 
       <div class="lado-der">
@@ -49,16 +50,13 @@
         />
         <label for="formFile" class="form-label">Foto de perfil</label>
         <input class="form-control" type="file" (change)="onFileSelected($event)"  >
+        <button class="btn btn-dark"  (click)="subirImagen()"> subir imagen</button>
       </div>
     </div>
-    <input type="submit" class="btn btn-success boton_style" value="Siguiente">
-  </form>
-<button class="btn btn-dark"  (click)="subirImagen()"> subir imagen</button>
+
+  </div>
+
   <div class="regresar_btn">
     <input type="submit" class="btn btn-primary boton_style" (click)="navegateToRegresar()" value="regresar">
-
-
-
-
   </div>
 </div>

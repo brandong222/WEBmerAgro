@@ -1,1 +1,50 @@
-<p>user-edit works!</p>
+<app-header></app-header>
+
+<div class="container-sm">
+  <h2 class="text-center">Información de registro</h2>
+  <div>
+    <span>cambiar contraseña</span>
+     <input type="checkbox" (click)="cambiarPasseord()">
+  </div>
+<form  [formGroup]="userForm" (ngSubmit)="actualizarUsuario(userForm.value)">
+  <div class="data">
+    <div class="lado-izq">
+
+      <input type="text" formArrayName="id" hidden>
+
+      <div class="form-group">
+        <label for="nombre">Cédula de ciudadanía *</label>
+        <input type="text" class="form-control" id="nombre" formControlName="use_cc" />
+      </div>
+
+      <div class="form-group" *ngIf="banderaPassword">
+        <label for="apellido">Contraseña *</label>
+        <input type="password" placeholder="ingrese su nueva contraseña" class="form-control" id="apellido" formControlName="use_password" />
+      </div>
+      <div class="form-group" *ngIf="banderaPassword">
+        <label for="email">Confirmar Contraseña *</label>
+        <input type="password" placeholder="Repita su contraseña" class="form-control" id="email" name="confirmar_password" />
+      </div>
+
+      <div class="form-group" >
+        <label for="email">Rol</label>
+        <input type="email" class="form-control" formControlName="use_rol" readonly/>
+      </div>
+      <div class="form-group" hidden>
+        <label for="email">Status</label>
+        <input type="number" class="form-control"  formControlName="use_status" readonly/>
+      </div>
+
+      <div class="form-group" hidden>
+        <label for="email">Id de la persona</label>
+        <input type="number" class="form-control" formControlName="people_id" readonly />
+      </div>
+
+      </div>
+    </div>
+
+
+  <input type="submit" class="btn btn-success boton_style" value="Guardar cambios">
+</form>
+
+</div>
