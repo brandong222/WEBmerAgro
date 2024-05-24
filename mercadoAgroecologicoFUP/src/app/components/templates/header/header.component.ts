@@ -19,8 +19,6 @@ export class HeaderComponent implements OnInit {
     let datosSesion = sessionStorage.getItem('usuario_login');
     if (datosSesion) {
       let usuarioLogin: UserI = JSON.parse(datosSesion);
-      console.log(usuarioLogin);
-      console.log(usuarioLogin.use_rol);
       this.RolUser = String(usuarioLogin.use_rol);
     } else {
       console.log('No hay datos en el almacenamiento de sesión.');
@@ -76,6 +74,11 @@ export class HeaderComponent implements OnInit {
   //ver categorias
   navVerCategorias() {
     this.route.navigate(['/category']);
+  }
+
+  //ver productos propios
+  navMisProductos(){
+    this.route.navigate(['/product/own'])
   }
 
   //cerrar sesion borrar token

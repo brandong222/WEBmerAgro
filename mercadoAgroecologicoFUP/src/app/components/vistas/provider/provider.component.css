@@ -7,57 +7,66 @@
 
 .provider {
   display: flex;
-  border: 2px solid #1d5a26;
-  border-radius: 20px;
+  border: 2px solid seagreen;
+  gap: 30px;
   width: 90%;
   max-width: 1200px;
   margin: 10px auto;
-  background-color: #1e92451e; /* Color de fondo para cada tarjeta */
-  padding: 20px; /* Espaciado interno de la tarjeta */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sombra suave alrededor de la tarjeta */
+  background-color: white;
+  box-shadow: 3px 2px 8px darkgreen;
+  padding: 10px;
 }
 
 .imagen{
   flex: 2;
+  background: transparent;
+  text-align: center;
+  overflow: hidden;
+
+
 }
 
 /* Estilos para la imagen */
 .imagen img {
-  border-radius: 10px;
-  width: 80%;
-  height: auto; /* Asegura que la imagen mantenga su proporción */
+  width: 100%;
+  height: auto;
+  border-radius: 100%;
 }
 
 /* Estilos para la información */
 .informacion {
   flex: 2;
+  margin-left: 50px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 60%;
-}
-
-.informacion h2 {
-  font-size: 24px; /* Tamaño de fuente para el nombre */
-  margin-bottom: 10px; /* Espaciado debajo del nombre */
+  text-align: left;
 }
 
 .informacion p {
-  font-size: 16px; /* Tamaño de fuente para el texto */
-  margin-bottom: 5px; /* Espaciado debajo del texto */
+  font-size: 18px;
 }
 
 .description{
   flex: 4;
-  text-align: left;
+  text-align: center;
+  margin: auto;
+}
+
+.description h5{
+  text-align: center;
+  font-weight: bold;
 }
 
 .acciones {
   flex: 2;
-  align-items: center;
-  display: flex;
-  justify-content: flex-end; /* Alinea los elementos a la derecha */
-  width: 20%;
+  margin: auto;
+  text-align: center;
+}
+
+.acciones a{
+  color: white;
+  cursor: pointer;
 }
 
 

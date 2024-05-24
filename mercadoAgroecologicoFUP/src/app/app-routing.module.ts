@@ -23,6 +23,7 @@ import { UserEditComponent } from './components/vistas/user-edit/user-edit.compo
 import { ProductEditComponent } from './components/vistas/product-edit/product-edit.component';
 import { CategoryEditComponent } from './components/vistas/category-edit/category-edit.component';
 import { ProviderEditComponent } from './components/vistas/provider-edit/provider-edit.component';
+import { ProductOWNComponent } from './components/vistas/product-own/product-own.component';
 
 
 const routes: Routes = [
@@ -38,6 +39,8 @@ const routes: Routes = [
   {path: 'product', component: ProductComponent,canActivate:[AuthGuard]},
   {path: 'product/add', component: ProductADDComponent,canActivate:[AuthGuard]},
   {path: 'product/edit/:id', component: ProductEditComponent,canActivate:[AuthGuard]},
+  {path: 'product/own', component: ProductOWNComponent,canActivate:[AuthGuard]},
+
 
 
   {path: 'request', component: RequestappComponent,canActivate:[AuthGuard]},

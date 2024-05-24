@@ -4,6 +4,12 @@ form {
   align-items: center;
 }
 
+.container-sm{
+  background: lightgray;
+  padding: 20px;
+  margin: 5px auto;
+}
+
 
 .formulario_style{
   width: 80%;
@@ -24,6 +30,5 @@ form {
 .container_imagen input{
   width: 400px;
   margin: 10px 0px;
-
 }
 
