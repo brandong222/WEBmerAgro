@@ -28,10 +28,10 @@ export class ProductService {
   }
 
   // para obtener un producto por ID
-  getProductId(id: number): Observable<responsiveI> {
+  getProductId(id: number): Observable<ProductI[]> {
     const token = localStorage.getItem('token');
     const headers = { Authorization: `Bearer ${token}` };
-    return this.http.get<responsiveI>(`${this.apiUrl}/${id}`, { headers });
+    return this.http.get<ProductI[]>(`${this.apiUrl}/${id}`, { headers });
   }
 
   // para eliminar un producto
