@@ -49,8 +49,12 @@ export class PeopleComponent implements OnInit {
 
   //ver datos de sesion
   navDatosSesion(){
-    const user_login: UserI = this.traerDatosSesion();
     this.route.navigate(['/user/']);
+  }
+
+
+  navDatosProveedor(){
+this.route.navigate(['/provider/own'])
   }
 
 

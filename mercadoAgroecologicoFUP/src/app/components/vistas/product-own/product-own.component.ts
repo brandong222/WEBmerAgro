@@ -40,6 +40,9 @@ export class ProductOWNComponent implements OnInit {
 
 //NAVEGACION
 
+//ver producto individual
+
+
 
 //para redirigir a subir producto en caso que no tenga
 navSubirProducto(){

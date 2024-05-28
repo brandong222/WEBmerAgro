@@ -1,0 +1,31 @@
+<app-header></app-header>
+
+<form *ngFor="let item of providerArray">
+
+<div class="lado-izq">
+<img [src]="item.peo_image" alt="">
+<div>
+  <h3>Grupo(s)</h3>
+  <h5>{{ item.prov_group }}</h5>
+</div>
+
+</div>
+<div class="lado-der">
+
+  <div>
+    <h3>{{ item.peo_name }} {{ item.peo_lastname }}</h3>
+  </div>
+
+  <div>
+    {{ item.prov_ranking }}
+  </div>
+
+  <div>
+    <span><h3>descripcion</h3></span>
+
+    <h5>{{ item.prov_description }}</h5>
+  </div>
+</div>
+
+
+</form>

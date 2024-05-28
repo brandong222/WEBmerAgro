@@ -7,6 +7,7 @@ import { ProviderService } from 'src/app/services/provider/provider.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { PeopleService } from 'src/app/services/people/people.service';
 import { PeopleI } from 'src/app/models/people.interface';
+import { superInterfazI } from 'src/app/models/superInterfaz.interface';
 
 @Component({
   selector: 'app-product',
@@ -31,9 +32,7 @@ export class ProductComponent implements OnInit {
     this.fkGetProviders();
   }
 
-  mostrarProductos() {
 
-  }
   //metodos fk
   fkGetProviders() {
    this.fkjoinS.getProductProvider().subscribe(data=>{
@@ -44,8 +43,8 @@ export class ProductComponent implements OnInit {
 
   }
 
-  mostrarImagen(){
-
+  verproductoIndividual(id: number){
+  this.route.navigate(['/product/show/',id]);
   }
 
 }
