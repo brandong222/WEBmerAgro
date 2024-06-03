@@ -1,29 +1,27 @@
 <app-header></app-header>
 
-
 <div class="barra_busqueda">
-
-  <select [(ngModel)]="selectedFilter" (change)="applyFilter()">
+  <select id="filtros">
     <option value="none">Filtrar</option>
     <option value="nombre">Nombre</option>
     <option value="menor">Precio de menor a mayor</option>
     <option value="mayor">Precio de mayor a menor</option>
     <option value="certificado">Producto (s) certificado (s)</option>
-
   </select>
-  <input class="form-control me-2" type="search" placeholder="Buscar producto" aria-label="Search">
+
+  <input
+    class="form-control me-2"
+    type="search"
+    placeholder="Buscar producto"
+    aria-label="Search"
+  />
 </div>
 
 <section>
   <div class="main_product">
     <div class="card" *ngFor="let item of productArray">
-
       <div class="cont_imag">
-        <img
-        [src]="item.pro_image"
-        class="card-img-top"
-        alt=""
-      />
+        <img [src]="item.pro_image" class="card-img-top" alt="" />
       </div>
 
       <div class="card-body">
@@ -32,9 +30,9 @@
         </h5>
       </div>
       <ul class="">
-
-        <li class="list-group-item">Unidad:
-          <span> {{ item.pro_unit }} </span></li>
+        <li class="list-group-item">
+          Unidad: <span> {{ item.pro_unit }} </span>
+        </li>
 
         <li class="list-group-item">
           Ubicación:
@@ -42,21 +40,25 @@
             {{ item.peo_adress }}
           </span>
         </li>
-        <li class="list-group-item"  *ngIf="item.pro_price <= 0">
-          <span style="font-size: 30px;">Trueque</span>
-          </li>
+        <li class="list-group-item" *ngIf="item.pro_price <= 0">
+          <span style="font-size: 30px">Trueque</span>
+        </li>
         <li class="list-group-item" *ngIf="item.pro_price > 0">
-          <span style="font-size: 30px;">$ {{ item.pro_price }} </span>
+          <span style="font-size: 30px">$ {{ item.pro_price }} </span>
         </li>
       </ul>
-      <div class="card-body" style="width: 100%; ">
-        <a style="width: 90%;" class="btn btn-success" (click)="verproductoIndividual(item.product_id)" >ver</a>
+      <div class="card-body" style="width: 100%">
+        <a
+          style="width: 90%"
+          class="btn btn-success"
+          (click)="verproductoIndividual(item.product_id)"
+          >ver</a
+        >
       </div>
 
-      <div [ngClass]="{'mostrar_certificado': item.pro_certs == 'certificado'}">
-
-      </div>
-
+      <div
+        [ngClass]="{ mostrar_certificado: item.pro_certs == 'certificado' }"
+      ></div>
     </div>
   </div>
 </section>

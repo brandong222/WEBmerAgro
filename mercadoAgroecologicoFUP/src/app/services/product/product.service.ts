@@ -11,6 +11,7 @@ export class ProductService {
   constructor(private http: HttpClient) {}
 
   private apiUrl: string = 'http://127.0.0.1:8000/api/product';
+  private filterUrl: string = 'http://127.0.0.1:8000/api/';
 
   //para traer datos de la api
   getproductos(): Observable<ProductI[]> {
@@ -50,6 +51,20 @@ export class ProductService {
     });
   }
 
-  //traer datos relacionados
+  //usar filtros
+  filterName(): Observable<ProductI[]> {
+    const token = localStorage.getItem('token');
+    const headers = { Authorization: `Bearer ${token}` };
+    return this.http.get<ProductI[]>(`${this.filterUrl}/filtrarPorNombre`, { headers });
+  }
+
+  /*
+
+
+filtrarPorNombre
+filtrarPorPrecioMenorAMayor
+filtrarPorPrecioMayorAMenor
+filtrarPorCertificado
+  */
 
 }

@@ -11,8 +11,7 @@ export class JoinService {
   constructor(private http: HttpClient) {}
 
   private apiJOIN: string = 'http://127.0.0.1:8000/api/usuariosPersonas';
-  private apiJOIN2: string =
-    'http://127.0.0.1:8000/api/productosProvedoresPernas';
+  private apiJOIN2: string =    'http://127.0.0.1:8000/api/productosProvedoresPernas';
   private apiJOIN3: string = 'http://127.0.0.1:8000/api/joinProdProvPeopleID';
   private apiJOIN4: string = 'http://127.0.0.1:8000/api/joinReqPeoUsu';
   private apiJOIN5: string = 'http://127.0.0.1:8000/api/joinUserPeople';
