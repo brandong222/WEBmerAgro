@@ -26,6 +26,7 @@ import { ProviderEditComponent } from './components/vistas/provider-edit/provide
 import { ProductOWNComponent } from './components/vistas/product-own/product-own.component';
 import { ProviderOWNComponent } from './components/vistas/provider-own/provider-own.component';
 import { ProductSHOWComponent } from './components/vistas/product-show/product-show.component';
+import { PeopleEditComponent } from './components/vistas/people-edit/people-edit.component';
 
 
 const routes: Routes = [
@@ -57,6 +58,8 @@ const routes: Routes = [
 
   {path: 'people', component: PeopleComponent, canActivate:[AuthGuard]},
   {path: 'people/add', component: PeopleADDComponent},
+  {path: 'people/edit/:id', component: PeopleEditComponent, canActivate:[AuthGuard]},
+
 
   {path: 'provider', component: ProviderComponent, canActivate:[AuthGuard]},
   {path: 'provider/add', component: ProviderADDComponent, canActivate:[AuthGuard]},
