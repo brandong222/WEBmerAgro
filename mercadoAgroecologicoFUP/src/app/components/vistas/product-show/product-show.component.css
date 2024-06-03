@@ -15,10 +15,11 @@ form .form_img{
 }
 
 form .form_img img{
-  width: 100%;
-  height: auto;
+  width: 90%;
+  max-height: 40vh;
   border-radius: 10px;
   box-shadow: 2px 2px 6px gray;
+  object-fit: cover;
 }
 
 
@@ -68,4 +69,69 @@ form .form_btn{
   flex-direction: column;
   gap: 10px;
   padding: 10px;
+}
+
+
+.title{
+  color: seagreen;
+  width: 50%;
+  font-size: 30px;
+  margin-left: 40px;
+  margin-top: 10px;
+}
+
+.main_product {
+  padding: 30px;
+  border: 1.5px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 20px;
+
+}
+
+.card {
+  padding: 10px;
+  width: 20%;
+  height: 400px;
+  text-align: center;
+  align-items: center;
+  background: white;
+  box-shadow: 5px 5px 18px black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.card .cont_imag{
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  overflow: hidden;
+}
+
+.card .cont_imag img {
+  width: auto;
+  height: 100%;
+
+}
+
+
+span{
+  color: seagreen;
+}
+
+/*para certificado en caso de cumplirse*/
+.mostrar_certificado::before {
+  content: "certificado";
+  position: absolute;
+  top: 10%;
+  left: 2%;
+  background: seagreen;
+  color: white;
+  box-shadow: 2px 2px 20px seagreen;
+  padding: 5px 10px;
+  transform: rotate(-40deg);
+  transform-origin: top left;
 }

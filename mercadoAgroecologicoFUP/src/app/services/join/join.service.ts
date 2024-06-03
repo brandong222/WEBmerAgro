@@ -11,12 +11,15 @@ export class JoinService {
   constructor(private http: HttpClient) {}
 
   private apiJOIN: string = 'http://127.0.0.1:8000/api/usuariosPersonas';
-  private apiJOIN2: string ='http://127.0.0.1:8000/api/productosProvedoresPernas';
+  private apiJOIN2: string =
+    'http://127.0.0.1:8000/api/productosProvedoresPernas';
   private apiJOIN3: string = 'http://127.0.0.1:8000/api/joinProdProvPeopleID';
   private apiJOIN4: string = 'http://127.0.0.1:8000/api/joinReqPeoUsu';
   private apiJOIN5: string = 'http://127.0.0.1:8000/api/joinUserPeople';
   private apiJOIN6: string = 'http://127.0.0.1:8000/api/joinProvedorpeopleID';
   private apiJOIN7: string = 'http://127.0.0.1:8000/api/showReqPeoUsu';
+  private apiJOIN8: string = 'http://127.0.0.1:8000/api/joinProduProviderID';
+
 
 
 
@@ -48,6 +51,9 @@ export class JoinService {
 
   showReqPeoUsu(): Observable<responsiveI> {
     return this.http.get<responsiveI>(`${this.apiJOIN7}`);
+  }
+  joinProduProviderID(id: number): Observable<responsiveI> {
+    return this.http.get<responsiveI>(`${this.apiJOIN8}/${id}`);
   }
 
 

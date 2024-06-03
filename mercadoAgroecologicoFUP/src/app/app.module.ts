@@ -35,6 +35,7 @@ import { UserEditComponent } from './components/vistas/user-edit/user-edit.compo
 import { ProductOWNComponent } from './components/vistas/product-own/product-own.component';
 import { ProviderOWNComponent } from './components/vistas/provider-own/provider-own.component';
 import { ProductSHOWComponent } from './components/vistas/product-show/product-show.component';
+import { StarComponent } from './components/vistas/star/star.component';
 
 
 
@@ -68,7 +69,8 @@ import { ProductSHOWComponent } from './components/vistas/product-show/product-s
     UserEditComponent,
     ProductOWNComponent,
     ProviderOWNComponent,
-    ProductSHOWComponent
+    ProductSHOWComponent,
+    StarComponent
   ],
   imports: [
     BrowserModule,
