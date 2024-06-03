@@ -1,27 +1,36 @@
 import { Component, OnInit } from '@angular/core';
 import { UserI } from 'src/app/models/user.interface';
 import { JoinService } from 'src/app/services/join/join.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PeopleService } from 'src/app/services/people/people.service';
 import { UserService } from 'src/app/services/user/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  styleUrls: ['./user.component.css'],
 })
-export class UserComponent  implements OnInit{
+export class UserComponent implements OnInit {
 
+
+  userForm = new FormGroup({
+    use_cc: new FormControl('', Validators.required),
+    use_password: new FormControl('', Validators.required),
+    use_rol: new FormControl('', Validators.required),
+    use_status: new FormControl(1, Validators.required),
+    people_id: new FormControl(1, Validators.required),
+  });
 
   ngOnInit(): void {
-      this.traerDatosDeSesion();
+    this.traerDatosDeSesion();
   }
 
   constructor(
-    private peopleS:PeopleService ,
+    private peopleS: PeopleService,
     private fkJoinS: JoinService,
-
-  ){}
-
+    private route:Router
+  ) {}
 
   traerDatosDeSesion() {
     // Obtener los datos del almacenamiento de sesión
@@ -31,19 +40,22 @@ export class UserComponent  implements OnInit{
     if (datosGuardados) {
       // Convertir la cadena JSON de vuelta a un objeto JavaScript
       const dataR: UserI = JSON.parse(datosGuardados);
-      console.log(dataR.people_id);
-      const fk_people_id = Number(dataR.people_id);
-
-      this.fkJoinS.getProdProvPeopleID(fk_people_id).subscribe(data=>{
-        console.log(data.status);
-        console.log(data.data);
-
-
-      })
-
+      console.log(dataR);
+      this.userForm.get('use_cc')?.setValue(dataR.use_cc || null);
+      this.userForm.get('use_rol')?.setValue(dataR.use_rol || null);
+      this.userForm.get('use_status')?.setValue(dataR.use_status || null);
+      this.userForm.get('people_id')?.setValue(dataR.people_id || null);
     } else {
       console.log('No hay datos guardados en la sesión.');
     }
   }
+
+//NAVEGACION
+
+navEditUser(){
+  this.route.navigate(['/user/edit'])
+}
+
+
 
 }

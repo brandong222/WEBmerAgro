@@ -1,77 +1,157 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
-  <img src="/assets/img/logoVF.png" alt="Logo" class="logo">
+  <img src="/assets/img/logoVF.png" alt="Logo" class="logo" />
   <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-      data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
-      aria-expanded="false" aria-label="Toggle navigation">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-
-          <a class="nav-link" aria-current="page" role="button"
-             aria-expanded="false"(click)="navInicio()" >
-
-            <img style="width: 30px; height:30px; margin-bottom: 6px "  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAANRJREFUSEvtlesNwjAMhK+bwCZlEzoJdBLYBDZpNwFOipET8rCp8gfhn1Vy3/mVDugcQ2d9eAG3YGgCsFrMeQAUH4PoHYAJYgVocTE+A7i2MrEALi+RY6EchJxrpWoBePnUqHUVUgPQNd1boggpAdhMmRgLgGfYdPYkihzgG3ER3adNTwE7AIvVcuYcd+OgIRqwVVx4EUQDauPoTYqLyEyip6I7QLt8eC2H8x9DUxrT3wSk2eay3FSiPyAaTD4X3GyJ9+Kob5Yz7n+yez1aPxy3YHrhCVFdKxlu4RZ8AAAAAElFTkSuQmCC"/>
+          <a
+            class="nav-link"
+            aria-current="page"
+            role="button"
+            aria-expanded="false"
+            (click)="navInicio()"
+          >
+            <img
+              style="width: 30px; height: 30px; margin-bottom: 6px"
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAANRJREFUSEvtlesNwjAMhK+bwCZlEzoJdBLYBDZpNwFOipET8rCp8gfhn1Vy3/mVDugcQ2d9eAG3YGgCsFrMeQAUH4PoHYAJYgVocTE+A7i2MrEALi+RY6EchJxrpWoBePnUqHUVUgPQNd1boggpAdhMmRgLgGfYdPYkihzgG3ER3adNTwE7AIvVcuYcd+OgIRqwVVx4EUQDauPoTYqLyEyip6I7QLt8eC2H8x9DUxrT3wSk2eay3FSiPyAaTD4X3GyJ9+Kob5Yz7n+yez1aPxy3YHrhCVFdKxlu4RZ8AAAAAElFTkSuQmCC"
+            />
 
             Inicio
-
-            </a>
+          </a>
         </li>
 
-        <li class="nav-item dropdown"  *ngIf="RolUser !== 'usuario'">
-          <a class="nav-link dropdown custom-dropdown"  role="button"
-            data-bs-toggle="dropdown" aria-expanded="false" >
-
-            <img style="width: 30px; height:30px; margin-bottom: 6px "  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAS9JREFUSEu1lYERgjAMRcMk6iTqJjqJOok6iTqJbqJ9dw0XoKEtQu44Dpr+n598SiMLR7MwvsxNsBaRnYjctPA5CQC/RoKjkkwlAOwgIqdw/wTQZwDU6nne/KMAoLczuw44OaUKACW0as8b9J72tDFGcBaRbZSuBDnTFSkA7BGBc4D99SxBv79suAd3rGJ7coSXkIByt0VUjo+JvXEHbqH/Y4GT2NMJOwMA8LEFpxrAczFojW6wBIBDopXocw6c9fbDGlOAt5mBJn9LkGMOHxYqBmEVKKCeI7meWzDX7nZBFVQU3qYWEVgH1ZAk3ZMaMvaEpDbcAQPUl1arwrVnSgHvao4JwKmeFrmRGo79cXgbi8BTLbKA2JTTVO0KKNcrJHXOm1oFtUMezS/94Uwm/QFSYjYZu7ChuAAAAABJRU5ErkJggg=="/>
+        <li class="nav-item dropdown" *ngIf="RolUser !== 'usuario'">
+          <a
+            class="nav-link dropdown custom-dropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <img
+              style="width: 30px; height: 30px; margin-bottom: 6px"
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAS9JREFUSEu1lYERgjAMRcMk6iTqJjqJOok6iTqJbqJ9dw0XoKEtQu44Dpr+n598SiMLR7MwvsxNsBaRnYjctPA5CQC/RoKjkkwlAOwgIqdw/wTQZwDU6nne/KMAoLczuw44OaUKACW0as8b9J72tDFGcBaRbZSuBDnTFSkA7BGBc4D99SxBv79suAd3rGJ7coSXkIByt0VUjo+JvXEHbqH/Y4GT2NMJOwMA8LEFpxrAczFojW6wBIBDopXocw6c9fbDGlOAt5mBJn9LkGMOHxYqBmEVKKCeI7meWzDX7nZBFVQU3qYWEVgH1ZAk3ZMaMvaEpDbcAQPUl1arwrVnSgHvao4JwKmeFrmRGo79cXgbi8BTLbKA2JTTVO0KKNcrJHXOm1oFtUMezS/94Uwm/QFSYjYZu7ChuAAAAABJRU5ErkJggg=="
+            />
             Productos
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" (click)="navVerProductos()" >Ver productos</a></li>
-            <li><a class="dropdown-item" >Mis productos</a></li>
-            <li><a class="dropdown-item" (click)="navSubirProductos()"   >Subir productos</a></li>
+            <li>
+              <a class="dropdown-item" (click)="navVerProductos()"
+                >Ver productos</a
+              >
+            </li>
+            <li><a class="dropdown-item" (click)="navMisProductos()">Mis productos</a></li>
+            <li>
+              <a class="dropdown-item" (click)="navSubirProductos()"
+                >Subir productos</a
+              >
+            </li>
           </ul>
         </li>
 
-        <li class="nav-item"  *ngIf="RolUser === 'usuario'">
-          <a class="nav-link" aria-current="page" role="button"
-             aria-expanded="false" (click)="navVerProductos()">
-             <img style="width: 30px; height:30px; margin-bottom: 6px "  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAS9JREFUSEu1lYERgjAMRcMk6iTqJjqJOok6iTqJbqJ9dw0XoKEtQu44Dpr+n598SiMLR7MwvsxNsBaRnYjctPA5CQC/RoKjkkwlAOwgIqdw/wTQZwDU6nne/KMAoLczuw44OaUKACW0as8b9J72tDFGcBaRbZSuBDnTFSkA7BGBc4D99SxBv79suAd3rGJ7coSXkIByt0VUjo+JvXEHbqH/Y4GT2NMJOwMA8LEFpxrAczFojW6wBIBDopXocw6c9fbDGlOAt5mBJn9LkGMOHxYqBmEVKKCeI7meWzDX7nZBFVQU3qYWEVgH1ZAk3ZMaMvaEpDbcAQPUl1arwrVnSgHvao4JwKmeFrmRGo79cXgbi8BTLbKA2JTTVO0KKNcrJHXOm1oFtUMezS/94Uwm/QFSYjYZu7ChuAAAAABJRU5ErkJggg=="/>
-             Productos</a>
+        <li class="nav-item" *ngIf="RolUser === 'usuario'">
+          <a
+            class="nav-link"
+            aria-current="page"
+            role="button"
+            aria-expanded="false"
+            (click)="navVerProductos()"
+          >
+            <img
+              style="width: 30px; height: 30px; margin-bottom: 6px"
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAS9JREFUSEu1lYERgjAMRcMk6iTqJjqJOok6iTqJbqJ9dw0XoKEtQu44Dpr+n598SiMLR7MwvsxNsBaRnYjctPA5CQC/RoKjkkwlAOwgIqdw/wTQZwDU6nne/KMAoLczuw44OaUKACW0as8b9J72tDFGcBaRbZSuBDnTFSkA7BGBc4D99SxBv79suAd3rGJ7coSXkIByt0VUjo+JvXEHbqH/Y4GT2NMJOwMA8LEFpxrAczFojW6wBIBDopXocw6c9fbDGlOAt5mBJn9LkGMOHxYqBmEVKKCeI7meWzDX7nZBFVQU3qYWEVgH1ZAk3ZMaMvaEpDbcAQPUl1arwrVnSgHvao4JwKmeFrmRGo79cXgbi8BTLbKA2JTTVO0KKNcrJHXOm1oFtUMezS/94Uwm/QFSYjYZu7ChuAAAAABJRU5ErkJggg=="
+            />
+            Productos</a
+          >
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" role="button"
-             aria-expanded="false" (click)="navVerProvedores()">
-             <img style="width: 30px; height:30px; margin-bottom: 6px " src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAASNJREFUSEvtlWESwUAMhZ+bcBKcBCfBSXASboKT4JvZZ7a16badMeOH/dOpJvmSvGRN9OUz+XJ8/TTgIGkv6dbVhVoFa0krSdMU5PR67iQtJJ1T8GUXpAtAoG0hu2PKHABgqsC2eCIAjtfAh5ZsUta2mUVVRABaQ4+jA4BKqIJ2+f3DPgK4x30B6HApGY9pEXHckkcKOrhF+EUiW1R/RxMAg0S2MUHmqc8E8pjmGvE7UDTprUHtBkEjJo0x9o4UxzXSIM88h5EtYt6z2cfWy/gBaQPIhvEkw9oB5i3O9WoI3gZ4rmvB/Z1qgHBIDG0aVeSA2nLVdsL+ObRxXTuDvtmXqvBevBPPK+Be8UQMgfTeA9OHBLdteCvX/g/GwBo+f0C1hU+r4UEZyyNUWgAAAABJRU5ErkJggg=="/>
-             Productores</a>
+          <a
+            class="nav-link"
+            aria-current="page"
+            role="button"
+            aria-expanded="false"
+            (click)="navVerProvedores()"
+          >
+            <img
+              style="width: 30px; height: 30px; margin-bottom: 6px"
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAASNJREFUSEvtlWESwUAMhZ+bcBKcBCfBSXASboKT4JvZZ7a16badMeOH/dOpJvmSvGRN9OUz+XJ8/TTgIGkv6dbVhVoFa0krSdMU5PR67iQtJJ1T8GUXpAtAoG0hu2PKHABgqsC2eCIAjtfAh5ZsUta2mUVVRABaQ4+jA4BKqIJ2+f3DPgK4x30B6HApGY9pEXHckkcKOrhF+EUiW1R/RxMAg0S2MUHmqc8E8pjmGvE7UDTprUHtBkEjJo0x9o4UxzXSIM88h5EtYt6z2cfWy/gBaQPIhvEkw9oB5i3O9WoI3gZ4rmvB/Z1qgHBIDG0aVeSA2nLVdsL+ObRxXTuDvtmXqvBevBPPK+Be8UQMgfTeA9OHBLdteCvX/g/GwBo+f0C1hU+r4UEZyyNUWgAAAABJRU5ErkJggg=="
+            />
+            Productores</a
+          >
         </li>
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown custom-dropdown"  role="button"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            <img style="width: 30px; height:30px; margin-bottom: 6px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAATRJREFUSEu1lYsNwjAMRI9JgE1gE5gEmAQ2gU2ASYCHSOS6zqcStVSpUh2ffXdOF5o5FjPXVy/AVdLGNXORtG812AvwKhRqni8lrCQ9fkV5vxcA1iaPFHvueyQCSHRAwVPSoUEDeRSGwhFtHmAn6dzitfEdXQAKJyhxPQUTareJOjvBsUIHh04fGm5GFyaFmijIpd5Ag8iK5FAcMaNA/Agka+E1oCvEsocGnDqUaOqB0JGLfFc1r3sLj6btAfBet0NMBoAirGqjRlFkawSGpu+i2gmi4knkbDuDXNvwUOSWTZmErnjonA2fZFOaK9lu6qJlW3uRa1P0guQl8xqkAmmKdJ/4vfBAFFz+aGPT0StHz3UNAFsehbXw6KouTRAV+vsPx4NE4o/oiDpr/vJ6lS3lzQ7wBuXbRBlPVqS5AAAAAElFTkSuQmCC"/>
+          <a
+            class="nav-link dropdown custom-dropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <img
+              style="width: 30px; height: 30px; margin-bottom: 6px"
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAATRJREFUSEu1lYsNwjAMRI9JgE1gE5gEmAQ2gU2ASYCHSOS6zqcStVSpUh2ffXdOF5o5FjPXVy/AVdLGNXORtG812AvwKhRqni8lrCQ9fkV5vxcA1iaPFHvueyQCSHRAwVPSoUEDeRSGwhFtHmAn6dzitfEdXQAKJyhxPQUTareJOjvBsUIHh04fGm5GFyaFmijIpd5Ag8iK5FAcMaNA/Agka+E1oCvEsocGnDqUaOqB0JGLfFc1r3sLj6btAfBet0NMBoAirGqjRlFkawSGpu+i2gmi4knkbDuDXNvwUOSWTZmErnjonA2fZFOaK9lu6qJlW3uRa1P0guQl8xqkAmmKdJ/4vfBAFFz+aGPT0StHz3UNAFsehbXw6KouTRAV+vsPx4NE4o/oiDpr/vJ6lS3lzQ7wBuXbRBlPVqS5AAAAAElFTkSuQmCC"
+            />
             Configuración
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" (click)="navVerPeople()">Mi perfil</a></li>
-            <li><a class="dropdown-item" (click)="navEnviarSolicitud()" >Enviar solicitud</a></li>
-            <li><a class="dropdown-item" (click)="navverRequest()" *ngIf="RolUser !== 'usuario'">Solicitudes</a></li>
-            <li><a class="dropdown-item" (click)="navVerCategorias()" *ngIf="RolUser !== 'usuario'">Categorías</a></li>
+            <li>
+              <a class="dropdown-item" (click)="navVerPeople()">Mi perfil</a>
+            </li>
+            <li>
+              <a class="dropdown-item" (click)="navEnviarSolicitud()"
+                >Enviar solicitud</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                (click)="navverRequest()"
+                *ngIf="RolUser !== 'usuario'"
+                >Solicitudes</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                (click)="navVerCategorias()"
+                *ngIf="RolUser !== 'usuario'"
+                >Categorías</a
+              >
+            </li>
           </ul>
         </li>
 
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown custom-dropdown" role="button"
-              data-bs-toggle="dropdown" style="color: darkgreen; text-shadow: 2px 2px 5px rgba(21, 235, 32, 0.438);" >
-              {{ FKusuarioName }}
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item usuario" (click)="cerrarSesion()" >Cerrar sesión</a></li>
-            </ul>
-          </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown custom-dropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            style="
+              color: darkgreen;
+              text-shadow: 2px 2px 5px rgba(21, 235, 32, 0.438);
+            "
+          >
+            {{ FKusuarioName }}
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item usuario" (click)="cerrarSesion()"
+                >Cerrar sesión</a
+              >
+            </li>
+          </ul>
+        </li>
       </ul>
     </div>
   </div>

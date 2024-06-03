@@ -1,0 +1,71 @@
+form{
+  margin: auto;
+  width: 90%;
+  padding: 10px;
+  background: white;
+  display: flex;
+  align-items: center;
+  box-shadow: 2px 2px 10px black;
+}
+
+form .form_img{
+  flex: 1;
+  overflow: hidden;
+  padding: 20px;
+}
+
+form .form_img img{
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 2px 2px 6px gray;
+}
+
+
+form .form_info{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+form .form_info h5 span{
+  color: seagreen;
+  font-size: 16px;
+}
+
+form .form_whats{
+  flex: 1;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+form .form_whats span{
+  display: flex;
+  justify-content: center;
+
+}
+
+form .form_whats h4 a{
+cursor: pointer;
+
+}
+
+
+form .form_whats h4{
+  color: darkgreen;
+}
+
+
+
+
+form .form_btn{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}

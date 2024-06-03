@@ -2,7 +2,7 @@ h2{
   color: seagreen;
 }
 
-form {
+.contenedor {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,9 +45,7 @@ border: 1px solid transparent;
 border-radius: 50%;
 }
 
-form a{
-  float: right;
-}
+
 
 .regresar_btn{
   width: 100%;
@@ -83,7 +81,7 @@ form a{
 
   .boton_style{
     width: 60%;
-    margin: 10px;
+    margin: auto;
     padding: 5px;
 
   }

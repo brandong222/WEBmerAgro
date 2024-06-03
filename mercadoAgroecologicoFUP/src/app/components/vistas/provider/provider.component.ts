@@ -23,13 +23,12 @@ export class ProviderComponent implements OnInit {
   providerArray: any[] = [];
 
   ngOnInit(): void {
-  this.datosUnidos();
+  this.mostrarProvedores();
   }
 
-  datosUnidos(){
+  mostrarProvedores(){
   this.FK_joinS.getDataProvidersUser().subscribe(info=>{
     console.log(info.status);
-    console.log(info.data);
     this.providerArray = info.data;
    });
   }

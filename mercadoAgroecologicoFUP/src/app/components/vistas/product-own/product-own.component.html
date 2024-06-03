@@ -1,0 +1,72 @@
+<app-header></app-header>
+
+<div class="barra_busqueda">
+  <select name="filtros" class="form-select-sm">
+    <option value="none" class="form-select">Filtrar</option>
+    <option value="nombre" class="form-select">Nombre</option>
+    <option value="menor" class="form-select">Precio de menor a mayor</option>
+    <option value="mayor" class="form-select">Precio de mayor a menor</option>
+    <option value="certificado" class="form-select">certificado</option>
+  </select>
+  <input
+    class="form-control me-2"
+    type="search"
+    placeholder="Buscar producto"
+    aria-label="Search"
+  />
+</div>
+
+<div class="title">mis productos</div>
+
+<section>
+  <div class="main_product" *ngIf="productArray.length > 0">
+      <div class="card" *ngFor="let item of productArray">
+        <div class="cont_imag">
+          <img [src]="item.pro_image" class="card-img-top" alt="" />
+        </div>
+
+        <div class="card-body">
+          <h5 class="card-title">
+            <strong>{{ item.pro_name }}</strong>
+          </h5>
+        </div>
+        <ul class="">
+          <li class="list-group-item">
+            Unidad: <span> {{ item.pro_unit }} </span>
+          </li>
+
+          <li class="list-group-item">
+            Ubicación:
+            <span>
+              {{ item.peo_adress }}
+            </span>
+          </li>
+          <li class="list-group-item" *ngIf="item.pro_price <= 0">
+            <span style="font-size: 30px">Trueque </span>
+          </li>
+          <li class="list-group-item" *ngIf="item.pro_price > 0">
+            <span style="font-size: 30px">$ {{ item.pro_price }} </span>
+          </li>
+        </ul>
+        <div class="card-body" style="width: 100%">
+          <a style="width: 90%" class="btn btn-success" >ver</a>
+        </div>
+
+        <div
+          [ngClass]="{ mostrar_certificado: item.pro_certs == 'certificado' }"
+        ></div>
+      </div>
+    </div>
+
+    <div *ngIf="productArray.length <= 0">
+      <p>
+        No hay productos disponibles.
+        <a
+          (click)="navSubirProducto()"
+          class="link-success"
+          style="cursor: pointer"
+          >¿subir?</a
+        >
+      </p>
+    </div>
+</section>

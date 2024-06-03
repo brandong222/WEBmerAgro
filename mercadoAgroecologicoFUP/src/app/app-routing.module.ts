@@ -23,6 +23,9 @@ import { UserEditComponent } from './components/vistas/user-edit/user-edit.compo
 import { ProductEditComponent } from './components/vistas/product-edit/product-edit.component';
 import { CategoryEditComponent } from './components/vistas/category-edit/category-edit.component';
 import { ProviderEditComponent } from './components/vistas/provider-edit/provider-edit.component';
+import { ProductOWNComponent } from './components/vistas/product-own/product-own.component';
+import { ProviderOWNComponent } from './components/vistas/provider-own/provider-own.component';
+import { ProductSHOWComponent } from './components/vistas/product-show/product-show.component';
 
 
 const routes: Routes = [
@@ -32,12 +35,15 @@ const routes: Routes = [
 
   {path: "user" , component: UserComponent},
   {path: "user/add/:id" , component: UserADDComponent},
-  {path: "user/edit/:id" , component: UserEditComponent},
+  {path: "user/edit" , component: UserEditComponent},
 
 
   {path: 'product', component: ProductComponent,canActivate:[AuthGuard]},
   {path: 'product/add', component: ProductADDComponent,canActivate:[AuthGuard]},
   {path: 'product/edit/:id', component: ProductEditComponent,canActivate:[AuthGuard]},
+  {path: 'product/own', component: ProductOWNComponent,canActivate:[AuthGuard]},
+  {path: 'product/show/:id', component: ProductSHOWComponent,canActivate:[AuthGuard]},
+
 
 
   {path: 'request', component: RequestappComponent,canActivate:[AuthGuard]},
@@ -55,6 +61,7 @@ const routes: Routes = [
   {path: 'provider', component: ProviderComponent, canActivate:[AuthGuard]},
   {path: 'provider/add', component: ProviderADDComponent, canActivate:[AuthGuard]},
   {path: 'provider/edit/:id', component: ProviderEditComponent, canActivate:[AuthGuard]},
+  {path: 'provider/own', component: ProviderOWNComponent, canActivate:[AuthGuard]},
 
 
   {path: '**', pathMatch: 'full', redirectTo: ''}

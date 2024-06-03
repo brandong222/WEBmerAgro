@@ -1,7 +1,7 @@
 <app-header></app-header>
 
-<section class="container">
-  <form *ngFor="let item of peopleArray">
+<section class="container"  *ngFor="let item of peopleArray">
+  <form>
     <div class="parte_izquierda">
       <div class="form-group">
         <span>Nombre</span>
@@ -52,8 +52,8 @@
   </form>
 
   <div class="botones_navegacion">
-    <input type="button" class="btn btn-primary" value="Volver">
-    <input type="button" class="btn btn-success" value="Ver datos de sesion">
+    <input type="button" class="btn btn-primary" (click)="navDatosSesion()" value="Datos de sesion">
+    <input type="button" class="btn btn-success" (click)="navDatosProveedor()" value="Datos de productor" *ngIf="item.use_rol === 'productor' || item.use_rol === 'admin'">
     <input type="button" class="btn btn-dark" value="Editar">
   </div>
 

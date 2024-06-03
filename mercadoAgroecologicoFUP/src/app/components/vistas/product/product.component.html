@@ -43,14 +43,14 @@
           </span>
         </li>
         <li class="list-group-item"  *ngIf="item.pro_price <= 0">
-          <span style="font-size: 30px;">Negociable </span>
+          <span style="font-size: 30px;">Trueque</span>
           </li>
         <li class="list-group-item" *ngIf="item.pro_price > 0">
           <span style="font-size: 30px;">$ {{ item.pro_price }} </span>
         </li>
       </ul>
       <div class="card-body" style="width: 100%; ">
-        <a style="width: 90%;" class="btn btn-success">ver</a>
+        <a style="width: 90%;" class="btn btn-success" (click)="verproductoIndividual(item.product_id)" >ver</a>
       </div>
 
       <div [ngClass]="{'mostrar_certificado': item.pro_certs == 'certificado'}">

@@ -48,6 +48,7 @@ export class PeopleADDComponent {
         console.log(data.data);
         this.imageURL = data.data;
         this.peopleForm.get('peo_image')?.setValue(this.imageURL || '');
+        alert('imagen subida con exito');
       });
     } else {
       alert('imagen no se pudo cargar');
