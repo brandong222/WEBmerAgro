@@ -10,6 +10,10 @@ th{
   background-color: rgb(46, 187, 65);
 }
 
+td{
+  background-color: rgba(174, 255, 181, 0.466);
+}
+
 .btn{
   width: 120%;
 }

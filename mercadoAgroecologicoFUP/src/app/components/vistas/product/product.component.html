@@ -3,12 +3,12 @@
 
 <div class="barra_busqueda">
 
-  <select name="filtros" class="form-select-sm">
+  <select [(ngModel)]="selectedFilter" (change)="applyFilter()">
     <option value="none">Filtrar</option>
     <option value="nombre">Nombre</option>
     <option value="menor">Precio de menor a mayor</option>
     <option value="mayor">Precio de mayor a menor</option>
-    <option value="certificado">certificado</option>
+    <option value="certificado">Producto (s) certificado (s)</option>
 
   </select>
   <input class="form-control me-2" type="search" placeholder="Buscar producto" aria-label="Search">
