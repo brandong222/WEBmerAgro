@@ -1,6 +1,7 @@
 import { ProductI } from './../../../models/product.interface';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PeopleI } from 'src/app/models/people.interface';
 import { UserI } from 'src/app/models/user.interface';
 import { JoinService } from 'src/app/services/join/join.service';
 import { ProductService } from 'src/app/services/product/product.service';
@@ -18,6 +19,7 @@ export class ProductSHOWComponent implements OnInit {
   productUnitArray: any[] = [];
   banderaStar: boolean = false;
   productosRelacionados: any[] = [];
+  numeroContacto: number = 0;
 
   constructor(
     private routeA: ActivatedRoute,
@@ -28,8 +30,25 @@ export class ProductSHOWComponent implements OnInit {
 
   ngOnInit(): void {
     this.mostrarProductoID();
-    this.mostrarProductosPersona(); // para mas productos
+    this.mostrarProductosProveedores(); // para mas productos
+    this.contactar();
   }
+
+
+  contactar() {
+    const id_product = this.productIdNumber;
+
+    // Traer id del proveedor con id de su producto
+    this.productS.getProductId(id_product).subscribe(data => {
+      const datosProduct: ProductI = data[0];
+
+      this.fkjoinS.joinProduProviderID(Number(datosProduct.providers_id)).subscribe((data) => {
+          const numeroContacto = Number(data.data.peo_phone);
+          console.log(data.data.peo_phone)
+      });
+    });
+}
+
 
   mostrarProductoID() {
     this.productS
@@ -53,9 +72,7 @@ export class ProductSHOWComponent implements OnInit {
     }
   }
 
-  mostrarProductosPersona() {
-
-
+  mostrarProductosProveedores() {
 
     const id_product = this.productIdNumber;
 
@@ -69,9 +86,6 @@ export class ProductSHOWComponent implements OnInit {
         this.productosRelacionados = data.data;
       });
     })
-
-
-
 
   }
 
@@ -91,5 +105,9 @@ export class ProductSHOWComponent implements OnInit {
   //ir a ventana para calificar con strellas
   navStar() {
     this.banderaStar = !this.banderaStar;
+  }
+
+  navContactar() {
+
   }
 }
