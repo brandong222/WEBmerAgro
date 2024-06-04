@@ -6,6 +6,11 @@ nav .logo{
   margin-left: 20px;
 }
 
+nav div div ul li a{
+  display: flex;
+  gap: 10px;
+}
+
 .navbar {
   position: sticky;
   top: 0px;
@@ -46,7 +51,7 @@ nav .logo{
 
 /*para dar espacio entre items del menu */
 .nav-item{
-  margin: 0px 30px;
+  margin: 0px 20px;
   font-size: 20px;
 }
 
