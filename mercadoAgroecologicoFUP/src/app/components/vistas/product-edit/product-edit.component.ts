@@ -8,6 +8,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { categoryI } from 'src/app/models/category.interface';
 import { UserI } from 'src/app/models/user.interface';
 import { ProductI } from 'src/app/models/product.interface';
+import { superInterfazI } from 'src/app/models/superInterfaz.interface';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-product-edit',
@@ -15,8 +17,10 @@ import { ProductI } from 'src/app/models/product.interface';
   styleUrls: ['./product-edit.component.css'],
 })
 export class ProductEditComponent implements OnInit {
+  rolUser: string = "";
   productForm: FormGroup;
   fkCategoryList: categoryI[] = [];
+  fkRolUserList: UserI[] = [];
   link_imagen_producto = '';
 
   //tomar id de las rutas
@@ -26,6 +30,7 @@ export class ProductEditComponent implements OnInit {
     private productS: ProductService,
     private route: Router,
     private fkcategoryS: CategoryService,
+    private fkUserS: UserService,
     private imagenS: ImagenService,
     private fkjoinS: JoinService,
     private routeA: ActivatedRoute
@@ -46,8 +51,16 @@ export class ProductEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCategories();
-
     this.datosProductoId();
+    this.getRolUser();
+  }
+
+  //Metodo actualizar
+  actualizarProductos(form: ProductI){
+  this.productS.updateProduct(Number(form.id),form).subscribe(data=>{
+    alert(data.status);
+    alert(data.message);
+  })
   }
 
   datosProductoId() {
@@ -89,4 +102,17 @@ export class ProductEditComponent implements OnInit {
       this.fkCategoryList = data;
     });
   }
+
+  //Extraer el rol del usuario
+  getRolUser(){
+    const user_id: UserI = this.traerDatosSesion();
+  }
+
+  traerDatosSesion(){
+    const requestData = sessionStorage.getItem('usuario_login')
+    if (requestData) {
+      return JSON.parse(requestData)
+    }
+  }
+
 }
