@@ -2,9 +2,12 @@ import { ProductI } from './../../../models/product.interface';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PeopleI } from 'src/app/models/people.interface';
+import { ProviderI } from 'src/app/models/provider.interface';
 import { UserI } from 'src/app/models/user.interface';
 import { JoinService } from 'src/app/services/join/join.service';
+import { PeopleService } from 'src/app/services/people/people.service';
 import { ProductService } from 'src/app/services/product/product.service';
+import { ProviderService } from 'src/app/services/provider/provider.service';
 
 @Component({
   selector: 'app-product-show',
@@ -25,29 +28,20 @@ export class ProductSHOWComponent implements OnInit {
     private routeA: ActivatedRoute,
     private productS: ProductService,
     private route: Router,
-    private fkjoinS: JoinService
+    private fkjoinS: JoinService,
+    private providerS: ProviderService,
+    private peopleS: PeopleService
   ) {}
 
   ngOnInit(): void {
+    this.navContactar();
     this.mostrarProductoID();
     this.mostrarProductosProveedores(); // para mas productos
-    this.contactar();
+
   }
 
 
-  contactar() {
-    const id_product = this.productIdNumber;
 
-    // Traer id del proveedor con id de su producto
-    this.productS.getProductId(id_product).subscribe(data => {
-      const datosProduct: ProductI = data[0];
-
-      this.fkjoinS.joinProduProviderID(Number(datosProduct.providers_id)).subscribe((data) => {
-          const numeroContacto = Number(data.data.peo_phone);
-          console.log(data.data.peo_phone)
-      });
-    });
-}
 
 
   mostrarProductoID() {
@@ -109,5 +103,23 @@ export class ProductSHOWComponent implements OnInit {
 
   navContactar() {
 
+    const id_product = this.productIdNumber;
+
+    //traer id del provedor con id de su producto
+    this.productS.getProductId(id_product).subscribe(data=>{
+      const datosProduct: ProductI = data[0];
+      console.log(datosProduct.providers_id);
+
+      this.providerS.getProviderId(Number(datosProduct.providers_id)).subscribe(data=>{
+      const dataProvider: ProviderI = data.data;
+
+      this.peopleS.getPersonById(Number(dataProvider.people_peo_id)).subscribe(data=>{
+        const numeroPeople: PeopleI = data.data;
+        this.numeroContacto = Number(numeroPeople.peo_phone);
+
+      })
+
+      })
+    });
   }
 }

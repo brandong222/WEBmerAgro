@@ -14,41 +14,34 @@ export class ProductComponent implements OnInit {
 
   productArray: any[] = [];
 
-
   //segundo se inyecta las dependencias de servicio y rutas
   constructor(
     private productS: ProductService,
     private route: Router,
     private fkjoinS: JoinService,
-    private fkpeopleS: PeopleService,
-  ) { }
+    private fkpeopleS: PeopleService
+  ) {}
 
   ngOnInit(): void {
     this.mostrarProductos();
   }
 
-
   //metodos fk
   mostrarProductos() {
-    this.fkjoinS.getProductProvider().subscribe(data => {
+    this.fkjoinS.getProductProvider().subscribe((data) => {
       this.productArray = data.data;
       this.productArray.sort(() => Math.random() - 0.5);
-    })
-
+    });
   }
 
-  filtrarNombre(){
-    this.productS.filterName().subscribe(data=>{
-      //this.productArray = data;
-      console.log(data);
-    })
+  filtrarNombre() {
+    this.productS.filterName().subscribe((data) => {
+      this.productArray = data;
+    });
   }
-
-
-
 
   //NAVEGACION
-  verproductoIndividual(id: number){
-    this.route.navigate(['/product/show/',id]);
-    }
+  verproductoIndividual(id: number) {
+    this.route.navigate(['/product/show/', id]);
+  }
 }
