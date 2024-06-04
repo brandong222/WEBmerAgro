@@ -1,15 +1,15 @@
 PRODUCT
--agregar filtros en productos
--agregar busqueda en productos
--poner sello de certificacion
--poner productos que salgan aleatorios
+-agregar filtros en productos ✔️
+-agregar busqueda en productos✔️ 
+-poner sello de certificacion 
+-poner productos que salgan aleatorios ✔️
 
 PRODUCT/SHOW/ID
--poner link en botones (ej: perfil, redirija a perfil)
--poner metodo para enviar mensajes whatsApp
--mejorar imagenes (object-fit: cover)
--poner más productos relacionados con el productor
--permitir eliminar (ocultar) productos
+-poner link en botones (ej: perfil, redirija a perfil) ✔️
+-poner metodo para enviar mensajes whatsApp ✔️
+-mejorar imagenes (object-fit: cover) ✔️
+-poner más productos relacionados con el productor ✔️
+-permitir eliminar (ocultar) productos ✔️
 
 PRODUCT/OWN
 -poner filtros y barra de busqueda funcionales
@@ -19,6 +19,10 @@ PRODUCT/ADD
 -mejorar interfaz
 -ocultar informacion no necesaria (ej: id provedor)
 -redirijir a provedor/add en caso que solo tenga rol admin
+
+PRODUCT/EDIT/ID
+-
+
 
 PROVIDER
 -poner filtros
