@@ -6,7 +6,7 @@
     <option value="nombre">Nombre</option>
     <option value="menor">Precio de menor a mayor</option>
     <option value="mayor">Precio de mayor a menor</option>
-    <option value="certificado">Producto (s) certificado (s)</option>
+    <option value="certificado">Productos certificados</option>
   </select>
 
   <input
@@ -55,13 +55,16 @@
           style="width: 90%"
           class="btn btn-success"
           (click)="verproductoIndividual(item.product_id)"
-          >ver</a
+          >
+          ver
+          </a
         >
       </div>
 
-      <div
-        [ngClass]="{ mostrar_certificado: item.pro_certs == 'certificado' }"
-      ></div>
+      <div *ngIf="item.pro_certs == 'certificado'" class="mostrar_certificado">
+
+    </div>
+
     </div>
   </div>
 </section>
