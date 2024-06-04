@@ -1,20 +1,23 @@
 <app-header></app-header>
 
 <div class="barra_busqueda">
-  <select id="filtros">
+  <select id="filtros" (change)="filtrosProductos()">
     <option value="none">Filtrar</option>
     <option value="nombre">Nombre</option>
     <option value="menor">Precio de menor a mayor</option>
     <option value="mayor">Precio de mayor a menor</option>
-    <option value="certificado">Producto (s) certificado (s)</option>
+    <option value="certificado">Productos certificados</option>
   </select>
-<input type="button" value="name filter"  (click)="filtrarNombre()">
+
   <input
-    class="form-control me-2"
-    type="search"
-    placeholder="Buscar producto"
-    aria-label="Search"
-  />
+  class="form-control me-2"
+  type="search"
+  [(ngModel)]="busqueda_clave"
+  (input)="barraBusquedaProductos()"
+  placeholder="Buscar producto"
+  aria-label="Search"
+/>
+
 </div>
 
 <section>
@@ -52,13 +55,16 @@
           style="width: 90%"
           class="btn btn-success"
           (click)="verproductoIndividual(item.product_id)"
-          >ver</a
+          >
+          ver
+          </a
         >
       </div>
 
-      <div
-        [ngClass]="{ mostrar_certificado: item.pro_certs == 'certificado' }"
-      ></div>
+      <div *ngIf="item.pro_certs == 'certificado'" class="mostrar_certificado">
+
+    </div>
+
     </div>
   </div>
 </section>

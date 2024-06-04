@@ -58,13 +58,25 @@ export class ProductService {
     return this.http.get<ProductI[]>(`${this.filterUrl}filtrarPorNombre`, { headers });
   }
 
-  /*
 
 
-filtrarPorNombre
-filtrarPorPrecioMenorAMayor
-filtrarPorPrecioMayorAMenor
-filtrarPorCertificado
-  */
+  filtrarPorPrecioMenorAMayor(): Observable<ProductI[]> {
+    const token = localStorage.getItem('token');
+    const headers = { Authorization: `Bearer ${token}` };
+    return this.http.get<ProductI[]>(`${this.filterUrl}filtrarPorPrecioMenorAMayor`, { headers });
+  }
+
+  filtrarPorPrecioMayorAMenor(): Observable<ProductI[]> {
+    const token = localStorage.getItem('token');
+    const headers = { Authorization: `Bearer ${token}` };
+    return this.http.get<ProductI[]>(`${this.filterUrl}filtrarPorPrecioMayorAMenor`, { headers });
+  }
+
+  filtrarPorCertificado(): Observable<ProductI[]> {
+    const token = localStorage.getItem('token');
+    const headers = { Authorization: `Bearer ${token}` };
+    return this.http.get<ProductI[]>(`${this.filterUrl}filtrarPorCertificado`, { headers });
+  }
+
 
 }

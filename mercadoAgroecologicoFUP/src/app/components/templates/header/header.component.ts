@@ -16,6 +16,14 @@ export class HeaderComponent implements OnInit {
   FKusuarioName: string = '';
 
   ngOnInit(): void {
+
+    const user_name = localStorage.getItem('user_name');
+    if (user_name) {
+      this.FKusuarioName = user_name;
+    } else {
+      this.FKusuarioName = 'usuario';
+    }
+
     let datosSesion = sessionStorage.getItem('usuario_login');
     if (datosSesion) {
       let usuarioLogin: UserI = JSON.parse(datosSesion);
@@ -24,12 +32,7 @@ export class HeaderComponent implements OnInit {
       console.log('No hay datos en el almacenamiento de sesión.');
     }
 
-    const user_name = localStorage.getItem('user_name');
-    if (user_name) {
-      this.FKusuarioName = user_name;
-    } else {
-      this.FKusuarioName = 'usuario';
-    }
+
   }
 
 
