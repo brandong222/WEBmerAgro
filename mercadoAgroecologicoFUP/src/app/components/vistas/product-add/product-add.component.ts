@@ -22,6 +22,7 @@ export class ProductADDComponent implements OnInit {
   fkCategoryList: categoryI[] = [];
   selectedFile: File | null = null;
   public imageURL: string = 'API image';
+  banderaBotonImagen: boolean = false;
 
   productForm: FormGroup;
 
@@ -56,6 +57,12 @@ export class ProductADDComponent implements OnInit {
   onFileSelected(event: Event) {
     const target = event.target as HTMLInputElement;
     this.selectedFile = target.files ? target.files[0] : null;
+
+    if(this.selectedFile != null ){
+      this.banderaBotonImagen = true;
+    } else{
+      this.banderaBotonImagen = false;
+    }
   }
 
   subirImagen() {
@@ -65,6 +72,8 @@ export class ProductADDComponent implements OnInit {
         console.log(data.data);
         this.imageURL = data.data;
         this.productForm.get('pro_image')?.setValue(this.imageURL || '');
+        alert("imagen "+data.data)
+        this.banderaBotonImagen = false;
       });
     } else {
       alert('imagen no se pudo cargar');

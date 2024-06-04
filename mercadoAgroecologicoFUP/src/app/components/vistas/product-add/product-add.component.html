@@ -1,15 +1,13 @@
 <app-header></app-header>
 
-
-
-<div class="container-sm">
-
-
+<div class="container">
 
   <div class="container_imagen">
-    <label for="pro_image">Imagen:</label>
-    <input class="form-control" type="file" (change)="onFileSelected($event)"  >
-    <button class="btn btn-outline-dark"  (click)="subirImagen()"> subir imagen</button>
+<div class="form-group">
+  <label for="pro_image">Elegir imagen</label>
+  <input class="form-control" type="file" (change)="onFileSelected($event)"  value="Subir imagen">
+  <button  *ngIf="banderaBotonImagen" class="btn btn-outline-dark"  (click)="subirImagen()"> Aceptar</button>
+</div>
   </div>
 
 
@@ -96,7 +94,7 @@
         />
       </div>
 
-      <div class="form-group">
+      <div class="form-group" hidden>
         <label for="provider_id">Proveedor ID:</label>
         <input
           id="provider_id"
