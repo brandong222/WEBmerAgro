@@ -106,6 +106,7 @@ export class ProductEditComponent implements OnInit {
   //Extraer el rol del usuario
   getRolUser(){
     const user_id: UserI = this.traerDatosSesion();
+    this.rolUser = String(user_id.use_rol);
   }
 
   traerDatosSesion(){
