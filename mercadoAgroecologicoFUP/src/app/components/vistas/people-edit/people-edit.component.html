@@ -1,1 +1,65 @@
-<p>people-edit works!</p>
+<app-header></app-header>
+
+<section class="container">
+
+  <form [formGroup]="peopleForm" (ngSubmit)="actualizarPersona(peopleForm.value)">
+    <div class="parte_derecha">
+      <div class="form-group">
+        <img [src]="link_imagen_people" alt="imagen" />
+      </div>
+    </div>
+    <div class="parte_izquierda">
+      <div class="form-group">
+        <span>Nombre</span>
+        <input type="text" class="form-control" formControlName="peo_name" />
+      </div>
+
+      <div class="form-group">
+        <span>Apellido</span>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="peo_lastName"
+        />
+      </div>
+
+      <div class="form-group">
+        <span>Correo Electronico:</span>
+        <input type="email" class="form-control" formControlName="peo_mail" />
+      </div>
+
+      <div class="form-group">
+        <span>Teléfono</span>
+        <input type="number" class="form-control" formControlName="peo_phone" />
+      </div>
+
+      <div class="form-group">
+        <span>Fecha</span>
+        <input
+          type="date"
+          class="form-control"
+          formControlName="peo_dateBirth"
+        />
+      </div>
+
+      <div class="form-group">
+        <span>Ubicación</span>
+        <select
+          name=""
+          id="ubicacion"
+          class="form-control"
+          formControlName="peo_adress"
+        >
+          <option value="">Seleccione</option>
+          <option value="Calibío">Calibío</option>
+          <option value="Popayán">Popayán</option>
+          <option value="Timbío">Timbío</option>
+          <option value="El tambo">El tambo</option>
+          <option value="Otra">Otra</option>
+        </select>
+      </div>
+    </div>
+
+    <input type="submit" class="btn btn-success" value="Guardar cambios" />
+  </form>
+</section>

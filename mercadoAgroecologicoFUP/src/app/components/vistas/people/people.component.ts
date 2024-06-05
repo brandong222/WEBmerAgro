@@ -54,8 +54,11 @@ export class PeopleComponent implements OnInit {
 
 
   navDatosProveedor(){
-this.route.navigate(['/provider/own'])
+    this.route.navigate(['/provider/own'])
   }
 
+  navEditarPerfil(id:number){
+    this.route.navigate(['/people/edit/'+id])
+  }
 
 }

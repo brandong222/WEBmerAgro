@@ -17,7 +17,7 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./product-edit.component.css'],
 })
 export class ProductEditComponent implements OnInit {
-  rolUser: string = "";
+  rolUser: string = '';
   productForm: FormGroup;
   fkCategoryList: categoryI[] = [];
   fkRolUserList: UserI[] = [];
@@ -36,15 +36,16 @@ export class ProductEditComponent implements OnInit {
     private routeA: ActivatedRoute
   ) {
     this.productForm = new FormGroup({
+      id: new FormControl(0, Validators.required),
       pro_name: new FormControl('', Validators.required),
       pro_type: new FormControl('', Validators.required),
-      pro_price: new FormControl(null, Validators.required),
+      pro_price: new FormControl(0, Validators.required),
       pro_certs: new FormControl('No', Validators.required),
       pro_image: new FormControl(''),
       pro_unit: new FormControl('', Validators.required),
       pro_description: new FormControl('', Validators.required),
       pro_status: new FormControl(1, Validators.required),
-      providers_id: new FormControl(null),
+      providers_id: new FormControl(0),
       categories_id: new FormControl(0, Validators.required),
     });
   }
@@ -56,13 +57,12 @@ export class ProductEditComponent implements OnInit {
   }
 
   //Metodo actualizar
-  actualizarProductos(form: ProductI){
-console.log(form);
-    /*
-     this.productS.updateProduct(Number(form.id),form).subscribe(data=>{
-    alert(data.status);
-    alert(data.message);
-  })*/
+  actualizarProductos(form: ProductI) {
+    console.log(form);
+
+    this.productS.updateProduct(Number(form.id), form).subscribe((data) => {
+      alert(data.message);
+    });
   }
 
   datosProductoId() {
@@ -106,16 +106,15 @@ console.log(form);
   }
 
   //Extraer el rol del usuario
-  getRolUser(){
+  getRolUser() {
     const user_id: UserI = this.traerDatosSesion();
     this.rolUser = String(user_id.use_rol);
   }
 
-  traerDatosSesion(){
-    const requestData = sessionStorage.getItem('usuario_login')
+  traerDatosSesion() {
+    const requestData = sessionStorage.getItem('usuario_login');
     if (requestData) {
-      return JSON.parse(requestData)
+      return JSON.parse(requestData);
     }
   }
-
 }

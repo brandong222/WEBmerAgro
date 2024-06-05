@@ -1,0 +1,12 @@
+section {
+  background: lightgray;
+  padding: 20px;
+  margin: 10px auto;
+}
+
+section form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
