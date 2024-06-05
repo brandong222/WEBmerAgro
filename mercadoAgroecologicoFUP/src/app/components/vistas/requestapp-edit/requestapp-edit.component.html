@@ -1,1 +1,54 @@
-<p>requestapp-edit works!</p>
+<body>
+  <h1>Información de la solicitud y la persona</h1>
+  <div class="container">
+    <div class="content">
+      <div class="person-info">
+
+        <div class="details">
+          <div class="row">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" value="">
+          </div>
+          <div class="row">
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" value="Muñoz">
+          </div>
+          <div class="row">
+            <label for="ubicacion">Ubicación:</label>
+            <input type="text" id="ubicacion" value="Popayán">
+          </div>
+          <div class="row">
+            <label for="email">Email:</label>
+            <input type="email" id="email" value="correo@mail.com">
+          </div>
+        </div>
+
+        <div class="detalles">
+
+          <div class="status-dropdown">
+            <select id="estado">
+              <option value="1">Pendiente</option>
+              <option value="2">En proceso</option>
+              <option value="3">Aprobada</option>
+              <option value="4">No aprovada</option>
+              <option value="0">Eliminar</option>
+            </select>
+          </div>
+
+          <div class="profile-picture">
+            <img src="profile-picture.png" alt="Profile picture">
+          </div>
+
+          <div class="actions">
+            <button class="btn btn-success">Contactar</button>
+            <button class="btn btn-primary">Contactar</button>
+          </div>
+        </div>
+      </div>
+
+      </div>
+
+
+
+    <button class="back-button" (click)="nvRegresar()">Volver</button>
+  </div>

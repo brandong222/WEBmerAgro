@@ -19,6 +19,7 @@ import { PeopleADDComponent } from './components/vistas/people-add/people-add.co
 import { PeopleComponent } from './components/vistas/people/people.component';
 import { RequestappComponent } from './components/vistas/requestapp/requestapp.component';
 import { RequestappADDComponent } from './components/vistas/requestapp-add/requestapp-add.component';
+import { RequestappEDITComponent } from './components/vistas/requestapp-edit/requestapp-edit.component';
 import { UserEditComponent } from './components/vistas/user-edit/user-edit.component';
 import { ProductEditComponent } from './components/vistas/product-edit/product-edit.component';
 import { CategoryEditComponent } from './components/vistas/category-edit/category-edit.component';
@@ -47,7 +48,7 @@ const routes: Routes = [
   {path: 'product/show/:id', component: ProductSHOWComponent,canActivate:[AuthGuard]},
 
 
-
+  {path: 'request/edit/:id', component: RequestappEDITComponent, canActivate:[AuthGuard]},
   {path: 'request', component: RequestappComponent,canActivate:[AuthGuard]},
   {path: 'request/add', component: RequestappADDComponent,canActivate:[AuthGuard]},
 

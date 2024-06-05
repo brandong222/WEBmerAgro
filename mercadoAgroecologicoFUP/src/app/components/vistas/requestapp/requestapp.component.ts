@@ -27,4 +27,11 @@ export class RequestappComponent implements OnInit {
       this.requestArray = info.data;
     });
   }
+
+  //NAVEGAR
+
+  nvEditRequest(){
+  this.route.navigate(['/request/edit']);
+  }
+
 }

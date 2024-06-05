@@ -115,9 +115,9 @@
             </li>
             <li>
               <a
+              *ngIf="RolUser === 'admin'"
                 class="dropdown-item"
                 (click)="navverRequest()"
-                *ngIf="RolUser !== 'usuario'"
                 >Solicitudes</a
               >
             </li>

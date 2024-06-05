@@ -29,12 +29,16 @@
         <td *ngIf="item.req_status === 1"
           style="background-color: rgb(236, 188, 31); color: white;">Pendiente</td>
         <td *ngIf="item.req_status === 2"
-          style="background-color: rgb(49, 145, 255); color: white;">En proceso</td>
+          style="background-color: rgb(49, 145, 255); color: white;">En
+          proceso</td>
         <td *ngIf="item.req_status === 3"
           style="background-color: rgb(0, 214, 0); color: white;">Aprobado</td>
         <td *ngIf="item.req_status === 4"
-          style="background-color: rgb(255, 66, 66); color: white;">No aprobado</td>
-        <a class="btn btn-primary">ver</a>
+          style="background-color: rgb(255, 66, 66); color: white;">No
+          aprobado</td>
+        <td>
+          <a class="btn btn-primary" (click)="nvEditRequest()">ver</a>
+        </td>
       </tr>
     </tbody>
   </table>
