@@ -1,6 +1,7 @@
-<p>star works!</p>
-
-⭐⭐⭐⭐⭐
- **hacer
-
-
+<div class="rating_container">
+  <a class="star" [ngStyle]="{'color': num_star > 0 || num_star == 1 ?'gold' : 'darkgray'}"  (click)="numeroEstrellas(1)" >&#9733;</a>
+  <a class="star" [ngStyle]="{'color': num_star > 1 && num_star <6 ? 'gold' : 'darkgray'}" (click)="numeroEstrellas(2)">&#9733;</a>
+  <a class="star" [ngStyle]="{'color': num_star > 2 && num_star <6 ? 'gold' : 'darkgray'}" (click)="numeroEstrellas(3)">&#9733;</a>
+  <a class="star" [ngStyle]="{'color': num_star > 3 && num_star <6 ? 'gold' : 'darkgray'}" (click)="numeroEstrellas(4)">&#9733;</a>
+  <a class="star" [ngStyle]="{'color': num_star > 4 && num_star <6 ? 'gold' : 'darkgray'}" (click)="numeroEstrellas(5)">&#9733;</a>
+</div>

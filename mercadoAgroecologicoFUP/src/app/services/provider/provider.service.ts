@@ -40,6 +40,16 @@ export class ProviderService {
     });
   }
 
+  updateOnlyRanking(id: number, ranking: number): Observable<responsiveI> {
+    const token = localStorage.getItem('token');
+    const headers = { Authorization: `Bearer ${token}` };
+    return this.http.put<responsiveI>(`${this.apiUrl}/updateOnlyRanking/${id}`,  { prov_ranking: ranking }, {
+      headers,
+    });
+  }
+
+
+
   // para eliminar un proveedor
   deleteProvider(id: number): Observable<responsiveI> {
     const token = localStorage.getItem('token');

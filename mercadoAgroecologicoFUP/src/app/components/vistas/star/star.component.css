@@ -1,0 +1,14 @@
+
+.rating_container{
+  display: flex;
+  gap: 5px;
+  font-size: 80px;
+
+}
+
+
+.star{
+  cursor: pointer;
+  text-decoration: none;
+  color: darkgray;
+}
