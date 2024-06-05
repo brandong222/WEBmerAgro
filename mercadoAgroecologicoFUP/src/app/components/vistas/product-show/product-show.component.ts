@@ -23,6 +23,7 @@ export class ProductSHOWComponent implements OnInit {
   banderaStar: boolean = false;
   productosRelacionados: any[] = [];
   numeroContacto: number = 0;
+  contarEstrellas: number = 0;
 
   constructor(
     private routeA: ActivatedRoute,
@@ -30,19 +31,21 @@ export class ProductSHOWComponent implements OnInit {
     private route: Router,
     private fkjoinS: JoinService,
     private providerS: ProviderService,
-    private peopleS: PeopleService
+    private peopleS: PeopleService,
+    private providers: ProviderService
   ) {}
 
   ngOnInit(): void {
     this.navContactar();
     this.mostrarProductoID();
     this.mostrarProductosProveedores(); // para mas productos
-
   }
 
-
-
-
+  //para obtener estrellas de componente
+  obtenerNumeroEstrellas(star: number) {
+    console.log('su estrellas son: ' + star);
+    this.contarEstrellas = star;
+  }
 
   mostrarProductoID() {
     this.productS
@@ -53,6 +56,7 @@ export class ProductSHOWComponent implements OnInit {
   }
 
   eliminarProducto(id: number) {
+    ////////////// <---- modificar alerta
     const respuesta = window.confirm(
       '¿Estás seguro de que quieres eliminar este producto?'
     );
@@ -67,20 +71,19 @@ export class ProductSHOWComponent implements OnInit {
   }
 
   mostrarProductosProveedores() {
-
     const id_product = this.productIdNumber;
 
     //traer id del provedor con id de su producto
-    this.productS.getProductId(id_product).subscribe(data=>{
+    this.productS.getProductId(id_product).subscribe((data) => {
       const datosProduct: ProductI = data[0];
 
-
-      this.fkjoinS.joinProduProviderID(Number(datosProduct.providers_id)).subscribe((data) => {
-        console.log(data.data);
-        this.productosRelacionados = data.data;
-      });
-    })
-
+      this.fkjoinS
+        .joinProduProviderID(Number(datosProduct.providers_id))
+        .subscribe((data) => {
+          console.log(data.data);
+          this.productosRelacionados = data.data;
+        });
+    });
   }
 
   //NAVEGACION **
@@ -92,34 +95,54 @@ export class ProductSHOWComponent implements OnInit {
 
   //para ir a perfil
 
-  navPerfil() {
-    this.route.navigate(['/people']);
+  navPerfilShow(id_product: number) {
+    this.route.navigate(['/people/show/' + id_product]);
   }
 
   //ir a ventana para calificar con strellas
   navStar() {
     this.banderaStar = !this.banderaStar;
+    if (!this.banderaStar) {
+      //traer datos id_provedor
+      const id_product = this.productIdNumber;
+
+      //traer id del provedor con id de su producto
+      this.productS.getProductId(id_product).subscribe((data) => {
+        const datosProduct: ProductI = data[0];
+
+        //guardar cambios de estrellas para proveedor
+        this.providerS
+          .updateOnlyRanking(
+            Number(datosProduct.providers_id),
+            this.contarEstrellas
+          )
+          .subscribe((data) => {
+            alert(data.status);
+          });
+      });
+    }
   }
 
   navContactar() {
-
     const id_product = this.productIdNumber;
 
     //traer id del provedor con id de su producto
-    this.productS.getProductId(id_product).subscribe(data=>{
+    this.productS.getProductId(id_product).subscribe((data) => {
       const datosProduct: ProductI = data[0];
       console.log(datosProduct.providers_id);
 
-      this.providerS.getProviderId(Number(datosProduct.providers_id)).subscribe(data=>{
-      const dataProvider: ProviderI = data.data;
+      this.providerS
+        .getProviderId(Number(datosProduct.providers_id))
+        .subscribe((data) => {
+          const dataProvider: ProviderI = data.data;
 
-      this.peopleS.getPersonById(Number(dataProvider.people_peo_id)).subscribe(data=>{
-        const numeroPeople: PeopleI = data.data;
-        this.numeroContacto = Number(numeroPeople.peo_phone);
-
-      })
-
-      })
+          this.peopleS
+            .getPersonById(Number(dataProvider.people_peo_id))
+            .subscribe((data) => {
+              const numeroPeople: PeopleI = data.data;
+              this.numeroContacto = Number(numeroPeople.peo_phone);
+            });
+        });
     });
   }
 }

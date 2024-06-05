@@ -135,3 +135,21 @@ span{
   transform: rotate(-40deg);
   transform-origin: top left;
 }
+
+
+/*para estrellas*/
+.component_star{
+  width: 80%;
+  background: white;
+  box-shadow: 5px 5px 18px black;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px auto;
+}
+
+.component_star input{
+  width: 80%;
+
+}

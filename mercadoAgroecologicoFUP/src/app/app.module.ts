@@ -37,6 +37,7 @@ import { ProviderOWNComponent } from './components/vistas/provider-own/provider-
 import { ProductSHOWComponent } from './components/vistas/product-show/product-show.component';
 import { StarComponent } from './components/vistas/star/star.component';
 import { RequestappEDITComponent } from './components/vistas/requestapp-edit/requestapp-edit.component';
+import { PeopleSHOWComponent } from './components/vistas/people-show/people-show.component';
 
 
 
@@ -72,7 +73,8 @@ import { RequestappEDITComponent } from './components/vistas/requestapp-edit/req
     ProviderOWNComponent,
     ProductSHOWComponent,
     StarComponent,
-    RequestappEDITComponent
+    RequestappEDITComponent,
+    PeopleSHOWComponent
   ],
   imports: [
     BrowserModule,
