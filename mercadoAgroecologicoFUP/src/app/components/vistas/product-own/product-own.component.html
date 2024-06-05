@@ -1,19 +1,23 @@
 <app-header></app-header>
 
 <div class="barra_busqueda">
-  <select name="filtros" class="form-select-sm">
-    <option value="none" class="form-select">Filtrar</option>
-    <option value="nombre" class="form-select">Nombre</option>
-    <option value="menor" class="form-select">Precio de menor a mayor</option>
-    <option value="mayor" class="form-select">Precio de mayor a menor</option>
-    <option value="certificado" class="form-select">certificado</option>
+  <select id="filtros" (change)="filtrosProductos()" >
+    <option value="none">Filtrar</option>
+    <option value="nombre">Nombre</option>
+    <option value="menor">Precio de menor a mayor</option>
+    <option value="mayor">Precio de mayor a menor</option>
+    <option value="certificado">Productos certificados</option>
   </select>
+
   <input
-    class="form-control me-2"
-    type="search"
-    placeholder="Buscar producto"
-    aria-label="Search"
-  />
+  class="form-control me-2"
+  type="search"
+  [(ngModel)]="busqueda_clave"
+  (input)="barraBusquedaProductos()"
+  placeholder="Buscar producto"
+  aria-label="Search"
+/>
+
 </div>
 
 <div class="title">mis productos</div>
