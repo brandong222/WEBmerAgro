@@ -1,8 +1,10 @@
 <app-header></app-header>
 
-<div class="container-sm">
+<div class="container">
 
   <div class="container_imagen">
+
+    <img  [src]="link_imagen_producto" alt="producto" width="200px" height="auto">
     <label for="pro_image">Imagen:</label>
     <input class="form-control" type="file" >
     <button class="btn btn-outline-dark"> subir imagen</button>
@@ -12,7 +14,7 @@
 
     <div class="formulario_style">
 
-      <img  [src]="link_imagen_producto" alt="producto" width="50px" height="auto">
+
 
       <div class="form-group">
         <label for="pro_name">Nombre:</label>

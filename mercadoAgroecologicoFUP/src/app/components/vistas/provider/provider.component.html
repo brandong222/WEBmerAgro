@@ -3,7 +3,7 @@
 <div class="main_provider">
   <div *ngFor="let provider of providerArray;" class="provider">
     <div class="imagen">
-      <img src="https://th.bing.com/th/id/OIP.sOAIoiZfxpt0CBhfMhYcswHaE8?w=225&h=180&c=7&r=0&o=5&pid=1.7" alt="Imagen">
+      <img [src]="provider.peo_image" alt="Imagen">
     </div>
     <div class="informacion">
       <h4>{{provider.peo_name}} {{provider.peo_lastname}}</h4>
@@ -16,9 +16,8 @@
       <p>{{ provider.prov_description }}</p>
     </div>
     <div class="acciones">
-     <a>
-      <img style="width: 60px; height:50px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAR5JREFUSEvtlEFuwkAMRV9uQrdUnIFyC3aFkxRO0rLjFi1nQGVbbtLy20k0TOw4kZpdRooymrH9v//Yrhh5VSPHZwIIFY4kmgEbYAlor++aoup/uJ29daF0AeyAl5DiH6CAZN9aFoBYvgJPPYLnJgJaZRn+3pUAXnA575McshG4stO+E6QEeDeYK/iDkY2Cy94CaexzAD2mpCnXNjFfAMd0uQbOiYxAPJ87ib4MNnIUG2XxCcxTpAvwmOzlV64m6zwDS54IQPfffQE8iVQZH4AlUSRrq4r+45FFRqTcMvUqI+9alalVEK2K8xrNAon6zixnb1TUM6jPqBCwmrD3qMiZ1l37nA4lTT7sTl5g7w0iGQbfR+N6cMDSYQIIJfwB6Ls9GV0z7ecAAAAASUVORK5CYII="/>
-
+     <a (click)="navEditarProveedor(provider.provider_id || 0)">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAAAXNSR0IArs4c6QAABGVJREFUeF7tmruvTUEUxj9KnUelQaHXqtBRkCgUNEhUKKlRU2ioJGjoFEjo0FD5CyQejcqjU+J8skcmx5lZrznnHsma5ty7957Za37zrTVrZs8mZOkS2JR8+gQSkKCQBJSAYkEkFZQKSgXFCKSCYvwyBqWCUkExAqmgGL+MQamg/09BBwHsBnBgMp3/l8LrLB/nfl8BeFldK/djvVfUXpWLnZmA8HdEIaz7E7SlwlomICrj9EwNo6C0wBLWtUphIwbgbxvLAEQwV2YG164z1OhGY0sBNRIQ48fdDQAzz4ugzlZxLDQ4owDRjQhnnQoh3YsaNALQC4dqaPinudmKwbYEXKqxzGjlb8569XVN3/kexid3II8AsroUjS3TtdvgaTAY47SwQi7nBUTjPmiGcBrBq8pnrY+VmFfU1qrPATnkUZIHkBYOpb0sMPMgNKBckKyACIcxpzdiIUlbJVQ9r7HNDMkKSArIq1RNiyXV1EtOTQNoAUR3YXBsFfp4WS9ZhHAcwAkA+2epwi4A3wC8AfAMwEMA3y2NTc/SVmbxLaWrB1ILiFkx1dMqnpxjH4Cb1aK11faNaWB+GEENGVANICkoe+AcAfAUwGZlpz8DODepSlnlz2M9SKp4pAHUewlzGwKyFCrnrQFOaZuQ9gIYqSTR1SRAPfVwBPZYyEzPMk6VvSBrdbrbZWulKWdrxSP2oZm4SoB6M0K34UYnGJAfOTpYV9nmCNy9FKDrBT1APfWI0mxAeADgZBDQBQC3HW30QkVzsHuAWg16XYt9eu90y5rHEwDHHIBYhcujRa7WVFEP0K+GEV71sLmfs7WZ5NZS378C2CE91LhvVlHP2BbtCKAvALY7O1eqLQNQ0yt6gFoBWpU/NCA8nk3xR4OAmD952zB7RQ9QL3v2qug8gFtBQBedbZjdi3ZK8WD0NL91WmtFGHmn+db+FfMyriMXFgkQVURIiyK/19WuA7jkJORNFHu7EKFEkf3oSdPjalsAvAOw0whpLZcapQ+tGY33PZC4WL1jgORdrPa+tqjyOcnFCiBp68ADiUpiPcndvNsd0qco1f6VFpDkarzv2fZgPQbuUwAOT5tmvPYawPPAhpm0f6XehbAA6qXqRWlUBF8e+axjDE3/PC6pvTtrzbdmBaTZGDft+UZpVPU13+lUcae2yQqIdTWQissR1irUJKmG9tAOhgHTvrkHkAXSskFpwLjhaDLpngdolVTaKMdT6m/wHg+zHsYKubxXQXXHpO9QiyDQaH6nr2HVx+7Kd/f6AAO3aa1njkwBeZGhIwCVFKD3HcqjlGgdVZ4jvWQUoBKX1uEAVfjIS3QWk6D3FrhS3cj9tT+CN9+5clZRe47HC4eKKSdevW006410sZ5xnHlKjJLO8mg6OeowlviuVQGqDSkHycth8hpY/XeZ4crsNuJ0mghk/oGNAGQ2ciMrJCCBfgJKQDEHTQWlglJBMQKpoBi/jEGpoFRQjEAqKMYvY1AqKBUUIyDU/g0zTu5JTjcmIAAAAABJRU5ErkJggg=="/>
      </a>
     </div>
   </div>

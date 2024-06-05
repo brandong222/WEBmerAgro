@@ -6,6 +6,7 @@ import { PeopleService } from 'src/app/services/people/people.service';
 import { By } from '@angular/platform-browser';
 import { PeopleI } from 'src/app/models/people.interface';
 import { JoinService } from 'src/app/services/join/join.service';
+import { superInterfazI } from 'src/app/models/superInterfaz.interface';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class ProviderComponent implements OnInit {
     private peopleServide: PeopleService,
     private FK_joinS: JoinService ) { }
 
-  providerArray: any[] = [];
+  providerArray: superInterfazI[] = [];
 
   ngOnInit(): void {
   this.mostrarProvedores();
@@ -28,8 +29,21 @@ export class ProviderComponent implements OnInit {
 
   mostrarProvedores(){
   this.FK_joinS.getDataProvidersUser().subscribe(info=>{
-    console.log(info.status);
+    console.log(info);
     this.providerArray = info.data;
    });
   }
+
+//NAVEGACION
+
+navEditarProveedor(id: number){
+  if(id>0){
+    this.route.navigate(['/provider/edit/'+id]);
+
+  }else{
+    alert('error')
+    this.route.navigate(['/provider']);
+  }
+}
+
  }

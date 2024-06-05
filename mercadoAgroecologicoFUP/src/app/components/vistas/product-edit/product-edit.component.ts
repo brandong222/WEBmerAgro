@@ -57,10 +57,12 @@ export class ProductEditComponent implements OnInit {
 
   //Metodo actualizar
   actualizarProductos(form: ProductI){
-  this.productS.updateProduct(Number(form.id),form).subscribe(data=>{
+console.log(form);
+    /*
+     this.productS.updateProduct(Number(form.id),form).subscribe(data=>{
     alert(data.status);
     alert(data.message);
-  })
+  })*/
   }
 
   datosProductoId() {

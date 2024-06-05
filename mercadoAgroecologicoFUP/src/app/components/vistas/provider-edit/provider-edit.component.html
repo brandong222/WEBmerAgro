@@ -1,1 +1,26 @@
-<p>provider-edit works!</p>
+<app-header></app-header>
+
+<!-- (ngSubmit)="actualizarProductos(productForm.value)" -->
+
+<form [formGroup]="providerForm">
+  <div class="form-group">
+    <label for="">grupo</label>
+    <input class="form-control" type="text" formControlName="prov_group" />
+  </div>
+  <div class="form-group">
+    <label for="">descripcion</label>
+    <input type="text" formControlName="prov_description" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="">Ranking</label>
+    <input type="text" formControlName="prov_ranking" class="form-control"/>
+  </div>
+  <div class="form-group">
+    <label for="">status</label>
+    <input type="text" formControlName="prov_status" class="form-control"/>
+  </div>
+  <div class="form-group">
+    <label for="">people id</label>
+    <input type="text" formControlName="people_peo_id" class="form-control"/>
+  </div>
+</form>
