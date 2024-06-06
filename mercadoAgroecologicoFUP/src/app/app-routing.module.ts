@@ -30,6 +30,7 @@ import { ProductSHOWComponent } from './components/vistas/product-show/product-s
 import { PeopleEditComponent } from './components/vistas/people-edit/people-edit.component';
 import { StarComponent } from './components/vistas/star/star.component';
 import { PeopleSHOWComponent } from './components/vistas/people-show/people-show.component';
+import { UserLISTComponent } from './components/vistas/user-list/user-list.component';
 
 
 const routes: Routes = [
@@ -40,6 +41,9 @@ const routes: Routes = [
   {path: "user" , component: UserComponent},
   {path: "user/add/:id" , component: UserADDComponent},
   {path: "user/edit" , component: UserEditComponent},
+  {path: "user/list" , component: UserLISTComponent},
+
+
 
 
   {path: 'product', component: ProductComponent,canActivate:[AuthGuard]},

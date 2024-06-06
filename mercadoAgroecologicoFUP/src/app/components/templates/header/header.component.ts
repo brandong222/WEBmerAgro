@@ -84,6 +84,11 @@ export class HeaderComponent implements OnInit {
     this.route.navigate(['/product/own'])
   }
 
+  //ver todos los usuarios
+  navUserList(){
+    this.route.navigate(['/user/list']);
+  }
+
   //cerrar sesion borrar token
   cerrarSesion() {
     this.loginS.logout().subscribe((data) => {

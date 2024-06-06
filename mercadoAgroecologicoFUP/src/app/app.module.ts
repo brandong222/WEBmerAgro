@@ -39,6 +39,7 @@ import { ProductSHOWComponent } from './components/vistas/product-show/product-s
 import { StarComponent } from './components/vistas/star/star.component';
 import { RequestappEDITComponent } from './components/vistas/requestapp-edit/requestapp-edit.component';
 import { PeopleSHOWComponent } from './components/vistas/people-show/people-show.component';
+import { UserLISTComponent } from './components/vistas/user-list/user-list.component';
 
 
 
@@ -75,7 +76,8 @@ import { PeopleSHOWComponent } from './components/vistas/people-show/people-show
     ProductSHOWComponent,
     StarComponent,
     RequestappEDITComponent,
-    PeopleSHOWComponent
+    PeopleSHOWComponent,
+    UserLISTComponent
   ],
   imports: [
     BrowserModule,

@@ -129,6 +129,15 @@
                 >Categorías</a
               >
             </li>
+
+            <li>
+              <a
+                class="dropdown-item"
+                (click)="navUserList()"
+                *ngIf="RolUser == 'admin'"
+                >Usuarios</a
+              >
+            </li>
           </ul>
         </li>
 
