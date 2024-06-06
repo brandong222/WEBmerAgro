@@ -3,35 +3,58 @@
 <div class="container" aria-readonly="false">
   <h1>Enviar solicitud a un administrador (a)</h1>
 
-  <form *ngFor="let item of requestArray">
-    <div class="form-group">
-      <label for="nombre">Nombre</label>
-      <input type="text" value="{{ item.peo_name }} {{ item.peo_lastname }}"
-        class="form-control" readonly />
-    </div>
+  <div class="lado-izq" *ngFor="let item of requestArray">
+    <form [formGroup]="requestForm" (ngSubmit)="guardarRequest(requestForm.value)">
+      <div class="form-group">
+        <label for="req_dateRequest">Fecha</label>
+        <input type="text" class="form-control" formControlName="req_dateRequest" />
+      </div>
 
-    <div class="form-group">
-      <label for="nombre">Descripción</label>
-      <input type="text" placeholder="Ingrese una descipción de su solucitud"
-        class="form-control" >
-    </div>
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" value="{{ item.peo_name }} {{ item.peo_lastname }}"
+          class="form-control" readonly />
+      </div>
 
-    <div class="form-group">
-      <label for="tipoSolicitud">Tipo de Solicitud</label>
-      <input type="text" value="Ser productor" *ngIf="item.use_rol === 'usuario' || item.use_rol === 'admin'"
-        class="form-control" readonly />
+      <div class="form-group">
+        <label for="estado">Estado</label>
+        <input type="text" value="1"
+          class="form-control" readonly formControlName="req_status"/>
+      </div>
 
-        <input type="text" value="Certificar producto (s)" *ngIf="item.use_rol === 'productor' || item.use_rol === 'admin'"
-        class="form-control" readonly />
+      <div class="form-group">
+        <label for="id">Id</label>
+        <input type="text" value="{{ item.people_id }}"
+          class="form-control" readonly formControlName="people_id"/>
+      </div>
 
-      <div class="form-group" *ngIf="item.use_rol === 'productor'"
-        id="checklistVisitaCertificacion">
-        <label for="checklist">Checklist para Visita de Certificación</label>
+      <div class="form-group">
+        <label for="req_description">Descripción</label>
+        <input type="text" placeholder="Ingrese una descipción de su solucitud"
+          class="form-control" formControlName="req_description">
+      </div>
 
-        <app-certification></app-certification>
+      <div class="form-group">
+        <label for="req_type">Tipo de Solicitud</label>
+        <input type="text"
+          *ngIf="item.use_rol === 'usuario'"
+          class="form-control" readonly formControlName="req_type"/>
+
+        <input type="text"
+          *ngIf="item.use_rol === 'productor' || item.use_rol === 'admin'"
+          class="form-control" readonly formControlName="req_type"/>
+
+        <div class="form-group" *ngIf="item.use_rol === 'productor'"
+          id="checklistVisitaCertificacion">
+          <label for="checklist">Checklist para Visita de Certificación</label>
+
+          <app-certification></app-certification>
+
+        </div>
+
+        <input type="submit" class="btn btn-primary boton_style" value="Enviar">
 
       </div>
 
-      <button type="submit" class="btn btn-primary">Enviar</button>
-
-    </div>
+    </form>
+  </div>
