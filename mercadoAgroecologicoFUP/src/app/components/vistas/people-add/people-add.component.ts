@@ -5,6 +5,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PeopleI } from 'src/app/models/people.interface';
 import { ImagenService } from 'src/app/services/subirIMAGEN/imagen.service';
 import { responsiveI } from 'src/app/models/response.interface';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-people-add',
@@ -64,8 +65,11 @@ export class PeopleADDComponent {
             let dataR: responsiveI = data;
 
             if (dataR.status) {
-              console.log(dataR.message);
-              console.log(dataR.status);
+              Swal.fire(
+                'Datos de '+dataR.data.peo_name,
+                'Registrados exitosamente',
+                'success'
+              )
 
               this.route.navigate(['/user/add/', dataR.data.id]);
             }

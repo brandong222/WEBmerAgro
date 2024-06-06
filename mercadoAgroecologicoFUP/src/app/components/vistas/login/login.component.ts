@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 import { responsiveI } from 'src/app/models/response.interface';
 import { PeopleService } from 'src/app/services/people/people.service';
 
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -52,7 +54,16 @@ export class LoginComponent implements OnInit {
             //guardar en localstorage
             localStorage.setItem('user_name', people.data.peo_name);
             localStorage.setItem('id_user', people.data.id);
+
+            Swal.fire(              // Muestra una notificación utilizando la librería Swal (SweetAlert)
+            'Inicio de sesion',
+            'Inicio de sesion exitoso',
+            'success'
+          )
+
+
           });
+
 
           this.router.navigate(['home']);
         }
@@ -67,5 +78,6 @@ export class LoginComponent implements OnInit {
   //navegación
   navigateToRegister() {
     this.router.navigate(['/people/add']);
+
   }
 }
