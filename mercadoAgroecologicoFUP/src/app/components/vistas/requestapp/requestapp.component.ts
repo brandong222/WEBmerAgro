@@ -31,7 +31,7 @@ export class RequestappComponent implements OnInit {
   //NAVEGAR
 
   nvEditRequest(id_provedor: number){
-  this.route.navigate(['/request/edit'+id_provedor]);
+  this.route.navigate(['/request/edit/'+id_provedor]);
   }
 
 }

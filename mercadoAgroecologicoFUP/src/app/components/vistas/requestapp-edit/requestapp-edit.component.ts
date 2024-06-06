@@ -50,13 +50,13 @@ export class RequestappEDITComponent {
   //obtener id de people
   obtenerPeopleID(){
     this.requestS.getRequestAppId(this.id_productor_ruta).subscribe(data=>{
-  //traer id de la persona
-     // this.requestS.getRequestAppId(Number(data[0].people_peo_id)).subscribe(datos=>{
-        //console.log(datos.data.people_peo_id);
-      //this.id_people_fk = datos.data.people_peo_id;
+    //traer id de la persona
+      this.providerS.getProviderId(Number(data.data.people_id)).subscribe(datos=>{
+        console.log(datos.data.people_peo_id);
+      this.id_people_fk = datos.data.people_peo_id;
       //metodo para buscar datos
-
-      //})
+      this.datosPeople();
+      })
     });
   }
 
