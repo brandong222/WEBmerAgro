@@ -18,6 +18,8 @@ export class JoinService {
   private apiJOIN6: string = 'http://127.0.0.1:8000/api/joinProvedorpeopleID';
   private apiJOIN7: string = 'http://127.0.0.1:8000/api/showReqPeoUsu';
   private apiJOIN8: string = 'http://127.0.0.1:8000/api/joinProduProviderID';
+  private apiJOIN9: string = 'http://127.0.0.1:8000/api/showPeopleUsers';
+
 
 
 
@@ -54,6 +56,11 @@ export class JoinService {
   joinProduProviderID(id: number): Observable<responsiveI> {
     return this.http.get<responsiveI>(`${this.apiJOIN8}/${id}`);
   }
+
+  showPeopleUsers(): Observable<any> {
+    return this.http.get<any>(`${this.apiJOIN9}`);
+  }
+
 
 
 }

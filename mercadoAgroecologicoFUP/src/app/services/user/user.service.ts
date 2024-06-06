@@ -18,6 +18,13 @@ export class UserService {
     const headers = { Authorization: `Bearer ${token}` };
     return this.http.get<UserI[]>(this.apiUrl, { headers });
   }
+  getUserInactive(): Observable<UserI[]> {
+    const token = localStorage.getItem('token');
+    const headers = { Authorization: `Bearer ${token}` };
+    return this.http.get<UserI[]>(`${this.apiUrl}/inactive`, { headers });
+  }
+
+
 
   //para guardar los usuarios
   AddUser(form: UserI): Observable<responsiveI> {
