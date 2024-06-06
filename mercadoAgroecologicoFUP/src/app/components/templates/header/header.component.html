@@ -108,7 +108,7 @@
             <li>
               <a class="dropdown-item" (click)="navVerPeople()">Mi perfil</a>
             </li>
-            <li *ngIf="RolUser == 'usuario'">
+            <li *ngIf="RolUser != 'admin'">
               <a class="dropdown-item" (click)="navEnviarSolicitud() "
                 >Enviar solicitud</a
               >
