@@ -28,8 +28,8 @@
 
 /* Estilos para la imagen */
 .imagen img {
-  width: 100%;
-  height: auto;
+  width: 200px;
+  height: 200px;
   border-radius: 100%;
   object-fit: cover;
 }

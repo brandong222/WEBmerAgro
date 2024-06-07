@@ -18,6 +18,10 @@ export class ProductSHOWComponent implements OnInit {
   //tomar id de las rutas
   productIdNumber: number = Number(this.routeA.snapshot.paramMap.get('id'));
 
+  //bandera  y provedor_id
+  banderaCalificar: boolean = true;
+  rolUsuario: string = "";
+
   //variables y arreglos
   productUnitArray: any[] = [];
   banderaStar: boolean = false;
@@ -36,14 +40,20 @@ export class ProductSHOWComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.validarRoles();
     this.navContactar();
     this.mostrarProductoID();
-    this.mostrarProductosProveedores(); // para mas productos
+    this.mostrarOtrosProductos(); // para mas productos
+  }
+
+  //validar roles de usuario
+  validarRoles(){
+    const sesion: UserI= this.traerDatosSesion();
+    this.rolUsuario = String(sesion.use_rol);
   }
 
   //para obtener estrellas de componente
   obtenerNumeroEstrellas(star: number) {
-    console.log('su estrellas son: ' + star);
     this.contarEstrellas = star;
   }
 
@@ -63,27 +73,29 @@ export class ProductSHOWComponent implements OnInit {
 
     if (respuesta) {
       this.productS.deleteProduct(id).subscribe((data) => {
-        console.log(data);
+      //  console.log(data);
         alert(data.message);
         this.route.navigate(['/product']);
       });
     }
   }
 
-  mostrarProductosProveedores() {
-    const id_product = this.productIdNumber;
+  mostrarOtrosProductos() {
 
-    //traer id del provedor con id de su producto
-    this.productS.getProductId(id_product).subscribe((data) => {
-      const datosProduct: ProductI = data[0];
+    this.productS.getproductos().subscribe(data=>{
+      this.productosRelacionados = data;
+    })
 
-      this.fkjoinS
-        .joinProduProviderID(Number(datosProduct.providers_id))
-        .subscribe((data) => {
-          console.log(data.data);
-          this.productosRelacionados = data.data;
-        });
-    });
+
+  }
+
+  //Traer datos sesion para habilitar por rol las opciones
+  traerDatosSesion(){
+    const usuarioData = sessionStorage.getItem('usuario_login');
+
+    if (usuarioData) {
+      return JSON.parse(usuarioData);
+    }
   }
 
   //NAVEGACION **

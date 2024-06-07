@@ -34,7 +34,7 @@ export class ProductComponent implements OnInit {
       this.productArray.sort(() => Math.random() - 0.5);
     });
   }
-  
+
   //FILTROS DE PRODUCTOS FUNCIONES
 
   filtrarNombre() {

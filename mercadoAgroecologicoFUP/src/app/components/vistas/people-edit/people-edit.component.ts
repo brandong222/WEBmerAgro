@@ -18,12 +18,16 @@ export class PeopleEditComponent implements OnInit {
   peopleArray: superInterfazI[] = [];
   peopleForm: FormGroup;
   userForm: FormGroup;
+  productForm: FormGroup;
+
   link_imagen_people: string = '';
   peopleIdNumber: number = Number(this.routeA.snapshot.paramMap.get('id'));
 
   //variable para controlar nevegacion local
   navegacion_local: number = 1;
   banderaPassword: boolean = false;
+
+
 
   constructor(
     private route: Router,
@@ -54,11 +58,25 @@ export class PeopleEditComponent implements OnInit {
       people_id: new FormControl(0, Validators.required),
     });
 
+    this.productForm = new FormGroup({
+      id: new FormControl(0),
+      pro_name:new FormControl('', Validators.required),
+      pro_type: new FormControl('', Validators.required),
+      pro_price: new FormControl(0),
+      pro_certs: new FormControl('', Validators.required),
+      pro_image:new FormControl(0),
+      pro_unit: new FormControl('', Validators.required),
+      pro_description: new FormControl('', Validators.required),
+      pro_status:new FormControl(0),
+      providers_id: new FormControl(0),
+      categories_id:new FormControl(0),
+    });
+
   }
 
   ngOnInit(): void {
     this.datosPeople();
-    this.traerDatosSesion();
+    this.mostrarDatosSesion();
   }
 
   //datos de persona section 1
@@ -89,7 +107,7 @@ export class PeopleEditComponent implements OnInit {
   }
 
   //section 2 datos sesion
-  traerDatosSesion() {
+  mostrarDatosSesion() {
     this.fkjoinS.joinUserPeopleID(Number(this.peopleIdNumber)).subscribe((data) => {
 
         if (data.data[0]) {
@@ -98,7 +116,12 @@ export class PeopleEditComponent implements OnInit {
           this.userForm.get('id')?.setValue(Number(dataR.users_id));
           this.userForm.get('use_cc')?.setValue(dataR.use_cc || null);
           this.userForm.get('use_rol')?.setValue(dataR.use_rol || null);
-          this.userForm.get('use_status')?.setValue(dataR.use_status || null);
+          if(dataR.use_status == 1){
+            this.userForm.get('use_status')?.setValue(dataR.use_status || null);
+          }else{
+            this.userForm.get('use_status')?.setValue(0);
+          }
+
           this.userForm.get('people_id')?.setValue(dataR.users_id || null);
 
 
@@ -129,6 +152,25 @@ export class PeopleEditComponent implements OnInit {
   }
 
 
+//para controlar cambio de roles
+rol_user_change(form: UserI){
+const rol_user = form.use_rol;
+alert(rol_user);
+  if(rol_user == 'usuario'){
+
+  }
+  if(rol_user == 'productor'){
+
+  }
+
+  if(rol_user == 'admin'){
+
+  }
+
+  this.userForm.get('use_rol')?.setValue(rol_user);
+}
+
+
   //guardar cambios (actualizar)
 
   actualizarPersona(form: PeopleI) {
@@ -139,4 +181,28 @@ export class PeopleEditComponent implements OnInit {
       this.route.navigate(['/people']);
     });
   }
+
+  //guardar cambios usuario
+  actualizarUsuario(form: UserI){
+    console.log(form);
+    this.userS.updateUser(Number(form.id), form).subscribe(data=>{
+      console.log(data.status);
+      if(data.status){
+        Swal.fire(
+          'Usuario',
+          'Datos actualizados exitosamente',
+           'success'
+               )
+      }else{
+        Swal.fire(
+          'Usuario',
+          'No se pudo actualizar los datos',
+          'error'
+        )
+      }
+
+      this.route.navigate(['/people/edit/'+this.peopleIdNumber]);
+    })
+  }
+
 }
