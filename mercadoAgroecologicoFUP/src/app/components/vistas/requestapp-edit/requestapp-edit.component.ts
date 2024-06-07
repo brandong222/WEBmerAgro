@@ -8,6 +8,7 @@ import { PeopleService } from 'src/app/services/people/people.service';
 import { ProductService } from 'src/app/services/product/product.service';
 import { ProviderService } from 'src/app/services/provider/provider.service';
 import { RequestappService } from 'src/app/services/requestapp/requestapp.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-requestapp-edit',
@@ -28,7 +29,8 @@ export class RequestappEDITComponent {
     private fkjoinS: JoinService,
     private providerS: ProviderService,
     private productS: ProductService,
-    private requestS: RequestappService
+    private requestS: RequestappService,
+    private location: Location
   ) {
     this.peopleForm = new FormGroup({
       id: new FormControl('', Validators.required),
@@ -83,6 +85,6 @@ export class RequestappEDITComponent {
 
   //NAvegacion
   nvRegresar() {
-    this.route.navigate(['/request']);
+    this.location.back();
   }
 }

@@ -40,15 +40,14 @@
         <th>Acción</th>
       </tr>
     </thead>
-
-    <tbody>
-      <tr *ngFor="let item of filteredRequests">
+    <tbody *ngFor="let item of filteredRequests">
+      <tr>
         <td class="idPersonaTB">{{item.people_id}}</td>
         <td>{{ item.req_type }}</td>
         <td>{{ item.peo_phone }}</td>
         <td>{{ item.peo_name }}</td>
         <td>{{ item.peo_lastname }}</td>
-        <th>{{ item.req_description }}</th>
+        <td>{{ item.req_description }}</td>
         <td>{{ item.peo_adress }}</td>
         <td>{{ item.use_rol }}</td>
         <td *ngIf="item.req_status === 0"
@@ -64,13 +63,15 @@
           style="background-color: rgb(255, 66, 66); color: white;">No
           aprobado</td>
         <td>
-          <a class="btn btn-primary" (click)="nvEditRequest(item.provider_id)">ver</a>
+          <a class="btn btn-success " (click)="nvEditRequest(item.provider_id)">ver</a>
         </td>
+        <div *ngIf="item.req_status == 1" class="notificacion"></div>
       </tr>
     </tbody>
   </table>
-
 </div>
+
+
 </section>
 
 <section class="container" *ngIf="navegacion_local == 2">
@@ -83,6 +84,7 @@
           <th>Telefono</th>
           <th>Nombre</th>
           <th>Apellido</th>
+          <th>Descripción</th>
           <th>Ubicación</th>
           <th>Rol</th>
           <th>Estado</th>
@@ -97,6 +99,7 @@
           <td>{{ item.peo_phone }}</td>
           <td>{{ item.peo_name }}</td>
           <td>{{ item.peo_lastname }}</td>
+          <td>{{ item.req_description }}</td>
           <td>{{ item.peo_adress }}</td>
           <td>{{ item.use_rol }}</td>
           <td *ngIf="item.req_status === 0"
@@ -112,8 +115,9 @@
             style="background-color: rgb(255, 66, 66); color: white;">No
             aprobado</td>
           <td>
-            <a class="btn btn-primary" (click)="nvEditRequest(item.provider_id)">ver</a>
+            <a class="btn btn-success" (click)="nvEditRequest(item.provider_id)">ver</a>
           </td>
+          <div *ngIf="item.req_status == 1" class="notificacion"></div>
         </tr>
       </tbody>
     </table>
@@ -131,6 +135,7 @@
             <th>Telefono</th>
             <th>Nombre</th>
             <th>Apellido</th>
+            <th>Descripción</th>
             <th>Ubicación</th>
             <th>Rol</th>
             <th>Estado</th>
@@ -145,6 +150,7 @@
             <td>{{ item.peo_phone }}</td>
             <td>{{ item.peo_name }}</td>
             <td>{{ item.peo_lastname }}</td>
+            <td>{{ item.req_description }}</td>
             <td>{{ item.peo_adress }}</td>
             <td>{{ item.use_rol }}</td>
             <td *ngIf="item.req_status === 0"
@@ -160,8 +166,9 @@
               style="background-color: rgb(255, 66, 66); color: white;">No
               aprobado</td>
             <td>
-              <a class="btn btn-primary" (click)="nvEditRequest(item.provider_id)">ver</a>
+              <a class="btn btn-success" (click)="nvEditRequest(item.provider_id)">ver</a>
             </td>
+            <div *ngIf="item.req_status == 1" class="notificacion"></div>
           </tr>
         </tbody>
       </table>

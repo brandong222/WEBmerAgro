@@ -12,47 +12,57 @@ import { JoinService } from 'src/app/services/join/join.service';
 export class RequestappComponent implements OnInit {
   constructor(private requestS: RequestappService,
     private route: Router,
-    private FK_joinS: JoinService ) {}
+    private FK_joinS: JoinService) { }
 
   requestArray: any[] = [];
   filteredRequests: any[] = [];
-    //variable para controlar nevegacion local
+  //variable para controlar nevegacion local
   navegacion_local: number = 1;
 
   ngOnInit(): void {
-       this.datosUnidos();
-       this.cambioMenuLocal(1);
+    this.datosUnidos();
   }
 
-  datosUnidos(){
+  datosUnidos() {
     this.FK_joinS.showReqPeoUsu().subscribe((info) => {
-      console.log(info.status);
-      console.log(info);
       this.requestArray = info.data;
+
+      this.cambioMenuLocal(this.navegacion_local);
     });
   }
 
-  cambioMenuLocal(navega: number){
-    if (navega == 1) {
+  cambioMenuLocal(navega: number) {
     this.navegacion_local = navega;
-    this.filteredRequests = this.requestArray.filter(item => item.req_type === 'Certificar producto (s)');
-    }
-    if (navega == 2){
-      this.navegacion_local = navega;
-      this.filteredRequests = this.requestArray.filter(item => item.req_type === 'Ser productor');
-    }
+    let filterCondition: string;
 
-    if (navega == 3){
-      this.navegacion_local = navega;
-      this.filteredRequests = this.requestArray.filter(item => item.req_type === 'Contraseña');
+    switch (navega) {
+      case 1:
+        filterCondition = 'Certificar producto (s)';
+        this.filtroSolicitudes(filterCondition);
+        break;
+      case 2:
+        filterCondition = 'Ser productor';
+        this.filtroSolicitudes(filterCondition);
+        break;
+      case 3:
+        filterCondition = 'Contraseña';
+        this.filtroSolicitudes(filterCondition);
+        break;
+      default:
+        return;
     }
   }
 
+  filtroSolicitudes(filter: string) {
+    this.filteredRequests = this.requestArray.filter(item => item.req_type === filter);
+  }
 
   //NAVEGAR
 
-  nvEditRequest(id_provedor: number){
-  this.route.navigate(['/request/edit/'+id_provedor]);
+  nvEditRequest(id_provedor: number) {
+    this.route.navigate(['/request/edit/' + id_provedor]);
   }
+
+
 
 }

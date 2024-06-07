@@ -18,3 +18,11 @@ td{
 .btn{
   width: 120%;
 }
+
+.notificacion::before{
+  position: relative;
+  content: '*';
+  color: red;
+  font-size: 30px;
+  text-shadow: 2px 2px 5px black;
+}
