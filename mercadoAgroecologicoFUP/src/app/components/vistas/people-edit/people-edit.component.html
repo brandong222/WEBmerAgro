@@ -101,7 +101,7 @@
   <h2>Datos de sesion</h2>
 
 
-  <form  [formGroup]="userForm" > <!--(ngSubmit)="actualizarUsuario(userForm.value)"-->
+  <form  [formGroup]="userForm" (ngSubmit)="actualizarUsuario(userForm.value)">
     <div class="data">
       <div class="lado-izq">
 
@@ -124,16 +124,20 @@
         <div class="form-group" >
           <label for="email">Rol</label>
 
-          <select id="" class="form-select" formControlName="use_rol">
+          <select id="" class="form-select" formControlName="use_rol" (change)="rol_user_change(userForm.value)">
 
             <option value="usuario">Usuario</option>
             <option value="productor">Productor</option>
             <option value="admin">Administrador</option>
           </select>
         </div>
-        <div class="form-group" hidden>
+        <div class="form-group" >
           <label for="email">Status</label>
-          <input type="number" class="form-control"  formControlName="use_status" readonly/>
+          <select class="form-select" formControlName="use_status">
+            <option value=1>Activo</option>
+            <option value=0>Inactivo</option>
+          </select>
+
         </div>
 
         <div class="form-group" hidden>
@@ -159,4 +163,6 @@
 
 <section *ngIf="navegacion_local == 3">
   <h2>Datos de Productor</h2>
+
+
 </section>
