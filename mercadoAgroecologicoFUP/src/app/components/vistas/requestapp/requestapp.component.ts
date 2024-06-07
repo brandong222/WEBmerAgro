@@ -15,9 +15,13 @@ export class RequestappComponent implements OnInit {
     private FK_joinS: JoinService ) {}
 
   requestArray: any[] = [];
+  filteredRequests: any[] = [];
+    //variable para controlar nevegacion local
+  navegacion_local: number = 1;
 
   ngOnInit(): void {
        this.datosUnidos();
+       this.cambioMenuLocal(1);
   }
 
   datosUnidos(){
@@ -27,6 +31,23 @@ export class RequestappComponent implements OnInit {
       this.requestArray = info.data;
     });
   }
+
+  cambioMenuLocal(navega: number){
+    if (navega == 1) {
+    this.navegacion_local = navega;
+    this.filteredRequests = this.requestArray.filter(item => item.req_type === 'Certificar producto (s)');
+    }
+    if (navega == 2){
+      this.navegacion_local = navega;
+      this.filteredRequests = this.requestArray.filter(item => item.req_type === 'Ser productor');
+    }
+
+    if (navega == 3){
+      this.navegacion_local = navega;
+      this.filteredRequests = this.requestArray.filter(item => item.req_type === 'Contraseña');
+    }
+  }
+
 
   //NAVEGAR
 
