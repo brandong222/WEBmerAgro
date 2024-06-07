@@ -4,32 +4,39 @@ import { superInterfazI } from 'src/app/models/superInterfaz.interface';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PeopleService } from 'src/app/services/people/people.service';
 import { PeopleI } from 'src/app/models/people.interface';
-
+import { JoinService } from 'src/app/services/join/join.service';
+import { UserService } from 'src/app/services/user/user.service';
+import Swal from 'sweetalert2';
+import { UserI } from 'src/app/models/user.interface';
 
 @Component({
   selector: 'app-people-edit',
   templateUrl: './people-edit.component.html',
-  styleUrls: ['./people-edit.component.css']
+  styleUrls: ['./people-edit.component.css'],
 })
-export class PeopleEditComponent implements OnInit{
-
+export class PeopleEditComponent implements OnInit {
   peopleArray: superInterfazI[] = [];
   peopleForm: FormGroup;
-  link_imagen_people:string = ""
+  userForm: FormGroup;
+  link_imagen_people: string = '';
   peopleIdNumber: number = Number(this.routeA.snapshot.paramMap.get('id'));
 
   //variable para controlar nevegacion local
   navegacion_local: number = 1;
+  banderaPassword: boolean = false;
 
   constructor(
     private route: Router,
     private routeA: ActivatedRoute,
     private peopleS: PeopleService,
-  ){
+    private fkjoinS: JoinService,
+    private userS: UserService
+  ) {
+    //section 1
     this.peopleForm = new FormGroup({
       id: new FormControl('', Validators.required),
       peo_name: new FormControl('', Validators.required),
-      peo_lastName: new FormControl("", Validators.required),
+      peo_lastName: new FormControl('', Validators.required),
       peo_adress: new FormControl('', Validators.required),
       peo_dateBirth: new FormControl(null),
       peo_image: new FormControl('', Validators.required),
@@ -37,9 +44,24 @@ export class PeopleEditComponent implements OnInit{
       peo_phone: new FormControl(0, Validators.required),
     });
 
+    //section 2 userForm
+    this.userForm = new FormGroup({
+      id: new FormControl(0),
+      use_cc: new FormControl('', Validators.required),
+      use_password: new FormControl(''),
+      use_rol: new FormControl('', Validators.required),
+      use_status: new FormControl(1, Validators.required),
+      people_id: new FormControl(0, Validators.required),
+    });
+
   }
 
+  ngOnInit(): void {
+    this.datosPeople();
+    this.traerDatosSesion();
+  }
 
+  //datos de persona section 1
   datosPeople() {
     //metodo para tomar los datos guardados y ponerlos en producto que se decea editar
 
@@ -47,53 +69,74 @@ export class PeopleEditComponent implements OnInit{
       if (data) {
         const dataR: PeopleI = data.data;
 
-       this.peopleForm.get('id')?.setValue(Number(dataR.id));
+        this.peopleForm.get('id')?.setValue(Number(dataR.id));
         this.peopleForm.get('peo_name')?.setValue(dataR.peo_name || null);
-        this.peopleForm.get('peo_lastName')?.setValue(dataR.peo_lastname || null);
+        this.peopleForm
+          .get('peo_lastName')
+          ?.setValue(dataR.peo_lastname || null);
         this.peopleForm.get('peo_adress')?.setValue(dataR.peo_adress || null);
-        this.peopleForm.get('peo_dateBirth')?.setValue(dataR.peo_dateBirth || null);
+        this.peopleForm
+          .get('peo_dateBirth')
+          ?.setValue(dataR.peo_dateBirth || null);
         this.peopleForm.get('peo_image')?.setValue(dataR.peo_image || null);
         this.link_imagen_people = String(dataR.peo_image); //usado para poner la imagen en un img
         this.peopleForm.get('peo_mail')?.setValue(dataR.peo_mail || null);
         this.peopleForm.get('peo_phone')?.setValue(dataR.peo_phone || null);
-
       } else {
-        console.log('No hay datos guardados del producto.');
+        Swal.fire('Productos', 'No hay persona registrada', 'error');
       }
     });
   }
 
+  //section 2 datos sesion
+  traerDatosSesion() {
+    this.fkjoinS.joinUserPeopleID(Number(this.peopleIdNumber)).subscribe((data) => {
 
-//CONTROL DE MENU
-cambioMenuLocal(navega: number){
-  if (navega == 1) {
-  this.navegacion_local = navega;
-  }
-  if (navega == 2){
-    this.navegacion_local = navega;
-  }
+        if (data.data[0]) {
+          const dataR: superInterfazI = data.data[0];
 
-  if (navega == 3){
-    this.navegacion_local = navega;
-  }
-}
+          this.userForm.get('id')?.setValue(Number(dataR.users_id));
+          this.userForm.get('use_cc')?.setValue(dataR.use_cc || null);
+          this.userForm.get('use_rol')?.setValue(dataR.use_rol || null);
+          this.userForm.get('use_status')?.setValue(dataR.use_status || null);
+          this.userForm.get('people_id')?.setValue(dataR.users_id || null);
 
 
-  ngOnInit(): void {
-  this.datosPeople();
+        } else {
+          Swal.fire('Productos', 'No hay persona registrada', 'error');
+        }
+
+      });
   }
+
+  //CONTROL DE MENU
+  cambioMenuLocal(navega: number) {
+    if (navega == 1) {
+      this.navegacion_local = navega;
+    }
+    if (navega == 2) {
+      this.navegacion_local = navega;
+    }
+
+    if (navega == 3) {
+      this.navegacion_local = navega;
+    }
+  }
+
+  //cambiar contraseña activar opciones
+  cambiarPassword() {
+    this.banderaPassword = !this.banderaPassword;
+  }
+
 
   //guardar cambios (actualizar)
 
   actualizarPersona(form: PeopleI) {
     console.log(form);
 
-    this.peopleS.updatePerson(Number(form.id), form).subscribe(data=>{
-      localStorage.setItem('user_name', String(form.peo_name));
-      alert(data.status)
+    this.peopleS.updatePerson(Number(form.id), form).subscribe((data) => {
+      alert(data.status);
       this.route.navigate(['/people']);
-
-    })
+    });
   }
-
 }

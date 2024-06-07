@@ -45,6 +45,19 @@ export class PeopleComponent implements OnInit {
   }
 
 
+
+
+// controles para cambio de rol
+activarControlProductor(people_id: number){
+
+}
+
+
+
+
+
+
+
   //NAVEGACION
 
   //ver datos de sesion

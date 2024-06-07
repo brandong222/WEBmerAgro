@@ -57,8 +57,6 @@ this.userS.updateUser(Number(form.id),form).subscribe(data=>{
 
   })
 
-console.log(form);
-console.log(form.id);
 
 
 }
