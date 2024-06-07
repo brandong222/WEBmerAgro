@@ -39,6 +39,12 @@ constructor(
   }
 
 
+  //NAVEGACION
+  navPerfilPeople(id_people: number){
+    this.route.navigate(['/people/edit/'+id_people]);
+  }
+
+
 
 
 }

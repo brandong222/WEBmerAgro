@@ -7,6 +7,10 @@
       <input type="text"  id="use_cc" class="fadeIn second" formControlName="use_cc" placeholder="ingrese su número de cedula">
       <label for="">Contraseña</label>
       <input type="password"  id="use_password" class="fadeIn third" formControlName="use_password" placeholder="password">
+      <span *ngIf="intentos_contrasena>1">
+        <a (click)="navRecuperarContra()">Olvidé mi contraseña</a>
+      </span>
+
       <input type="submit" class="btn btn-success" value="Ingresar">
 
       <span>¿No tienes una cuenta? <a (click)="navigateToRegister()"  >registrarse</a></span>

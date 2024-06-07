@@ -1,12 +1,43 @@
 <app-header></app-header>
 
-<section class="container">
 
+<nav class="navbar navbar-expand-lg bg-body-secondary">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+
+        <li class="nav-item">
+          <a class="nav-link" (click)="cambioMenuLocal(1)">Datos personales</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="cambioMenuLocal(2)">Datos de sesion</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"(click)="cambioMenuLocal(3)">Datos de productor</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<section class="container" *ngIf="navegacion_local == 1">
+<h2>Datos personales</h2>
   <form [formGroup]="peopleForm" (ngSubmit)="actualizarPersona(peopleForm.value)">
     <div class="parte_derecha">
-      <div class="form-group">
-        <img [src]="link_imagen_people" alt="imagen" />
+      <div class="div_img">
+        <img [src]="link_imagen_people" alt="imagen" class="link_imagen_people"/>
       </div>
+      <div class="form-group">
+        <span>Clic para actualizar imagen</span>
+        <input type="file" class="form-control">
+        <input type="text" class="form-control" formControlName="peo_image"  hidden/>
+      </div>
+
+
+      <input type="submit" class="btn btn-success" value="Guardar cambios" />
     </div>
     <div class="parte_izquierda">
       <div class="form-group">
@@ -58,8 +89,19 @@
           <option value="Otra">Otra</option>
         </select>
       </div>
+
     </div>
 
-    <input type="submit" class="btn btn-success" value="Guardar cambios" />
   </form>
+</section>
+
+
+
+<section *ngIf="navegacion_local == 2">
+  <h2>Datos de sesion</h2>
+</section>
+
+
+<section *ngIf="navegacion_local == 3">
+  <h2>Datos de Productor</h2>
 </section>

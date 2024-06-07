@@ -1,5 +1,7 @@
 <app-header></app-header>
 
+
+
 <div class="container">
   <h2>Usuarios</h2>
   <table class="table table-responsive table-hover">
@@ -24,7 +26,7 @@
         <td *ngIf="item.use_status == 1" style="color: seagreen;"> activo</td>
         <td *ngIf="item.use_status == 0" style="color: red;"> inactivo</td>
 
-        <th> <a href="http://"> Ver </a></th>
+        <th> <a (click)="navPerfilPeople(item.people_id)"> Ver </a></th>
       </tr>
     </tbody>
 

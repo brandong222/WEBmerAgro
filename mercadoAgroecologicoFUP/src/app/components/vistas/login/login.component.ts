@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { responsiveI } from 'src/app/models/response.interface';
 import { PeopleService } from 'src/app/services/people/people.service';
 
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -15,10 +15,15 @@ import { PeopleService } from 'src/app/services/people/people.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+
+  intentos_contrasena: number = 0;
+
   loginForm = new FormGroup({
     use_cc: new FormControl('', Validators.required),
     use_password: new FormControl('', Validators.required),
   });
+
+
 
   constructor(
     private loginS: LoginService,
@@ -48,7 +53,10 @@ export class LoginComponent implements OnInit {
           let fk_people_Id = dataR.data.people_id;
 
           //guardar datos de sesion en almacenamiento de sesion
-          window.sessionStorage.setItem('usuario_login', JSON.stringify(dataR.data));
+          window.sessionStorage.setItem(
+            'usuario_login',
+            JSON.stringify(dataR.data)
+          );
 
           this.fkpeopleS.getPersonById(fk_people_Id).subscribe((people) => {
             //guardar en localstorage
@@ -56,13 +64,20 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('id_user', people.data.id);
           });
 
-
           this.router.navigate(['home']);
         }
       },
       (error) => {
         // Aquí manejas el error alertas
-        alert('Error al intentar iniciar sesión:');
+        Swal.fire(
+          'Inicio de sesion',
+          'Credenciales incorrectas',
+          'error'
+        )
+        this.intentos_contrasena += 1;
+
+
+
       }
     );
   }
@@ -70,6 +85,10 @@ export class LoginComponent implements OnInit {
   //navegación
   navigateToRegister() {
     this.router.navigate(['/people/add']);
+  }
 
+
+  navRecuperarContra(){
+    this.router.navigate(['/forget/password'])
   }
 }

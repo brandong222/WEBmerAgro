@@ -31,11 +31,14 @@ import { PeopleEditComponent } from './components/vistas/people-edit/people-edit
 import { StarComponent } from './components/vistas/star/star.component';
 import { PeopleSHOWComponent } from './components/vistas/people-show/people-show.component';
 import { UserLISTComponent } from './components/vistas/user-list/user-list.component';
+import { ForgetPASSWORDComponent } from './components/templates/forget-password/forget-password.component';
 
 
 const routes: Routes = [
   {path: "" , component: MainComponent},
   {path: "login" , component: LoginComponent},
+  {path: "forget/password" , component: ForgetPASSWORDComponent},
+
   {path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
 
   {path: "user" , component: UserComponent},

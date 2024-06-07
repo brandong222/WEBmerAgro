@@ -40,6 +40,7 @@ import { StarComponent } from './components/vistas/star/star.component';
 import { RequestappEDITComponent } from './components/vistas/requestapp-edit/requestapp-edit.component';
 import { PeopleSHOWComponent } from './components/vistas/people-show/people-show.component';
 import { UserLISTComponent } from './components/vistas/user-list/user-list.component';
+import { ForgetPASSWORDComponent } from './components/templates/forget-password/forget-password.component';
 
 
 
@@ -77,7 +78,8 @@ import { UserLISTComponent } from './components/vistas/user-list/user-list.compo
     StarComponent,
     RequestappEDITComponent,
     PeopleSHOWComponent,
-    UserLISTComponent
+    UserLISTComponent,
+    ForgetPASSWORDComponent
   ],
   imports: [
     BrowserModule,

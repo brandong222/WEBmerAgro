@@ -18,6 +18,8 @@ export class PeopleEditComponent implements OnInit{
   link_imagen_people:string = ""
   peopleIdNumber: number = Number(this.routeA.snapshot.paramMap.get('id'));
 
+  //variable para controlar nevegacion local
+  navegacion_local: number = 1;
 
   constructor(
     private route: Router,
@@ -60,6 +62,22 @@ export class PeopleEditComponent implements OnInit{
       }
     });
   }
+
+
+//CONTROL DE MENU
+cambioMenuLocal(navega: number){
+  if (navega == 1) {
+  this.navegacion_local = navega;
+  }
+  if (navega == 2){
+    this.navegacion_local = navega;
+  }
+
+  if (navega == 3){
+    this.navegacion_local = navega;
+  }
+}
+
 
   ngOnInit(): void {
   this.datosPeople();
