@@ -1,26 +1,89 @@
 <app-header></app-header>
 
-<!-- (ngSubmit)="actualizarProductos(productForm.value)" -->
 
-<form [formGroup]="providerForm">
-  <div class="form-group">
-    <label for="">grupo</label>
-    <input class="form-control" type="text" formControlName="prov_group" />
+<section>
+  <div class="parte_izq">
+
+    <form [formGroup]="peopleForm">
+
+        <div class="form-group" hidden>
+          <label>Clic para actualizar imagen</label>
+          <input type="text" class="form-control" formControlName="peo_image" readonly />
+        </div>
+
+
+
+        <div class="form-group">
+          <label>Nombre</label>
+          <input type="text" class="form-control" formControlName="peo_name" readonly/>
+        </div>
+
+        <div class="form-group">
+          <label>Apellido</label>
+          <input type="text" class="form-control" formControlName="peo_lastName" readonly/>
+        </div>
+
+        <div class="form-group">
+          <label>Correo Electronico:</label>
+          <input type="email" class="form-control" formControlName="peo_mail" readonly/>
+        </div>
+
+        <div class="form-group">
+          <label>Teléfono</label>
+          <input type="text" class="form-control" formControlName="peo_phone" readonly/>
+        </div>
+
+        <div class="form-group">
+          <label>Fecha</label>
+          <input type="date" class="form-control" formControlName="peo_dateBirth" readonly/>
+        </div>
+
+        <div class="form-group">
+          <label>Ubicación</label>
+          <input type="text"class="form-control" formControlName="peo_adress" readonly>
+        </div>
+
+    </form>
+
   </div>
-  <div class="form-group">
-    <label for="">descripcion</label>
-    <input type="text" formControlName="prov_description" class="form-control">
+
+  <div class="parte_der">
+    <form [formGroup]="providerForm">
+      <div class="div_img">
+        <img [src]="link_imagen_people" alt="imagen" class="link_imagen_people" />
+      </div>
+
+    <div class="form-group">
+      <label for="">grupo</label>
+      <input class="form-control" type="text" formControlName="prov_group" readonly />
+    </div>
+    <div class="form-group">
+      <label for="">descripcion</label>
+      <br>
+      <textarea formControlName="prov_description" readonly></textarea>
+    </div>
+    <div class="form-group">
+      <label for="">Ranking</label>
+      <div class="rating_container">
+        <a class="star" [ngStyle]="{'color': valor_ranking_start > 0 || valor_ranking_start == 1 ?'gold' : 'darkgray'}" >&#9733;</a>
+        <a class="star" [ngStyle]="{'color': valor_ranking_start > 1 && valor_ranking_start <6 ? 'gold' : 'darkgray'}" >&#9733;</a>
+        <a class="star" [ngStyle]="{'color': valor_ranking_start > 2 && valor_ranking_start <6 ? 'gold' : 'darkgray'}" >&#9733;</a>
+        <a class="star" [ngStyle]="{'color': valor_ranking_start > 3 && valor_ranking_start <6 ? 'gold' : 'darkgray'}" >&#9733;</a>
+        <a class="star" [ngStyle]="{'color': valor_ranking_start > 4 && valor_ranking_start <6 ? 'gold' : 'darkgray'}" >&#9733;</a>
+      </div>
+      <input type="text" formControlName="prov_ranking" class="form-control" hidden/>
+    </div>
+    <div class="form-group" hidden>
+      <label for="">status</label>
+      <input type="text" formControlName="prov_status" class="form-control"/>
+    </div>
+    <div class="form-group" hidden>
+      <label for="">people id</label>
+      <input type="text" formControlName="people_peo_id" class="form-control"/>
+    </div>
+  </form>
   </div>
-  <div class="form-group">
-    <label for="">Ranking</label>
-    <input type="text" formControlName="prov_ranking" class="form-control"/>
-  </div>
-  <div class="form-group">
-    <label for="">status</label>
-    <input type="text" formControlName="prov_status" class="form-control"/>
-  </div>
-  <div class="form-group">
-    <label for="">people id</label>
-    <input type="text" formControlName="people_peo_id" class="form-control"/>
-  </div>
-</form>
+</section>
+
+
+
