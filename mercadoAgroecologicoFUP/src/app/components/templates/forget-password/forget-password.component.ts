@@ -32,7 +32,7 @@ export class ForgetPASSWORDComponent implements OnInit {
       req_type: new FormControl('', Validators.required),
       req_description: new FormControl('', Validators.required),
       req_status: new FormControl(0, Validators.required),
-      people_id: new FormControl(0, Validators.required),
+      people_id: new FormControl(0),
       use_cc: new FormControl(''),
       use_cc_conf: new FormControl(''),
     });
@@ -48,7 +48,9 @@ export class ForgetPASSWORDComponent implements OnInit {
       this.requestForm.get('req_status')?.setValue(1 || null);
       this.requestForm.get('req_type')?.setValue("Contraseña");
       this.requestForm.get('req_description')?.setValue("Olvide mi contraseña");
-      this.getTodayDate();
+
+
+    this.setTodayDate();
 
   }
 
@@ -71,8 +73,10 @@ export class ForgetPASSWORDComponent implements OnInit {
 
   //evaluar que el usuario sea igaul en ambos campos
   evaluarUsuario(form: RequestI){
+    console.log(form);
     const valorUseCc = String(this.requestForm.get('use_cc')?.value??'');
     const valorUseCcConf = String(this.requestForm.get('use_cc_conf')?.value??'');
+
 
     console.log(valorUseCc)
     if (valorUseCc === valorUseCcConf) {
@@ -83,7 +87,6 @@ export class ForgetPASSWORDComponent implements OnInit {
             if(data[0].use_cc == valorUseCc){
               console.log(data[0].people_id)
               this.requestForm.get('people_id')?.setValue(Number(data[0].people_id));
-              console.log("Existe")
               console.log(form);
 
             }
