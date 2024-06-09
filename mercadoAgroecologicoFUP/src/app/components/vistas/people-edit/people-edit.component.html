@@ -1,9 +1,14 @@
-<app-header></app-header>
-
-
+<div class="container" *ngIf="!bandera_sesion_rol">
+  <h1 style="color: gray;">Error 404</h1>
+    <p>Lo sentimos, la página que estás buscando no existe.</p>
+    <p><a class="btn btn-secondary" href="/">Volver al inicio</a></p>
+</div>
+<div *ngIf="bandera_sesion_rol">
+  <app-header></app-header>
 <nav class="navbar navbar-expand-lg bg-body-secondary">
   <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -15,25 +20,22 @@
         <li class="nav-item">
           <a class="nav-link" (click)="cambioMenuLocal(2)">Datos de sesion</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link"(click)="cambioMenuLocal(3)">Datos de productor</a>
-        </li>
       </ul>
     </div>
   </div>
 </nav>
 
 <section class="container" *ngIf="navegacion_local == 1">
-<h2>Datos personales</h2>
+  <h2>Datos personales</h2>
   <form [formGroup]="peopleForm" (ngSubmit)="actualizarPersona(peopleForm.value)">
     <div class="parte_derecha">
       <div class="div_img">
-        <img [src]="link_imagen_people" alt="imagen" class="link_imagen_people"/>
+        <img [src]="link_imagen_people" alt="imagen" class="link_imagen_people" />
       </div>
       <div class="form-group">
         <span>Clic para actualizar imagen</span>
         <input type="file" class="form-control">
-        <input type="text" class="form-control" formControlName="peo_image"  hidden/>
+        <input type="text" class="form-control" formControlName="peo_image" hidden />
       </div>
 
 
@@ -47,11 +49,7 @@
 
       <div class="form-group">
         <span>Apellido</span>
-        <input
-          type="text"
-          class="form-control"
-          formControlName="peo_lastName"
-        />
+        <input type="text" class="form-control" formControlName="peo_lastName" />
       </div>
 
       <div class="form-group">
@@ -66,21 +64,12 @@
 
       <div class="form-group">
         <span>Fecha</span>
-        <input
-          type="date"
-          class="form-control"
-          formControlName="peo_dateBirth"
-        />
+        <input type="date" class="form-control" formControlName="peo_dateBirth" />
       </div>
 
       <div class="form-group">
         <span>Ubicación</span>
-        <select
-          name=""
-          id="ubicacion"
-          class="form-control"
-          formControlName="peo_adress"
-        >
+        <select name="" id="ubicacion" class="form-control" formControlName="peo_adress">
           <option value="">Seleccione</option>
           <option value="Calibío">Calibío</option>
           <option value="Popayán">Popayán</option>
@@ -98,11 +87,18 @@
 
 
 <section *ngIf="navegacion_local == 2">
-  <h2>Datos de sesion</h2>
+
+  <div class="container_boton_cambio_contrasena">
+    <span>Cambiar contraseña</span>
+    <input class="custom-checkbox" type="checkbox" (click)="cambiarPassword()">
+  </div>
 
 
-  <form  [formGroup]="userForm" (ngSubmit)="actualizarUsuario(userForm.value)">
+  <div class="formularios_diplay">
+      <form [formGroup]="userForm" (ngSubmit)="actualizarUsuario(userForm.value)">
+
     <div class="data">
+      <h2>Datos de sesion</h2>
       <div class="lado-izq">
 
         <input type="text" formArrayName="id" hidden>
@@ -114,14 +110,16 @@
 
         <div class="form-group" *ngIf="banderaPassword">
           <label for="apellido">Contraseña *</label>
-          <input type="password" placeholder="ingrese su nueva contraseña" class="form-control" id="apellido" formControlName="use_password" />
+          <input type="password" placeholder="ingrese su nueva contraseña" class="form-control" id="apellido"
+            formControlName="use_password" />
         </div>
         <div class="form-group" *ngIf="banderaPassword">
           <label for="email">Confirmar Contraseña *</label>
-          <input type="password" placeholder="Repita su contraseña" class="form-control" id="email" name="confirmar_password" />
+          <input type="password" placeholder="Repita su contraseña" class="form-control" id="email"
+            name="confirmar_password" />
         </div>
 
-        <div class="form-group" >
+        <div class="form-group">
           <label for="email">Rol</label>
 
           <select id="" class="form-select" formControlName="use_rol" (change)="rol_user_change(userForm.value)">
@@ -131,7 +129,7 @@
             <option value="admin">Administrador</option>
           </select>
         </div>
-        <div class="form-group" >
+        <div class="form-group">
           <label for="email">Status</label>
           <select class="form-select" formControlName="use_status">
             <option value=1>Activo</option>
@@ -145,24 +143,59 @@
           <input type="number" class="form-control" formControlName="people_id" readonly />
         </div>
 
-        </div>
-        <input type="submit" class="btn btn-success boton_style" value="Guardar cambios">
       </div>
+      <input type="submit" class="btn btn-success boton_style" value="Guardar cambios">
+    </div>
 
 
 
   </form>
 
-  <div>
-    <span>cambiar contraseña</span>
-     <input type="checkbox" (click)="cambiarPassword()">
-  </div>
+
+
+  <!--SECCION 2 PARA MOSTRAR DATOS DE PRODUCTOR EN CASO ROL-->
+
+  <form *ngIf="rol_people_general != 'usuario'" [formGroup]="providerForm" (submit)="guardarActualizarProveedor(providerForm.value)">
+
+<div>
+  <h2>Datos de productor</h2>
+      <div class="form-group">
+        <label for="id">Id provedor</label>
+        <input type="number" class="form-control" formControlName="id" readonly />
+      </div>
+      <div class="form-group">
+        <label for="description">Descripción</label>
+        <input type="text" class="form-control" formControlName="prov_description"/>
+      </div>
+
+
+      <div class="form-group">
+        <label for="ranking">Calificación</label>
+        <input type="number" class="form-control" formControlName="prov_ranking" readonly />
+      </div>
+
+      <div class="form-group">
+        <label for="group">Grupo</label>
+        <input type="text" class="form-control" formControlName="prov_group"/>
+      </div>
+
+      <div class="form-group" hidden>
+        <label for="status">estado</label>
+        <input type="number" class="form-control" formControlName="prov_status" readonly />
+      </div>
+
+      <div class="form-group" hidden>
+        <label for="people">id people</label>
+        <input type="text" class="form-control" formControlName="people_peo_id" readonly />
+      </div>
+
+      <input type="submit"  value="Guardar cambios" class="btn btn-success">
+    </div>
+  </form>
+
+</div>
+
 
 </section>
 
-
-<section *ngIf="navegacion_local == 3">
-  <h2>Datos de Productor</h2>
-
-
-</section>
+</div>

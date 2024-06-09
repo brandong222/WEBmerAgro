@@ -16,9 +16,14 @@
     <h3>{{ item.peo_name }} {{ item.peo_lastname }}</h3>
   </div>
 
-  <div>
-    {{ item.prov_ranking }}
-  </div>
+
+    <div class="rating_container">
+      <a class="star" [ngStyle]="{'color': item.prov_ranking > 0 || item.prov_ranking == 1 ?'gold' : 'darkgray'}" >&#9733;</a>
+      <a class="star" [ngStyle]="{'color': item.prov_ranking > 1 && item.prov_ranking <6 ? 'gold' : 'darkgray'}" >&#9733;</a>
+      <a class="star" [ngStyle]="{'color': item.prov_ranking > 2 && item.prov_ranking <6 ? 'gold' : 'darkgray'}" >&#9733;</a>
+      <a class="star" [ngStyle]="{'color': item.prov_ranking > 3 && item.prov_ranking <6 ? 'gold' : 'darkgray'}" >&#9733;</a>
+      <a class="star" [ngStyle]="{'color': item.prov_ranking > 4 && item.prov_ranking <6 ? 'gold' : 'darkgray'}" >&#9733;</a>
+    </div>
 
   <div>
     <span><h3>descripcion</h3></span>

@@ -71,7 +71,7 @@ activarControlProductor(people_id: number){
   }
 
   navEditarPerfil(id:number){
-    this.route.navigate(['/people/edit/'+id])
+    this.route.navigate(['/people/show/'+id])
   }
 
 }
