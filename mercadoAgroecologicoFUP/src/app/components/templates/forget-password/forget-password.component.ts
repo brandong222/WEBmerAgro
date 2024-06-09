@@ -49,8 +49,8 @@ export class ForgetPASSWORDComponent implements OnInit {
       this.requestForm.get('req_status')?.setValue(1 || null);
       this.requestForm.get('req_type')?.setValue("Contraseña");
       this.requestForm.get('req_description')?.setValue("Olvide mi contraseña");
-      this.getTodayDate();
 
+    this.setTodayDate();
     })
   }
 
@@ -81,6 +81,7 @@ export class ForgetPASSWORDComponent implements OnInit {
   evaluarUsuario(form: RequestI){
     const valorUseCc = String(this.requestForm.get('use_cc')?.value??'');
     const valorUseCcConf = String(this.requestForm.get('use_cc_conf')?.value??'');
+
 
     console.log(valorUseCc)
     if (valorUseCc === valorUseCcConf) {
