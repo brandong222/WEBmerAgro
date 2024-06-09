@@ -26,8 +26,8 @@ export class LoginService {
     return this.http.get<any>(this.apiLogout , {headers});
   }
 
-  searchPhoneCCid(cc: string): Observable<responsiveI> {
-    return this.http.post<responsiveI>(this.apiSearchCC, cc);
+  searchPhoneCCid(cc: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiSearchCC}/${cc}`);
   }
 
 
