@@ -12,6 +12,8 @@ export class LoginService {
 
   private apiUrl: string = 'http://127.0.0.1:8000/api/auth/login';
   private apiLogout: string = 'http://127.0.0.1:8000/api/auth/logout';
+  private apiSearchCC: string = 'http://127.0.0.1:8000/api/auth/searchPhoneCCid';
+
 
   loginCC(form: loginI): Observable<any> {
     return this.http.post<any>(this.apiUrl, form);
@@ -23,5 +25,11 @@ export class LoginService {
 
     return this.http.get<any>(this.apiLogout , {headers});
   }
+
+  searchPhoneCCid(cc: string): Observable<responsiveI> {
+    return this.http.post<responsiveI>(this.apiSearchCC, cc);
+  }
+
+
 
 }

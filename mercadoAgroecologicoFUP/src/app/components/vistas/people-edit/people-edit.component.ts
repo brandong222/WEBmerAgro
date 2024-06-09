@@ -218,12 +218,14 @@ export class PeopleEditComponent implements OnInit {
   //guardar cambios (actualizar)
 
   actualizarPersona(form: PeopleI) {
-    //console.log(form);
+    console.log(form);
 
-    this.peopleS.updatePerson(Number(form.id), form).subscribe((data) => {
+   this.peopleS.updatePerson(Number(form.id), form).subscribe((data) => {
       alert(data.status);
       this.route.navigate(['/people']);
     });
+
+
   }
 
   //guardarActualizarProveedor

@@ -8,10 +8,10 @@ import { superInterfazI } from 'src/app/models/superInterfaz.interface';
   providedIn: 'root',
 })
 export class JoinService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   private apiJOIN: string = 'http://127.0.0.1:8000/api/usuariosPersonas';
-  private apiJOIN2: string =    'http://127.0.0.1:8000/api/productosProvedoresPernas';
+  private apiJOIN2: string = 'http://127.0.0.1:8000/api/productosProvedoresPernas';
   private apiJOIN3: string = 'http://127.0.0.1:8000/api/joinProdProvPeopleID';
   private apiJOIN4: string = 'http://127.0.0.1:8000/api/joinReqPeoUsu';
   private apiJOIN5: string = 'http://127.0.0.1:8000/api/joinUserPeople';
@@ -20,6 +20,8 @@ export class JoinService {
   private apiJOIN8: string = 'http://127.0.0.1:8000/api/joinProduProviderID';
   private apiJOIN9: string = 'http://127.0.0.1:8000/api/showPeopleUsers';
   private apiJOIN10: string = 'http://127.0.0.1:8000/api/joinUserPeopleID';
+  private apiJOIN11: string = 'http://127.0.0.1:8000/api/compararSesionProviderConProductProviderID';
+
 
 
 
@@ -67,6 +69,10 @@ export class JoinService {
     return this.http.get<responsiveI>(`${this.apiJOIN10}/${id}`);
   }
 
+  //comparar id providers (sesion vs dueño del producto)
+  compararSesionProviderConProductProviderID(id_provider_prod: number, id_prov_sesion: number) {
+    return this.http.get<responsiveI>(`${this.apiJOIN11}/${id_provider_prod}/${id_prov_sesion}`);
+  }
 
 
 

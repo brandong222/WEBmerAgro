@@ -4,10 +4,12 @@ import { JoinService } from 'src/app/services/join/join.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PeopleService } from 'src/app/services/people/people.service';
 import { UserService } from 'src/app/services/user/user.service';
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-user-edit',
   templateUrl: './user-edit.component.html',
-  styleUrls: ['./user-edit.component.css']
+  styleUrls: ['./user-edit.component.css'],
 })
 export class UserEditComponent implements OnInit {
   banderaPassword: boolean = false;
@@ -50,16 +52,26 @@ export class UserEditComponent implements OnInit {
   }
 
   //metodo para actualizar datos de usuario
-  actualizarUsuario(form: UserI){
-this.userS.updateUser(Number(form.id),form).subscribe(data=>{
-    console.log(data.status);
-    console.log(data.message);
-
+  actualizarUsuario(form: UserI) {
+    this.userS.updateUser(Number(form.id), form).subscribe(
+      (data) => {
+      if (data.status) {
+        Swal.fire(
+          'Datos de usuario',
+          'Datos actualizados exitosamente',
+          'success'
+        );
+      }
+    }
+  ,(Error=>{
+    Swal.fire(
+      'Datos de usuario',
+      'Por favor llene los campos',
+      'error'
+    );
   })
-
-
-
-}
+  );
+  }
 
   //para la contraseña se aplica bandera en caso de habilitar campo
   cambiarPasseord() {

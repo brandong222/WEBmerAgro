@@ -8,6 +8,7 @@ import { JoinService } from 'src/app/services/join/join.service';
 import { PeopleService } from 'src/app/services/people/people.service';
 import { ProductService } from 'src/app/services/product/product.service';
 import { ProviderService } from 'src/app/services/provider/provider.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-product-show',
@@ -15,6 +16,10 @@ import { ProviderService } from 'src/app/services/provider/provider.service';
   styleUrls: ['./product-show.component.css'],
 })
 export class ProductSHOWComponent implements OnInit {
+
+  //variable verificar si coincide el producto con su dueño
+  bandera_provider_own: boolean = false;
+
   //tomar id de las rutas
   productIdNumber: number = Number(this.routeA.snapshot.paramMap.get('id'));
 
@@ -62,8 +67,28 @@ export class ProductSHOWComponent implements OnInit {
       .getProductId(Number(this.productIdNumber))
       .subscribe((data) => {
         this.productUnitArray = data;
+
+       this.evaluarProveedorEsDuenioProducto(Number(data[0].providers_id));
+
       });
   }
+
+evaluarProveedorEsDuenioProducto(provider_id_producto: number){
+
+  const sesion: UserI = this.traerDatosSesion();
+
+  //comparar con el id sesion
+  this.fkjoinS.compararSesionProviderConProductProviderID(provider_id_producto,Number(sesion.id) ).subscribe(data=>{
+    console.log(data.status);
+    if(data.status){
+      this.bandera_provider_own = true;
+    }else{
+      this.bandera_provider_own = false;
+
+    }
+  })
+
+}
 
   eliminarProducto(id: number) {
     ////////////// <---- modificar alerta
@@ -129,7 +154,13 @@ export class ProductSHOWComponent implements OnInit {
             this.contarEstrellas
           )
           .subscribe((data) => {
-            alert(data.status);
+
+          if(data.status){
+            Swal.fire('Calificación','Calificación exitosa','success');
+          }else{
+
+           Swal.fire('Calificación','No se pudo registrar Calificación','error');
+          }
           });
       });
     }

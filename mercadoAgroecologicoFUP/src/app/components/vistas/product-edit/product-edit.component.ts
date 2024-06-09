@@ -10,6 +10,7 @@ import { UserI } from 'src/app/models/user.interface';
 import { ProductI } from 'src/app/models/product.interface';
 import { superInterfazI } from 'src/app/models/superInterfaz.interface';
 import { UserService } from 'src/app/services/user/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-product-edit',
@@ -61,7 +62,12 @@ export class ProductEditComponent implements OnInit {
     console.log(form);
 
     this.productS.updateProduct(Number(form.id), form).subscribe((data) => {
-      alert(data.message);
+      if(data.status){
+        Swal.fire('Producto','Producto actualizado exitosamente','success')
+      }else{
+        Swal.fire('Producto','No se puede producto actualizar','error')
+
+      }
     });
   }
 
