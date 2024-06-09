@@ -16,8 +16,9 @@ import Swal from 'sweetalert2';
 })
 export class ForgetPASSWORDComponent implements OnInit {
 
-  requestArray: superInterfazI[] = [];
+
   requestForm: FormGroup;
+
 
   constructor(
     private requestS: RequestappService,
@@ -35,6 +36,8 @@ export class ForgetPASSWORDComponent implements OnInit {
       use_cc: new FormControl(''),
       use_cc_conf: new FormControl(''),
     });
+
+
   }
 
   ngOnInit(): void {
@@ -42,16 +45,11 @@ export class ForgetPASSWORDComponent implements OnInit {
   }
 
   mostrarRequest() {
-    const user_id: UserI = this.traerDatosSesion();
-
-    this.fkjoinS.getjoinUserPeople(Number(user_id.id)).subscribe(data => {
-      this.requestArray = data.data;
       this.requestForm.get('req_status')?.setValue(1 || null);
       this.requestForm.get('req_type')?.setValue("Contraseña");
       this.requestForm.get('req_description')?.setValue("Olvide mi contraseña");
       this.getTodayDate();
 
-    })
   }
 
   //Traer fecha
@@ -70,12 +68,6 @@ export class ForgetPASSWORDComponent implements OnInit {
   }
 
 
-  traerDatosSesion() {
-    const requestData = sessionStorage.getItem('usuario_login')
-    if (requestData) {
-      return JSON.parse(requestData)
-    }
-  }
 
   //evaluar que el usuario sea igaul en ambos campos
   evaluarUsuario(form: RequestI){
