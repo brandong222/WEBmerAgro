@@ -1,11 +1,83 @@
-
-form{
+section {
   width: 80%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row-reverse;
   margin: 10px auto;
-  background: lightgrey;
+  background: lightgray;
   padding: 20px;
   justify-content: space-evenly;
+  gap: 20px;
+  align-items: center;
 
 }
+
+
+.parte_izq {
+  flex: 1;
+}
+
+.parte_der {
+  flex: 1;
+}
+
+.div_img{
+  width: 100%;
+  text-align: center;
+}
+
+.link_imagen_people{
+  width: 200px;
+  height: 200px;
+  object-fit:  cover;
+  border-radius: 100%;
+  box-shadow: 2px 2px 10px black;
+}
+
+/*estrellas estilos*/
+
+
+.rating_container {
+  justify-content: left;
+  display: flex;
+  gap: 5px;
+  font-size: 40px;
+
+}
+
+.rating_container .star {
+  cursor: default;
+  text-decoration: none;
+  color: darkgray;
+  text-shadow: 2px 2px 5px black;
+}
+
+
+/*ediccion de input*/
+
+.form-group input{
+  background: transparent;
+  border: none;
+  color: gray;
+  font-size: 20px;
+  text-align: left;
+  padding: 0;
+}
+
+.form-group label{
+  font-size: 26px;
+  color: black;
+  text-shadow: 1px 1px 4px white;
+}
+
+
+.form-group textarea{
+  resize: none;
+    width: 90%;
+    height: auto;
+    min-height: 200px;
+    background: transparent;
+    color: gray;
+    font-size: 20px;
+    border: none;
+}
+
