@@ -63,7 +63,7 @@
           style="background-color: rgb(255, 66, 66); color: white;">No
           aprobado</td>
         <td>
-          <a class="btn btn-success " (click)="nvEditRequest(item.provider_id)">ver</a>
+          <a class="btn btn-success " (click)="nvEditRequest(item.request_id)">ver</a>
         </td>
         <div *ngIf="item.req_status == 1" class="notificacion"></div>
       </tr>
@@ -115,7 +115,7 @@
             style="background-color: rgb(255, 66, 66); color: white;">No
             aprobado</td>
           <td>
-            <a class="btn btn-success" (click)="nvEditRequest(item.provider_id)">ver</a>
+            <a class="btn btn-success" (click)="nvEditRequest(item.request_id)">ver</a>
           </td>
           <div *ngIf="item.req_status == 1" class="notificacion"></div>
         </tr>
@@ -166,7 +166,7 @@
               style="background-color: rgb(255, 66, 66); color: white;">No
               aprobado</td>
             <td>
-              <a class="btn btn-success" (click)="nvEditRequest(item.provider_id)">ver</a>
+              <a class="btn btn-success" (click)="nvEditRequest(item.request_id)">ver</a>
             </td>
             <div *ngIf="item.req_status == 1" class="notificacion"></div>
           </tr>

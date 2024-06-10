@@ -17,18 +17,21 @@ import { Location } from '@angular/common';
 })
 export class RequestappEDITComponent {
   peopleArray: superInterfazI[] = [];
+  providerArray: any[] = [];
+  requestArray: any[] = [];
   peopleForm: FormGroup;
   link_imagen_people: string = '';
-  id_productor_ruta: number = Number(this.routeA.snapshot.paramMap.get('id'));
+  id_ruta_request: number = Number(this.routeA.snapshot.paramMap.get('id'));
   id_people_fk: number = 0;
+  people_phone: string = '';
+  people_name: string = '';
+  type_request: string = '';
 
   constructor(
     private route: Router,
     private routeA: ActivatedRoute,
     private peopleS: PeopleService,
     private fkjoinS: JoinService,
-    private providerS: ProviderService,
-    private productS: ProductService,
     private requestS: RequestappService,
     private location: Location
   ) {
@@ -46,10 +49,13 @@ export class RequestappEDITComponent {
 
   //obtener id de people
   obtenerPeopleID() {
-    this.requestS.getRequestAppId(this.id_productor_ruta).subscribe((data) => {
+    this.requestS.getRequestAppId(this.id_ruta_request).subscribe((data) => {
       this.id_people_fk = data.data.people_id;
       //metodo para buscar datos
       this.datosPeople();
+      this.mostrarProvedores();
+      this.datosUnidos();
+      this.buscarTipoRespuesta();
     });
   }
 
@@ -57,6 +63,7 @@ export class RequestappEDITComponent {
     //metodo para tomar los datos guardados y ponerlos en producto que se decea editar
 
     this.peopleS.getPersonById(this.id_people_fk).subscribe((data) => {
+      console.log(data)
       if (data) {
         const dataR: PeopleI = data.data;
 
@@ -73,6 +80,9 @@ export class RequestappEDITComponent {
         this.link_imagen_people = String(dataR.peo_image); //usado para poner la imagen en un img
         this.peopleForm.get('peo_mail')?.setValue(dataR.peo_mail || null);
         this.peopleForm.get('peo_phone')?.setValue(dataR.peo_phone || null);
+
+        this.people_phone = String(dataR.peo_phone);
+        this.people_name = String(dataR.peo_name);
       } else {
         console.log('No hay datos guardados del productor.');
       }
@@ -83,8 +93,43 @@ export class RequestappEDITComponent {
     this.obtenerPeopleID();
   }
 
+
   //NAvegacion
   nvRegresar() {
     this.location.back();
+  }
+
+  mostrarProvedores() {
+     this.fkjoinS.joinProvedorpeopleID(this.id_people_fk).subscribe(info => {
+      this.providerArray = info.data;
+    });
+  }
+
+  datosUnidos() {
+    this.fkjoinS.getjoinReqPeoUsu(this.id_people_fk).subscribe((info) => {
+      console.log(info);
+      this.requestArray = info.data;
+    });
+  }
+
+  buscarTipoRespuesta(){
+    this.requestS.getRequestAppId(this.id_ruta_request).subscribe((info) => {
+      this.type_request = info.data.req_type;
+    });
+  }
+
+  //Navegacion
+  navEditarProveedor(id: number) {
+    if (id > 0) {
+      this.route.navigate(['/provider/edit/' + id]);
+
+    } else {
+      alert('error')
+      this.route.navigate(['/provider']);
+    }
+  }
+
+  navPerfilPeople(id_people: number){
+    this.route.navigate(['/people/edit/'+id_people]);
   }
 }

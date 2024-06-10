@@ -26,6 +26,7 @@ export class RequestappComponent implements OnInit {
   datosUnidos() {
     this.FK_joinS.showReqPeoUsu().subscribe((info) => {
       this.requestArray = info.data;
+      console.log(info)
 
       this.cambioMenuLocal(this.navegacion_local);
     });
@@ -59,8 +60,8 @@ export class RequestappComponent implements OnInit {
 
   //NAVEGAR
 
-  nvEditRequest(id_provedor: number) {
-    this.route.navigate(['/request/edit/' + id_provedor]);
+  nvEditRequest(id_request: number) {
+    this.route.navigate(['/request/edit/' + id_request]);
   }
 
 

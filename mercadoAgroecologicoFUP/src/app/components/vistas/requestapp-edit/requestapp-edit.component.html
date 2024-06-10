@@ -53,25 +53,34 @@
           <div class="parte_derecha">
 
             <select name id class="form-select">
-              <option value="1"
-                style="background-color: rgb(236, 188, 31); color: white;">Pendiente</option>
-              <option value="2"
-                style="background-color: rgb(49, 145, 255); color: white;">En
-                proceso</option>
-              <option value="3"
-                style="background-color: rgb(0, 214, 0); color: white;">Aprovado</option>
-              <option value="4"
-                style="background-color: rgb(255, 66, 66); color: white;">No
-                aprovado</option>
-              <option value="0"
-                style="background-color: rgb(255, 66, 66); color: white;">Eliminar</option>
+              <option value="1">Pendiente</option>
+              <option value="2">En proceso</option>
+              <option value="3">Aprovado</option>
+              <option value="4">No aprovado</option>
             </select>
             <img [src]="link_imagen_people" alt="imagen" />
 
-            <div class="actions">
-              <button class="btn btn-success">Contactar</button>
-              <button class="btn btn-primary">Ver perfil</button>
+            <div *ngIf="type_request === 'Certificar producto (s)'">
+            <div class="actions" *ngFor="let provider of providerArray;">
+              <a class="btn btn-success" href="https://wa.me/57{{ people_phone }}?text=Señor/a {{ people_name }}, deme más informacón acerca de la certificaión de sus productos, para agendar una visita" target="_blank">Contactar</a>
+              <input class="btn btn-primary" (click)="navEditarProveedor(provider.provider_id|| 0)" value="Ver productos">
             </div>
+            </div>
+
+            <div *ngIf="type_request === 'Contraseña'">
+              <div class="actions">
+                <a class="btn btn-success" href="https://wa.me/57{{ people_phone }}?text=Señor/a {{ people_name }}, deme más informacón acerca de la certificaión de sus productos, para agendar una visita" target="_blank">Contactar</a>
+                <input class="btn btn-primary" (click)="navPerfilPeople(id_people_fk)" value="Cambiar en perfil">
+              </div>
+              </div>
+
+              <div *ngIf="type_request === 'Ser productor'">
+                <div class="actions">
+                  <a class="btn btn-success" href="https://wa.me/57{{ people_phone }}?text=Señor/a {{ people_name }}, deme más informacón acerca de la certificaión de sus productos, para agendar una visita" target="_blank">Contactar</a>
+                  <input class="btn btn-primary" (click)="navPerfilPeople(id_people_fk)" value="Ver perfil">
+                </div>
+                </div>
+
           </div>
 
         </div>
