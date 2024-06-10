@@ -6,10 +6,18 @@
       <img [src]="provider.peo_image" alt="Imagen">
     </div>
     <div class="informacion">
-      <h4>{{provider.peo_name}} {{provider.peo_lastname}}</h4>
-      <p>{{provider.prov_group}}</p>
-      <p>{{provider.peo_adress}}</p>
-      <p>Estrellas: {{provider.prov_ranking}}</p>
+      <h3>{{provider.peo_name}} {{provider.peo_lastname}}</h3>
+      <h5>Grupo: {{provider.prov_group}}</h5>
+      <h5>Ubicación: {{provider.peo_adress}}</h5>
+      <div class="rating_container">
+        <a class="star" [ngStyle]="{'color': provider.prov_ranking > 0 || provider.prov_ranking == 1 ?'gold' : 'darkgray'}"  >&#9733;</a>
+        <a class="star" [ngStyle]="{'color': provider.prov_ranking > 1 && provider.prov_ranking <6 ? 'gold' : 'darkgray'}" >&#9733;</a>
+        <a class="star" [ngStyle]="{'color': provider.prov_ranking > 2 && provider.prov_ranking <6 ? 'gold' : 'darkgray'}" >&#9733;</a>
+        <a class="star" [ngStyle]="{'color': provider.prov_ranking > 3 && provider.prov_ranking <6 ? 'gold' : 'darkgray'}">&#9733;</a>
+        <a class="star" [ngStyle]="{'color': provider.prov_ranking > 4 && provider.prov_ranking <6 ? 'gold' : 'darkgray'}" >&#9733;</a>
+      </div>
+
+
     </div>
     <div class="description">
       <h5>Descripción</h5>

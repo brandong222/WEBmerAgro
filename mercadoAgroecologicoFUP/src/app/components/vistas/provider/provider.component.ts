@@ -21,7 +21,7 @@ export class ProviderComponent implements OnInit {
     private peopleServide: PeopleService,
     private FK_joinS: JoinService ) { }
 
-  providerArray: superInterfazI[] = [];
+  providerArray: any[] = [];
 
   ngOnInit(): void {
   this.mostrarProvedores();

@@ -3,7 +3,7 @@ form{
   background: lightgrey;
   box-shadow: 2px 2px 5px black;
   width: 80%;
-  height: 70vh;
+  height: auto;
   margin: 20px auto;
   display: flex;
   gap: 10px;

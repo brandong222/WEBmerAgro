@@ -37,15 +37,15 @@
 /* Estilos para la información */
 .informacion {
   flex: 2;
-  margin-left: 50px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   text-align: left;
 }
 
-.informacion p {
-  font-size: 18px;
+.informacion h3{
+  text-shadow: 1px 2px 3px seagreen;
+
 }
 
 .description{
@@ -54,9 +54,16 @@
   margin: auto;
 }
 
+
+
 .description h5{
   text-align: center;
   font-weight: bold;
+}
+
+.description p{
+  text-align: center;
+  color:black;
 }
 
 .acciones {
@@ -71,3 +78,19 @@
 }
 
 
+/*STAR*/
+
+.rating_container{
+  display: flex;
+  gap: 5px;
+  font-size: 36px;
+
+}
+
+
+.star{
+  cursor: default;
+  text-decoration: none;
+  color: darkgray;
+  text-shadow: 2px 2px 5px black;
+}

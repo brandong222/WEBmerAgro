@@ -73,10 +73,10 @@ span{
 
 /*para certificado en caso de cumplirse*/
 .mostrar_certificado::before {
-  content: "certificado";
+  content: "Agroecológico";
   position: absolute;
-  top: 10%;
-  left: 2%;
+  top: 12%;
+  left: -10%;
   background: seagreen;
   color: white;
   box-shadow: 2px 2px 20px seagreen;
