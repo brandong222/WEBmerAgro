@@ -18,6 +18,7 @@ export class ForgetPASSWORDComponent implements OnInit {
 
 
   requestForm: FormGroup;
+  bandera_comprobar_user: boolean = false;
 
 
   constructor(
@@ -72,8 +73,8 @@ export class ForgetPASSWORDComponent implements OnInit {
 
 
   //evaluar que el usuario sea igaul en ambos campos
-  evaluarUsuario(form: RequestI){
-    console.log(form);
+  evaluarCuentaUsuario(){
+
     const valorUseCc = String(this.requestForm.get('use_cc')?.value??'');
     const valorUseCcConf = String(this.requestForm.get('use_cc_conf')?.value??'');
 
@@ -87,19 +88,28 @@ export class ForgetPASSWORDComponent implements OnInit {
             if(data[0].use_cc == valorUseCc){
               console.log(data[0].people_id)
               this.requestForm.get('people_id')?.setValue(Number(data[0].people_id));
-              console.log(form);
+              this.bandera_comprobar_user = true;
+              Swal.fire(
+                'Verificación de datos',
+                'Por favor envie su solicitud para recuperar su contraseña',
+                'success'
+              )
 
             }
           }else{
-            console.log("No existe el usuario en la base de datos")
+            Swal.fire(
+              'Cuenta de usuarrio',
+              'Su cuenta no se encuentra registrada o sus credenciales son incorrectas',
+              'warning'
+            )
           }
 
 
       },
       (Error)=>{
         Swal.fire(
-          'Cuenta de usuarrio no encontrada',
-          'Su cuenta no se encuentra registrada o sus credenciales son incorrectas',
+          'Valores incorrectos',
+          'Por favor revise sus datos e intente nuevamente',
           'error'
         )
       });
@@ -112,10 +122,12 @@ export class ForgetPASSWORDComponent implements OnInit {
 
 
   //guardar en db una persona
-  guardarRequest(form: RequestI) {
+  enviarSolicitudContrasena(form: RequestI) {
     console.log(form);
+    this.bandera_comprobar_user = false;
 
-    this.requestS.addRequestapp(form).subscribe(
+   this.requestS.addRequestContrasena(form).subscribe(
+
       (data) => {
         let dataR = data;
 
@@ -126,17 +138,18 @@ export class ForgetPASSWORDComponent implements OnInit {
             'success'
           )
 
-          this.route.navigate(['/home']);
+          this.route.navigate(['/']);
         }
       },
       (error) => {
         // Aquí manejas el error alertas
         Swal.fire(
+          'Solicitud invalidad',
           'Ingrese descripción',
+          'error'
         )
       }
     );
-
   }
 
 }

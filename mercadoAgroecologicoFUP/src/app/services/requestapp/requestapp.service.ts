@@ -27,6 +27,11 @@ export class RequestappService {
     return this.http.post<responsiveI>(this.apiUrl, form, { headers });
   }
 
+
+  addRequestContrasena(form: RequestI): Observable<responsiveI>{
+    return this.http.post<responsiveI>(`${this.apiUrl}/contrasena`, form);
+  }
+
   // para obtener una solicitud de aplicación por ID
   getRequestAppId(id: number): Observable<responsiveI> {
     const token = localStorage.getItem('token');
