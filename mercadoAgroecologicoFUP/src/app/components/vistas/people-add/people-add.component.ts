@@ -12,11 +12,13 @@ import Swal from 'sweetalert2';
   templateUrl: './people-add.component.html',
   styleUrls: ['./people-add.component.css'],
 })
-export class PeopleADDComponent {
+export class PeopleADDComponent implements OnInit {
   selectedFile: File | null = null;
   public imageURL: string = 'API image';
   peopleForm: FormGroup;
+  link_imagen_subida:string ="";
 
+  minDate = new Date().toISOString().split('T')[0];
 
   constructor(
     private route: Router,
@@ -24,8 +26,8 @@ export class PeopleADDComponent {
     private imagenS: ImagenService
   ) {
     this.peopleForm = new FormGroup({
-      peo_name: new FormControl('', Validators.required),
-      peo_lastName: new FormControl('', Validators.required),
+      peo_name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+      peo_lastName: new FormControl('', [Validators.required, Validators.minLength(3)]),
       peo_adress: new FormControl('', Validators.required),
       peo_dateBirth: new FormControl('', Validators.required),
       peo_image: new FormControl(''),
@@ -35,50 +37,78 @@ export class PeopleADDComponent {
   }
 
 
+  ngOnInit(): void {
+  }
 
   //para guardar imagen en la base datos y retornar su url
   onFileSelected(event: Event) {
     const target = event.target as HTMLInputElement;
-    this.selectedFile = target.files ? target.files[0] : null;
+    this.selectedFile = target.files? target.files[0] : null;
+
+    // Verificar si se seleccionó un archivo
+    if (!this.selectedFile) {
+      alert('Debe seleccionar un archivo.');
+      return;
+    }
+
+    // Lista de tipos MIME permitidos (puedes ajustar esto según tus necesidades)
+    const allowedMimeTypes = ['image/jpeg', 'image/png'];
+
+    // Obtener el tipo MIME del archivo seleccionado
+    const fileType = this.selectedFile.type;
+
+    // Verificar si el tipo de archivo es permitido
+    if (!allowedMimeTypes.includes(fileType)) {
+      Swal.fire('Imagen','Solo se permiten archivos JPEG y PNG','error');
+      target.value = '';
+    } else {
+      console.log('imgan subida')
+    }
   }
 
   subirImagen(){
     if (this.selectedFile) {
       console.log(this.selectedFile);
       this.imagenS.uploadFile(this.selectedFile).subscribe((data) => {
-        console.log(data.data);
         this.imageURL = data.data;
         this.peopleForm.get('peo_image')?.setValue(this.imageURL || '');
-        alert('imagen subida con exito');
+        Swal.fire('Imagen','Subida con exito','success');
+        this.link_imagen_subida = String(data.data);
       });
     } else {
-      alert('imagen no se pudo cargar');
+      Swal.fire('Imagen','No guardo la imagen selecionada','error');
     }
   }
 
   //guardar en db una persona
   guardarPersona(form: PeopleI) {
         console.log(form);
+        if (this.peopleForm.valid) {
+          this.peopleS.addPeople(form).subscribe(
+            (data) => {
+              let dataR: responsiveI = data;
 
-        this.peopleS.addPeople(form).subscribe(
-          (data) => {
-            let dataR: responsiveI = data;
+              if (dataR.status) {
+                Swal.fire(
+                  'Datos de '+dataR.data.peo_name,
+                  'Registrados exitosamente',
+                  'success'
+                )
 
-            if (dataR.status) {
-              Swal.fire(
-                'Datos de '+dataR.data.peo_name,
-                'Registrados exitosamente',
-                'success'
-              )
-
-              this.route.navigate(['/user/add/', dataR.data.id]);
+                this.route.navigate(['/user/add/', dataR.data.id]);
+              }
+            },
+            (error) => {
+              // Aquí manejas el error alertas
+              alert('no se guardo');
             }
-          },
-          (error) => {
-            // Aquí manejas el error alertas
-            alert('no se guardo');
-          }
-        );
+          );
+
+        }else{
+
+          Swal.fire('Datos del formulario','No se puede registrar los datos','error')
+
+        }
 
   }
 

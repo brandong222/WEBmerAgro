@@ -1,11 +1,12 @@
-<div class="container-sm">
-  <h2 class="text-center">Agregar producto</h2>
+<div class="container-sm" style="margin-top: 20px;">
+  <h2 class="text-center">Registrarse</h2>
   <div class="contenedor">
     <div class="data">
+      <form [formGroup]="peopleForm">
       <div class="lado-izq">
-        <form [formGroup]="peopleForm" (ngSubmit)="guardarPersona(peopleForm.value)">
+
         <div class="form-group">
-          <label for="nombre">Nombre</label>
+          <label for="nombre" >Nombre</label>
           <input type="text" class="form-control" id="nombre" formControlName="peo_name"/>
         </div>
         <div class="form-group">
@@ -22,7 +23,7 @@
         </div>
         <div class="form-group">
           <label for="fecha">fecha</label>
-          <input type="date" class="form-control" id="fecha" formControlName="peo_dateBirth"/>
+          <input type="date" class="form-control" id="fecha" formControlName="peo_dateBirth" [max]="minDate"/>
         </div>
         <div class="form-group">
           <label for="ubicacion">Ubicación</label>
@@ -36,14 +37,18 @@
 
           </select>
         </div>
-        <input type="submit" class="btn btn-success boton_style" value="Siguiente">
-      </form>
+       <div class="boton_style">
+        <input type="submit" class="btn btn-primary" (click)="navegateToRegresar()" value="regresar">
+
+        <input type="submit" class="btn btn-success"  (click)="guardarPersona(peopleForm.value)" value="Siguiente">
+
+       </div>
       </div>
 
       <div class="lado-der">
         <img
           id="mostrar_imagen"
-        src=""
+        [src]="link_imagen_subida"
           alt=" "
           class="img-thumbnail"
           style="max-width: 100%"
@@ -52,11 +57,11 @@
         <input class="form-control" type="file" (change)="onFileSelected($event)"  >
         <button class="btn btn-dark"  (click)="subirImagen()"> subir imagen</button>
       </div>
+    </form>
     </div>
 
   </div>
 
-  <div class="regresar_btn">
-    <input type="submit" class="btn btn-primary boton_style" (click)="navegateToRegresar()" value="regresar">
-  </div>
 </div>
+
+

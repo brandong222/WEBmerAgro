@@ -2,24 +2,20 @@ h2{
   color: seagreen;
 }
 
-.contenedor {
+
+.data{
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-.data{
-  width: 90%;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   background: var(--fondo-card);
-  margin: 20px;
-  padding: 20px;
+  margin: 10px;
+  padding: 10px;
 
 }
 
 .data .lado-izq{
-  flex: 4;
+  flex: 1;
   width: 80%;
   margin: 20px;
   background: transparent;
@@ -28,37 +24,43 @@ h2{
 
 
 .data .lado-der{
-  flex: 2;
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  height: 40vh;
-  width: 50%;
   background: transparent;
+}
+form{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  background: transparent;
+  width: 100%;
 }
 
 .data .lado-der img{
-width: 60%;
-height: 25vh;
-border: 1px solid transparent;
-border-radius: 50%;
+width: 200px;
+height: 200px;
+object-fit: cover;
+border-radius: 100%;
+box-shadow: 2px 2px 10px black;
 }
 
 
 
-.regresar_btn{
-  width: 100%;
-  background: transparent;
-  display: flex;
-  justify-content: center;
-}
 
 .boton_style{
-  width: 20%;
-  margin: 10px;
-  padding: 5px;
+  margin: 20px 0px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 
+}
+
+.boton_style input{
+  width: 40%;
 }
 
 
