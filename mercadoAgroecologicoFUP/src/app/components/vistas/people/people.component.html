@@ -1,60 +1,73 @@
 <app-header></app-header>
 
-<section class="container"  *ngFor="let item of peopleArray">
-  <form>
+<section class="container">
+  <form [formGroup]="peopleForm">
+
+    <div class="parte_derecha">
+      <div class="div_img" >
+        <img [src]="link_imagen_people" alt="imagen" class="link_imagen_people" />
+      </div>
+      <div class="form-group" *ngIf="bandera_edit_people">
+        <span>Clic para actualizar imagen</span>
+        <input type="file" class="form-control">
+        <input type="text" class="form-control" formControlName="peo_image" hidden />
+      </div>
+
+
+      <input *ngIf="bandera_edit_people" type="submit" class="btn btn-dark" value="subir imagen">
+    </div>
     <div class="parte_izquierda">
       <div class="form-group">
         <span>Nombre</span>
-        <input type="text" value="{{ item.peo_name }}" readonly />
+        <input type="text" class="form-control" formControlName="peo_name" [readOnly]="!bandera_edit_people" />
       </div>
 
       <div class="form-group">
         <span>Apellido</span>
-        <input type="text" value="{{ item.peo_lastname }}" readonly/>
+        <input type="text" class="form-control" formControlName="peo_lastName"  [readOnly]="!bandera_edit_people" />
       </div>
 
       <div class="form-group">
         <span>Correo Electronico:</span>
-        <input type="email" value="{{ item.peo_mail }}" readonly/>
+        <input type="email" class="form-control" formControlName="peo_mail" [readOnly]="!bandera_edit_people" />
       </div>
 
       <div class="form-group">
         <span>Teléfono</span>
-        <input type="number" value="{{ item.peo_phone }}" readonly/>
+        <input type="text" class="form-control" formControlName="peo_phone" [readOnly]="!bandera_edit_people" />
       </div>
 
       <div class="form-group">
         <span>Fecha</span>
-        <input type="date" value="{{ item.peo_dateBirth }}" readonly/>
+        <input type="date" class="form-control" formControlName="peo_dateBirth" [readOnly]="!bandera_edit_people" />
       </div>
 
-      <div class="form-group">
+      <div class="form-group" *ngIf="!bandera_edit_people">
         <span>Ubicación</span>
-        <input type="text" value="{{ item.peo_adress }}" readonly/>
+        <input type="text" class="form-control" formControlName="peo_adress" />
       </div>
-    </div>
-    <div class="parte_derecha">
-      <div class="form-group">
-        <img
-        [src]="item.peo_image"
-         alt="imagen">
-      </div>
-      <div class="form-group" *ngIf="item.use_rol === 'admin'">
-        <span>Rol</span>
-        <select name="" id="" class="form-select">
 
-          <option *ngIf="item.use_rol === 'usuario'" value="usuario">Usuario</option>
-          <option *ngIf="item.use_rol === 'productor'"  value="productor">Productor</option>
-          <option *ngIf="item.use_rol === 'admin'" value="admin">Administrador</option>
+      <div class="form-group" *ngIf="bandera_edit_people">
+        <span>Ubicación</span>
+        <select name="" id="ubicacion" class="form-control" formControlName="peo_adress" >
+          <option value="">Seleccione</option>
+          <option value="Calibío">Calibío</option>
+          <option value="Popayán">Popayán</option>
+          <option value="Timbío">Timbío</option>
+          <option value="El tambo">El tambo</option>
+          <option value="Otra">Otra</option>
         </select>
       </div>
+      <input *ngIf="bandera_edit_people" type="button" class="btn btn-success" value="Guardar cambios " (click)="guardarDatosPeople(peopleForm.value)">
     </div>
+
   </form>
 
   <div class="botones_navegacion">
     <input type="button" class="btn btn-primary" (click)="navDatosSesion()" value="Datos de sesion">
-    <input type="button" class="btn btn-success" (click)="navDatosProveedor()" value="Datos de productor" *ngIf="item.use_rol === 'productor' || item.use_rol === 'admin'">
-    <input type="button" class="btn btn-dark" (click)="navEditarPerfil(item.people_id || 0)" value="Editar">
+    <input type="button" class="btn btn-secondary" (click)="navDatosProveedor()" value="Datos de productor" > <!--*ngIf="item.use_rol === 'productor' || item.use_rol === 'admin'"-->
+    <input *ngIf="!bandera_edit_people" type="button" class="btn btn-dark" (click)="habilitarEditPeople()" value="editar">
+
   </div>
 
 </section>

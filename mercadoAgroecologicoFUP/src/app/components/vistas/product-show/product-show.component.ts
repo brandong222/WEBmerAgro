@@ -21,7 +21,7 @@ export class ProductSHOWComponent implements OnInit {
   bandera_provider_own: boolean = false;
 
   //tomar id de las rutas
-  productIdNumber: number = Number(this.routeA.snapshot.paramMap.get('id'));
+  productIdNumber: number= 0;
 
   //bandera  y provedor_id
   banderaCalificar: boolean = true;
@@ -44,7 +44,9 @@ export class ProductSHOWComponent implements OnInit {
     private providers: ProviderService
   ) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.productIdNumber = Number(this.routeA.snapshot.paramMap.get('id'));
+
     this.validarRoles();
     this.navContactar();
     this.mostrarProductoID();
@@ -164,6 +166,13 @@ evaluarProveedorEsDuenioProducto(provider_id_producto: number){
           });
       });
     }
+  }
+
+  verproductoIndividual(id: number) {
+
+    this.route.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.route.navigate(['/product/show/', id]);
+    });
   }
 
   navContactar() {
