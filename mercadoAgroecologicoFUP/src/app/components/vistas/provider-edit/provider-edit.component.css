@@ -1,4 +1,4 @@
-section {
+.people{
   width: 80%;
   display: flex;
   flex-direction: row-reverse;
@@ -81,3 +81,103 @@ section {
     border: none;
 }
 
+
+/* Mostrar productos */
+
+
+/*barra de busqueda*/
+.barra_busqueda{
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  background: transparent;
+}
+
+.barra_busqueda input{
+  width: 60%;
+  margin-right: 0px;
+
+}
+
+.main_product {
+  background: transparent;
+  padding: 30px;
+  border: 1.5px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 20px;
+
+}
+
+.card {
+  padding: 6px;
+  width: 20%;
+  height: 55vh;
+  text-align: center;
+  align-items: center;
+  background: white;
+  box-shadow: 5px 5px 18px black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.card .cont_imag{
+   width: 100%;
+  height: 60%;
+  max-height: 300px;
+  overflow: hidden;
+  background: transparent;
+}
+
+.card .cont_imag img {
+  width: 60%;
+  height: auto;
+  object-fit: cover;
+}
+
+
+
+span{
+  color: seagreen;
+}
+
+/*para certificado en caso de cumplirse*/
+.mostrar_certificado::before {
+  content: "Agroecológico";
+  font-style: italic;
+  position: absolute;
+  top: 12%;
+  left: -10%;
+  padding: 5px 10px;
+  font-size: 20px;
+  background: seagreen;
+  color: white;
+  box-shadow: 2px 2px 20px seagreen;
+  transform: rotate(-40deg);
+  transform-origin: top left;
+
+}
+
+
+@media screen and (max-width: 768px) {
+  .barra_busqueda {
+     width: 100%;
+   }
+
+  .barra_busqueda input {
+     width: 80%;
+   }
+
+  .main_product {
+     flex-direction: column;
+   }
+
+  .card {
+     width: 100%;
+   }
+
+ }

@@ -20,6 +20,11 @@ export class ProviderEditComponent  implements OnInit{
   valor_ranking_start: number =0;
   //tomar id de las rutas
   providerIdNumber: number = Number(this.routeA.snapshot.paramMap.get('id'));
+  //primero se crea arreglo usando interfaz de product
+  productArray: any[] = [];
+  //busqueda
+  busqueda_clave = '';
+  noProductsFound = false;
 
   constructor(
     private route: Router,
@@ -53,6 +58,7 @@ export class ProviderEditComponent  implements OnInit{
 
   ngOnInit(): void {
   this.datosProductoId();
+  this.mostrarProductos();
   }
 
   datosPersonaID(id_people: number){
@@ -81,6 +87,15 @@ export class ProviderEditComponent  implements OnInit{
   }
 
 
+  mostrarProductos() {
+
+    this.fkjoinS.getProdProvPeopleID(this.providerIdNumber).subscribe((data) => {
+      this.productArray = data.data;
+      this.productArray.sort(() => Math.random() - 0.5);
+    });
+  }
+
+
   datosProductoId() {
     console.log(this.providerIdNumber);
     this.providerS.getProviderId(this.providerIdNumber).subscribe((data) => {
@@ -100,5 +115,24 @@ export class ProviderEditComponent  implements OnInit{
         console.log('No hay datos guardados del producto.');
     }
     });
+  }
+
+  //BARRA DE BUSQUEDA
+  barraBusquedaProductos(): void {
+    if (!this.busqueda_clave.trim()) {
+      this.mostrarProductos();
+      this.noProductsFound = false;
+      return;
+    }else{
+      this.noProductsFound = true;
+    }
+    this.productArray = this.productArray.filter((product) =>
+      product.pro_name.toLowerCase().includes(this.busqueda_clave.toLowerCase())
+    );
+  }
+
+  //NAVEGACION
+  verproductoIndividual(id: number) {
+    this.route.navigate(['/product/show/', id]);
   }
 }
