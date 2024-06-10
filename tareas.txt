@@ -1,108 +1,79 @@
 PRODUCT
--agregar filtros en productos ✔️
--agregar busqueda en productos✔️ 
--poner sello de certificacion 
--poner productos que salgan aleatorios ✔️
-
-PRODUCT/SHOW/ID
--poner link en botones (ej: perfil, redirija a perfil) ✔️
--poner metodo para enviar mensajes whatsApp ✔️
--mejorar imagenes (object-fit: cover) ✔️
--poner más productos relacionados con el productor ✔️
--permitir eliminar (ocultar) productos ✔️
-
-PRODUCT/OWN
--poner filtros y barra de busqueda funcionales
--poner metodo para ver productos en "product/show/id"
+-poner sello de certificacion (cambiar que solo admin pueda ver certificación) product/edit/id
 
 PRODUCT/ADD
+-restriciones para solo subir imagenes
 -mejorar interfaz
--ocultar informacion no necesaria (ej: id provedor)
--redirijir a provedor/add en caso que solo tenga rol admin
 
 PRODUCT/EDIT/ID
--
+-poner productos de provedor
 
-
-PROVIDER
--poner filtros
--mejorar imagenes (object-fit: cover)
--poner accion a boton de ver perfil (icono del ojo)
 
 PROVIDER/ADD
--crear interfaz de agregar provedores
--poner logica para agregar (ej: people_id atomatico)
--poner valores temporales para enviar (caso de admin cambie rol a la persona)
+-poner cuando le de al boton de guardar 
 
 PROVIDER/SHOW/ID
--crear componente para ver productor por id
--poner botones de editar y eliminar funcionales
--poner boton para ver mas infomacion de la persona (boton con bandera)
+-si provedor se elimina sus productos no aparecen
 
 STAR
--crear componente para estrellas
--poner la interfaz
--crear metodo en back-end para permitir actualizar solo estrella (prov_ranking)
--implementar en controlador provider back-end opcion para solo editar estrellas (promedio)
+-sacar promedio de estrellas anteriores con nuevas
 
 
 PEOPLE
 -mejorar la interfaz y la imagen  (object-fit: cover)
 -permitir editar datos de la persona (perfil)
--poner condicional (ng-if) para permita editar si es su propio perfil o admin  
+  
 
 PEOPLE/EDIT/ID
 -crear interfaz
--poner funcionalidades editar
+-permitir editar en la misma readonly (usar bandera)
 
 REQUEST/ADD
 -mejorar diseño (estetica con en colores y tamaños)
 -en caso de rol productor poner boton para ver requerimientos
--agreagar funcionalidad para enviar solicitud
 -redirijir a home en caso de exito
+
+CERTIFICADO (componente)
+-poner funcion para ver requerimientos
 
 REQUEST
 -ocultar encabezado de la tabla si no hay solicitudes y poner mensaje de vacio
 -mejorar colores (usar max: 3)
 -poner iconos para hacer mas atractiva la vista
--poner funcionalidad a boton de ver
+
+REQUEST/EDIT/ID
+-hacer que funcione estado
+-si es solicitud ser provedor llevar al perfil de usuario
+-si es cambio de contraseña tambien
+-si es certificar productos llevar a vista de provider/id
 
 
 CATEGORY
 -crear carpeta back-end para imagenes de categorias
 -implementar logica en controlador backend para imagenes (guardar y mostrar ID)
--poner boton de editar y eliminar
+-administrador las puede ver
 -mejorar la interfaz
 
 
 HEADER (encabezado-> barra de navegacion)
--poner en nombre de usuario opcion de cambio de contraseña
--poner opcion para ver cuentas usuarios (incluir desactivadas)
+-poner categorias para que solo admin las vea
 
 ADMIN/USER/ALL (solo admin)
--ver todos los usuarios de la app
--permitir editar y desactivar cuentas
+-ver todos los usuarios de la app solo admin proteger ruta
 -opcion para ver cuentas desactivadas
--poner filtros y barra busqueda funcionales
+-poner filtros cuenta activas e inactivas y barra busqueda funcionales
 
 
 USER
 -mejorar diseño poner boton para ver informacion personal
 
 USER/EDIT
--perimitir editar si es la persona o admin
--comprobar o agregar metodo back-end para editar sin enviar contraseña (pruebas postman)
 -mejorar interfaz
 -en caso admin permitir deactivar cuenta
 
 LOGIN
 -poner opcion de olvide mi contraseña
 -mejorar interfaz (letra, input y tamaños)
--poner funcion backend crear contraseña nueva aleatoria (empiece por fup______)
--mostrar ventana para recuperar contraseña y opcion de enviar nueva
--confirmar numero de telefono (max: 5min)
--enviar nueva contraseña por whatApp
--recomendar por alerta cambiar contraseña (usar alert() por el momento)
 
 PEOPLE/ADD (registrarse)
 -restriciones para que solo deje subir imagenes y no otros archivos
