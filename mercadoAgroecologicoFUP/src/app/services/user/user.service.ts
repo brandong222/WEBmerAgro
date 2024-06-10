@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { UserI } from 'src/app/models/user.interface';
 import { Observable } from 'rxjs';
 import { responsiveI } from 'src/app/models/response.interface';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ import { responsiveI } from 'src/app/models/response.interface';
 export class UserService {
   constructor(private http: HttpClient) {}
 
-  private apiUrl: string = 'http://127.0.0.1:8000/api/user';
+  private apiUrl: string = `${environment.urlMain}user`;
 
   //para listar usuarios
   getUser(): Observable<UserI[]> {

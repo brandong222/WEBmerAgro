@@ -3,12 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ProviderI } from 'src/app/models/provider.interface';
 import { responsiveI } from 'src/app/models/response.interface';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProviderService {
-  private apiUrl: string = 'http://127.0.0.1:8000/api/provider';
+  private apiUrl: string = `${environment.urlMain}provider`;
 
   constructor(private http: HttpClient) {}
   //mostrar datos de provider

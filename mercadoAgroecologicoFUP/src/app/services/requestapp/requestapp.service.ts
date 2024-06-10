@@ -3,12 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { RequestI } from 'src/app/models/request.interface';
 import { responsiveI } from 'src/app/models/response.interface';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RequestappService {
-  private apiUrl: string = 'http://127.0.0.1:8000/api/requestApp';
+  private apiUrl: string = `${environment.urlMain}requestApp`;
 
   constructor(private http: HttpClient) {}
 

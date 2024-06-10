@@ -3,14 +3,18 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { categoryI } from 'src/app/models/category.interface';
 import { responsiveI } from 'src/app/models/response.interface';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CategoryService {
-  constructor(private http: HttpClient) {}
 
-  private apiUrl: string = 'http://127.0.0.1:8000/api/category';
+
+  constructor(private http: HttpClient) {
+  }
+
+  private apiUrl: string = `${environment.urlMain}category`;
 
   //para traer datos de la api y db
   getCategory(): Observable<categoryI[]> {

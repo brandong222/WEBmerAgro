@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ImagenService {
 
-  private apiUrl: string = 'http://127.0.0.1:8000/api/imagen/';
+  private apiUrl: string = `${environment.urlMain}imagen/`;
 
   constructor(private http: HttpClient) { }
 

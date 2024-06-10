@@ -3,12 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { PeopleI } from 'src/app/models/people.interface';
 import { responsiveI } from 'src/app/models/response.interface';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PeopleService {
-  private apiUrl: string = 'http://127.0.0.1:8000/api/people';
+  private apiUrl: string = `${environment.urlMain}people`;
 
   constructor(private http: HttpClient) {}
 

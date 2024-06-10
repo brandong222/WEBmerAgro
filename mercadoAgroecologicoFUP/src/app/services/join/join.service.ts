@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { responsiveI } from 'src/app/models/response.interface';
 import { HttpClient } from '@angular/common/http';
 import { superInterfazI } from 'src/app/models/superInterfaz.interface';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -10,17 +11,19 @@ import { superInterfazI } from 'src/app/models/superInterfaz.interface';
 export class JoinService {
   constructor(private http: HttpClient) { }
 
-  private apiJOIN: string = 'http://127.0.0.1:8000/api/usuariosPersonas';
-  private apiJOIN2: string = 'http://127.0.0.1:8000/api/productosProvedoresPernas';
-  private apiJOIN3: string = 'http://127.0.0.1:8000/api/joinProdProvPeopleID';
-  private apiJOIN4: string = 'http://127.0.0.1:8000/api/joinReqPeoUsu';
-  private apiJOIN5: string = 'http://127.0.0.1:8000/api/joinUserPeople';
-  private apiJOIN6: string = 'http://127.0.0.1:8000/api/joinProvedorpeopleID';
-  private apiJOIN7: string = 'http://127.0.0.1:8000/api/showReqPeoUsu';
-  private apiJOIN8: string = 'http://127.0.0.1:8000/api/joinProduProviderID';
-  private apiJOIN9: string = 'http://127.0.0.1:8000/api/showPeopleUsers';
-  private apiJOIN10: string = 'http://127.0.0.1:8000/api/joinUserPeopleID';
-  private apiJOIN11: string = 'http://127.0.0.1:8000/api/compararSesionProviderConProductProviderID';
+
+
+  private apiJOIN: string = `${environment.urlMain}usuariosPersonas`;
+  private apiJOIN2: string =  `${environment.urlMain}productosProvedoresPernas`;
+  private apiJOIN3: string =  `${environment.urlMain}joinProdProvPeopleID`;
+  private apiJOIN4: string =  `${environment.urlMain}joinReqPeoUsu`;
+  private apiJOIN5: string =  `${environment.urlMain}joinUserPeople`;
+  private apiJOIN6: string =  `${environment.urlMain}joinProvedorpeopleID`;
+  private apiJOIN7: string =  `${environment.urlMain}showReqPeoUsu`;
+  private apiJOIN8: string =  `${environment.urlMain}joinProduProviderID`;
+  private apiJOIN9: string =  `${environment.urlMain}showPeopleUsers`;
+  private apiJOIN10: string =  `${environment.urlMain}joinUserPeopleID`;
+  private apiJOIN11: string =  `${environment.urlMain}compararSesionProviderConProductProviderID`;
 
 
 
