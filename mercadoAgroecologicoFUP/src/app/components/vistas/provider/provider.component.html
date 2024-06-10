@@ -1,5 +1,19 @@
 <app-header></app-header>
 <section>
+
+  <div class="barra_busqueda">
+
+    <input
+    class="form-control me-2"
+    type="search"
+    [(ngModel)]="busqueda_clave"
+    (input)="barraBusquedaProductos()"
+    placeholder="Buscar nombre de prodcutor"
+    aria-label="Search"
+  />
+
+  </div>
+
 <div class="main_provider">
   <div *ngFor="let provider of providerArray;" class="provider">
     <div class="imagen">

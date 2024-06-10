@@ -22,6 +22,7 @@ export class ProviderComponent implements OnInit {
     private FK_joinS: JoinService ) { }
 
   providerArray: any[] = [];
+  busqueda_clave = '';
 
   ngOnInit(): void {
   this.mostrarProvedores();
@@ -34,6 +35,18 @@ export class ProviderComponent implements OnInit {
    });
   }
 
+  //BARRA DE BUSQUEDA
+  barraBusquedaProductos(): void {
+    if (!this.busqueda_clave.trim()) {
+      this.mostrarProvedores();
+      return;
+    }
+    this.providerArray = this.providerArray.filter((people) =>
+      people.peo_name.toLowerCase().includes(this.busqueda_clave.toLowerCase())
+    );
+  }
+
+
 //NAVEGACION
 
 navEditarProveedor(id: number){
@@ -45,5 +58,6 @@ navEditarProveedor(id: number){
     this.route.navigate(['/provider']);
   }
 }
+
 
  }

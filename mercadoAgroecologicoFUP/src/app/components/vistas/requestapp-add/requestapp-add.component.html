@@ -1,11 +1,11 @@
 <app-header></app-header>
 
 <div class="container" aria-readonly="false">
-  <h1>Enviar solicitud a un administrador (a)</h1>
+  <h3 style="color: seagreen;">Enviar solicitud a un administrador</h3>
 
   <div class="lado-izq" *ngFor="let item of requestArray">
     <form [formGroup]="requestForm"
-      (ngSubmit)="guardarRequest(requestForm.value)">
+      >
 
       <div class="form-group">
         <label for="nombre">Nombre</label>
@@ -38,7 +38,7 @@
 
         </div>
 
-        <input type="submit" class="btn btn-primary boton_style" value="Enviar">
+        <input type="button" class="btn btn-primary boton_style" (click)="guardarRequest(requestForm.value)" value="Enviar">
 
       </div>
 
