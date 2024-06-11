@@ -21,7 +21,7 @@ export class UserADDComponent implements OnInit {
   bandera_confirmar_password: boolean  = false;
 
   userForm = new FormGroup({
-    use_cc: new FormControl('', [Validators.required, Validators.minLength(8)]),
+    use_cc: new FormControl('', [Validators.required, Validators.minLength(8),Validators.pattern('^[0-9]+$')]),
     use_password: new FormControl('', [Validators.required, Validators.minLength(4)]),
     use_rol: new FormControl('usuario', Validators.required),
     use_status: new FormControl(1, Validators.required),
