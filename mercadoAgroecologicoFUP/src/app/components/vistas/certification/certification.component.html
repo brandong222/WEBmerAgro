@@ -1,22 +1,18 @@
-<ul class="list-group">
-  <li class="list-group-item">
-    <input type="checkbox" id="checklist4" name="checklist[]"
-      value="checklist4">
-    <label for="checklist4">Cumple con los requisitos mínimos de
-      producción</label>
-  </li>
-  <li class="list-group-item">
-    <input type="checkbox" id="checklist5" name="checklist[]"
-      value="checklist5">
-    <label for="checklist5">Tiene experiencia en la producción de
-      contenido audiovisual</label>
-  </li>
-  <li class="list-group-item">
-    <input type="checkbox" id="checklist6" name="checklist[]"
-      value="checklist6">
-    <label for="checklist6">Posee un portafolio de trabajos que
-      demuestren su talento</label>
-  </li>
-</ul>
-
-<button type="submit" class="btn btn-primary" style="float: right;">Calcular</button>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let item of checkList">
+          <input type="checkbox" [id]="item.id" (change)="onCheckboxChange($event)" name="checklist[]"
+                value="{{item.id}}">
+          <label [for]="item.id">{{item.label}}</label>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 text-right">
+      <button type="button" class="btn btn-primary" (click)="calculateResult()">Calcular</button>
+    </div>
+  </div>
+</div>

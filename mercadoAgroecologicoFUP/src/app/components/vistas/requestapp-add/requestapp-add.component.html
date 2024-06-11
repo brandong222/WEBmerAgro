@@ -30,17 +30,17 @@
             class="form-control" formControlName="req_description">
         </div>
 
-        <div class="form-group" *ngIf="item.use_rol === 'productor'"
+        <input type="button" class="btn btn-primary boton_style" (click)="guardarRequest(requestForm.value)" value="Enviar">
+
+      </div>
+
+      <div class="form-group" *ngIf="item.use_rol === 'productor'"
           id="checklistVisitaCertificacion">
-          <label for="checklist">Checklist para Visita de Certificación</label>
+          <label for="checklist">Checklist para tener una idea de si sus productos cumplen con algunos criterios de evaluación para certificarlos</label>
 
           <app-certification></app-certification>
 
         </div>
-
-        <input type="button" class="btn btn-primary boton_style" (click)="guardarRequest(requestForm.value)" value="Enviar">
-
-      </div>
 
     </form>
   </div>
