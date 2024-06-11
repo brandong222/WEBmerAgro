@@ -19,8 +19,8 @@ export class LoginComponent implements OnInit {
   intentos_contrasena: number = 0;
 
   loginForm = new FormGroup({
-    use_cc: new FormControl('', Validators.required),
-    use_password: new FormControl('', Validators.required),
+    use_cc: new FormControl(null, [Validators.required,Validators.minLength(1) ]),
+    use_password: new FormControl(null, [Validators.required, Validators.minLength(1)]),
   });
 
 
@@ -42,6 +42,8 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(form: loginI) {
+
+    if(this.loginForm.valid){
     this.loginS.loginCC(form).subscribe(
       (data) => {
         let dataR: responsiveI = data;
@@ -80,6 +82,10 @@ export class LoginComponent implements OnInit {
 
       }
     );
+
+  }else{
+    Swal.fire('Inicio de sesion', 'Verifique los campos e intente nuevamente', 'error');
+  }
   }
 
   //navegación
