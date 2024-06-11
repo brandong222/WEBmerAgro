@@ -5,10 +5,9 @@ import { PeopleI } from 'src/app/models/people.interface';
 import { superInterfazI } from 'src/app/models/superInterfaz.interface';
 import { JoinService } from 'src/app/services/join/join.service';
 import { PeopleService } from 'src/app/services/people/people.service';
-import { ProductService } from 'src/app/services/product/product.service';
-import { ProviderService } from 'src/app/services/provider/provider.service';
 import { RequestappService } from 'src/app/services/requestapp/requestapp.service';
 import { Location } from '@angular/common';
+import { RequestI } from 'src/app/models/request.interface';
 
 @Component({
   selector: 'app-requestapp-edit',
@@ -20,12 +19,14 @@ export class RequestappEDITComponent {
   providerArray: any[] = [];
   requestArray: any[] = [];
   peopleForm: FormGroup;
+  requestForm: FormGroup;
   link_imagen_people: string = '';
   id_ruta_request: number = Number(this.routeA.snapshot.paramMap.get('id'));
   id_people_fk: number = 0;
   people_phone: string = '';
   people_name: string = '';
   type_request: string = '';
+  request_status: number = 0;
 
   constructor(
     private route: Router,
@@ -44,6 +45,11 @@ export class RequestappEDITComponent {
       peo_image: new FormControl('', Validators.required),
       peo_mail: new FormControl('', Validators.required),
       peo_phone: new FormControl(0, Validators.required),
+    });
+
+    this.requestForm = new FormGroup({
+      id: new FormControl('', Validators.required),
+      req_status: new FormControl(0, Validators.required),
     });
   }
 
@@ -116,6 +122,26 @@ export class RequestappEDITComponent {
     this.requestS.getRequestAppId(this.id_ruta_request).subscribe((info) => {
       this.type_request = info.data.req_type;
     });
+  }
+
+  //para controlar cambio de roles
+  evaluar_estado_respuesta(form: RequestI) {
+    const status_req: number = Number(form.req_status);
+    alert(status_req);
+    if (status_req == 1) {
+      this.request_status = 1;
+    }
+    if (status_req == 2) {
+      this.request_status = 2;
+    }
+    if (status_req == 3) {
+      this.request_status = 3;
+    }
+    if (status_req == 4) {
+      this.request_status = 4;
+    }
+
+    this.requestForm.get('req_status')?.setValue(this.request_status);
   }
 
   //Navegacion
