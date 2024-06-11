@@ -22,6 +22,8 @@ export class PeopleComponent implements OnInit {
   imageURL: string = 'API image';
   link_imagen_subida:string ="";
 
+  rol_user: string = '';
+
   constructor(
     private route: Router,
     private peopleS: PeopleService,
@@ -46,6 +48,8 @@ export class PeopleComponent implements OnInit {
 
   mostrarPeople() {
     const user_id: UserI = this.traerDatosSesion();
+    this.rol_user = String(user_id.use_rol);
+
     this.fkjoinS.getjoinUserPeople(Number(user_id.id)).subscribe((data) => {
       console.log(data.data[0].people_id);
       this.peopleForm.get('id')?.setValue(Number(data.data[0].people_id));

@@ -16,16 +16,15 @@ import Swal from 'sweetalert2';
   styleUrls: ['./product-show.component.css'],
 })
 export class ProductSHOWComponent implements OnInit {
-
   //variable verificar si coincide el producto con su dueño
   bandera_provider_own: boolean = false;
 
   //tomar id de las rutas
-  productIdNumber: number= 0;
+  productIdNumber: number = 0;
 
   //bandera  y provedor_id
   banderaCalificar: boolean = true;
-  rolUsuario: string = "";
+  rolUsuario: string = '';
 
   //variables y arreglos
   productUnitArray: any[] = [];
@@ -33,6 +32,7 @@ export class ProductSHOWComponent implements OnInit {
   productosRelacionados: any[] = [];
   numeroContacto: number = 0;
   contarEstrellas: number = 0;
+  estrellas_productor_bd: number = 0;
   id_provider: number = 0;
 
   constructor(
@@ -55,44 +55,60 @@ export class ProductSHOWComponent implements OnInit {
   }
 
   //validar roles de usuario
-  validarRoles(){
-    const sesion: UserI= this.traerDatosSesion();
+  validarRoles() {
+    const sesion: UserI = this.traerDatosSesion();
     this.rolUsuario = String(sesion.use_rol);
   }
 
   //para obtener estrellas de componente
   obtenerNumeroEstrellas(star: number) {
+
+
+  if(this.estrellas_productor_bd == 0){
     this.contarEstrellas = star;
+  }else{
+    this.contarEstrellas = ((star+this.estrellas_productor_bd)/2)
+
+  }
+
+
   }
 
   mostrarProductoID() {
     this.productS
       .getProductId(Number(this.productIdNumber))
       .subscribe((data) => {
+        this.providerS
+          .getProviderId(Number(data[0].providers_id))
+          .subscribe((data) => {
+            this.estrellas_productor_bd = data.data.prov_ranking;
+          });
+
         this.productUnitArray = data;
 
-       this.evaluarProveedorEsDuenioProducto(Number(data[0].providers_id));
-       this.id_provider = Number(data[0].providers_id  );
-
+        this.evaluarProveedorEsDuenioProducto(Number(data[0].providers_id));
+        this.id_provider = Number(data[0].providers_id);
       });
   }
 
-evaluarProveedorEsDuenioProducto(provider_id_producto: number){
+  evaluarProveedorEsDuenioProducto(provider_id_producto: number) {
+    const sesion: UserI = this.traerDatosSesion();
 
-  const sesion: UserI = this.traerDatosSesion();
-
-  //comparar con el id sesion
-  this.fkjoinS.compararSesionProviderConProductProviderID(provider_id_producto,Number(sesion.id) ).subscribe(data=>{
-    console.log(data.status);
-    if(data.status){
-      this.bandera_provider_own = true;
-    }else{
-      this.bandera_provider_own = false;
-
-    }
-  })
-
-}
+    //comparar con el id sesion
+    this.fkjoinS
+      .compararSesionProviderConProductProviderID(
+        provider_id_producto,
+        Number(sesion.id)
+      )
+      .subscribe((data) => {
+        console.log(data.status);
+        if (data.status) {
+          this.bandera_provider_own = true;
+        } else {
+          this.bandera_provider_own = false;
+        }
+      });
+  }
 
   eliminarProducto(id: number) {
     ////////////// <---- modificar alerta
@@ -102,7 +118,7 @@ evaluarProveedorEsDuenioProducto(provider_id_producto: number){
 
     if (respuesta) {
       this.productS.deleteProduct(id).subscribe((data) => {
-      //  console.log(data);
+        //  console.log(data);
         alert(data.message);
         this.route.navigate(['/product']);
       });
@@ -110,16 +126,13 @@ evaluarProveedorEsDuenioProducto(provider_id_producto: number){
   }
 
   mostrarOtrosProductos() {
-
-    this.productS.getproductos().subscribe(data=>{
+    this.productS.getproductos().subscribe((data) => {
       this.productosRelacionados = data;
-    })
-
-
+    });
   }
 
   //Traer datos sesion para habilitar por rol las opciones
-  traerDatosSesion(){
+  traerDatosSesion() {
     const usuarioData = sessionStorage.getItem('usuario_login');
 
     if (usuarioData) {
@@ -144,34 +157,39 @@ evaluarProveedorEsDuenioProducto(provider_id_producto: number){
   navStar() {
     this.banderaStar = !this.banderaStar;
     if (!this.banderaStar) {
-      //traer datos id_provedor
-      const id_product = this.productIdNumber;
+    if(this.contarEstrellas > 0){
+        //traer datos id_provedor
+        const id_product = this.productIdNumber;
 
-      //traer id del provedor con id de su producto
-      this.productS.getProductId(id_product).subscribe((data) => {
-        const datosProduct: ProductI = data[0];
+        //traer id del provedor con id de su producto
+        this.productS.getProductId(id_product).subscribe((data) => {
+          const datosProduct: ProductI = data[0];
 
-        //guardar cambios de estrellas para proveedor
-        this.providerS
-          .updateOnlyRanking(
-            Number(datosProduct.providers_id),
-            this.contarEstrellas
-          )
-          .subscribe((data) => {
+          //guardar cambios de estrellas para proveedor
+          this.providerS.updateOnlyRanking(Number(datosProduct.providers_id),this.contarEstrellas).subscribe((data) => {
+              if (data.status) {
+                Swal.fire('Calificación', 'Calificación exitosa', 'success');
+              } else {
+                Swal.fire(
+                  'Calificación',
+                  'No se pudo registrar Calificación',
+                  'error'
+                );
+              }
+            });
+        });
+    }else{
+      Swal.fire('Calificación', 'No se guardo, debe elegir un valor', 'error');
+    }
 
-          if(data.status){
-            Swal.fire('Calificación','Calificación exitosa','success');
-          }else{
 
-           Swal.fire('Calificación','No se pudo registrar Calificación','error');
-          }
-          });
-      });
+
+
+
     }
   }
 
   verproductoIndividual(id: number) {
-
     this.route.navigateByUrl('/', { skipLocationChange: true }).then(() => {
       this.route.navigate(['/product/show/', id]);
     });
@@ -200,14 +218,12 @@ evaluarProveedorEsDuenioProducto(provider_id_producto: number){
     });
   }
 
-
   //Navegacion
-  navEditarProveedor(id: number){
-    if(id>0){
-      this.route.navigate(['/provider/edit/'+id]);
-
-    }else{
-      alert('error')
+  navEditarProveedor(id: number) {
+    if (id > 0) {
+      this.route.navigate(['/provider/edit/' + id]);
+    } else {
+      alert('error');
       this.route.navigate(['/provider']);
     }
   }

@@ -12,6 +12,7 @@ import { UserI } from 'src/app/models/user.interface';
 import { ProviderI } from 'src/app/models/provider.interface';
 import { PeopleI } from 'src/app/models/people.interface';
 import { responsiveI } from 'src/app/models/response.interface';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-product-add',
@@ -103,19 +104,29 @@ export class ProductADDComponent implements OnInit {
   guardarProducto(form: ProductI) {
     const numericCategoriesId = Number(form.categories_id);
 
+    if(!this.productForm.validator){
+
     // Actualizar el valor de categories_id en el formulario
     this.productForm.patchValue({
       categories_id: numericCategoriesId,
     });
 
-    // Ahora, puedes enviar el formulario actualizado
-    console.log(form);
 
     this.productS.addProduct(form).subscribe((data) => {
-      console.log(data);
-      console.log(data.data);
-      this.route.navigate(['/product']);
+
+      if(data.status){
+        this.route.navigate(['/product']);
+        Swal.fire('Datos de producto','producto registrado existosamente','success')
+      }else{
+        Swal.fire('Datos de producto', 'No se puede registrar producto verifique la informacón', 'error')
+      }
+
+
     });
+    }else{
+      Swal.fire('Datos de producto', 'No se puede registrar producto verifique la informacón', 'error')
+    }
+
   }
 
   traerDatosSesion() {
