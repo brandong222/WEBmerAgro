@@ -27,7 +27,7 @@ section form {
 
 .parte_derecha img{
   width: 300px;
-  height: auto;
+  height: 300px;
   border-radius: 100%;
   object-fit: cover;
 }

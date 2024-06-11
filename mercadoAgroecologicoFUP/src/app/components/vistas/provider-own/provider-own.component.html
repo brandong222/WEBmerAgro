@@ -1,36 +1,69 @@
 <app-header></app-header>
-
-<form *ngFor="let item of providerArray">
-
-<div class="lado-izq">
-<img [src]="item.peo_image" alt="">
-<div>
-  <h3>Grupo(s)</h3>
-  <h5>{{ item.prov_group }}</h5>
-</div>
-
-</div>
-<div class="lado-der">
-
-  <div>
-    <h3>{{ item.peo_name }} {{ item.peo_lastname }}</h3>
-  </div>
+<section *ngIf="!bandera_edit_provider">
+  <form  *ngFor="let item of providerArray">
 
 
-    <div class="rating_container">
-      <a class="star" [ngStyle]="{'color': item.prov_ranking > 0 || item.prov_ranking == 1 ?'gold' : 'darkgray'}" >&#9733;</a>
-      <a class="star" [ngStyle]="{'color': item.prov_ranking > 1 && item.prov_ranking <6 ? 'gold' : 'darkgray'}" >&#9733;</a>
-      <a class="star" [ngStyle]="{'color': item.prov_ranking > 2 && item.prov_ranking <6 ? 'gold' : 'darkgray'}" >&#9733;</a>
-      <a class="star" [ngStyle]="{'color': item.prov_ranking > 3 && item.prov_ranking <6 ? 'gold' : 'darkgray'}" >&#9733;</a>
-      <a class="star" [ngStyle]="{'color': item.prov_ranking > 4 && item.prov_ranking <6 ? 'gold' : 'darkgray'}" >&#9733;</a>
+    <div class="lado-izq">
+    <img [src]="item.peo_image" alt="">
+    <div>
+      <h3>Grupo(s)</h3>
+      <h5>{{ item.prov_group }}</h5>
     </div>
 
-  <div>
-    <span><h3>descripcion</h3></span>
+    </div>
+    <div class="lado-der">
 
-    <h5>{{ item.prov_description }}</h5>
-  </div>
-</div>
+      <div>
+        <h3>{{ item.peo_name }} {{ item.peo_lastname }}</h3>
+      </div>
 
 
-</form>
+        <div class="rating_container">
+          <a class="star" [ngStyle]="{'color': item.prov_ranking > 0 || item.prov_ranking == 1 ?'gold' : 'darkgray'}" >&#9733;</a>
+          <a class="star" [ngStyle]="{'color': item.prov_ranking > 1 && item.prov_ranking <6 ? 'gold' : 'darkgray'}" >&#9733;</a>
+          <a class="star" [ngStyle]="{'color': item.prov_ranking > 2 && item.prov_ranking <6 ? 'gold' : 'darkgray'}" >&#9733;</a>
+          <a class="star" [ngStyle]="{'color': item.prov_ranking > 3 && item.prov_ranking <6 ? 'gold' : 'darkgray'}" >&#9733;</a>
+          <a class="star" [ngStyle]="{'color': item.prov_ranking > 4 && item.prov_ranking <6 ? 'gold' : 'darkgray'}" >&#9733;</a>
+        </div>
+
+      <div>
+        <span><h3>descripcion</h3></span>
+
+        <h5>{{ item.prov_description }}</h5>
+      </div>
+    </div>
+
+    <a  class="cont_edit" (click)="habilitarCamposEdit(item.id)">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAORJREFUSEvVlNsNwjAQBDedQCfQCZ0AlVAK0AmdgCeKkXOyjV/54KTIiqLMnvfsnbRxTRvzNUJgJ+m0NHqxDfcKAL9JOizgl6SjE2Sdq1cAuO/eM4HvRwmwg7sk1rCu7mW2q2UHwM7uXyB0GxNpFgg9D/0ORZotsgPFASvCTBjyt0otisHDoa5OTq1ADu5ZD9t56Skqga88r7lo3fDcMR0CTwkMg6cEuJk+W2Jhm/W8ZAbvTIRXwWM7ILi4LN2dp44pAUXO2KruPCXwM34z9kU/2ahgwNTTDZrbydNVpVnULPL/Ah+ORy8Z8tsoHAAAAABJRU5ErkJggg=="/>
+      <span>Editar</span>
+    </a>
+
+
+    </form>
+</section>
+
+<section *ngIf="bandera_edit_provider" >
+  <form  [formGroup]="providerForm" >
+
+    <div class="lado-izq">
+
+          <div class="form-group">
+            <label for="description">Descripción</label>
+            <input type="text" class="form-control" formControlName="prov_description"/>
+          </div>
+
+
+          <div class="form-group">
+            <label for="group">Grupo</label>
+            <input type="text" class="form-control" formControlName="prov_group"/>
+          </div>
+        </div>
+        <a class="cont_edit" (click)="guardarActualizarProveedor(providerForm.value)">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAKpJREFUSEvtldERgzAIhj83cRQdpZNYJ+kodpRuouJpzyPlSHJG+yCPCf6fQICKwlYV1ud0QAO8gDohsn72fVr+OoIBEEiqmRANGJWydb+d7/1/Qo4EyL8FkFSATp2OOICUAAjkq+sBUou9+d8AN3PRKYodJWb/eEW+AcG49maRVd3/qUHuuN5H9gbaoKXXA9kFXeZOEIkP8Ji/F8hisc/Q7azYjZYtdBlgAtDZJhkSIUpRAAAAAElFTkSuQmCC"/>
+          <span>Guardar</span>
+        </a>
+      </form>
+
+</section>
+
+

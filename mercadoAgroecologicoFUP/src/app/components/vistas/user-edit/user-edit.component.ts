@@ -53,28 +53,42 @@ export class UserEditComponent implements OnInit {
 
   //metodo para actualizar datos de usuario
   actualizarUsuario(form: UserI) {
-    this.userS.updateUser(Number(form.id), form).subscribe(
-      (data) => {
-      if (data.status) {
-        Swal.fire(
-          'Datos de usuario',
-          'Datos actualizados exitosamente',
-          'success'
+    if (this.userForm.validator) {
+      Swal.fire(
+        'Datos de usuario',
+        'Verifique sus datos e intente nuevamente',
+        'error'
+      );
+    } else {
+      if (this.banderaPassword == true) {
+        this.userS.updateUser(Number(form.id), form).subscribe(
+          (data) => {
+            if (data.status) {
+              Swal.fire(
+                'Datos de usuario',
+                'Datos actualizados exitosamente',
+                'success'
+              );
+            }
+          },
+          (Error) => {
+            Swal.fire(
+              'Datos de usuario',
+              'Por favor llene los campos',
+              'error'
+            );
+          }
         );
       }
     }
-  ,(Error=>{
-    Swal.fire(
-      'Datos de usuario',
-      'Por favor llene los campos',
-      'error'
-    );
-  })
-  );
+
+    if (this.banderaPassword == false) {
+    }
   }
 
   //para la contraseña se aplica bandera en caso de habilitar campo
   cambiarPasseord() {
+    this.userForm.get('use_password')?.setValue(null);
     this.banderaPassword = !this.banderaPassword;
   }
 }

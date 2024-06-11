@@ -1,45 +1,115 @@
 <app-header></app-header>
 
 <section class="container">
-  <form [formGroup]="peopleForm">
+  <div class="botones_navegacion">
+    <div class="cont_btn">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAO5JREFUSEvVldENwjAMRK+bwCTAJjAJMAlsApsAkwCHEtS6jm0ligSWqvaj9bPPznVA5xg650cUsACwB7B9X3cAVwDH9GzWGAGsAVyULATtEqwIiQBuANiBFoQsrRY8ACU5OXPaWF14gEPS3mJwFnxPDQ9Q0n+cjHM41wKoPQfcbQYszOrC1J8fexLlzvM5IIyRV5T35nPg5fhtANdvleYgK82W8ahZU2rNA1baHg2m2oY25Mjul3SfbZUGsLzHG/jMmyQgYg0eZGIdEkDdaXAtwX8FpfqEBLTIk3NOZJKAZ0vpo2+/eaNWUc39f8ALCDsoGfKFTMgAAAAASUVORK5CYII="/>
+      <input
+        type="button"
+        class="btn"
+        (click)="navDatosSesion()"
+        value="Datos de sesion "
+      />
+    </div>
+    <div  class="cont_btn">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAPhJREFUSEvVldENwjAMRK+bwCTAJLAJMAkwSRkFJgFOiivXxLFBrQT5qaq09xLnJekwc+tmzsdPAQ4AVgAWAC6vmfM9bJkZMGhbgnXgLQOKAD2AdUmVQD73CngFsPGmEgEe5UcbcgKwU6FuThbALJlBrVyTAGr1Z6nYJgUclUFSwq8AtEdGqEcvYbpfQ0frXSN7WsqPDEtrawEZLQWU0tYCslqmtfUAHOUZwN0pR1rbFqClpd24Uq43bTOAmpYa0NQ2AnBky5L2ibZDbsuiqM6etiMBLIBnPU9PfVpGWtr+0T3hbXEByYayF0zUP6xRdJqGN1b0wf8DnuSOTBlJT5F+AAAAAElFTkSuQmCC"/>
+      <input
+        type="button"
+        class="btn"
+        (click)="navDatosProveedor()"
+        value="Datos de productor"
+      />
+      <!--*ngIf="item.use_rol === 'productor' || item.use_rol === 'admin'"-->
+    </div>
+    <div   class="cont_btn"  *ngIf="!bandera_edit_people">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAORJREFUSEvVlNsNwjAQBDedQCfQCZ0AlVAK0AmdgCeKkXOyjV/54KTIiqLMnvfsnbRxTRvzNUJgJ+m0NHqxDfcKAL9JOizgl6SjE2Sdq1cAuO/eM4HvRwmwg7sk1rCu7mW2q2UHwM7uXyB0GxNpFgg9D/0ORZotsgPFASvCTBjyt0otisHDoa5OTq1ADu5ZD9t56Skqga88r7lo3fDcMR0CTwkMg6cEuJk+W2Jhm/W8ZAbvTIRXwWM7ILi4LN2dp44pAUXO2KruPCXwM34z9kU/2ahgwNTTDZrbydNVpVnULPL/Ah+ORy8Z8tsoHAAAAABJRU5ErkJggg=="/>
+      <input
 
+        type="button"
+        class="btn"
+        (click)="habilitarEditPeople()"
+        value="editar"
+      />
+    </div>
+  </div>
+
+  <form [formGroup]="peopleForm">
     <div class="parte_derecha">
-      <div class="div_img" >
-        <img [src]="link_imagen_people" alt="imagen" class="link_imagen_people" />
+      <div class="div_img">
+        <img
+          [src]="link_imagen_subida"
+          alt="imagen"
+          class="link_imagen_people"
+        />
       </div>
       <div class="form-group" *ngIf="bandera_edit_people">
         <span>Clic para actualizar imagen</span>
-        <input type="file" class="form-control">
-        <input type="text" class="form-control" formControlName="peo_image" hidden />
+        <input type="file" class="form-control" (change)="onFileSelected($event)" />
+        <input
+          type="text"
+          class="form-control"
+          formControlName="peo_image"
+          hidden
+        />
       </div>
 
-
-      <input *ngIf="bandera_edit_people" type="submit" class="btn btn-dark" value="subir imagen">
+      <input
+        *ngIf="bandera_edit_people"
+        type="submit"
+        class="btn btn-dark"
+        (click)="subirImagen()"
+        value="subir imagen"
+      />
     </div>
     <div class="parte_izquierda">
       <div class="form-group">
         <span>Nombre</span>
-        <input type="text" class="form-control" formControlName="peo_name" [readOnly]="!bandera_edit_people" />
+        <input
+          type="text"
+          class="form-control"
+          formControlName="peo_name"
+          [readOnly]="!bandera_edit_people"
+        />
       </div>
 
       <div class="form-group">
         <span>Apellido</span>
-        <input type="text" class="form-control" formControlName="peo_lastName"  [readOnly]="!bandera_edit_people" />
+        <input
+          type="text"
+          class="form-control"
+          formControlName="peo_lastName"
+          [readOnly]="!bandera_edit_people"
+        />
       </div>
 
       <div class="form-group">
         <span>Correo Electronico:</span>
-        <input type="email" class="form-control" formControlName="peo_mail" [readOnly]="!bandera_edit_people" />
+        <input
+          type="email"
+          class="form-control"
+          formControlName="peo_mail"
+          [readOnly]="!bandera_edit_people"
+        />
       </div>
 
       <div class="form-group">
         <span>Teléfono</span>
-        <input type="text" class="form-control" formControlName="peo_phone" [readOnly]="!bandera_edit_people" />
+        <input
+          type="text"
+          class="form-control"
+          formControlName="peo_phone"
+          [readOnly]="!bandera_edit_people"
+        />
       </div>
 
       <div class="form-group">
         <span>Fecha</span>
-        <input type="date" class="form-control" formControlName="peo_dateBirth" [readOnly]="!bandera_edit_people" />
+        <input
+          type="date"
+          class="form-control"
+          formControlName="peo_dateBirth"
+          [readOnly]="!bandera_edit_people"
+        />
       </div>
 
       <div class="form-group" *ngIf="!bandera_edit_people">
@@ -49,7 +119,12 @@
 
       <div class="form-group" *ngIf="bandera_edit_people">
         <span>Ubicación</span>
-        <select name="" id="ubicacion" class="form-control" formControlName="peo_adress" >
+        <select
+          name=""
+          id="ubicacion"
+          class="form-control"
+          formControlName="peo_adress"
+        >
           <option value="">Seleccione</option>
           <option value="Calibío">Calibío</option>
           <option value="Popayán">Popayán</option>
@@ -58,16 +133,13 @@
           <option value="Otra">Otra</option>
         </select>
       </div>
-      <input *ngIf="bandera_edit_people" type="button" class="btn btn-success" value="Guardar cambios " (click)="guardarDatosPeople(peopleForm.value)">
+      <input
+        *ngIf="bandera_edit_people"
+        type="button"
+        class="btn btn-success"
+        value="Guardar cambios "
+        (click)="guardarDatosPeople(peopleForm.value)"
+      />
     </div>
-
   </form>
-
-  <div class="botones_navegacion">
-    <input type="button" class="btn btn-primary" (click)="navDatosSesion()" value="Datos de sesion">
-    <input type="button" class="btn btn-secondary" (click)="navDatosProveedor()" value="Datos de productor" > <!--*ngIf="item.use_rol === 'productor' || item.use_rol === 'admin'"-->
-    <input *ngIf="!bandera_edit_people" type="button" class="btn btn-dark" (click)="habilitarEditPeople()" value="editar">
-
-  </div>
-
 </section>

@@ -36,8 +36,9 @@ section form {
   flex: 2;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   background: transparent;
+  gap: 10px 0px;
 }
 
 .parte_derecha div{
@@ -51,20 +52,35 @@ align-items: center;
   width: 250px;
   height: 240px;
   border-radius: 100%;
-  border: 5px solid white;
+  box-shadow:  2px 2px 10px black;
 }
 
 
 /*botones para navegar*/
 
 .botones_navegacion{
-  width: 100%;
+  background: transparent;
   display: flex;
   justify-content: space-around;
-  padding: 10px 30px 0px 30px;
-  background: transparent;
+  padding: 5px;
+box-shadow: 2px 2px 10px black;
 }
 
+
+.cont_btn{
+  display: flex;
+  align-items: center;
+text-decoration: underline;
+font-size: 24px;
+transition: all 0.3s ease-in;
+
+}
+
+.cont_btn:hover{
+  color: seagreen;
+  text-decoration: none;
+
+}
 
 @media (max-width: 768px) {
   /* Cambiar la dirección de la flexión a columna para que los elementos se apilen verticalmente */

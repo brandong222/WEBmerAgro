@@ -14,9 +14,10 @@ import Swal from 'sweetalert2';
 })
 export class PeopleADDComponent implements OnInit {
   selectedFile: File | null = null;
-  public imageURL: string = 'API image';
-  peopleForm: FormGroup;
+  imageURL: string = 'API image';
   link_imagen_subida:string ="";
+  peopleForm: FormGroup;
+
 
   minDate = new Date().toISOString().split('T')[0];
 

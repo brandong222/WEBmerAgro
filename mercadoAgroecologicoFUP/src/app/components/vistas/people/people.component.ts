@@ -6,6 +6,8 @@ import { superInterfazI } from 'src/app/models/superInterfaz.interface';
 import { UserI } from 'src/app/models/user.interface';
 import { JoinService } from 'src/app/services/join/join.service';
 import { PeopleService } from 'src/app/services/people/people.service';
+import { ImagenService } from 'src/app/services/subirIMAGEN/imagen.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-people',
@@ -14,15 +16,18 @@ import { PeopleService } from 'src/app/services/people/people.service';
 })
 export class PeopleComponent implements OnInit {
   peopleForm: FormGroup;
-  link_imagen_people: string = "";
-bandera_edit_people: boolean = false;
+  bandera_edit_people: boolean = false;
+
+  selectedFile: File | null = null;
+  imageURL: string = 'API image';
+  link_imagen_subida:string ="";
 
   constructor(
     private route: Router,
     private peopleS: PeopleService,
-    private fkjoinS: JoinService
+    private fkjoinS: JoinService,
+    private imagenS: ImagenService,
   ) {
-
     this.peopleForm = new FormGroup({
       id: new FormControl('', Validators.required),
       peo_name: new FormControl('', Validators.required),
@@ -36,33 +41,71 @@ bandera_edit_people: boolean = false;
   }
 
   ngOnInit(): void {
-
     this.mostrarPeople();
   }
 
-
-  mostrarPeople(){
+  mostrarPeople() {
     const user_id: UserI = this.traerDatosSesion();
-    this.fkjoinS.getjoinUserPeople(Number(user_id.id)).subscribe(data=>{
+    this.fkjoinS.getjoinUserPeople(Number(user_id.id)).subscribe((data) => {
       console.log(data.data[0].people_id);
       this.peopleForm.get('id')?.setValue(Number(data.data[0].people_id));
       this.peopleForm.get('peo_name')?.setValue(data.data[0].peo_name);
       this.peopleForm.get('peo_lastName')?.setValue(data.data[0].peo_lastname);
       this.peopleForm.get('peo_adress')?.setValue(data.data[0].peo_adress);
-      this.peopleForm.get('peo_dateBirth')?.setValue(data.data[0].peo_dateBirth);
+      this.peopleForm
+        .get('peo_dateBirth')
+        ?.setValue(data.data[0].peo_dateBirth);
       this.peopleForm.get('peo_image')?.setValue(data.data[0].peo_image);
-      this.link_imagen_people = String(data.data[0].peo_image);
+      this.link_imagen_subida = String(data.data[0].peo_image);
       this.peopleForm.get('peo_mail')?.setValue(data.data[0].peo_mail);
       this.peopleForm.get('peo_phone')?.setValue(data.data[0].peo_phone);
-
-
-
-    })
+    });
   }
 
 
+//para guardar imagen en la base datos y retornar su url
+onFileSelected(event: Event) {
+  const target = event.target as HTMLInputElement;
+  this.selectedFile = target.files? target.files[0] : null;
 
-  traerDatosSesion(){
+  // Verificar si se seleccionó un archivo
+  if (!this.selectedFile) {
+    alert('Debe seleccionar un archivo.');
+    return;
+  }
+
+  // Lista de tipos MIME permitidos (puedes ajustar esto según tus necesidades)
+  const allowedMimeTypes = ['image/jpeg', 'image/png'];
+
+  // Obtener el tipo MIME del archivo seleccionado
+  const fileType = this.selectedFile.type;
+
+  // Verificar si el tipo de archivo es permitido
+  if (!allowedMimeTypes.includes(fileType)) {
+    Swal.fire('Imagen','Solo se permiten archivos JPEG y PNG','error');
+    this.selectedFile = null;
+    target.value = '';
+  } else {
+    console.log('imagen subida')
+  }
+}
+
+subirImagen(){
+  if (this.selectedFile != null) {
+    console.log(this.selectedFile);
+    this.imagenS.uploadFile(this.selectedFile).subscribe((data) => {
+      this.imageURL = data.data;
+      this.peopleForm.get('peo_image')?.setValue(this.imageURL || '');
+      Swal.fire('Imagen','Subida con exito','success');
+      this.link_imagen_subida = String(data.data);
+    });
+  } else {
+    Swal.fire('Imagen','Selecione una imagen valida','error');
+  }
+}
+
+
+  traerDatosSesion() {
     const usuarioData = sessionStorage.getItem('usuario_login');
 
     if (usuarioData) {
@@ -70,44 +113,42 @@ bandera_edit_people: boolean = false;
     }
   }
 
+  //para activar la ediccion
+  habilitarEditPeople() {
+    Swal.fire(
+      'Editar perfil',
+      'Se habilito la opción de editar campos',
+      'info'
+    );
+    this.bandera_edit_people = !this.bandera_edit_people;
+  }
 
+  guardarDatosPeople(form: PeopleI) {
+    console.log(form);
 
+    this.peopleS.updatePerson(Number(form.id), form).subscribe(
+      (data) => {
+        console.log(data)
+        localStorage.setItem('user_name', String(form.peo_name));
+        Swal.fire('Datos de usuario ', 'Actualizados exitosamente', 'success');
+        this.route.navigate(['/home']);
+      },
+      (Error) => {
+        Swal.fire('Datos de usuario', 'No se actualizo los datos', 'error');
+      }
+    );
 
-// controles para cambio de rol
-activarControlProductor(people_id: number){
-
-}
-
-
-//para activar la ediccion
-habilitarEditPeople(){
-
-this.bandera_edit_people = !this.bandera_edit_people;
-
-}
-
-
-
-
-guardarDatosPeople(form: PeopleI){
- console.log(form)
- this.bandera_edit_people = !this.bandera_edit_people;
-}
-
-
+    this.bandera_edit_people = !this.bandera_edit_people;
+  }
 
   //NAVEGACION
 
   //ver datos de sesion
-  navDatosSesion(){
+  navDatosSesion() {
     this.route.navigate(['/user/']);
   }
 
-
-  navDatosProveedor(){
-    this.route.navigate(['/provider/own'])
+  navDatosProveedor() {
+    this.route.navigate(['/provider/own']);
   }
-
-
-
 }
