@@ -8,6 +8,7 @@ import { PeopleService } from 'src/app/services/people/people.service';
 import { RequestappService } from 'src/app/services/requestapp/requestapp.service';
 import { Location } from '@angular/common';
 import { RequestI } from 'src/app/models/request.interface';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-requestapp-edit',
@@ -48,8 +49,12 @@ export class RequestappEDITComponent {
     });
 
     this.requestForm = new FormGroup({
-      id: new FormControl('', Validators.required),
+      id: new FormControl(this.id_ruta_request, Validators.required),
+      req_dateRequest: new FormControl('', Validators.required),
+      req_type: new FormControl('', Validators.required),
+      req_description: new FormControl('', Validators.required),
       req_status: new FormControl(0, Validators.required),
+      people_id: new FormControl(0, Validators.required),
     });
   }
 
@@ -97,6 +102,7 @@ export class RequestappEDITComponent {
 
   ngOnInit(): void {
     this.obtenerPeopleID();
+    this.buscarTipoRespuesta();
   }
 
 
@@ -113,13 +119,18 @@ export class RequestappEDITComponent {
 
   datosUnidos() {
     this.fkjoinS.getjoinReqPeoUsu(this.id_people_fk).subscribe((info) => {
-      console.log(info);
       this.requestArray = info.data;
     });
   }
 
   buscarTipoRespuesta(){
     this.requestS.getRequestAppId(this.id_ruta_request).subscribe((info) => {
+      console.log(info,"datos request")
+      this.requestForm.get('req_dateRequest')?.setValue(info.data.req_dateRequest || null);
+      this.requestForm.get('req_type')?.setValue(info.data.req_type || null);
+      this.requestForm.get('req_description')?.setValue(info.data.req_description || null);
+      this.requestForm.get('people_id')?.setValue(info.data.people_id || null);
+      this.requestForm.get('req_status')?.setValue(info.data.req_status || null);
       this.type_request = info.data.req_type;
     });
   }
@@ -127,7 +138,8 @@ export class RequestappEDITComponent {
   //para controlar cambio de roles
   evaluar_estado_respuesta(form: RequestI) {
     const status_req: number = Number(form.req_status);
-    alert(status_req);
+    Swal.fire('Estado de la solisitud','se cambio el estado de la solicitud','success')
+
     if (status_req == 1) {
       this.request_status = 1;
     }
@@ -140,8 +152,9 @@ export class RequestappEDITComponent {
     if (status_req == 4) {
       this.request_status = 4;
     }
-
-    this.requestForm.get('req_status')?.setValue(this.request_status);
+    this.requestS.updateRequestApp(this.id_ruta_request,form).subscribe(data=>{
+      console.log(data)
+    })
   }
 
   //Navegacion
