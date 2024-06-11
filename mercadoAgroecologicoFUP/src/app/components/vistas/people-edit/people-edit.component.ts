@@ -61,7 +61,7 @@ export class PeopleEditComponent implements OnInit {
       use_cc: new FormControl('', Validators.required),
       use_password: new FormControl(''),
       use_rol: new FormControl('', Validators.required),
-      use_status: new FormControl(1, Validators.required),
+      use_status: new FormControl(1),
       people_id: new FormControl(0, Validators.required),
     });
 
@@ -146,7 +146,7 @@ export class PeopleEditComponent implements OnInit {
             this.userForm.get('use_status')?.setValue(0);
           }
 
-          this.userForm.get('people_id')?.setValue(dataR.users_id || null);
+          this.userForm.get('people_id')?.setValue(dataR.people_id || null);
         } else {
 
         }
@@ -248,17 +248,29 @@ export class PeopleEditComponent implements OnInit {
 
   //guardar cambios usuario
   actualizarUsuario(form: UserI) {
-    // console.log(form);
-    this.userS.updateUser(Number(form.id), form).subscribe((data) => {
-      console.log(data.status);
-      if (data.status) {
-        Swal.fire('Usuario', 'Datos actualizados exitosamente', 'success');
-      } else {
-        Swal.fire('Usuario', 'No se pudo actualizar los datos', 'error');
-      }
+    console.log(form);
 
-      this.route.navigate(['/people/edit/' + this.peopleIdNumber]);
-    });
+if(!this.userForm.validator){
+  this.userS.updateUser(Number(form.id), form).subscribe(
+    (data) => {
+    console.log(data);
+    if (data.status) {
+      Swal.fire('Usuario', 'Datos actualizados exitosamente', 'success');
+    } else {
+      Swal.fire('Usuario', 'No se pudo actualizar los datos', 'error');
+    }
+
+    this.route.navigate(['/people/edit/' + this.peopleIdNumber]);
+  },
+  (Error)=>{
+    console.log('no se envio');
+    console.log(Error);
+  });
+}else{
+console.log('verficar formulario')
+}
+
+
   }
 
   traerDatosSesion() {
