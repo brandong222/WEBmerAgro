@@ -33,6 +33,7 @@ export class ProductSHOWComponent implements OnInit {
   productosRelacionados: any[] = [];
   numeroContacto: number = 0;
   contarEstrellas: number = 0;
+  id_provider: number = 0;
 
   constructor(
     private routeA: ActivatedRoute,
@@ -71,6 +72,7 @@ export class ProductSHOWComponent implements OnInit {
         this.productUnitArray = data;
 
        this.evaluarProveedorEsDuenioProducto(Number(data[0].providers_id));
+       this.id_provider = Number(data[0].providers_id  );
 
       });
   }
@@ -196,5 +198,17 @@ evaluarProveedorEsDuenioProducto(provider_id_producto: number){
             });
         });
     });
+  }
+
+
+  //Navegacion
+  navEditarProveedor(id: number){
+    if(id>0){
+      this.route.navigate(['/provider/edit/'+id]);
+
+    }else{
+      alert('error')
+      this.route.navigate(['/provider']);
+    }
   }
 }

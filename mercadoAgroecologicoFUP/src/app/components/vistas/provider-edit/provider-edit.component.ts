@@ -20,6 +20,7 @@ export class ProviderEditComponent  implements OnInit{
   valor_ranking_start: number =0;
   //tomar id de las rutas
   providerIdNumber: number = Number(this.routeA.snapshot.paramMap.get('id'));
+  people_id: number = 0;
   //primero se crea arreglo usando interfaz de product
   productArray: any[] = [];
   //busqueda
@@ -58,13 +59,14 @@ export class ProviderEditComponent  implements OnInit{
 
   ngOnInit(): void {
   this.datosProductoId();
-  this.mostrarProductos();
   }
 
   datosPersonaID(id_people: number){
   this.peopleS.getPersonById(id_people).subscribe(data=>{
     if (data) {
       const dataR: PeopleI = data.data;
+
+      this.people_id = Number(dataR.id);
 
       this.peopleForm.get('id')?.setValue(Number(dataR.id));
       this.peopleForm.get('peo_name')?.setValue(dataR.peo_name || null);
@@ -79,6 +81,7 @@ export class ProviderEditComponent  implements OnInit{
       this.link_imagen_people = String(dataR.peo_image); //usado para poner la imagen en un img
       this.peopleForm.get('peo_mail')?.setValue(dataR.peo_mail || null);
       this.peopleForm.get('peo_phone')?.setValue(dataR.peo_phone || null);
+
     } else {
 
     }
@@ -89,7 +92,7 @@ export class ProviderEditComponent  implements OnInit{
 
   mostrarProductos() {
 
-    this.fkjoinS.getProdProvPeopleID(this.providerIdNumber).subscribe((data) => {
+    this.fkjoinS.joinProduProviderID(this.providerIdNumber).subscribe((data) => {
       this.productArray = data.data;
       this.productArray.sort(() => Math.random() - 0.5);
     });
@@ -110,10 +113,12 @@ export class ProviderEditComponent  implements OnInit{
         this.providerForm.get('prov_status')?.setValue(dataR.prov_status || null);
         this.providerForm.get('people_peo_id')?.setValue(dataR.people_peo_id || null);
 
+
         this.datosPersonaID(Number(dataR.people_peo_id));
       } else {
         console.log('No hay datos guardados del producto.');
     }
+    this.mostrarProductos();
     });
   }
 

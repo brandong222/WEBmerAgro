@@ -46,7 +46,7 @@
     </div>
 
     <div class="form-group form_btn">
-      <input  type="button" value="Perfil" (click)="navPerfilShow(item.id)" class="btn btn-success" />
+      <input  type="button" value="Perfil" (click)="navEditarProveedor(id_provider)" class="btn btn-success" />
       <input  *ngIf="rolUsuario == 'usuario'" type="button" value="Calificar" (click)="navStar()" class="btn btn-warning" />
       <input *ngIf="rolUsuario == 'admin' || bandera_provider_own == true" type="button" value="Editar" (click)="navEditarProducto()" class="btn btn-primary" />
       <input *ngIf="rolUsuario == 'admin' || bandera_provider_own == true" type="button" value="Eliminar" (click)="eliminarProducto(item.id)" class="btn btn-dark" />
