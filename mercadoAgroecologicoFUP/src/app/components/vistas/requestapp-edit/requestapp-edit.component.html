@@ -52,12 +52,7 @@
 
           <div class="parte_derecha">
 
-            <select name id class="form-select">
-              <option value="1">Pendiente</option>
-              <option value="2">En proceso</option>
-              <option value="3">Aprovado</option>
-              <option value="4">No aprovado</option>
-            </select>
+
             <img [src]="link_imagen_people" alt="imagen" />
 
             <div *ngIf="type_request === 'Certificar producto (s)'">
@@ -87,5 +82,14 @@
 
         <button class="back-button" (click)="nvRegresar()">Volver</button>
       </div>
+    </form>
+
+    <form [formGroup]="requestForm">
+      <select name id class="form-select" formControlName="req_status" (change)="evaluar_estado_respuesta(requestForm.value)">
+        <option value= 1>Pendiente</option>
+        <option value= 2>En proceso</option>
+        <option value= 3>Aprovado</option>
+        <option value= 4>No aprovado</option>
+      </select>
     </form>
   </section>
