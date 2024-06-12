@@ -77,9 +77,6 @@ export class LoginComponent implements OnInit {
           'error'
         )
         this.intentos_contrasena += 1;
-
-
-
       }
     );
 

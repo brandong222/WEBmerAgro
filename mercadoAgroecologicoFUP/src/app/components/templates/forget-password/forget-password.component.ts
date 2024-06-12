@@ -8,6 +8,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login/login.service';
 import Swal from 'sweetalert2';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-forget-password',
@@ -26,6 +27,7 @@ export class ForgetPASSWORDComponent implements OnInit {
     private fkjoinS: JoinService,
     private route: Router,
     private loginS: LoginService,
+    private location: Location,
   ) {
 
     this.requestForm = new FormGroup({
@@ -157,4 +159,8 @@ if(this.requestForm.valid){
 
   }
 
+  //regresar
+  nvRegresar() {
+    this.location.back();
+  }
 }

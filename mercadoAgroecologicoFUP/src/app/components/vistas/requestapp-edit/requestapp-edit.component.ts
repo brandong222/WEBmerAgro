@@ -105,12 +105,6 @@ export class RequestappEDITComponent {
     this.buscarTipoRespuesta();
   }
 
-
-  //NAvegacion
-  nvRegresar() {
-    this.location.back();
-  }
-
   mostrarProvedores() {
      this.fkjoinS.joinProvedorpeopleID(this.id_people_fk).subscribe(info => {
       this.providerArray = info.data;
@@ -170,5 +164,10 @@ export class RequestappEDITComponent {
 
   navPerfilPeople(id_people: number){
     this.route.navigate(['/people/edit/'+id_people]);
+  }
+
+   //regresar
+   nvRegresar() {
+    this.location.back();
   }
 }
