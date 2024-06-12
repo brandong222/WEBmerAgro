@@ -32,7 +32,7 @@
 /* Media query para dispositivos móviles */
 @media (max-width: 768px) {
  .container_login img {
-    max-width: 100%; /* Ajusta el ancho máximo para dispositivos móviles */
+    max-width: 90%; /* Ajusta el ancho máximo para dispositivos móviles */
   }
 
  .container_login button {
@@ -40,6 +40,6 @@
   }
 
   .container_login{
-    margin: 10px 20px;
+    margin: 10px auto;
   }
 }

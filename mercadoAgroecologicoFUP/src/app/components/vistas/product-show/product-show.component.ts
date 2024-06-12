@@ -111,23 +111,33 @@ export class ProductSHOWComponent implements OnInit {
   }
 
   eliminarProducto(id: number) {
-    ////////////// <---- modificar alerta
-    const respuesta = window.confirm(
-      '¿Estás seguro de que quieres eliminar este producto?'
-    );
 
-    if (respuesta) {
-      this.productS.deleteProduct(id).subscribe((data) => {
-        //  console.log(data);
-        alert(data.message);
-        this.route.navigate(['/product']);
-      });
-    }
+
+    Swal.fire({
+      title: 'Eliminar Producto',
+      text: "Está seguro que quiere eliminar el producto?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, eliminar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.productS.deleteProduct(id).subscribe((data) => {
+          Swal.fire('Producto', 'se elimino el producto exitosamente', 'success')
+          this.route.navigate(['/product']);
+        });
+      }
+    })
+
+
+
   }
 
   mostrarOtrosProductos() {
     this.productS.getproductos().subscribe((data) => {
       this.productosRelacionados = data;
+      this.productosRelacionados.sort(() => Math.random() - 0.5);
     });
   }
 

@@ -2,6 +2,10 @@ h2{
   color: seagreen;
 }
 
+.container-sm{
+margin-top: 10vh;
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -12,7 +16,7 @@ form {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background: var(--fondo-card);
+  background: lightgray;
   margin: 20px;
   padding: 20px;
 
@@ -52,12 +56,15 @@ form a{
 
 @media (max-width: 768px) {
 
+
+  .container-sm{
+    margin-top: 20vh;
+    }
+
 .data{
-  display: flex;
-  flex-direction: column;
+  width: 90%;
+  padding: 5px;
 }
-
-
 
   .boton_style{
     width: 60%;

@@ -27,8 +27,6 @@ export class UserComponent implements OnInit {
   }
 
   constructor(
-    private peopleS: PeopleService,
-    private fkJoinS: JoinService,
     private route:Router
   ) {}
 
@@ -40,13 +38,12 @@ export class UserComponent implements OnInit {
     if (datosGuardados) {
       // Convertir la cadena JSON de vuelta a un objeto JavaScript
       const dataR: UserI = JSON.parse(datosGuardados);
-      console.log(dataR);
       this.userForm.get('use_cc')?.setValue(dataR.use_cc || null);
       this.userForm.get('use_rol')?.setValue(dataR.use_rol || null);
       this.userForm.get('use_status')?.setValue(dataR.use_status || null);
       this.userForm.get('people_id')?.setValue(dataR.people_id || null);
     } else {
-      console.log('No hay datos guardados en la sesión.');
+
     }
   }
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CategoryService } from 'src/app/services/category/category.service';
 import { Router } from '@angular/router';
 import { categoryI } from 'src/app/models/category.interface';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-category',
@@ -21,7 +22,7 @@ export class CategoryComponent implements OnInit {
   }
 
   editarCategory(id:any){
-  //  this.route.navigate(['category/add', id]);
+   Swal.fire('su id '+id,'categoria', 'success')
   }
 
   agregarCategory(){

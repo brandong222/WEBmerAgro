@@ -12,3 +12,10 @@
   text-decoration: none;
   color: darkgray;
 }
+
+
+@media (max-width: 768px) {
+.rating_container{
+  font-size: 40px;
+}
+}

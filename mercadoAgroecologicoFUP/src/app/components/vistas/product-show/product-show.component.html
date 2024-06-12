@@ -1,4 +1,8 @@
-<app-header></app-header>
+<div class="header_inp">
+  <app-header></app-header>
+
+</div>
+
 <div class="component_star" *ngIf="banderaStar">
   <app-star (calificacionSeleccionada)="obtenerNumeroEstrellas($event)"></app-star>
   <br>
@@ -25,7 +29,7 @@
         Descripcion: <span>{{ item.pro_description }}</span>
       </h5>
       <h5>
-        certificado: <span>{{ item.pro_certs }}</span>
+        Agroecológica: <span>{{ item.pro_certs }}</span>
       </h5>
 
       <h5>
@@ -63,12 +67,12 @@
           <img [src]="item.pro_image" class="card-img-top" alt="" />
         </div>
 
-        <div class="card-body">
+        <div class="card_body">
           <h5 class="card-title">
             <strong>{{ item.pro_name }}</strong>
           </h5>
         </div>
-        <ul class="">
+        <div class="info_product">
           <li class="list-group-item">
             Unidad: <span> {{ item.pro_unit }} </span>
           </li>
@@ -85,7 +89,7 @@
           <li class="list-group-item" *ngIf="item.pro_price > 0">
             <span style="font-size: 30px">$ {{ item.pro_price }} </span>
           </li>
-        </ul>
+        </div>
         <div class="card-body" style="width: 100%">
           <a style="width: 90%" class="btn btn-success" (click)="verproductoIndividual(item.id)">ver</a>
         </div>

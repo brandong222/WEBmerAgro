@@ -1,49 +1,53 @@
 
+
 /*barra de busqueda*/
 .barra_busqueda{
   width: 90%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   gap: 20px;
   background: transparent;
+  margin: auto;
+}
+
+.title_product{
+  color: seagreen;
+  font-size: 28px;
+  margin: 10px 0px 0px 70px;
 }
 
 .barra_busqueda input{
-  width: 60%;
-  margin-right: 0px;
+  width: 80%;
 
 }
 
-.title{
-  color: seagreen;
-  width: 50%;
-  font-size: 30px;
-  margin-left: 40px;
-  margin-top: 10px;
+.barra_busqueda select{
+  width: 40%;
 }
 
 section {
-  width: 100%;
+  width: 80%;
   height: auto;
+  margin: auto;
   background: transparent;
-  padding: 30px;
+  padding: 30px 0px;
 }
 
 .main_product {
+  background: transparent;
   padding: 30px;
   border: 1.5px solid white;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 25px;
 
 }
 
 .card {
-  padding: 10px;
-  width: 20%;
-  height: 400px;
+  width: 18%;
+  height: 55vh;
   text-align: center;
   align-items: center;
   background: white;
@@ -51,20 +55,46 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  padding: 5px;
 }
 
 .card .cont_imag{
   width: 100%;
-  height: auto;
-  max-height: 300px;
+  min-height: 18vh;
+  max-height: 18vh;
   overflow: hidden;
+  border-radius: 5px solid transparent;
+  box-shadow: 1px 1px 5px gray;
+  background: transparent;
+
 }
 
 .card .cont_imag img {
-  width: auto;
+  width: 100%;
   height: 100%;
+  object-fit: cover;
+}
+
+.card .card_body{
+  height: 10vh;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  background: transparent;
 
 }
+
+
+.card .info_product{
+  width: 100%;
+  text-align: center;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 
 
 span{
@@ -74,41 +104,62 @@ span{
 /*para certificado en caso de cumplirse*/
 .mostrar_certificado::before {
   content: "Agroecológico";
+  font-style: italic;
   position: absolute;
   top: 12%;
   left: -10%;
+  padding: 5px 10px;
+  font-size: 10px;
   background: seagreen;
   color: white;
   box-shadow: 2px 2px 20px seagreen;
-  padding: 5px 10px;
   transform: rotate(-40deg);
   transform-origin: top left;
+
 }
 
 
-@media screen and (max-width: 768px) {
-  .barra_busqueda {
-     width: 100%;
-   }
+@media (max-width: 768px) {
 
-  .barra_busqueda input {
-     width: 80%;
-   }
+  .header_inp{
+  margin: 0;
+  }
+
 
   .main_product {
-     flex-direction: column;
-   }
+    background: transparent;
+    padding: 5px;
+
+  }
+
 
   .card {
-     width: 100%;
-   }
+    width: 90%;
 
-   .title{
-    width: 100%;
-    text-align: center;
-    font-size: 20px;
-    margin-left: 0px;
-    margin-top: 20px;
   }
+
+
+  .mostrar_certificado::before {
+    padding: 3px 8px;
+    font-size: 16px;
+
+  }
+
+  .barra_busqueda{
+    flex-direction: column;
+    padding: 0px 15px;
+    margin: auto;
+  }
+
+  .barra_busqueda input{
+    width: 100%;
+
+  }
+
+  .title_product{
+    font-size: 30px;
+    margin: 10px 0px 0px 40px;
+  }
+
 
  }

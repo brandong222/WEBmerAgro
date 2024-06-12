@@ -17,6 +17,7 @@ export class PeopleADDComponent implements OnInit {
   imageURL: string = 'API image';
   link_imagen_subida:string ="";
   peopleForm: FormGroup;
+  bandera_subir_img: boolean = false;
 
 
   minDate = new Date().toISOString().split('T')[0];
@@ -64,6 +65,7 @@ export class PeopleADDComponent implements OnInit {
       target.value = '';
     } else {
       console.log('imgan subida')
+      this.bandera_subir_img = true;
     }
   }
 
@@ -75,6 +77,7 @@ export class PeopleADDComponent implements OnInit {
         this.peopleForm.get('peo_image')?.setValue(this.imageURL || '');
         Swal.fire('Imagen','Subida con exito','success');
         this.link_imagen_subida = String(data.data);
+        this.bandera_subir_img = false;
       });
     } else {
       Swal.fire('Imagen','No guardo la imagen selecionada','error');

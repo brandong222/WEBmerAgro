@@ -74,7 +74,7 @@ onFileSelected(event: Event) {
 
   // Verificar si se seleccionó un archivo
   if (!this.selectedFile) {
-    alert('Debe seleccionar un archivo.');
+    Swal.fire('Imagen','Solo se permiten archivos JPEG y PNG','error');
     return;
   }
 
@@ -90,7 +90,7 @@ onFileSelected(event: Event) {
     this.selectedFile = null;
     target.value = '';
   } else {
-    console.log('imagen subida')
+    Swal.fire()
   }
 }
 
@@ -128,11 +128,9 @@ subirImagen(){
   }
 
   guardarDatosPeople(form: PeopleI) {
-    console.log(form);
 
     this.peopleS.updatePerson(Number(form.id), form).subscribe(
       (data) => {
-        console.log(data)
         localStorage.setItem('user_name', String(form.peo_name));
         Swal.fire('Datos de usuario ', 'Actualizados exitosamente', 'success');
         this.route.navigate(['/home']);
