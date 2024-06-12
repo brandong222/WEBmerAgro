@@ -81,7 +81,6 @@ export class ForgetPASSWORDComponent implements OnInit {
     const valorUseCcConf = String(this.requestForm.get('use_cc_conf')?.value??'');
 
 
-    console.log(valorUseCc)
     if (valorUseCc === valorUseCcConf) {
 
       this.loginS.searchPhoneCCid(valorUseCc).subscribe(
@@ -125,33 +124,39 @@ export class ForgetPASSWORDComponent implements OnInit {
 
   //guardar en db una persona
   enviarSolicitudContrasena(form: RequestI) {
-    console.log(form);
+
     this.bandera_comprobar_user = false;
 
-   this.requestS.addRequestContrasena(form).subscribe(
+if(this.requestForm.valid){
+  this.requestS.addRequestContrasena(form).subscribe(
 
-      (data) => {
-        let dataR = data;
+    (data) => {
+      let dataR = data;
 
-        if (dataR.status) {
-          Swal.fire(
-            'Solicitud ',
-            'enviada',
-            'success'
-          )
-
-          this.route.navigate(['/']);
-        }
-      },
-      (error) => {
-        // Aquí manejas el error alertas
+      if (dataR.status) {
         Swal.fire(
-          'Solicitud invalidad',
-          'Ingrese descripción',
-          'error'
+          'Solicitud ',
+          'enviada exitosamente',
+          'success'
         )
+
+        this.route.navigate(['/']);
       }
-    );
+    },
+    (error) => {
+      // Aquí manejas el error alertas
+      Swal.fire(
+        'Solicitud invalidad',
+        'Ingrese descripción',
+        'error'
+      )
+    }
+  );
+}else{
+  Swal.fire('Solicitud', 'verifique los campos e intente nuevamente', 'error');
+}
+
+
   }
 
   //regresar
