@@ -1,12 +1,15 @@
 
+<div>
+  <h3>Iniciar sesion</h3>
   <div class="formContent">
 
     <form [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm.value)" >
-      <h3>Iniciar sesion</h3>
+
       <label for="">Número de identificación</label>
-      <input required type="text"  id="use_cc" class="fadeIn second" formControlName="use_cc" placeholder="ingrese su número de cedula">
+      <input required type="number"  id="use_cc" class="form-control" formControlName="use_cc" placeholder="ingrese su número de cedula">
       <label for="">Contraseña</label>
-      <input required type="password"  id="use_password" class="fadeIn third" formControlName="use_password" placeholder="password">
+      <input required type="password"  id="use_password" class="form-control" formControlName="use_password" placeholder="password">
+
       <span *ngIf="intentos_contrasena>1">
         <a (click)="navRecuperarContra()">Olvidé mi contraseña</a>
       </span>
@@ -18,4 +21,5 @@
     </form>
 
   </div>
+</div>
 
