@@ -30,7 +30,6 @@ export class ProviderComponent implements OnInit {
 
   mostrarProvedores(){
   this.FK_joinS.getDataProvidersUser().subscribe(info=>{
-    console.log(info);
     this.providerArray = info.data;
    });
   }

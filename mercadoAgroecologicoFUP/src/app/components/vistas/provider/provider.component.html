@@ -1,4 +1,6 @@
-<app-header></app-header>
+<div class="header_inp">
+  <app-header></app-header>
+</div>
 <section>
 
   <div class="barra_busqueda">
@@ -30,8 +32,6 @@
         <a class="star" [ngStyle]="{'color': provider.prov_ranking > 3 && provider.prov_ranking <6 ? 'gold' : 'darkgray'}">&#9733;</a>
         <a class="star" [ngStyle]="{'color': provider.prov_ranking > 4 && provider.prov_ranking <6 ? 'gold' : 'darkgray'}" >&#9733;</a>
       </div>
-
-
     </div>
     <div class="description">
       <h5>Descripción</h5>

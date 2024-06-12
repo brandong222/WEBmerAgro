@@ -41,7 +41,6 @@
   display: flex;
   gap: 5px;
   font-size: 40px;
-
 }
 
 .rating_container .star {
@@ -57,7 +56,7 @@
 .form-group input{
   background: transparent;
   border: none;
-  color: gray;
+  color: rgb(0, 0, 0);
   font-size: 20px;
   text-align: left;
   padding: 0;
@@ -65,7 +64,7 @@
 
 .form-group label{
   font-size: 26px;
-  color: black;
+  color: green;
   text-shadow: 1px 1px 4px white;
 }
 
@@ -76,7 +75,7 @@
     height: auto;
     min-height: 200px;
     background: transparent;
-    color: gray;
+    color: rgb(0, 0, 0);
     font-size: 20px;
     border: none;
 }
@@ -164,6 +163,30 @@ span{
 
 
 @media screen and (max-width: 768px) {
+
+  form{
+    flex-direction: column;
+    text-align: center;
+  }
+
+  form .form-control{
+    text-align: center;
+  }
+
+  .rating_container {
+    justify-content: center;
+  }
+
+  .div_img img{
+    width: 200px;
+    height: 200px;
+  }
+
+  .people{
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
   .barra_busqueda {
      width: 100%;
    }
