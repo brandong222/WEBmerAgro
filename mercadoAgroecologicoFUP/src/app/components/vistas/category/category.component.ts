@@ -21,8 +21,8 @@ export class CategoryComponent implements OnInit {
     });
   }
 
-  editarCategory(id:any){
-   Swal.fire('su id '+id,'categoria', 'success')
+  mostrarProductos(id:any){
+    this.route.navigate(['category/edit/'+id]);
   }
 
   agregarCategory(){

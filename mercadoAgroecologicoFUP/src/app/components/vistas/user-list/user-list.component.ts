@@ -12,9 +12,9 @@ import { PeopleI } from '../../../models/people.interface';
 })
 export class UserLISTComponent implements OnInit{
 
-
+  bandera_sesion_rol: boolean = false;
   userArray:  any[] = [];
-
+  busqueda_clave = '';
 
 constructor(
   private userS: UserService,
@@ -24,26 +24,41 @@ constructor(
 ){
 
 }
-
   ngOnInit(): void {
+    const sesion: UserI = this.traerDatosSesion();
+    if(sesion.use_rol === 'admin'){
+      this.bandera_sesion_rol = true;
+    }
     this.mostrarUsuarios();
   }
-
-
-
   mostrarUsuarios(){
     this.fkjoinS.showPeopleUsers().subscribe(data=>{
     this.userArray = data;
+    console.log(data)
     })
   }
 
+  //BARRA DE BUSQUEDA
+  barraBusquedaProductos(): void {
+    if (!this.busqueda_clave.trim()) {
+      this.mostrarUsuarios();
+      return;
+    }
+    this.userArray = this.userArray.filter((people) =>
+      people.use_cc.toLowerCase().includes(this.busqueda_clave.toLowerCase())
+    );
+  }
+
+  traerDatosSesion() {
+    const usuarioData = sessionStorage.getItem('usuario_login');
+
+    if (usuarioData) {
+      return JSON.parse(usuarioData);
+    }
+  }
 
   //NAVEGACION
   navPerfilPeople(id_people: number){
     this.route.navigate(['/people/edit/'+id_people]);
   }
-
-
-
-
 }

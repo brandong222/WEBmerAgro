@@ -1,1 +1,76 @@
-<p>category-edit works!</p>
+<div class="header_inp">
+  <app-header></app-header>
+</div>
+
+<section>
+
+  <div>
+
+    <h3>Productos asociados a una categoría</h3>
+
+    <input
+      class="form-control me-2"
+      type="search"
+      [(ngModel)]="busqueda_clave"
+      (input)="barraBusquedaProductos()"
+      placeholder="Buscar producto por categoría"
+      aria-label="Search" />
+  </div>
+
+  <div class="main_product">
+    <div class="card" *ngFor="let item of productArray">
+      <div class="cont_imag">
+        <img [src]="item.pro_image" class="card-img-top" alt />
+      </div>
+
+      <div class="card-body">
+        <h5 class="card-title">
+          <strong>{{ item.pro_name }}</strong>
+        </h5>
+      </div>
+      <ul class>
+        <li class="list-group-item">
+          Unidad: <span> {{ item.pro_unit }} </span>
+        </li>
+
+        <li class="list-group-item">
+          Ubicación:
+          <span>
+            {{ item.peo_adress }}
+          </span>
+        </li>
+        <li class="list-group-item" *ngIf="item.pro_price <= 0">
+          <span style="font-size: 30px">Trueque</span>
+        </li>
+        <li class="list-group-item" *ngIf="item.pro_price > 0">
+          <span style="font-size: 30px">$ {{ item.pro_price }} </span>
+        </li>
+      </ul>
+      <div class="card-body" style="width: 100%">
+        <a
+          style="width: 90%"
+          class="btn btn-success"
+          (click)="verproductoIndividual(item.product_id)">
+          ver
+        </a>
+      </div>
+
+      <div *ngIf="item.pro_certs == 'certificado'" class="mostrar_certificado">
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="main_product" *ngIf="noProductsFound">
+    <div class="card">
+      <div class="cont_imag">
+        "<img
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAhFJREFUSEuVluFtGzEMhT9O0dsi3SFAM8QBdzukQIZI4e7gAzxEf3gHdwtvwYISdaZOUozqV4KjSL73+CgLdgTQ9Ff3xM9PQpv7Fu/Hr/5vhpiyc1f6+QRBHVTv1gBxB+qwQOIsXdhvTSCLoN9U+IVyb+gd9HIk6cDjjuYaPljynwL3LF2kt6a61aBWpORcgQXk7tNgaDZBz2U2ItgjU0cqjpMwARen6921+e19zyrcWzZrUOMxza2sAotinMvs2lxQmUA34Fx35JQGpr4ywIRy8dh34K8HvwAJBTCTig881AhfE7iisoDeTNRaTD4E3hQ2kHN0aqtBv3jmPtM5O0VXT/QKMgl6UrC4jKLng8aIPg6CrponZwN1niUWMIE+EN5QNoFzscyjjlAZLXwwAVP3LqxzLFefIkNgBaz7k6NxlEfJw/8B4YBfRyC87stRWFEWgT8qfJrz45oJRtsrJe69WOr0cYHs5lggaSAnR9NMVK/ACfhOmo7jjA8nOjtduKE2beW0Grxonm/j3LqJsTZAPQQlxjQzNGbG3RfHbWorYUJ9z7Tb8asCZV/dQHcUmaKcqOwc2y3z83en0qZYIKFIvkk7ymIeJ9v/eebA8PCl3ddKJbLAqsIPR+OJ2v3eGqoSKxgzkzM+de7Dr4PB81U9ELiT42vRKTdirVoJ+xtej16eos5Krd1YfgCMno6xcP8AnH7mHq+9VjAAAAAASUVORK5CYII="
+          class="card-img-top" alt />"
+      </div>
+      <p>Este producto no se pudo encontrar</p>
+    </div>
+  </div>
+
+</section>
