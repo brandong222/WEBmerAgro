@@ -7,22 +7,24 @@
   <table class="table table-responsive table-hover">
     <thead>
       <tr>
+        <th>Cédula</th>
+        <th>Rol</th>
         <th>Nombre</th>
         <th>Apellido</th>
         <th>Numero de telefono</th>
-        <th>Cédula</th>
-        <th>Rol</th>
+
         <th>Estado</th>
         <th>Información</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let item of userArray">
+        <td>{{ item.use_cc }}</td>
+        <td>{{ item.use_rol }}</td>
         <th>{{ item.peo_name }}</th>
         <th>{{ item.peo_lastname }}</th>
         <th>{{ item.peo_phone }}</th>
-        <td>{{ item.use_cc }}</td>
-        <td>{{ item.use_rol }}</td>
+
         <td *ngIf="item.use_status == 1" style="color: seagreen;"> activo</td>
         <td *ngIf="item.use_status == 0" style="color: red;"> inactivo</td>
 

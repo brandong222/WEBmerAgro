@@ -65,7 +65,9 @@ export class JoinService {
   }
 
   showPeopleUsers(): Observable<any> {
-    return this.http.get<any>(`${this.apiJOIN9}`);
+    const token = localStorage.getItem('token');
+    const headers = { Authorization: `Bearer ${token}` };
+    return this.http.get<any>(`${this.apiJOIN9}`, {headers});
   }
 
   joinUserPeopleID(id: number): Observable<responsiveI> {

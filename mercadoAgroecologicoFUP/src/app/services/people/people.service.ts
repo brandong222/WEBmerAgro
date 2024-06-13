@@ -15,10 +15,14 @@ export class PeopleService {
 
   //mostrar todas las personas
   getPeople(): Observable<PeopleI[]> {
-    return this.http.get<PeopleI[]>(this.apiUrl);
+    const token = localStorage.getItem('token');
+    const headers = { Authorization: `Bearer ${token}` };
+    return this.http.get<PeopleI[]>(this.apiUrl, {headers});
   }
   getPeopleList(): Observable<PeopleI> {
-    return this.http.get<PeopleI>(this.apiUrl);
+    const token = localStorage.getItem('token');
+    const headers = { Authorization: `Bearer ${token}` };
+    return this.http.get<PeopleI>(this.apiUrl, {headers});
   }
 
   //para guardar una persona
@@ -27,14 +31,20 @@ export class PeopleService {
   }
 
   getPersonById(id: number): Observable<responsiveI> {
-    return this.http.get<responsiveI>(`${this.apiUrl}/${id}`);
+    const token = localStorage.getItem('token');
+    const headers = { Authorization: `Bearer ${token}` };
+    return this.http.get<responsiveI>(`${this.apiUrl}/${id}`, {headers});
   }
 
   updatePerson(id: number, form: PeopleI): Observable<responsiveI> {
-    return this.http.put<responsiveI>(`${this.apiUrl}/${id}`, form);
+    const token = localStorage.getItem('token');
+    const headers = { Authorization: `Bearer ${token}` };
+    return this.http.put<responsiveI>(`${this.apiUrl}/${id}`, form, {headers});
   }
 
   deletePerson(id: number): Observable<responsiveI> {
-    return this.http.delete<responsiveI>(`${this.apiUrl}/${id}`);
+    const token = localStorage.getItem('token');
+    const headers = { Authorization: `Bearer ${token}` };
+    return this.http.delete<responsiveI>(`${this.apiUrl}/${id}`, {headers});
   }
 }

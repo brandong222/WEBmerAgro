@@ -33,7 +33,6 @@ constructor(
 
   mostrarUsuarios(){
     this.fkjoinS.showPeopleUsers().subscribe(data=>{
-      console.log(data)
     this.userArray = data;
     })
   }
