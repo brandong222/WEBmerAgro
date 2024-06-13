@@ -9,10 +9,7 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root',
 })
 export class CategoryService {
-
-
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   private apiUrl: string = `${environment.urlMain}category`;
 
@@ -50,5 +47,13 @@ export class CategoryService {
     const token = localStorage.getItem('token');
     const headers = { Authorization: `Bearer ${token}` };
     return this.http.delete<responsiveI>(`${this.apiUrl}/${id}`, { headers });
+  }
+
+  filterProductCategoryID(id: number): Observable<responsiveI[]> {
+    const token = localStorage.getItem('token');
+    const headers = { Authorization: `Bearer ${token}` };
+    return this.http.get<responsiveI[]>(`${this.apiUrl}/filterproduct/${id}`, {
+      headers,
+    });
   }
 }
