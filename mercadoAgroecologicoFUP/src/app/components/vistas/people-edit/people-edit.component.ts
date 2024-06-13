@@ -24,6 +24,7 @@ export class PeopleEditComponent implements OnInit {
   peopleArray: superInterfazI[] = [];
   peopleForm: FormGroup;
   userForm: FormGroup;
+  userFormNoPassword: FormGroup;
   productForm: FormGroup;
   providerForm: FormGroup;
 
@@ -59,10 +60,18 @@ export class PeopleEditComponent implements OnInit {
     this.userForm = new FormGroup({
       id: new FormControl(0),
       use_cc: new FormControl('', Validators.required),
-      use_password: new FormControl(''),
       use_rol: new FormControl('', Validators.required),
       use_status: new FormControl(1),
       people_id: new FormControl(0, Validators.required),
+    });
+
+    this.userFormNoPassword = new FormGroup({
+      id: new FormControl(0),
+      use_cc: new FormControl('', Validators.required),
+      use_rol: new FormControl('', Validators.required),
+      use_password: new FormControl(null, [Validators.required, Validators.minLength(1)]),
+      use_status: new FormControl(1, Validators.required),
+      people_id: new FormControl(1, Validators.required),
     });
 
     this.productForm = new FormGroup({
@@ -91,7 +100,7 @@ export class PeopleEditComponent implements OnInit {
 
   ngOnInit(): void {
     const sesion: UserI = this.traerDatosSesion();
-    if(sesion.use_rol === 'admin'){
+    if (sesion.use_rol === 'admin') {
       this.bandera_sesion_rol = true;
     }
     this.datosPeople();
@@ -121,7 +130,6 @@ export class PeopleEditComponent implements OnInit {
         this.peopleForm.get('peo_mail')?.setValue(dataR.peo_mail || null);
         this.peopleForm.get('peo_phone')?.setValue(dataR.peo_phone || null);
       } else {
-
       }
     });
   }
@@ -142,13 +150,24 @@ export class PeopleEditComponent implements OnInit {
 
           if (dataR.use_status == 1) {
             this.userForm.get('use_status')?.setValue(dataR.use_status || null);
+          this.userFormNoPassword.get('use_status')?.setValue(dataR.use_status || null);
+
           } else {
             this.userForm.get('use_status')?.setValue(0);
+          this.userFormNoPassword.get('use_status')?.setValue(0);
+
           }
 
           this.userForm.get('people_id')?.setValue(dataR.people_id || null);
-        } else {
 
+
+          this.userFormNoPassword.get('id')?.setValue(Number(dataR.id));
+          this.userFormNoPassword.get('use_cc')?.setValue(dataR.use_cc || null);
+          this.userFormNoPassword.get('use_rol')?.setValue(dataR.use_rol || null);
+          this.userFormNoPassword.get('people_id')?.setValue(dataR.people_id || null);
+
+
+        } else {
         }
       });
   }
@@ -157,10 +176,10 @@ export class PeopleEditComponent implements OnInit {
   mostrarDatosProveedor() {
     this.fkjoinS.joinProvedorpeopleID(this.peopleIdNumber).subscribe((data) => {
       if (data.data.length === 0) {
-        console.log('nothing');
+        console.log('no proveedor');
         //this.providerForm.removeControl('id');
       } else {
-        console.log('truesss');
+        console.log('es provider');
         console.log(data.data[0]);
         const dataR: superInterfazI = data.data[0];
 
@@ -200,40 +219,49 @@ export class PeopleEditComponent implements OnInit {
   //para controlar cambio de roles
   rol_user_change(form: UserI) {
     const rol_user = form.use_rol;
-    alert(rol_user);
-    if (rol_user == 'usuario') {
-      this.rol_people_general = 'usuario';
-    }
-    if (rol_user == 'productor') {
-      this.rol_people_general = 'productor';
-    }
+    Swal.fire({
+      title: 'Cambiar rol',
+      text: 'Está seguro de cambiar el rol a ' + rol_user,
+      icon: 'warning',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Cambiar rol',
+      showCancelButton: true,
+      cancelButtonColor: '#d33',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        if (rol_user == 'usuario') {
+          this.rol_people_general = 'usuario';
+        }
+        if (rol_user == 'productor') {
+          this.rol_people_general = 'productor';
+        }
 
-    if (rol_user == 'admin') {
-      this.rol_people_general = 'admin';
-    }
+        if (rol_user == 'admin') {
+          this.rol_people_general = 'admin';
+        }
 
-    this.userForm.get('use_rol')?.setValue(rol_user);
+        this.userForm.get('use_rol')?.setValue(rol_user);
+      }
+      this.userForm.get('use_rol')?.setValue(this.rol_people_general);
+    });
   }
 
   //guardar cambios (actualizar)
 
   actualizarPersona(form: PeopleI) {
-    console.log(form);
-
-   this.peopleS.updatePerson(Number(form.id), form).subscribe((data) => {
-      alert(data.status);
+    this.peopleS.updatePerson(Number(form.id), form).subscribe((data) => {
+      Swal.fire(
+        'Datos personales',
+        'Datos actualizados exitosamente',
+        'success'
+      );
       this.route.navigate(['/people']);
     });
-
-
   }
 
   //guardarActualizarProveedor
   guardarActualizarProveedor(form: ProviderI) {
-    console.log(form);
-
     if (form.id == null) {
-      console.log('agregar datos proveedor');
       this.providerS.addProvider(form).subscribe((data) => {
         if (data.status) {
           Swal.fire('Datos de productor', '' + data.status, 'success');
@@ -248,30 +276,60 @@ export class PeopleEditComponent implements OnInit {
 
   //guardar cambios usuario
   actualizarUsuario(form: UserI) {
-    console.log(form);
 
-if(!this.userForm.validator){
-  this.userS.updateUser(Number(form.id), form).subscribe(
-    (data) => {
-    console.log(data);
-    if (data.status) {
-      Swal.fire('Usuario', 'Datos actualizados exitosamente', 'success');
+    if (this.userForm.valid) {
+      Swal.fire('Datos personales', 'No se registro los datos', 'success');
+      console.log(form);
+
+      this.userS.updateUser(Number(form.id), form).subscribe(
+        (data) => {
+          if (data.status) {
+            Swal.fire('Usuario', 'Datos actualizados exitosamente', 'success');
+          } else {
+            Swal.fire('Usuario', 'No se pudo actualizar los datos', 'error');
+          }
+
+          this.route.navigate(['/people/edit/' + this.peopleIdNumber]);
+        },
+        (Error) => {
+          Swal.fire('Datos personales', 'No se registro los datos', 'error');
+        }
+      );
+
+
     } else {
-      Swal.fire('Usuario', 'No se pudo actualizar los datos', 'error');
+      Swal.fire('Datos personales', 'No se registro los datos', 'error');
     }
-
-    this.route.navigate(['/people/edit/' + this.peopleIdNumber]);
-  },
-  (Error)=>{
-    console.log('no se envio');
-    console.log(Error);
-  });
-}else{
-console.log('verficar formulario')
-}
-
-
   }
+
+  //guardar cambios user con password
+  actualizarUserWithPassword(form: UserI) {
+
+
+    if (this.userFormNoPassword.valid) {
+      Swal.fire('Datos personales', 'No se registro los datos', 'success');
+
+
+      this.userS.updateUser(Number(form.id), form).subscribe(
+        (data) => {
+          if (data.status) {
+            Swal.fire('Usuario', 'Datos actualizados exitosamente', 'success');
+          } else {
+            Swal.fire('Usuario', 'No se pudo actualizar los datos', 'error');
+          }
+
+          this.route.navigate(['/people/edit/' + this.peopleIdNumber]);
+        },
+        (Error) => {
+          Swal.fire('Datos personales', 'No se registro los datos', 'error');
+        }
+      );
+
+    } else {
+      Swal.fire('Datos personales', 'No se registro los datos', 'error');
+    }
+  }
+
 
   traerDatosSesion() {
     const usuarioData = sessionStorage.getItem('usuario_login');
