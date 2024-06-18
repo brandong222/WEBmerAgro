@@ -255,7 +255,7 @@ export class PeopleEditComponent implements OnInit {
         'Datos actualizados exitosamente',
         'success'
       );
-      this.route.navigate(['/people']);
+      this.route.navigate(['/user/list']);
     });
   }
 
@@ -292,7 +292,7 @@ export class PeopleEditComponent implements OnInit {
           this.route.navigate(['/people/edit/' + this.peopleIdNumber]);
         },
         (Error) => {
-          Swal.fire('Datos personales', 'No se registro los datos', 'error');
+          Swal.fire('Datos personales', 'Verifique la información y asegure que la C.C no este registrada', 'error');
         }
       );
 

@@ -59,4 +59,10 @@ export class CategoryEditComponent implements OnInit{
   verproductoIndividual(id: number) {
     this.route.navigate(['/product/show/', id]);
   }
+
+
+  navVolverMain(){
+    this.route.navigate(['/home']);
+
+  }
 }

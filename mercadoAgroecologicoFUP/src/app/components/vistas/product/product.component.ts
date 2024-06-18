@@ -61,6 +61,14 @@ export class ProductComponent implements OnInit {
     });
   }
 
+  filtrarPorUbicacion() {
+    this.productS.filtrarPorUbicacion().subscribe((data) => {
+      this.productArray = data;
+    });
+  }
+
+
+
   //FUNCION PARA CONTROLAR FILTROS
 
   filtrosProductos() {
@@ -91,6 +99,9 @@ export class ProductComponent implements OnInit {
         this.filtrarCertificados();
         break;
 
+      case 'ubicacion':
+      this.filtrarPorUbicacion();
+      break
       default:
         this.mostrarProductos();
         break;

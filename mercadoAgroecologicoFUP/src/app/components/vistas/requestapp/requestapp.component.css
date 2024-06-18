@@ -6,6 +6,10 @@ display: none;
 display: none;
 }
 
+.nav-item{
+  cursor: pointer;
+}
+
 th{
   background-color: rgb(14, 80, 23);
   color: white;

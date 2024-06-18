@@ -8,7 +8,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { categoryI } from 'src/app/models/category.interface';
 import { UserI } from 'src/app/models/user.interface';
 import { ProductI } from 'src/app/models/product.interface';
-import { superInterfazI } from 'src/app/models/superInterfaz.interface';
 import { UserService } from 'src/app/services/user/user.service';
 import Swal from 'sweetalert2';
 
@@ -41,7 +40,7 @@ export class ProductEditComponent implements OnInit {
       pro_name: new FormControl('', Validators.required),
       pro_type: new FormControl('', Validators.required),
       pro_price: new FormControl(0, Validators.required),
-      pro_certs: new FormControl('No', Validators.required),
+      pro_certs: new FormControl('en trasición', Validators.required),
       pro_image: new FormControl(''),
       pro_unit: new FormControl('', Validators.required),
       pro_description: new FormControl('', Validators.required),

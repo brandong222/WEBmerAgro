@@ -1,6 +1,7 @@
 section {
   background: lightgray;
   padding: 10px;
+  margin: 20px auto;
 }
 
 section form {
@@ -83,14 +84,11 @@ transition: all 0.3s ease-in;
 }
 
 @media (max-width: 768px) {
-  /* Cambiar la dirección de la flexión a columna para que los elementos se apilen verticalmente */
   section form {
     padding: 5px 0px;
     margin-top: 20px;
     flex-direction: column;
   }
-
-  /* Ajustar el tamaño de la parte izquierda y derecha */
  .parte_izquierda,.parte_derecha {
     flex: 1;
   }

@@ -4,35 +4,34 @@
   <div class="data">
     <div class="lado-izq">
       <div class="form-group">
-        <label for="nombre">Numero de identificación *</label>
-        <input type="number" class="form-control" id="nombre" placeholder="Ingrese su número de identificación" formControlName="use_cc" />
+        <label for="nombre">Numero de identificación</label>
+        <input type="text" class="form-control" id="nombre" placeholder="Ingrese su número de identificación" formControlName="use_cc" />
+        <div *ngIf="userForm.get('use_cc')?.touched && userForm.get('use_cc')?.errors?.['required']" class="alert alert-danger">
+          El número de cuenta es requerido.
+        </div>
+        <div *ngIf="userForm.get('use_cc')?.touched && userForm.get('use_cc')?.errors?.['pattern'] || userForm.get('use_cc')?.errors?.['minlength']" class="alert alert-danger">
+          Debe ingresar un número válido.
+        </div>
+
       </div>
       <div class="form-group">
-        <label for="apellido">Contraseña *</label>
+        <label for="apellido">Contraseña</label>
         <input type="password" (change)="almacenarContrasenaValor(userForm.value.use_password)" placeholder="ingrese su contraseña " class="form-control" id="apellido" formControlName="use_password" />
+        <div *ngIf="userForm.get('use_passwords')?.touched && userForm.get('use_password')?.errors?.['required']" class="alert alert-danger">
+          la contraseña es requerida.
+        </div>
       </div>
       <div class="form-group">
-        <label for="confi_password">Confirmar Contraseña *</label>
+        <label for="confi_password">Confirmar Contraseña</label>
         <input type="password" placeholder="Confirmar Contraseña" class="form-control"  id="confirmar_password"   (input)="verificarContrasena($event)"/>
+        <div *ngIf="userForm.get('use_passwords')?.touched && userForm.get('use_password')?.errors?.['required']" class="alert alert-danger">
+          la contraseña es requerida.
+        </div>
       </div>
 
-      <div class="form-group" hidden>
-        <label for="email">Rol</label>
-        <input type="email" class="form-control" formControlName="use_rol" readonly/>
-      </div>
-      <div class="form-group" hidden>
-        <label for="email">Status</label>
-        <input type="number" class="form-control"  formControlName="use_status" readonly/>
-      </div>
-
-      <div class="form-group" hidden>
-        <label for="email">Id de la persona</label>
-        <input type="number" class="form-control" formControlName="people_id" readonly />
-      </div>
 
       </div>
     </div>
-
 
   <input type="submit" class="btn btn-success boton_style" [hidden] ="!bandera_confirmar_password" value="Registrarse">
 </form>

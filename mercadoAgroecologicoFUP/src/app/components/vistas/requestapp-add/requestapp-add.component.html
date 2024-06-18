@@ -1,10 +1,10 @@
 <app-header></app-header>
 
 <div class="container" aria-readonly="false">
-  <h3 style="color: seagreen;">Enviar solicitud a un administrador</h3>
+  <h3 style="color: seagreen;">Enviar solicitud para ser productor</h3>
 
-  <div class="lado-izq" *ngFor="let item of requestArray">
-    <form [formGroup]="requestForm"
+
+    <form [formGroup]="requestForm" *ngFor="let item of requestArray"
       >
 
       <div class="form-group">
@@ -43,4 +43,4 @@
         </div>
 
     </form>
-  </div>
+

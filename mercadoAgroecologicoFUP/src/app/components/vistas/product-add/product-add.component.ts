@@ -38,7 +38,7 @@ export class ProductADDComponent implements OnInit {
       pro_name: new FormControl('', Validators.required),
       pro_type: new FormControl('', Validators.required),
       pro_price: new FormControl(null, Validators.required),
-      pro_certs: new FormControl('No', Validators.required),
+      pro_certs: new FormControl('en transición', Validators.required),
       pro_image: new FormControl(''),
       pro_unit: new FormControl('', Validators.required),
       pro_description: new FormControl('', Validators.required),

@@ -6,6 +6,7 @@ form{
   height: auto;
   margin: 20px auto;
   display: flex;
+  flex-direction: column;
   gap: 10px;
 }
 
@@ -95,8 +96,9 @@ background: rgb(67, 194, 122);
 }
 
 
-
-
+.form-group{
+  width: 80%;
+}
 
 .lado-izq div label{
   font-size: 24px;

@@ -17,7 +17,8 @@ export class PeopleADDComponent implements OnInit {
   imageURL: string = 'API image';
   link_imagen_subida:string ="";
   peopleForm: FormGroup;
-  bandera_subir_img: boolean = false;
+
+  bandera_valid_form: boolean = false;
 
 
   minDate = new Date().toISOString().split('T')[0];
@@ -28,18 +29,21 @@ export class PeopleADDComponent implements OnInit {
     private imagenS: ImagenService
   ) {
     this.peopleForm = new FormGroup({
-      peo_name: new FormControl('', [Validators.required, Validators.minLength(3)]),
-      peo_lastName: new FormControl('', [Validators.required, Validators.minLength(3)]),
-      peo_adress: new FormControl('', Validators.required),
-      peo_dateBirth: new FormControl('', Validators.required),
+      peo_name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(40)]),
+      peo_lastName: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(40)]),
+      peo_adress: new FormControl('', [Validators.required]),
+      peo_dateBirth: new FormControl('', [Validators.required]),
       peo_image: new FormControl(''),
-      peo_mail: new FormControl('', Validators.required),
-      peo_phone: new FormControl('', Validators.required),
+      peo_mail: new FormControl('', [Validators.required, Validators.email]),
+      peo_phone: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^\d+$/)]),
     });
   }
 
 
+
+
   ngOnInit(): void {
+
   }
 
   //para guardar imagen en la base datos y retornar su url
@@ -49,23 +53,43 @@ export class PeopleADDComponent implements OnInit {
 
     // Verificar si se seleccionó un archivo
     if (!this.selectedFile) {
-      alert('Debe seleccionar un archivo.');
+      Swal.fire('Imagen','Debe selecionar un archivo','error');
       return;
     }
 
     // Lista de tipos MIME permitidos (puedes ajustar esto según tus necesidades)
-    const allowedMimeTypes = ['image/jpeg', 'image/png'];
+    const allowedMimeTypes = [
+      'image/jpeg',
+      'image/png',
+      'image/gif',
+      'image/webp',
+      'image/bmp'
+    ];
+
 
     // Obtener el tipo MIME del archivo seleccionado
     const fileType = this.selectedFile.type;
 
     // Verificar si el tipo de archivo es permitido
     if (!allowedMimeTypes.includes(fileType)) {
-      Swal.fire('Imagen','Solo se permiten archivos JPEG y PNG','error');
+      Swal.fire('Imagen','Formato de imagen no valido','error');
       target.value = '';
     } else {
-      console.log('imgan subida')
-      this.bandera_subir_img = true;
+      Swal.fire({
+        title: 'Imagen',
+        text: "¿Desea elegir la imagen para su perfil?",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#292',
+        cancelButtonColor: '#222',
+        confirmButtonText: 'Si, elegir'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.subirImagen();
+
+        }
+      })
+
     }
   }
 
@@ -77,7 +101,6 @@ export class PeopleADDComponent implements OnInit {
         this.peopleForm.get('peo_image')?.setValue(this.imageURL || '');
         Swal.fire('Imagen','Subida con exito','success');
         this.link_imagen_subida = String(data.data);
-        this.bandera_subir_img = false;
       });
     } else {
       Swal.fire('Imagen','No guardo la imagen selecionada','error');
@@ -104,13 +127,15 @@ export class PeopleADDComponent implements OnInit {
             },
             (error) => {
               // Aquí manejas el error alertas
-              alert('no se guardo');
+               Swal.fire('Datos de registro', 'Verifique su información e incluir una imagen', 'error')
+
             }
           );
 
         }else{
 
-          Swal.fire('Datos del formulario','No se puede registrar los datos','error')
+        Swal.fire('Datos del formulario','No se puede registrar los datos','error')
+
 
         }
 

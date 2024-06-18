@@ -10,23 +10,24 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: lightgray;
+  box-shadow: 2px 2px 10px black;
+  width: 60%;
+  min-height: 40vh;
+  margin: auto;
 }
 .data{
-  width: 60%;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  background: lightgray;
-  margin: 20px;
-  padding: 20px;
+  width: 90%;
+  padding: 20px 0px;
+  background: transparent;
 
 }
 
 .data .lado-izq{
   flex: 4;
-  width: 40%;
-  margin: 20px;
-  background: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 
@@ -57,13 +58,26 @@ form a{
 @media (max-width: 768px) {
 
 
+  h2{
+    font-size: 30px;
+  }
+
   .container-sm{
     margin-top: 20vh;
     }
 
+    form {
+      width: 90%;
+      min-height: 50vh;
+    }
+
 .data{
   width: 90%;
-  padding: 5px;
+  padding: 20px 10px;
+}
+
+.data .lado-izq, .data input{
+  font-size: 20px;
 }
 
   .boton_style{

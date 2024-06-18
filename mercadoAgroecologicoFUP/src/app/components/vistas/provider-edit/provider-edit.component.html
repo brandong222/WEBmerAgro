@@ -7,11 +7,6 @@
 
     <form [formGroup]="peopleForm">
 
-        <div class="form-group" hidden>
-          <label>Clic para actualizar imagen</label>
-          <input type="text" class="form-control" formControlName="peo_image" readonly />
-        </div>
-
         <div class="form-group">
           <label>Nombre</label>
           <input type="text" class="form-control" formControlName="peo_name" readonly/>
@@ -33,8 +28,8 @@
         </div>
 
         <div class="form-group">
-          <label>Fecha</label>
-          <input type="date" class="form-control" formControlName="peo_dateBirth" readonly/>
+          <label>Fecha de nacimiento</label>
+          <input type="text" class="form-control" formControlName="peo_dateBirth" readonly/>
         </div>
 
         <div class="form-group">
@@ -48,14 +43,10 @@
 
   <div class="parte_der">
     <form [formGroup]="providerForm">
+
       <div class="div_img">
         <img [src]="link_imagen_people" alt="imagen" class="link_imagen_people" />
       </div>
-
-    <div class="form-group">
-      <label for="">grupo</label>
-      <input class="form-control" type="text" formControlName="prov_group" readonly />
-    </div>
 
     <div class="form-group">
       <label for="">Ranking</label>
@@ -68,54 +59,49 @@
       </div>
       <input type="text" formControlName="prov_ranking" class="form-control" hidden/>
     </div>
+
+    <div class="form-group">
+      <label for="">Asociación</label>
+      <input class="form-control" type="text" formControlName="prov_group" readonly />
+    </div>
     <div class="form-group">
       <label for="">descripcion</label>
       <br>
       <textarea formControlName="prov_description" readonly></textarea>
     </div>
 
-    <div class="form-group" hidden>
-      <label for="">status</label>
-      <input type="text" formControlName="prov_status" class="form-control"/>
-    </div>
-    <div class="form-group" hidden>
-      <label for="">people id</label>
-      <input type="text" formControlName="people_peo_id" class="form-control"/>
-    </div>
   </form>
   </div>
 </section>
 
 
 
-<section>
-
-  <div>
-
-    <h3>Productos asociados al productor</h3>
-
-  <input
-class="form-control me-2"
-type="search"
-[(ngModel)]="busqueda_clave"
-(input)="barraBusquedaProductos()"
-placeholder="Buscar producto asociado"
-aria-label="Search"
-/>
-</div>
+<section class="product_section">
 
   <div class="main_product">
+    <h3><strong>Productos asociados al productor</strong></h3>
+
+    <input
+    class="form-control me-2"
+    type="search"
+    [(ngModel)]="busqueda_clave"
+    (input)="barraBusquedaProductos()"
+    placeholder="Buscar producto asociado"
+    aria-label="Search"
+    />
+
+
     <div class="card" *ngFor="let item of productArray">
       <div class="cont_imag">
         <img [src]="item.pro_image" class="card-img-top" alt="" />
       </div>
 
-      <div class="card-body">
+      <div class="card_body">
         <h5 class="card-title">
           <strong>{{ item.pro_name }}</strong>
         </h5>
       </div>
-      <ul class="">
+      <div class="info_product">
         <li class="list-group-item">
           Unidad: <span> {{ item.pro_unit }} </span>
         </li>
@@ -132,7 +118,7 @@ aria-label="Search"
         <li class="list-group-item" *ngIf="item.pro_price > 0">
           <span style="font-size: 30px">$ {{ item.pro_price }} </span>
         </li>
-      </ul>
+      </div>
       <div class="card-body" style="width: 100%">
         <a
           style="width: 90%"

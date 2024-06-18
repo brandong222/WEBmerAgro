@@ -34,7 +34,8 @@ section {
 }
 
 .main_product {
-  background: transparent;
+  background: lightgray;
+  box-shadow: 2px 2px 10px black;
   padding: 30px;
   border: 1.5px solid white;
   display: flex;
@@ -42,6 +43,7 @@ section {
   justify-content: space-around;
   flex-wrap: wrap;
   gap: 25px;
+
 
 }
 

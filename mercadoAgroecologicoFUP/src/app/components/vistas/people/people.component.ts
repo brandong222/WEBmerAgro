@@ -85,14 +85,27 @@ onFileSelected(event: Event) {
   const fileType = this.selectedFile.type;
 
   // Verificar si el tipo de archivo es permitido
-  if (!allowedMimeTypes.includes(fileType)) {
-    Swal.fire('Imagen','Solo se permiten archivos JPEG y PNG','error');
-    this.selectedFile = null;
-    target.value = '';
-  } else {
-    Swal.fire()
+    if (!allowedMimeTypes.includes(fileType)) {
+      Swal.fire('Imagen','Formato de imagen no valido','error');
+      target.value = '';
+    } else {
+      Swal.fire({
+        title: 'Imagen',
+        text: "¿Desea elegir la imagen para su perfil?",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#292',
+        cancelButtonColor: '#222',
+        confirmButtonText: 'Si, elegir'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.subirImagen();
+
+        }
+      })
+
+    }
   }
-}
 
 subirImagen(){
   if (this.selectedFile != null) {
