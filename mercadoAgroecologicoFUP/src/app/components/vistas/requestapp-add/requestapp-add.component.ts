@@ -17,6 +17,8 @@ export class RequestappADDComponent implements OnInit {
   requestArray: superInterfazI[] = [];
   requestForm: FormGroup;
 
+  bandera_checklist: boolean = true;
+
   constructor(
     private requestS: RequestappService,
     private fkjoinS: JoinService,
@@ -26,7 +28,7 @@ export class RequestappADDComponent implements OnInit {
     this.requestForm = new FormGroup({
       req_dateRequest: new FormControl('', Validators.required),
       req_type: new FormControl('', Validators.required),
-      req_description: new FormControl('', Validators.required),
+      req_description: new FormControl('', [Validators.required, Validators.maxLength(120)]),
       req_status: new FormControl(0, Validators.required),
       people_id: new FormControl(0, Validators.required),
     });
@@ -106,6 +108,11 @@ export class RequestappADDComponent implements OnInit {
       }
     );
 
+  }
+
+
+  cambiarVerCheckList(){
+    this.bandera_checklist = !this.bandera_checklist;
   }
 
 }

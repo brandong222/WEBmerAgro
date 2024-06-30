@@ -41,6 +41,7 @@ import { RequestappEDITComponent } from './components/vistas/requestapp-edit/req
 import { PeopleSHOWComponent } from './components/vistas/people-show/people-show.component';
 import { UserLISTComponent } from './components/vistas/user-list/user-list.component';
 import { ForgetPASSWORDComponent } from './components/templates/forget-password/forget-password.component';
+import { LoadingComponent } from './components/templates/loading/loading.component';
 
 
 
@@ -79,7 +80,8 @@ import { ForgetPASSWORDComponent } from './components/templates/forget-password/
     RequestappEDITComponent,
     PeopleSHOWComponent,
     UserLISTComponent,
-    ForgetPASSWORDComponent
+    ForgetPASSWORDComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

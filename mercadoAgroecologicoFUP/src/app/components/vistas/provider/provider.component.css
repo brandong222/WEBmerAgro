@@ -13,13 +13,13 @@
 
 .provider {
   display: flex;
-  border: 2px solid seagreen;
+  border: 2px solid transparent;
   gap: 30px;
   width: 90%;
   max-width: 1200px;
   margin: 10px auto;
-  background-color: rgb(218, 218, 218);
-  box-shadow: 3px 2px 8px seagreen;
+  background-color: lightgray;
+  box-shadow: 3px 2px 8px black;
   padding: 10px;
   border-radius: 10px;
 }

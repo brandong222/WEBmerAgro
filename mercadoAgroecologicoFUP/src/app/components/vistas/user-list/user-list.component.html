@@ -39,7 +39,7 @@
         <td *ngIf="item.use_status == 1" style="color: seagreen;"> activo</td>
         <td *ngIf="item.use_status == 0" style="color: red;"> inactivo</td>
 
-        <th> <a (click)="navPerfilPeople(item.people_id)"> Ver </a></th>
+        <th> <a class="btn_ver_perfil" (click)="navPerfilPeople(item.people_id)"> Ver </a></th>
       </tr>
     </tbody>
 

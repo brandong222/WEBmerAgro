@@ -1,15 +1,14 @@
-<div class="header_inp">
+<app-loading *ngIf="!bandera_loading"></app-loading>
+
+
+<div class="header_inp" *ngIf="bandera_loading">
   <app-header></app-header>
 
 </div>
 
-<div class="component_star" *ngIf="banderaStar">
-  <app-star (calificacionSeleccionada)="obtenerNumeroEstrellas($event)"></app-star>
-  <br>
-  <input type="button" class="btn btn-outline-warning" (click)="navStar()" value="Calificar ">
-</div>
 
-<section *ngIf="!banderaStar">
+
+<section *ngIf="bandera_loading">
   <form *ngFor="let item of productUnitArray">
     <div class="form-group form_img">
       <img [src]="item.pro_image" alt="product img" />
@@ -57,7 +56,11 @@
 
     </div>
   </form>
-
+  <div class="component_star" *ngIf="banderaStar">
+    <app-star (calificacionSeleccionada)="obtenerNumeroEstrellas($event)"></app-star>
+    <br>
+    <input type="button" class="btn btn-outline-warning" (click)="navStar()" value="Calificar ">
+  </div>
 
   <section>
     <div class="title">otros productos</div>

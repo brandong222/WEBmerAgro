@@ -26,12 +26,6 @@ export class JoinService {
   private apiJOIN11: string =  `${environment.urlMain}compararSesionProviderConProductProviderID`;
 
 
-
-
-
-
-
-
   //traer la combinacion de people, user
   getDataProvidersUser(): Observable<responsiveI> {
     return this.http.get<responsiveI>(this.apiJOIN);

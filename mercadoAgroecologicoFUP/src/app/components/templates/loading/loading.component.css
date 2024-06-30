@@ -1,0 +1,43 @@
+
+section{
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+section .image_container{
+  width: 40%;
+  height: auto;
+}
+
+
+section .image_container img{
+  width: 90%;
+  height: auto;
+  object-fit: cover;
+  animation: colors_logo 6s infinite;
+}
+
+
+@keyframes colors_logo {
+  0% {filter: brightness(0.2);}
+  10% { filter: brightness(0.4); }
+  30% { filter: brightness(0.7); }
+  50% { filter: brightness(1);  }
+  70% { filter: brightness(0.7); }
+  85% { filter: brightness(0.4); }
+  100% { filter: brightness(0.3); }
+}
+
+
+@media (width < 1000px) {
+
+section .image_container{
+  width: 100%;
+}
+
+section .image_container img{
+width: 100%;
+}
+}

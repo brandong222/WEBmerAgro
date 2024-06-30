@@ -28,17 +28,26 @@
           <input type="text"
             placeholder="Ingrese una descipción de su solucitud"
             class="form-control" formControlName="req_description">
+            <div *ngIf="requestForm.get('req_description')?.touched && requestForm.get('req_description')?.errors?.['required']" class="alert alert-danger">
+              la descripción es necesaria
+            </div>
+            <div *ngIf="requestForm.get('req_description')?.touched && requestForm.get('req_description')?.errors?.['maxlength']" class="alert alert-danger">
+              la descripción es no debe ser tan extensa
+            </div>
         </div>
 
         <input type="button" class="btn btn-primary boton_style" (click)="guardarRequest(requestForm.value)" value="Enviar">
 
       </div>
 
+      <br>
+
       <div class="form-group" *ngIf="item.use_rol === 'productor'"
           id="checklistVisitaCertificacion">
-          <label for="checklist">Checklist para tener una idea de si sus productos cumplen con algunos criterios de evaluación para certificarlos</label>
+          <label for="checklist">Requerimientos para tener una idea de si sus productos cumplen con algunos criterios de evaluación para certificarlos</label>
 
-          <app-certification></app-certification>
+          <input type="button" class="btn btn-outline-dark" (click)="cambiarVerCheckList()" value="ver requerimientos">
+          <app-certification [hidden]="bandera_checklist"></app-certification>
 
         </div>
 

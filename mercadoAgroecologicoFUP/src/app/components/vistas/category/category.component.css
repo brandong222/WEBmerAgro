@@ -1,51 +1,64 @@
 .container{
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
   width: 100%;
-  padding: 5%;
-  gap: 5px;
-
+  padding: 10px;
 }
 
 .card{
   cursor: pointer;
-  width: 150px;
-  height: 150px;
-  border-radius: 100%;
-  box-shadow: 6px 6px 40px seagreen, 2px 2px 10px black;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  overflow: hidden;
-
-}
-
-.cont_card{
-  margin: auto;
+  width: 20%;
+  height: 100px;
   text-align: center;
-  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid transparent;
 }
 
-.cont_card .card_title{
-  color: rgb(45, 241, 20);
-  text-shadow: 2px 2px 10px rgb(0, 0, 0);
+.card .cont_card{
+  flex: 5;
+  background: transparent;
+  color: seagreen;
+  display: flex;
+  align-items: center;
+  transition: all 0.5s ease-in;
 }
 
-.cont_card .card_text{
+.card .cont_card:hover{
+  background: seagreen;
   color: white;
-  text-shadow: 2px 2px 10px black, 1px 1px 5px black;
-
 }
 
-@media (max-width: 599px) {
-  .card {
-     width: 70px;
-     height: 70px;
-   }
+.card .cont_card .card_title{
 
-  .cont_card {
-     font-size: 12px;
-   }
+  margin: auto;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.card .barra_color{
+  flex: 1;
+  width: 100%;
+  background: seagreen;
+}
+
+
+
+/*RESPONSIVE*/
+
+@media (max-width: 750px) {
+
+
+  .container{
+    flex-direction: column;
+  }
+
+  .card{
+  flex-direction: row;
+  width: 100%;
+  }
+
+
  }

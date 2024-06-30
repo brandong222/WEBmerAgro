@@ -3,7 +3,7 @@
 <div class="container">
 
   <div class="container_imagen">
-    <img  [src]="link_imagen_producto" alt="producto">
+    <img  [src]="link_imagen_producto" class="link_imagen_producto" alt="producto">
 
 
   </div>
@@ -61,11 +61,11 @@
         </select>
       </div>
 
-      <div class="form-group" >
+      <div class="form-group">
         <label  for="pro_certs">Certificado:</label>
 
-        <select  formControlName="pro_certs" class="form-select" *ngIf="rolUser == 'admin'">
-          <option value="en trasición">En transición</option>
+        <select *ngIf="rolUser == 'admin'" formControlName="pro_certs" class="form-select">
+          <option value="No">No</option>
           <option value="certificado">Certificado</option>
         </select>
 
@@ -81,29 +81,13 @@
           class="form-control"        >
       </div>
 
-      <div class="form-group" hidden>
-        <label for="pro_status">Estado:</label>
-        <input
-          id="pro_status"
-          type="number"
-          formControlName="pro_status"
-          class="form-control"
-        />
-      </div>
 
-      <div class="form-group" hidden>
-        <label for="provider_id">Proveedor ID:</label>
-        <input
-          id="provider_id"
-          type="number"
-          formControlName="providers_id"
-          class="form-control"
-        />
-      </div>
+
 
       <div class="form-group">
         <label for="categories_id">Categoria: </label>
         <select class="form-select" formControlName="categories_id">
+          <option value=0>seleccione</option>
           <option *ngFor="let item of fkCategoryList" [value]="item.id">
             {{ item.cat_name }}
           </option>

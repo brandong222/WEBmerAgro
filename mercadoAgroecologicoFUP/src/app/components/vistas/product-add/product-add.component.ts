@@ -23,8 +23,8 @@ export class ProductADDComponent implements OnInit {
   fkCategoryList: categoryI[] = [];
   selectedFile: File | null = null;
   public imageURL: string = 'API image';
-  banderaBotonImagen: boolean = false;
-
+  bandera_imagen_subida: boolean = false;
+  link_imagen_subida: string = "";
   productForm: FormGroup;
 
   constructor(
@@ -35,16 +35,16 @@ export class ProductADDComponent implements OnInit {
     private fkjoinS: JoinService
   ) {
     this.productForm = new FormGroup({
-      pro_name: new FormControl('', Validators.required),
-      pro_type: new FormControl('', Validators.required),
-      pro_price: new FormControl(null, Validators.required),
+      pro_name: new FormControl('', [Validators.required, Validators.maxLength(20)]),
+      pro_type: new FormControl('venta', Validators.required),
+      pro_price: new FormControl(null, [Validators.required,  Validators.pattern(/^\d+$/)]),
       pro_certs: new FormControl('en transición', Validators.required),
       pro_image: new FormControl(''),
       pro_unit: new FormControl('', Validators.required),
       pro_description: new FormControl('', Validators.required),
       pro_status: new FormControl(1, Validators.required),
       providers_id: new FormControl(null),
-      categories_id: new FormControl(0, Validators.required),
+      categories_id: new FormControl('', Validators.required),
     });
   }
 
@@ -57,12 +57,52 @@ export class ProductADDComponent implements OnInit {
   //para guardar imagen en la base datos y retornar su url
   onFileSelected(event: Event) {
     const target = event.target as HTMLInputElement;
-    this.selectedFile = target.files ? target.files[0] : null;
+    this.selectedFile = target.files? target.files[0] : null;
 
-    if(this.selectedFile != null ){
-      this.banderaBotonImagen = true;
-    } else{
-      this.banderaBotonImagen = false;
+    // Verificar si se seleccionó un archivo
+    if (!this.selectedFile) {
+      Swal.fire('Imagen','Debe selecionar un archivo','error');
+      return;
+    }
+
+    // Lista de tipos MIME permitidos (puedes ajustar esto según tus necesidades)
+    const allowedMimeTypes = [
+      'image/jpeg',
+      'image/png',
+      'image/gif',
+      'image/webp',
+      'image/bmp'
+    ];
+
+
+    // Obtener el tipo MIME del archivo seleccionado
+    const fileType = this.selectedFile.type;
+
+    // Verificar si el tipo de archivo es permitido
+    if (!allowedMimeTypes.includes(fileType)) {
+      Swal.fire('Imagen','Formato de imagen no valido','error');
+      target.value = '';
+    } else {
+      Swal.fire({
+        title: 'Imagen',
+        text: "¿Desea elegir la imagen para promocionar su producto?",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#292',
+        cancelButtonColor: '#222',
+        confirmButtonText: 'Si, elegir'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.subirImagen();
+          this.bandera_imagen_subida = true;
+
+        }else{
+          this.selectedFile = null;
+          this.bandera_imagen_subida = false;
+
+        }
+      })
+
     }
   }
 
@@ -70,11 +110,9 @@ export class ProductADDComponent implements OnInit {
     if (this.selectedFile) {
       console.log(this.selectedFile);
       this.imagenS.uploadFile(this.selectedFile).subscribe((data) => {
-        console.log(data.data);
+        this.link_imagen_subida = (data.data);
         this.imageURL = data.data;
         this.productForm.get('pro_image')?.setValue(this.imageURL || '');
-        alert("imagen "+data.data)
-        this.banderaBotonImagen = false;
       });
     } else {
       alert('imagen no se pudo cargar');
@@ -112,19 +150,21 @@ export class ProductADDComponent implements OnInit {
     });
 
 
-    this.productS.addProduct(form).subscribe((data) => {
+    this.productS.addProduct(form).subscribe(
+      (data) => {
 
       if(data.status){
         this.route.navigate(['/product']);
         Swal.fire('Datos de producto','producto registrado existosamente','success')
       }else{
-        Swal.fire('Datos de producto', 'No se puede registrar producto verifique la informacón', 'error')
+        Swal.fire('Datos de producto', 'No se puede registrar producto verifique la información y no olvide incluir una imagen', 'error')
       }
 
 
+    }, (Error)=>{
+      Swal.fire('Datos de producto', 'No se puede registrar producto verifique la información y no olvide incluir una imagen', 'error')
+
     });
-    }else{
-      Swal.fire('Datos de producto', 'No se puede registrar producto verifique la informacón', 'error')
     }
 
   }

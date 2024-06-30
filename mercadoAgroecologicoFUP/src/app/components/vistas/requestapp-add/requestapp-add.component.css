@@ -1,4 +1,3 @@
-
 .container {
   width: 60%;
   margin: 20px auto;
@@ -6,8 +5,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-background: lightgray;
-box-shadow: 2px 2px 10px black;
+  background: lightgray;
+  box-shadow: 2px 2px 10px black;
 }
 
 h3 {
@@ -15,7 +14,7 @@ h3 {
   margin-bottom: 20px;
 }
 
-form{
+form {
   width: 80%;
   margin: auto;
 }
@@ -27,11 +26,11 @@ form{
 .form-control {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: none;
   border-radius: 4px;
 }
 
-.boton_style{
+.boton_style {
   margin-top: 10px;
   width: 100%;
 }
@@ -44,13 +43,13 @@ form{
   outline: none;
 }
 
-#tipoSolicitud[value="serProductor"]:focus + #checklistProductor {
+#tipoSolicitud[value="serProductor"]:focus+#checklistProductor {
   display: block;
 }
 
 
 @media (max-width: 750px) {
-  .container{
+  .container {
     width: 90%;
   }
 }

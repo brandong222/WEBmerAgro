@@ -51,19 +51,19 @@
         <td>{{ item.peo_adress }}</td>
         <td>{{ item.use_rol }}</td>
         <td *ngIf="item.req_status === 0"
-          style="background-color: rgb(255, 66, 66); color: white;">Eliminado</td>
+          style="background-color: rgb(179, 22, 22); color: white;">Eliminado</td>
         <td *ngIf="item.req_status === 1"
-          style="background-color: rgb(236, 188, 31); color: white;">Pendiente</td>
+          style="background-color: rgb(165, 129, 9); color: white;">Pendiente</td>
         <td *ngIf="item.req_status === 2"
-          style="background-color: rgb(49, 145, 255); color: white;">En
+          style="background-color: rgb(14, 61, 114); color: white;">En
           proceso</td>
         <td *ngIf="item.req_status === 3"
-          style="background-color: rgb(0, 214, 0); color: white;">Aprobado</td>
+          style="background-color: rgb(19, 119, 19); color: white;">Aprobado</td>
         <td *ngIf="item.req_status === 4"
-          style="background-color: rgb(255, 66, 66); color: white;">No
+          style="background-color: rgb(179, 22, 22); color: white;">No
           aprobado</td>
         <td>
-          <a class="btn btn-success " (click)="nvEditRequest(item.request_id)">ver</a>
+          <a class="btn btn-success" style="width: 100%; height: 100%;" (click)="nvEditRequest(item.request_id)">ver</a>
         </td>
         <div *ngIf="item.req_status == 1" class="notificacion"></div>
       </tr>
@@ -103,17 +103,17 @@
           <td>{{ item.peo_adress }}</td>
           <td>{{ item.use_rol }}</td>
           <td *ngIf="item.req_status === 0"
-            style="background-color: rgb(255, 66, 66); color: white;">Eliminado</td>
-          <td *ngIf="item.req_status === 1"
-            style="background-color: rgb(236, 188, 31); color: white;">Pendiente</td>
-          <td *ngIf="item.req_status === 2"
-            style="background-color: rgb(49, 145, 255); color: white;">En
-            proceso</td>
-          <td *ngIf="item.req_status === 3"
-            style="background-color: rgb(0, 214, 0); color: white;">Aprobado</td>
-          <td *ngIf="item.req_status === 4"
-            style="background-color: rgb(255, 66, 66); color: white;">No
-            aprobado</td>
+          style="background-color: rgb(179, 22, 22); color: white;">Eliminado</td>
+        <td *ngIf="item.req_status === 1"
+          style="background-color: rgb(165, 129, 9); color: white;">Pendiente</td>
+        <td *ngIf="item.req_status === 2"
+          style="background-color: rgb(14, 61, 114); color: white;">En
+          proceso</td>
+        <td *ngIf="item.req_status === 3"
+          style="background-color: rgb(19, 119, 19); color: white;">Aprobado</td>
+        <td *ngIf="item.req_status === 4"
+          style="background-color: rgb(179, 22, 22); color: white;">No
+          aprobado</td>
           <td>
             <a class="btn btn-success" (click)="nvEditRequest(item.request_id)">ver</a>
           </td>
@@ -154,17 +154,17 @@
             <td>{{ item.peo_adress }}</td>
             <td>{{ item.use_rol }}</td>
             <td *ngIf="item.req_status === 0"
-              style="background-color: rgb(255, 66, 66); color: white;">Eliminado</td>
-            <td *ngIf="item.req_status === 1"
-              style="background-color: rgb(236, 188, 31); color: white;">Pendiente</td>
-            <td *ngIf="item.req_status === 2"
-              style="background-color: rgb(49, 145, 255); color: white;">En
-              proceso</td>
-            <td *ngIf="item.req_status === 3"
-              style="background-color: rgb(0, 214, 0); color: white;">Aprobado</td>
-            <td *ngIf="item.req_status === 4"
-              style="background-color: rgb(255, 66, 66); color: white;">No
-              aprobado</td>
+            style="background-color: rgb(179, 22, 22); color: white;">Eliminado</td>
+          <td *ngIf="item.req_status === 1"
+            style="background-color: rgb(165, 129, 9); color: white;">Pendiente</td>
+          <td *ngIf="item.req_status === 2"
+            style="background-color: rgb(14, 61, 114); color: white;">En
+            proceso</td>
+          <td *ngIf="item.req_status === 3"
+            style="background-color: rgb(19, 119, 19); color: white;">Aprobado</td>
+          <td *ngIf="item.req_status === 4"
+            style="background-color: rgb(179, 22, 22); color: white;">No
+            aprobado</td>
             <td>
               <a class="btn btn-success" (click)="nvEditRequest(item.request_id)">ver</a>
             </td>

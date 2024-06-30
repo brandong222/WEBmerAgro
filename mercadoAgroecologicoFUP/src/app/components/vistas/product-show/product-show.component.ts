@@ -19,6 +19,8 @@ export class ProductSHOWComponent implements OnInit {
   //variable verificar si coincide el producto con su dueño
   bandera_provider_own: boolean = false;
 
+  bandera_loading: boolean = true;
+
   //tomar id de las rutas
   productIdNumber: number = 0;
 
@@ -75,6 +77,7 @@ export class ProductSHOWComponent implements OnInit {
   }
 
   mostrarProductoID() {
+    this.bandera_loading = false;
     this.productS
       .getProductId(Number(this.productIdNumber))
       .subscribe((data) => {
@@ -88,6 +91,8 @@ export class ProductSHOWComponent implements OnInit {
 
         this.evaluarProveedorEsDuenioProducto(Number(data[0].providers_id));
         this.id_provider = Number(data[0].providers_id);
+    this.bandera_loading = true;
+
       });
   }
 

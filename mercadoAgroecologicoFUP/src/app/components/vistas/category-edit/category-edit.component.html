@@ -3,11 +3,8 @@
 </div>
 
 <section>
-
-
-  <div  *ngIf="productArray.length>0">
-    <div>
-    <h3>Productos asociados a una categoría</h3>
+  <h3>Productos clasificados por {{ title_category}}</h3>
+  <div>
 
     <input
       class="form-control me-2"
@@ -18,18 +15,21 @@
       aria-label="Search" />
   </div>
 
+  <div  *ngIf="productArray.length>0">
+
 <div class="main_product">
     <div class="card" *ngFor="let item of productArray">
+
       <div class="cont_imag">
         <img [src]="item.pro_image" class="card-img-top" alt />
       </div>
 
-      <div class="card-body">
+      <div class="card_body">
         <h5 class="card-title">
           <strong>{{ item.pro_name }}</strong>
         </h5>
       </div>
-      <ul class>
+      <div class="info_product" >
         <li class="list-group-item">
           Unidad: <span> {{ item.pro_unit }} </span>
         </li>
@@ -46,7 +46,7 @@
         <li class="list-group-item" *ngIf="item.pro_price > 0">
           <span style="font-size: 30px">$ {{ item.pro_price }} </span>
         </li>
-      </ul>
+      </div>
       <div class="card-body" style="width: 100%">
         <a
           style="width: 90%"
@@ -66,7 +66,7 @@
   </div>
 
   <div class="without_product" *ngIf="productArray.length <= 0">
-  <h3>No hay productos asociados a esta categoria</h3>
+  <h5>Por el momento no hay productos relacionados</h5>
   <input type="button" value="volver al inicio" (click)="navVolverMain()" class="btn btn-outline-primary">
   </div>
 

@@ -122,7 +122,7 @@ export class RequestappEDITComponent {
       console.log(info,"datos request")
       this.requestForm.get('req_dateRequest')?.setValue(info.data.req_dateRequest || null);
       this.requestForm.get('req_type')?.setValue(info.data.req_type || null);
-      this.requestForm.get('req_description')?.setValue(info.data.req_description || null);
+      this.requestForm.get('req_description')?.setValue(info.data.req_description);
       this.requestForm.get('people_id')?.setValue(info.data.people_id || null);
       this.requestForm.get('req_status')?.setValue(info.data.req_status || null);
       this.type_request = info.data.req_type;

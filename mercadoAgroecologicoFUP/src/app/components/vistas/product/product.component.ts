@@ -10,6 +10,9 @@ import { PeopleService } from 'src/app/services/people/people.service';
   styleUrls: ['./product.component.css'],
 })
 export class ProductComponent implements OnInit {
+
+  bandera_loading: boolean = true;
+
   //primero se crea arreglo usando interfaz de product
   productArray: any[] = [];
   //busqueda
@@ -29,9 +32,12 @@ export class ProductComponent implements OnInit {
 
   //metodos fk
   mostrarProductos() {
+    this.bandera_loading = false;
     this.fkjoinS.getProductProvider().subscribe((data) => {
       this.productArray = data.data;
       this.productArray.sort(() => Math.random() - 0.5);
+    this.bandera_loading = true;
+
     });
   }
 

@@ -1,95 +1,148 @@
-<body>
-  <h1>Información de la solicitud y la persona</h1>
-  <section class="container">
+<app-header></app-header>
+
+<section>
+    <h3>Estado de la solicitud</h3>
+    <div class="contenido">
+
+      <form class="barra_estado" [formGroup]="requestForm">
+        <select
+          name
+          id
+          class="form-select"
+          formControlName="req_status"
+          (change)="evaluar_estado_respuesta(requestForm.value)"
+        >
+          <option value="1">Pendiente</option>
+          <option value="2">En proceso</option>
+          <option value="3">Aprovado</option>
+          <option value="4">No aprovado</option>
+        </select>
+
+        <br>
+        <label for="Des">descripcion</label>
+        <input type="text" class="form-control" formControlName="'req_description">
+      </form>
+
     <form [formGroup]="peopleForm">
-
-      <div class="content">
-        <div class="person-info">
-
-          <div class="detalles">
-
-            <div class="parte_izquierda">
-              <div class="form-group">
-                <span>Nombre</span>
-                <input type="text" class="form-control"
-                  formControlName="peo_name"
-                  readonly />
-              </div>
-
-              <div class="form-group">
-                <span>Apellido</span>
-                <input
-                  type="text"
-                  class="form-control"
-                  formControlName="peo_lastName"
-                  readonly />
-              </div>
-
-              <div class="form-group">
-                <span>Correo Electronico:</span>
-                <input type="email" class="form-control"
-                  formControlName="peo_mail" readonly />
-              </div>
-
-              <div class="form-group">
-                <span>Teléfono</span>
-                <input type="number" class="form-control"
-                  formControlName="peo_phone" readonly />
-              </div>
-
-              <div class="form-group">
-                <span>Ubicación</span>
-                <input
-                  name
-                  id="ubicacion"
-                  class="form-control"
-                  formControlName="peo_adress"
-                  readonly />
-
-              </div>
-            </div>
+      <div class="style_content">
+        <div class="parte_izquierda">
+          <div class="form-group">
+            <span>Nombre</span>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="peo_name"
+              readonly
+            />
           </div>
 
-          <div class="parte_derecha">
-
-
-            <img [src]="link_imagen_people" alt="imagen" />
-
-            <div *ngIf="type_request === 'Certificar producto (s)'">
-            <div class="actions" *ngFor="let provider of providerArray;">
-              <a class="btn btn-success" href="https://wa.me/57{{ people_phone }}?text=Señor/a {{ people_name }}, deme más informacón acerca de la certificaión de sus productos, para agendar una visita" target="_blank">Contactar</a>
-              <input class="btn btn-primary" (click)="navEditarProveedor(provider.provider_id|| 0)" value="Ver productos">
-            </div>
-            </div>
-
-            <div *ngIf="type_request === 'Contraseña'">
-              <div class="actions">
-                <a class="btn btn-success" href="https://wa.me/57{{ people_phone }}?text=Señor/a {{ people_name }}, me comunico con usted para procesar su solicitud de recuperación de contraseña" target="_blank">Contactar</a>
-                <input class="btn btn-primary" (click)="navPerfilPeople(id_people_fk)" value="Cambiar en perfil">
-              </div>
-              </div>
-
-              <div *ngIf="type_request === 'Ser productor'">
-                <div class="actions">
-                  <a class="btn btn-success" href="https://wa.me/57{{ people_phone }}?text=Señor/a {{ people_name }}, su solicitud de ser productor está en proceso" target="_blank">Contactar</a>
-                  <input class="btn btn-primary" (click)="navPerfilPeople(id_people_fk)" value="Ver perfil">
-                </div>
-                </div>
-
+          <div class="form-group">
+            <span>Apellido</span>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="peo_lastName"
+              readonly
+            />
           </div>
 
+          <div class="form-group">
+            <span>Correo Electronico:</span>
+            <input
+              type="email"
+              class="form-control"
+              formControlName="peo_mail"
+              readonly
+            />
+          </div>
+
+          <div class="form-group">
+            <span>Teléfono</span>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="peo_phone"
+              readonly
+            />
+          </div>
+
+          <div class="form-group">
+            <span>Ubicación</span>
+            <input
+              name
+              id="ubicacion"
+              class="form-control"
+              formControlName="peo_adress"
+              readonly
+            />
+          </div>
         </div>
 
-        <button class="back-button" (click)="nvRegresar()">Volver</button>
+        <div class="parte_derecha">
+          <img [src]="link_imagen_people" alt="imagen" />
+
+          <div *ngIf="type_request === 'Certificar producto (s)'">
+            <div class="actions" *ngFor="let provider of providerArray">
+              <a
+                class="btn btn-dark"
+                href="https://wa.me/57{{ people_phone }}?text=Señor/a {{
+                  people_name
+                }}, deme más informacón acerca de la certificaión de sus productos, para agendar una visita"
+                target="_blank"
+                >Contactar</a
+              >
+              <input
+                class="btn btn-success"
+                (click)="navEditarProveedor(provider.provider_id || 0)"
+                value="Ver productos"
+              />
+            </div>
+          </div>
+
+          <div *ngIf="type_request === 'Contraseña'">
+            <div class="actions">
+              <a
+                class="btn btn-dark"
+                href="https://wa.me/57{{ people_phone }}?text=Señor/a {{
+                  people_name
+                }}, me comunico con usted para procesar su solicitud de recuperación de contraseña"
+                target="_blank"
+                >Contactar</a
+              >
+              <input
+                class="btn btn-success"
+                (click)="navPerfilPeople(id_people_fk)"
+                value="Perfil"
+              />
+            </div>
+          </div>
+
+          <div *ngIf="type_request === 'Ser productor'">
+            <div class="actions">
+              <a
+                class="btn btn-dark"
+                href="https://wa.me/57{{ people_phone }}?text=Señor/a {{
+                  people_name
+                }}, su solicitud de ser productor está en proceso"
+                target="_blank"
+                >Contactar</a
+              >
+              <input
+                class="btn btn-success"
+                (click)="navPerfilPeople(id_people_fk)"
+                value="Ver perfil"
+              />
+            </div>
+          </div>
+
+
+        </div>
       </div>
     </form>
 
-    <form [formGroup]="requestForm">
-      <select name id class="form-select" formControlName="req_status" (change)="evaluar_estado_respuesta(requestForm.value)">
-        <option value= 1>Pendiente</option>
-        <option value= 2>En proceso</option>
-        <option value= 3>Aprovado</option>
-        <option value= 4>No aprovado</option>
-      </select>
-    </form>
+
+
+  </div>
+
   </section>
+

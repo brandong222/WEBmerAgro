@@ -3,3 +3,15 @@
 table{
   text-align: center;
 }
+
+
+.btn_ver_perfil{
+text-decoration: none;
+color: black;
+}
+
+.btn_ver_perfil:hover{
+  cursor: pointer;
+  color: seagreen;
+
+}
