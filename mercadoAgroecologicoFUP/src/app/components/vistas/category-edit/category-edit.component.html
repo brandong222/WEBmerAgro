@@ -1,9 +1,11 @@
-<div class="header_inp">
+<app-loading *ngIf="!bandera_loading"></app-loading>
+
+<div *ngIf="bandera_loading" class="header_inp">
   <app-header></app-header>
 </div>
 
-<section>
-  <h3>Productos clasificados por {{ title_category}}</h3>
+<section *ngIf="bandera_loading">
+  <h3>Productos {{ title_category}}</h3>
   <div>
 
     <input
@@ -12,7 +14,7 @@
       [(ngModel)]="busqueda_clave"
       (input)="barraBusquedaProductos()"
       placeholder="Buscar producto por categoría"
-      aria-label="Search" />
+      aria-label="Search"  style="margin-bottom: 20px;"/>
   </div>
 
   <div  *ngIf="productArray.length>0">

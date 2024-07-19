@@ -19,6 +19,8 @@ export class CategoryEditComponent implements OnInit{
   busqueda_clave = '';
   noProductsFound = false;
   title_category: string = 'categorías'
+  bandera_loading:boolean = true;
+
 
   constructor(
     private route: Router,
@@ -33,12 +35,15 @@ export class CategoryEditComponent implements OnInit{
     }
 
   mostrarProductos() {
+    this.bandera_loading= false;
 
     this.categoryS.filterProductCategoryID(this.id_category).subscribe((data) => {
       let title: any = data[0];
       this.title_category =  (title.cat_name);
       this.productArray = data;
       this.productArray.sort(() => Math.random() - 0.5);
+      this.bandera_loading= true;
+
     });
   }
 

@@ -31,8 +31,7 @@ section {
 .main_product {
   background: lightgray;
   box-shadow: 2px 2px 10px black;
-  padding: 30px;
-  border: 1.5px solid white;
+  padding: 24px;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -58,9 +57,7 @@ section {
   width: 100%;
   min-height: 18vh;
   max-height: 18vh;
-  overflow: hidden;
-  border-radius: 5px solid transparent;
-  box-shadow: 1px 1px 5px gray;
+  box-shadow: 2px 2px 10px black;
   background: transparent;
 
 }

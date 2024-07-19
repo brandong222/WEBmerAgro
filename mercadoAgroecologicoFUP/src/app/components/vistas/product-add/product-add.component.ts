@@ -39,7 +39,7 @@ export class ProductADDComponent implements OnInit {
       pro_type: new FormControl('venta', Validators.required),
       pro_price: new FormControl(null, [Validators.required,  Validators.pattern(/^\d+$/)]),
       pro_certs: new FormControl('en transición', Validators.required),
-      pro_image: new FormControl(''),
+      pro_image: new FormControl('', Validators.required),
       pro_unit: new FormControl('', Validators.required),
       pro_description: new FormControl('', Validators.required),
       pro_status: new FormControl(1, Validators.required),
@@ -83,14 +83,19 @@ export class ProductADDComponent implements OnInit {
       Swal.fire('Imagen','Formato de imagen no valido','error');
       target.value = '';
     } else {
+      const imageUrl = URL.createObjectURL(this.selectedFile);
+
       Swal.fire({
-        title: 'Imagen',
+        title:
+          '<img src="' +
+          imageUrl +
+          '" alt="Imagen seleccionada" style="width:200px;">',
         text: "¿Desea elegir la imagen para promocionar su producto?",
-        icon: 'question',
         showCancelButton: true,
-        confirmButtonColor: '#292',
+        confirmButtonColor: '#115511',
         cancelButtonColor: '#222',
-        confirmButtonText: 'Si, elegir'
+        confirmButtonText: 'Si, elegir',
+        cancelButtonText: 'cancelar',
       }).then((result) => {
         if (result.isConfirmed) {
           this.subirImagen();

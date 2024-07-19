@@ -1,30 +1,31 @@
 <app-header></app-header>
 
 <div class="container">
-
   <div class="container_imagen">
-<div [hidden]="!bandera_imagen_subida" style="margin: 10px auto;">
-    <img
-          id="mostrar_imagen"
+    <div [hidden]="!bandera_imagen_subida" style="margin: 10px auto">
+      <img
+        id="mostrar_imagen"
         [src]="link_imagen_subida"
-          alt=" "
-          style="max-width: 100%"
-        />
-      </div>
-<div class="form-group">
-  <label for="pro_image">Elegir imagen</label>
-  <input class="form-control" type="file" (change)="onFileSelected($event)"  value="Subir imagen">
-</div>
+        alt=" "
+        style="max-width: 100%"
+      />
+    </div>
+    <div class="form-group">
+      <label for="pro_image">Elegir imagen</label>
+      <input
+        class="form-control"
+        type="file"
+        (change)="onFileSelected($event)"
+        value="Subir imagen"
+      />
+    </div>
   </div>
 
-
-  <form [formGroup]="productForm" (ngSubmit)="guardarProducto(productForm.value)">
-
-
+  <form
+    [formGroup]="productForm"
+    (ngSubmit)="guardarProducto(productForm.value)"
+  >
     <div class="formulario_style">
-
-
-
       <div class="form-group">
         <label for="pro_name">Nombre:</label>
         <input
@@ -34,13 +35,18 @@
           class="form-control"
           placeholder="ingrese el nombre de su producto"
         />
-        <div *ngIf="productForm.get('pro_name')?.touched && productForm.get('pro_name')?.errors?.['required']"  class="alert alert-danger">
+        <div
+          *ngIf="productForm.get('pro_name')?.touched && productForm.get('pro_name')?.errors?.['required']"
+          class="alert alert-danger"
+        >
           El Nombre del producto es requerido
         </div>
-        <div *ngIf="productForm.get('pro_name')?.touched && productForm.get('pro_name')?.errors?.['maxlength']"  class="alert alert-danger">
+        <div
+          *ngIf="productForm.get('pro_name')?.touched && productForm.get('pro_name')?.errors?.['maxlength']"
+          class="alert alert-danger"
+        >
           El Nombre del producto no debe ser tan extenso
         </div>
-
       </div>
 
       <div class="form-group">
@@ -52,10 +58,14 @@
           <option value="Kg">Kilogramo</option>
           <option value="Caja">Caja</option>
           <option value="Lote">Lote</option>
+          <option value="Unidad">Unidad</option>
           <option value="otra">Otra</option>
         </select>
 
-        <div *ngIf="productForm.get('pro_unit')?.touched && productForm.get('pro_unit')?.errors?.['required']" class="alert alert-danger">
+        <div
+          *ngIf="productForm.get('pro_unit')?.touched && productForm.get('pro_unit')?.errors?.['required']"
+          class="alert alert-danger"
+        >
           Seleccione una unidad de medida valida
         </div>
       </div>
@@ -66,7 +76,6 @@
           <option value="venta">Venta</option>
           <option value="trueque">Venta / Trueque</option>
           <option value="venta o trueque">Trueque</option>
-
         </select>
       </div>
 
@@ -79,16 +88,19 @@
           class="form-control"
           placeholder="poner el precio sin puntos ni comas"
         />
-        <div *ngIf="productForm.get('pro_price')?.touched && productForm.get('pro_price')?.errors?.['required']" class="alert alert-info">
+        <div
+          *ngIf="productForm.get('pro_price')?.touched && productForm.get('pro_price')?.errors?.['required']"
+          class="alert alert-info"
+        >
           El precio del producto es requerido, si es trueque ponga 0 (cero)
         </div>
-        <div *ngIf="productForm.get('pro_price')?.touched && productForm.get('pro_price')?.errors?.['pattern']" class="alert alert-danger">
+        <div
+          *ngIf="productForm.get('pro_price')?.touched && productForm.get('pro_price')?.errors?.['pattern']"
+          class="alert alert-danger"
+        >
           Ingrese el precio solo con números
         </div>
       </div>
-
-
-
 
       <div class="form-group" hidden>
         <label for="pro_certs">Certificados:</label>
@@ -97,21 +109,23 @@
           type="text"
           formControlName="pro_certs"
           class="form-control"
-         />
+        />
       </div>
-
-
 
       <div class="form-group">
         <label for="pro_description">Descripción:</label>
         <input
           formControlName="pro_description"
           class="form-control"
-          placeholder="Agregue una descripción de su producto">
+          placeholder="Agregue una descripción de su producto"
+        />
 
-          <div *ngIf="productForm.get('pro_description')?.touched && productForm.get('pro_description')?.errors?.['required']" class="alert alert-danger">
-            Es necesario poner una descripción sobre el producto
-          </div>
+        <div
+          *ngIf="productForm.get('pro_description')?.touched && productForm.get('pro_description')?.errors?.['required']"
+          class="alert alert-danger"
+        >
+          Es necesario poner una descripción sobre el producto
+        </div>
       </div>
 
       <div class="form-group" hidden>
@@ -137,20 +151,20 @@
       <div class="form-group">
         <label for="categories_id">Categoria: </label>
         <select class="form-select" formControlName="categories_id">
-          <option value=''>seleccione</option>
+          <option value="">seleccione</option>
           <option *ngFor="let item of fkCategoryList" [value]="item.id">
             {{ item.cat_name }}
           </option>
         </select>
-        <div *ngIf="productForm.get('categories_id')?.touched && productForm.get('categories_id')?.errors?.['required']" class="alert alert-danger">
+        <div
+          *ngIf="productForm.get('categories_id')?.touched && productForm.get('categories_id')?.errors?.['required']"
+          class="alert alert-danger"
+        >
           Seleccione una categoria valida
         </div>
       </div>
-
-
     </div>
 
     <button type="submit" class="btn btn-success">Guardar</button>
   </form>
-
 </div>

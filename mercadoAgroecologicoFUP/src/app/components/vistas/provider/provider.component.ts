@@ -16,6 +16,9 @@ import { superInterfazI } from 'src/app/models/superInterfaz.interface';
 })
 export class ProviderComponent implements OnInit {
 
+  bandera_loading: boolean = true;
+
+
   constructor(private providerS: ProviderService,
     private route: Router,
     private peopleServide: PeopleService,
@@ -29,8 +32,13 @@ export class ProviderComponent implements OnInit {
   }
 
   mostrarProvedores(){
+  this.bandera_loading=  false;
+
+
   this.FK_joinS.getDataProvidersUser().subscribe(info=>{
     this.providerArray = info.data;
+  this.bandera_loading=  true;
+
    });
   }
 

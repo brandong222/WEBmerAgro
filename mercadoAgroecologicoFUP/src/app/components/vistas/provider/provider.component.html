@@ -1,10 +1,11 @@
-<div class="header_inp">
+<app-loading *ngIf="!bandera_loading"></app-loading>
+
+<div *ngIf="bandera_loading" class="header_inp">
   <app-header></app-header>
 </div>
 
-<br>
 
-<section>
+<section *ngIf="bandera_loading">
 
   <div class="barra_busqueda">
 

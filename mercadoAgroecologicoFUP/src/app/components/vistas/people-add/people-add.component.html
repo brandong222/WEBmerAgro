@@ -1,13 +1,19 @@
-<div class="container-sm" style="margin-top: 20px;">
+<app-loading *ngIf="!bandera_loading"></app-loading>
+
+
+<div *ngIf="bandera_loading" class="container-sm" style="margin-top: 20px;">
   <h2 class="text-center">Formulario de registro</h2>
   <div class="contenedor">
     <div class="data">
       <form [formGroup]="peopleForm">
+
+        <div class="form_cont">
       <div class="lado-izq">
 
         <div class="form-group">
           <label for="nombre" >Nombre</label>
-          <input type="text" class="form-control" id="nombre" formControlName="peo_name"/>
+          <input type="text" placeholder="ingrese su nombre" class="form-control" id="nombre" formControlName="peo_name"/>
+
           <div *ngIf="peopleForm.get('peo_name')?.touched && peopleForm.get('peo_name')?.errors?.['required']"  class="alert alert-danger">
        El nombre es requerido.
      </div>
@@ -21,7 +27,7 @@
         </div>
         <div class="form-group">
           <label for="apellido">Apellido</label>
-          <input type="text" class="form-control" id="apellido" formControlName="peo_lastName"/>
+          <input type="text" placeholder="ingrese su apellido" class="form-control" id="apellido" formControlName="peo_lastName"/>
           <div *ngIf="peopleForm.get('peo_lastName')?.touched && peopleForm.get('peo_lastName')?.errors?.['required']"  class="alert alert-danger">
             El apellido es requerido.
           </div>
@@ -35,7 +41,7 @@
         </div>
         <div class="form-group">
           <label for="email">correo electronico</label>
-          <input type="email" class="form-control" id="email" formControlName="peo_mail" />
+          <input type="email" placeholder="ingrese su correo electrónico" class="form-control" id="email" formControlName="peo_mail" />
           <div *ngIf="peopleForm.get('peo_mail')?.touched && peopleForm.get('peo_mail')?.errors?.['required']"  class="alert alert-danger">
             El correo electronico es requerido.
           </div>
@@ -45,7 +51,7 @@
         </div>
           <div class="form-group">
             <label for="telefono">Telefono</label>
-            <input type="text" class="form-control" formControlName="peo_phone"/>
+            <input type="text" class="form-control" placeholder="ingrese su número de telefono" formControlName="peo_phone"/>
 
             <div *ngIf="peopleForm.get('peo_phone')?.touched && peopleForm.get('peo_phone')?.errors?.['required']"  class="alert alert-danger">
               El número de telefono es requerido.
@@ -97,16 +103,14 @@
         />
 
         <input class="form-control" type="file" (change)="onFileSelected($event)">
-
-
-        <div class="boton_style">
-          <input type="submit" class="btn btn-dark" (click)="navegateToRegresar()" value="regresar">
-
-          <input type="submit" class="btn btn-success"  (click)="guardarPersona(peopleForm.value)" value="Siguiente">
-
-         </div>
       </div>
+    </div>
+      <div class="boton_style">
+        <input type="submit" class="btn btn-dark" (click)="navegateToRegresar()" value="regresar" hidden>
 
+        <input type="submit" class="btn btn-success"  (click)="guardarPersona(peopleForm.value)" value="Siguiente">
+
+       </div>
 
     </form>
     </div>

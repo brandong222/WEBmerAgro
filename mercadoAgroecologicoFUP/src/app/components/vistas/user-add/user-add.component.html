@@ -1,5 +1,7 @@
+
+
 <div class="container-sm">
-  <h2 class="text-center">Formulario de registro</h2>
+  <h2 class="text-center">Formulario de sesion</h2>
 <form [formGroup]="userForm" (ngSubmit)="guardarUser(userForm.value)">
   <div class="data">
     <div class="lado-izq">
@@ -33,6 +35,6 @@
       </div>
     </div>
 
-  <input type="submit" class="btn btn-success boton_style" [hidden] ="!bandera_confirmar_password" value="Registrarse">
+  <input type="submit" class="btn btn-success boton_style" [disabled] ="!bandera_confirmar_password" value="Registrarse">
 </form>
 </div>

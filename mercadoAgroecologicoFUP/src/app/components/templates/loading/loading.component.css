@@ -24,7 +24,8 @@ section .image_container img{
   0% {filter: brightness(0.2);}
   10% { filter: brightness(0.4); }
   30% { filter: brightness(0.7); }
-  50% { filter: brightness(1);  }
+  50% { filter: brightness(1);
+   }
   70% { filter: brightness(0.7); }
   85% { filter: brightness(0.4); }
   100% { filter: brightness(0.3); }

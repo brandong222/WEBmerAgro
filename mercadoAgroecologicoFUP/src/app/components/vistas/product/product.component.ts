@@ -18,17 +18,24 @@ export class ProductComponent implements OnInit {
   //busqueda
   busqueda_clave = '';
 
+
+
   //segundo se inyecta las dependencias de servicio y rutas
   constructor(
     private productS: ProductService,
     private route: Router,
     private fkjoinS: JoinService,
     private fkpeopleS: PeopleService
-  ) {}
+  ) {
+
+  }
 
   ngOnInit(): void {
     this.mostrarProductos();
+
   }
+
+
 
   //metodos fk
   mostrarProductos() {
@@ -37,7 +44,6 @@ export class ProductComponent implements OnInit {
       this.productArray = data.data;
       this.productArray.sort(() => Math.random() - 0.5);
     this.bandera_loading = true;
-
     });
   }
 

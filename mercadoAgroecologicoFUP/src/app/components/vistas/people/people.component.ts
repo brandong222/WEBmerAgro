@@ -23,6 +23,7 @@ export class PeopleComponent implements OnInit {
   link_imagen_subida:string ="";
 
   rol_user: string = '';
+  bandera_loading: boolean = true;
 
   constructor(
     private route: Router,
@@ -47,6 +48,7 @@ export class PeopleComponent implements OnInit {
   }
 
   mostrarPeople() {
+    this.bandera_loading = false;
     const user_id: UserI = this.traerDatosSesion();
     this.rol_user = String(user_id.use_rol);
 
@@ -63,6 +65,8 @@ export class PeopleComponent implements OnInit {
       this.link_imagen_subida = String(data.data[0].peo_image);
       this.peopleForm.get('peo_mail')?.setValue(data.data[0].peo_mail);
       this.peopleForm.get('peo_phone')?.setValue(data.data[0].peo_phone);
+    this.bandera_loading = true;
+
     });
   }
 
