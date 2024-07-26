@@ -7,13 +7,11 @@ form{
   align-items: center;
   box-shadow: 2px 2px 10px black;
 }
-
 form .form_img{
   flex: 1;
   overflow: hidden;
   padding: 20px;
 }
-
 form .form_img img{
   width: 90%;
   max-height: 40vh;
@@ -21,20 +19,16 @@ form .form_img img{
   box-shadow: 2px 2px 6px gray;
   object-fit: cover;
 }
-
-
 form .form_info{
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
 }
-
 form .form_info h5 span{
   color: seagreen;
   font-size: 16px;
 }
-
 form .form_whats{
   flex: 1;
   background: transparent;
@@ -43,26 +37,16 @@ form .form_whats{
   justify-content: center;
   align-items: center;
 }
-
 form .form_whats span{
   display: flex;
   justify-content: center;
-
 }
-
 form .form_whats h4 a{
 cursor: pointer;
-
 }
-
-
 form .form_whats h4{
   color: darkgreen;
 }
-
-
-
-
 form .form_btn{
   flex: 1;
   display: flex;
@@ -70,15 +54,12 @@ form .form_btn{
   gap: 10px;
   padding: 10px;
 }
-
-
 .title{
   color: seagreen;
   width: 80%;
   font-size: 30px;
   margin-bottom: 10px;
 }
-
 section {
   width: 90%;
   height: auto;
@@ -86,7 +67,6 @@ section {
   background: transparent;
   padding: 30px 0px;
 }
-
 .main_product {
   background: lightgray;
   box-shadow: 2px 2px 10px black;
@@ -99,7 +79,6 @@ section {
   gap: 25px;
 
 }
-
 .card {
   width: 18%;
   height: 55vh;
@@ -112,7 +91,6 @@ section {
   justify-content: space-around;
   padding: 5px;
 }
-
 .card .cont_imag{
   width: 100%;
   min-height: 18vh;
@@ -121,15 +99,12 @@ section {
   border-radius: 5px solid transparent;
   box-shadow: 1px 1px 5px gray;
   background: transparent;
-
 }
-
 .card .cont_imag img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-
 .card .card_body{
   height: 10vh;
   width: 100%;
@@ -137,10 +112,7 @@ section {
   display: flex;
   align-items: center;
   background: transparent;
-
 }
-
-
 .card .info_product{
   width: 100%;
   text-align: center;
@@ -149,9 +121,6 @@ section {
   flex-direction: column;
   align-items: center;
 }
-
-
-
 span{
   color: seagreen;
 }
@@ -172,8 +141,6 @@ span{
   transform-origin: top left;
 
 }
-
-
 /*para estrellas*/
 .component_star{
   width: 80%;
@@ -185,28 +152,17 @@ span{
   align-items: center;
   margin: 20px auto;
 }
-
 .component_star input{
   width: 80%;
-
 }
-
-
-
 @media (max-width: 768px) {
-
   .header_inp{
   margin: 0;
   }
-
-
   .main_product {
     background: transparent;
     padding: 5px;
-
   }
-
-
   form{
     margin: auto;
     width: 90%;
@@ -215,28 +171,19 @@ span{
     flex-direction: column;
     align-items: center;
   }
-
   form .form_info{
     text-align: center;
   }
-
   form .form_btn{
     flex-direction: row;
   }
-
   .card {
     width: 90%;
-
   }
-
-
   .mostrar_certificado::before {
     padding: 3px 8px;
     font-size: 16px;
-
   }
-
-
   .title{
     font-size: 26px;
     margin: 10px 0px 10px 40px;

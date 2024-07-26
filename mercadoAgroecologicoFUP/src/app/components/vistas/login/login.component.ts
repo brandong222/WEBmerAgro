@@ -6,8 +6,8 @@ import { loginI } from 'src/app/models/login.interface';
 import { Router } from '@angular/router';
 import { responsiveI } from 'src/app/models/response.interface';
 import { PeopleService } from 'src/app/services/people/people.service';
-
 import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-login',
