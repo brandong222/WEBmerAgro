@@ -8,7 +8,8 @@ import { environment } from 'src/environments/environment';
 })
 export class ImagenService {
 
-  private apiUrl: string = `${environment.urlMain}imagen/`;
+  private apiUrl: string = `${environment.urlMain}imagen`;
+
 
   constructor(private http: HttpClient) { }
 

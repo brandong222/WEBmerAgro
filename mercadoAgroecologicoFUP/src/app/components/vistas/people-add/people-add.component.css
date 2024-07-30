@@ -84,6 +84,10 @@ box-shadow: 2px 2px 10px black;
     border: none;
    }
 
+   .boton_style input{
+    width: 80%;
+  }
+
  }
 
 
