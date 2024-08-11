@@ -141,27 +141,67 @@
           </ul>
         </li>
 
-        <li class="nav-item dropdown">
+        <li class="nav-item">
           <a
-            class="nav-link dropdown custom-dropdown"
+            class="nav-link"
+            aria-current="page"
             role="button"
-            data-bs-toggle="dropdown"
-            style="
-              color: darkgreen;
-              text-shadow: 2px 2px 5px rgba(21, 235, 32, 0.438);
-            "
+            aria-expanded="false"
+            (click)="cerrarSesion()"
+            style="color: rgb(204, 9, 9);"
           >
-            {{ FKusuarioName }}
+
+              <img
+              style="width: 30px; height: 30px; margin-bottom: 6px"
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAN1JREFUSEvVVcENwjAMdOQMUl60W5RNyiS0k3QUukXKCwaJFWSUSCWC1pESVPy2fb6LL1ZQOFTh/rAPAKN1q5y7AEArYDw5pYbG2olzRQxmxDsAVILmIWWqiU4pAI6Ta6LNgWbEt9zNAm4cF60x2Q/ADXE8Ep2zMzAAlUIceWMkmsdyrUrk1/EairICGMROAfDkSREP8ZWB0br3ZioDwF29/izRy1RZJQpjL0GKAAQmoHXXWNtnX9NPD/CfTl4y+QWD1O/6URMdxN+1dzibUHIT0g9OkvOiZNE92DXAE2ynmBmdXIhwAAAAAElFTkSuQmCC"/>
+
+            Cerrar sesión
           </a>
-          <ul class="dropdown-menu">
-            <li>
-              <a class="dropdown-item usuario" (click)="cerrarSesion()"
-                >Cerrar sesión</a
-              >
-            </li>
-          </ul>
         </li>
       </ul>
     </div>
   </div>
 </nav>
+
+<div class="resp_nav">
+  <img src="/assets/img/logoVF.png" alt="Logo" class="logo" />
+  <div class="menu_resp">
+    <ul>
+      <li class="respo_item">
+        <img
+        (click)="navInicio()"
+        style="width: 40px; height: 40px;"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAANRJREFUSEvtlesNwjAMhK+bwCZlEzoJdBLYBDZpNwFOipET8rCp8gfhn1Vy3/mVDugcQ2d9eAG3YGgCsFrMeQAUH4PoHYAJYgVocTE+A7i2MrEALi+RY6EchJxrpWoBePnUqHUVUgPQNd1boggpAdhMmRgLgGfYdPYkihzgG3ER3adNTwE7AIvVcuYcd+OgIRqwVVx4EUQDauPoTYqLyEyip6I7QLt8eC2H8x9DUxrT3wSk2eay3FSiPyAaTD4X3GyJ9+Kob5Yz7n+yez1aPxy3YHrhCVFdKxlu4RZ8AAAAAElFTkSuQmCC"
+      />
+      </li>
+      <li class="respo_item">
+        <img
+        (click)="navVerProductos()"
+      style="width: 40px; height: 40px;"
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAS9JREFUSEu1lYERgjAMRcMk6iTqJjqJOok6iTqJbqJ9dw0XoKEtQu44Dpr+n598SiMLR7MwvsxNsBaRnYjctPA5CQC/RoKjkkwlAOwgIqdw/wTQZwDU6nne/KMAoLczuw44OaUKACW0as8b9J72tDFGcBaRbZSuBDnTFSkA7BGBc4D99SxBv79suAd3rGJ7coSXkIByt0VUjo+JvXEHbqH/Y4GT2NMJOwMA8LEFpxrAczFojW6wBIBDopXocw6c9fbDGlOAt5mBJn9LkGMOHxYqBmEVKKCeI7meWzDX7nZBFVQU3qYWEVgH1ZAk3ZMaMvaEpDbcAQPUl1arwrVnSgHvao4JwKmeFrmRGo79cXgbi8BTLbKA2JTTVO0KKNcrJHXOm1oFtUMezS/94Uwm/QFSYjYZu7ChuAAAAABJRU5ErkJggg=="
+      />
+      </li>
+      <li class="respo_item">
+        <img
+        (click)="navVerProvedores()"
+        style="width: 40px; height: 40px;"
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAASNJREFUSEvtlWESwUAMhZ+bcBKcBCfBSXASboKT4JvZZ7a16badMeOH/dOpJvmSvGRN9OUz+XJ8/TTgIGkv6dbVhVoFa0krSdMU5PR67iQtJJ1T8GUXpAtAoG0hu2PKHABgqsC2eCIAjtfAh5ZsUta2mUVVRABaQ4+jA4BKqIJ2+f3DPgK4x30B6HApGY9pEXHckkcKOrhF+EUiW1R/RxMAg0S2MUHmqc8E8pjmGvE7UDTprUHtBkEjJo0x9o4UxzXSIM88h5EtYt6z2cfWy/gBaQPIhvEkw9oB5i3O9WoI3gZ4rmvB/Z1qgHBIDG0aVeSA2nLVdsL+ObRxXTuDvtmXqvBevBPPK+Be8UQMgfTeA9OHBLdteCvX/g/GwBo+f0C1hU+r4UEZyyNUWgAAAABJRU5ErkJggg=="
+      />
+      </li>
+      <li class="respo_item">
+        <img
+        (click)="navVerPeople()"
+        style="width: 40px; height: 40px;"
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAATRJREFUSEu1lYsNwjAMRI9JgE1gE5gEmAQ2gU2ASYCHSOS6zqcStVSpUh2ffXdOF5o5FjPXVy/AVdLGNXORtG812AvwKhRqni8lrCQ9fkV5vxcA1iaPFHvueyQCSHRAwVPSoUEDeRSGwhFtHmAn6dzitfEdXQAKJyhxPQUTareJOjvBsUIHh04fGm5GFyaFmijIpd5Ag8iK5FAcMaNA/Agka+E1oCvEsocGnDqUaOqB0JGLfFc1r3sLj6btAfBet0NMBoAirGqjRlFkawSGpu+i2gmi4knkbDuDXNvwUOSWTZmErnjonA2fZFOaK9lu6qJlW3uRa1P0guQl8xqkAmmKdJ/4vfBAFFz+aGPT0StHz3UNAFsehbXw6KouTRAV+vsPx4NE4o/oiDpr/vJ6lS3lzQ7wBuXbRBlPVqS5AAAAAElFTkSuQmCC"
+            />
+      </li>
+      <li class="respo_item">
+        <img
+        (click)="cerrarSesion()"
+        style="width: 40px; height: 40px;"
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAN1JREFUSEvVVcENwjAMdOQMUl60W5RNyiS0k3QUukXKCwaJFWSUSCWC1pESVPy2fb6LL1ZQOFTh/rAPAKN1q5y7AEArYDw5pYbG2olzRQxmxDsAVILmIWWqiU4pAI6Ta6LNgWbEt9zNAm4cF60x2Q/ADXE8Ep2zMzAAlUIceWMkmsdyrUrk1/EairICGMROAfDkSREP8ZWB0br3ZioDwF29/izRy1RZJQpjL0GKAAQmoHXXWNtnX9NPD/CfTl4y+QWD1O/6URMdxN+1dzibUHIT0g9OkvOiZNE92DXAE2ynmBmdXIhwAAAAAElFTkSuQmCC"/>
+
+      </li>
+    </ul>
+  </div>
+</div>

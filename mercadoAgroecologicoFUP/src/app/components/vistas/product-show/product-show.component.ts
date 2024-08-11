@@ -8,6 +8,7 @@ import { JoinService } from 'src/app/services/join/join.service';
 import { PeopleService } from 'src/app/services/people/people.service';
 import { ProductService } from 'src/app/services/product/product.service';
 import { ProviderService } from 'src/app/services/provider/provider.service';
+import { SalesSService } from 'src/app/services/sales/sales-s.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -44,7 +45,8 @@ export class ProductSHOWComponent implements OnInit {
     private fkjoinS: JoinService,
     private providerS: ProviderService,
     private peopleS: PeopleService,
-    private providers: ProviderService
+    private providers: ProviderService,
+    private salesS: SalesSService
   ) {}
 
   ngOnInit() {
@@ -153,6 +155,40 @@ export class ProductSHOWComponent implements OnInit {
     if (usuarioData) {
       return JSON.parse(usuarioData);
     }
+  }
+
+  //Registrar interaccion
+  registrarInteraccion(id: number){
+    
+    var dataString = sessionStorage.getItem("usuario_login");
+    if(dataString !== null){
+      var dataObj = JSON.parse(dataString);
+    }
+
+    
+    let today = new Date();
+    let year = today.getFullYear();
+    let month = today.getMonth() + 1; 
+    let date = today.getDate();
+    
+    let formattedMonth = month < 10 ? ('0' + month).toString() : month.toString();
+    
+    let formattedToday = `${year}-${formattedMonth}-${date}`;
+    
+    
+
+    let form = {
+      sal_dateSales: formattedToday,
+      people_id: dataObj.id,
+      products_id: id,
+    }
+    
+    console.log(form)
+    this.salesS.addSales(form).subscribe(data=>{
+      console.log(data)
+    })
+
+
   }
 
   //NAVEGACION **

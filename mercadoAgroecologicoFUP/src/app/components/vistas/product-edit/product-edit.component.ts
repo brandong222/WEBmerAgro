@@ -58,7 +58,6 @@ export class ProductEditComponent implements OnInit {
 
   //Metodo actualizar
   actualizarProductos(form: ProductI) {
-    console.log(form);
 
     this.productS.updateProduct(Number(form.id), form).subscribe((data) => {
       if(data.status){

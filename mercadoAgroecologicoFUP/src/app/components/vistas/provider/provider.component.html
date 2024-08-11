@@ -5,6 +5,11 @@
 </div>
 
 
+<h1 *ngIf="bandera_loading" style="width: 100%; text-align:center; margin:10px; color:seagreen; text-shadow: 1px 1px 1px black;">
+  Productores de mercado agroecológico
+</h1>
+
+
 <section *ngIf="bandera_loading">
 
   <div class="barra_busqueda">
@@ -14,14 +19,14 @@
     type="search"
     [(ngModel)]="busqueda_clave"
     (input)="barraBusquedaProductos()"
-    placeholder="Buscar nombre de prodcutor"
+    placeholder="Buscar nombre de productor"
     aria-label="Search"
   />
 
   </div>
 
 <div class="main_provider">
-  <div *ngFor="let provider of providerArray;" class="provider">
+  <div *ngFor="let provider of providerArray;" class="provider" (click)="navEditarProveedor(provider.provider_id || 0)">
     <div class="imagen">
       <img [src]="provider.peo_image" alt="Imagen">
     </div>

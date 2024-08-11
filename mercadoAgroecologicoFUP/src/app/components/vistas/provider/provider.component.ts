@@ -37,6 +37,7 @@ export class ProviderComponent implements OnInit {
 
   this.FK_joinS.getDataProvidersUser().subscribe(info=>{
     this.providerArray = info.data;
+    this.providerArray.sort(() => Math.random() - 0.5);
   this.bandera_loading=  true;
 
    });

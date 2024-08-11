@@ -39,7 +39,8 @@ export class PeopleComponent implements OnInit {
       peo_dateBirth: new FormControl(null),
       peo_image: new FormControl('', Validators.required),
       peo_mail: new FormControl('', Validators.required),
-      peo_phone: new FormControl(0, Validators.required),
+      peo_phone: new FormControl('', [Validators.required,Validators.minLength(10),Validators.maxLength(10),Validators.pattern(/^\d+$/),
+      ]),
     });
   }
 
@@ -146,18 +147,28 @@ subirImagen(){
 
   guardarDatosPeople(form: PeopleI) {
 
-    this.peopleS.updatePerson(Number(form.id), form).subscribe(
-      (data) => {
-        localStorage.setItem('user_name', String(form.peo_name));
-        Swal.fire('Datos de usuario ', 'Actualizados exitosamente', 'success');
-        this.route.navigate(['/home']);
-      },
-      (Error) => {
-        Swal.fire('Datos de usuario', 'No se actualizo los datos', 'error');
-      }
-    );
+    if (this.peopleForm.valid) {
+      this.peopleS.updatePerson(Number(form.id), form).subscribe(
+        (data) => {
+          localStorage.setItem('user_name', String(form.peo_name));
+          Swal.fire('Datos de usuario ', 'Actualizados exitosamente', 'success');
+          this.route.navigate(['/home']);
+        },
+        (Error) => {
+          Swal.fire('Datos de usuario', 'No se actualizo los datos', 'error');
+        }
+      );
 
-    this.bandera_edit_people = !this.bandera_edit_people;
+      this.bandera_edit_people = !this.bandera_edit_people;
+
+    }else{
+      //manejar errores
+      Swal.fire('Datos de usuario', 'Verifique su información y vuelva a intentar', 'error')
+    }
+
+
+
+
   }
 
   //NAVEGACION

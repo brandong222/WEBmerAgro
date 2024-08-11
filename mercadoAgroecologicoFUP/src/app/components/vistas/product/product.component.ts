@@ -135,4 +135,22 @@ export class ProductComponent implements OnInit {
   verproductoIndividual(id: number) {
     this.route.navigate(['/product/show/', id]);
   }
+
+
+  //navegacion de submenu
+
+  navProductos(){
+    this.route.navigate(['/product']);
+  }
+
+
+  navMisProductos(){
+    this.route.navigate(['/product/own']);
+  }
+
+  navSubirProducto(){
+    this.route.navigate(['/product/add']);
+
+  }
+
 }

@@ -115,7 +115,36 @@ span{
 }
 
 
+/*submenu styles*/
+.submenu{
+  width: 90%;
+  margin: auto;
+}
+
+.submenu ul{
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.submenu ul li{
+  font-size: 18px;
+  color: seagreen;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 @media (max-width: 768px) {
+
+
+  .submenu ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+  }
 
   .header_inp{
   margin: 0px;
@@ -128,6 +157,9 @@ span{
   .main_product {
     background: transparent;
     padding: 5px;
+    box-shadow: none;
+    padding: 30px;
+    border: none;
 
   }
 

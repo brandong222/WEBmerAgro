@@ -5,7 +5,7 @@
 
   <div class="parte_izq">
 
-    <form [formGroup]="peopleForm">
+    <form [formGroup]="peopleForm" class="peopleForm">
 
         <div class="form-group">
           <label>Nombre</label>
@@ -18,19 +18,10 @@
         </div>
 
         <div class="form-group">
-          <label>Correo Electronico:</label>
-          <input type="email" class="form-control" formControlName="peo_mail" readonly/>
-        </div>
-
-        <div class="form-group">
           <label>Teléfono</label>
           <input type="text" class="form-control" formControlName="peo_phone" readonly/>
         </div>
 
-        <div class="form-group">
-          <label>Fecha de nacimiento</label>
-          <input type="text" class="form-control" formControlName="peo_dateBirth" readonly/>
-        </div>
 
         <div class="form-group">
           <label>Ubicación</label>
@@ -39,10 +30,7 @@
 
     </form>
 
-  </div>
-
-  <div class="parte_der">
-    <form [formGroup]="providerForm">
+    <form [formGroup]="providerForm" class="providerForm">
 
       <div class="div_img">
         <img [src]="link_imagen_people" alt="imagen" class="link_imagen_people" />
@@ -64,31 +52,26 @@
       <label for="">Asociación</label>
       <input class="form-control" type="text" formControlName="prov_group" readonly />
     </div>
-    <div class="form-group">
+    <div class="form-group description">
       <label for="">descripcion</label>
       <br>
       <textarea formControlName="prov_description" readonly></textarea>
     </div>
 
   </form>
-  </div>
+</div>
+
 </section>
 
 
 
 <section class="product_section">
 
-  <div class="main_product">
-    <h3><strong>Productos asociados al productor</strong></h3>
 
-    <input
-    class="form-control me-2"
-    type="search"
-    [(ngModel)]="busqueda_clave"
-    (input)="barraBusquedaProductos()"
-    placeholder="Buscar producto asociado"
-    aria-label="Search"
-    />
+  <h3 style="width: 100%; color:seagreen"><strong>Productos asociados al productor</strong></h3>
+
+  <div class="main_product">
+
 
 
     <div class="card" *ngFor="let item of productArray">
@@ -137,14 +120,7 @@
     </div>
   </div>
 
-  <div class="main_product"  *ngIf="noProductsFound">
-    <div class="card">
-      <div class="cont_imag">
-        "<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAhFJREFUSEuVluFtGzEMhT9O0dsi3SFAM8QBdzukQIZI4e7gAzxEf3gHdwtvwYISdaZOUozqV4KjSL73+CgLdgTQ9Ff3xM9PQpv7Fu/Hr/5vhpiyc1f6+QRBHVTv1gBxB+qwQOIsXdhvTSCLoN9U+IVyb+gd9HIk6cDjjuYaPljynwL3LF2kt6a61aBWpORcgQXk7tNgaDZBz2U2ItgjU0cqjpMwARen6921+e19zyrcWzZrUOMxza2sAotinMvs2lxQmUA34Fx35JQGpr4ywIRy8dh34K8HvwAJBTCTig881AhfE7iisoDeTNRaTD4E3hQ2kHN0aqtBv3jmPtM5O0VXT/QKMgl6UrC4jKLng8aIPg6CrponZwN1niUWMIE+EN5QNoFzscyjjlAZLXwwAVP3LqxzLFefIkNgBaz7k6NxlEfJw/8B4YBfRyC87stRWFEWgT8qfJrz45oJRtsrJe69WOr0cYHs5lggaSAnR9NMVK/ACfhOmo7jjA8nOjtduKE2beW0Grxonm/j3LqJsTZAPQQlxjQzNGbG3RfHbWorYUJ9z7Tb8asCZV/dQHcUmaKcqOwc2y3z83en0qZYIKFIvkk7ymIeJ9v/eebA8PCl3ddKJbLAqsIPR+OJ2v3eGqoSKxgzkzM+de7Dr4PB81U9ELiT42vRKTdirVoJ+xtej16eos5Krd1YfgCMno6xcP8AnH7mHq+9VjAAAAAASUVORK5CYII=" class="card-img-top" alt=""/>"
-      </div>
-    <p>Este producto no se pudo encontrar</p>
-  </div>
-  </div>
+
 
 </section>
 

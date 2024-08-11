@@ -128,4 +128,20 @@ export class ProductOWNComponent implements OnInit {
   navSubirProducto() {
     this.route.navigate(['/product/add'])
   }
+
+ //navegacion de submenu
+
+ navProductos(){
+  this.route.navigate(['/product']);
 }
+
+
+navMisProductos(){
+  this.route.navigate(['/product/own']);
+}
+
+
+}
+
+
+

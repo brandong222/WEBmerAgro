@@ -37,6 +37,8 @@ export class LoginComponent implements OnInit {
 
   revisarToken() {
     if (localStorage.getItem('token')) {
+
+      
       this.router.navigate(['home']);
     }
   }

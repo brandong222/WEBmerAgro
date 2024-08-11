@@ -44,11 +44,7 @@ export class PeopleADDComponent implements OnInit {
       peo_dateBirth: new FormControl('', [Validators.required]),
       peo_image: new FormControl(''),
       peo_mail: new FormControl('', [Validators.required, Validators.email]),
-      peo_phone: new FormControl('', [
-        Validators.required,
-        Validators.minLength(10),
-        Validators.maxLength(10),
-        Validators.pattern(/^\d+$/),
+      peo_phone: new FormControl('', [Validators.required,Validators.minLength(10),Validators.maxLength(10),Validators.pattern(/^\d+$/),
       ]),
     });
   }

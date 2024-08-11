@@ -1,14 +1,15 @@
 
 <div>
-  <h3>Iniciar sesión</h3>
   <div class="formContent">
 
     <form [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm.value)" >
+  <h3>Iniciar sesión</h3>
+
 
       <label for="">Número de identificación</label>
-      <input required type="number"  id="use_cc" class="form-control" formControlName="use_cc" placeholder="ingrese su número de cedula">
+      <input required type="number"  id="use_cc" class="form-control" formControlName="use_cc" placeholder="ingrese su número de documento">
       <label for="">Contraseña</label>
-      <input required type="password"  id="use_password" class="form-control" formControlName="use_password" placeholder="password">
+      <input required type="password"  id="use_password" class="form-control" formControlName="use_password" placeholder="ingrese su contraseña">
 
       <span *ngIf="intentos_contrasena>1">
         <a (click)="navRecuperarContra()">Olvidé mi contraseña</a>
@@ -16,7 +17,7 @@
 
       <input type="submit" class="btn btn-success" value="Ingresar">
 
-      <span>¿No tienes una cuenta? <a (click)="navigateToRegister()"  >registrarse</a></span>
+      <span>¿No tienes una cuenta? <a (click)="navigateToRegister()"  ><span class="register">registrarse</span> </a></span>
 
     </form>
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserI } from 'src/app/models/user.interface';
 import { LoginService } from 'src/app/services/login/login.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-header',
@@ -91,10 +92,34 @@ export class HeaderComponent implements OnInit {
 
   //cerrar sesion borrar token
   cerrarSesion() {
-    this.loginS.logout().subscribe((data) => {
-      localStorage.removeItem('token');
-      localStorage.removeItem('user_name');
-      this.route.navigate(['']);
-    });
+
+    Swal.fire({
+      title: 'cerrar sesión',
+      text: "¿Desea cerrar sesión?",
+      icon:'question',
+      showCancelButton: true,
+      cancelButtonColor: '#222',
+      confirmButtonColor: '#944',
+      cancelButtonText: 'cancelar',
+      confirmButtonText: 'Si, salir',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.loginS.logout().subscribe((data) => {
+        });
+        localStorage.removeItem('token');
+          localStorage.removeItem('user_name');
+          localStorage.removeItem('id_user');
+          sessionStorage.removeItem('usuario_login');
+          this.route.navigate(['']);
+
+      }
+    })
   }
+
+
+  test(){
+    alert('test awful')
+  }
+
+
 }

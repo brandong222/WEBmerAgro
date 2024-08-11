@@ -1,37 +1,62 @@
 .people {
   width: 80%;
-  background: lightgray;
-  box-shadow: 2px 2px 10px black;
   margin: auto;
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-evenly;
   padding: 10px;
 }
 .parte_izq {
-  flex: 1;
   display: flex;
+  justify-content: space-around;
+
 }
-.parte_izq form{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-}
-.parte_der {
-  flex: 1;
+
+.parte_izq{
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
+  padding: 15px;
+  box-shadow: 1px 1px 5px gray;
 }
-.div_img {
+
+.form-group label{
+  color: seagreen;
+  font-size: 20px;
+  width: 200px;
+}
+.form-group textarea{
   width: 100%;
-  text-align: center;
+  border: none;
 }
+
+.peopleForm{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.form-control{
+width: 200px;
+border: none;
+font-size: 18px;
+background: transparent;
+}
+
+.providerForm{
+  padding: 10px;
+  display: flex;;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;}
+
+.providerForm div{
+  flex: 1;
+}
+
+.providerForm .description{
+  flex: 2;
+}
+
 .link_imagen_people {
-  width: 250px;
-  height: 250px;
+  width: 100px;
+  height: 100px;
   object-fit: cover;
   border-radius: 100%;
   box-shadow: 2px 2px 10px black;
@@ -48,29 +73,9 @@
   color: darkgray;
   text-shadow: 2px 2px 5px black;
 }
-.form-group input {
-  background: transparent;
-  border: none;
-  color: black;
-  font-size: 20px;
-  text-align: left;
-  padding: 0;
-}
-.form-group label {
-  font-size: 24px;
-  color: green;
-  text-shadow: 1px 1px 4px white;
-}
-.form-group textarea {
-  resize: none;
-  width: 90%;
-  height: auto;
-  min-height: 200px;
-  background: transparent;
-  color: rgb(0, 0, 0);
-  font-size: 20px;
-  border: none;
-}
+
+
+
 .barra_busqueda {
   width: 90%;
   display: flex;
@@ -88,7 +93,7 @@
 }
 .main_product {
   margin: auto;
-  background: lightgray;
+  background: transparent;
   padding: 20px;
   display: flex;
   align-items: center;
@@ -157,33 +162,39 @@ span {
   transform-origin: top left;
 }
 @media screen and (max-width: 768px) {
+
+
   form {
-    flex-direction: column;
-    text-align: center;
+    text-align: left;
   }
   form .form-control {
-    text-align: center;
+    text-align: left;
   }
-  .parte_der form div textarea{
-   text-align: center;
-  }
-  .rating_container {
-    justify-content: center;
-  }
-  .div_img img {
-    width: 200px;
-    height: 200px;
-  }
-  .people {
-    flex-direction: column-reverse;
-    text-align: center;
-  }
-  .barra_busqueda {
-    width: 100%;
-  }
-  .barra_busqueda input {
+
+  .form-group{
+    margin: auto;
+    display: flex;
     width: 80%;
   }
+
+.form-group textarea{
+  min-height: 100px;
+}
+
+  .div_img{
+    text-align: center;
+  }
+
+  .div_img img {
+    min-width: 100px;
+    width: 100px;
+    height: 100px;
+    margin: 10px 0px;
+  }
+  .people {
+    width: 90%;
+  }
+
   .main_product {
     flex-direction: column;
   }

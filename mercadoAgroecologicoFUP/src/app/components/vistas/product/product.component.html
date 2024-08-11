@@ -5,7 +5,22 @@
   <app-header></app-header>
 </div>
 
+
+<h1 *ngIf="bandera_loading" style="width: 100%; text-align:center; margin:10px; color:seagreen; text-shadow: 1px 1px 1px black;">
+  Productos
+</h1>
+
+<nav class="submenu"  *ngIf="bandera_loading">
+  <ul>
+    <li class="items" (click)="navProductos()">Productos</li>
+    <li class="items" (click)="navMisProductos()" >Mis productos</li>
+    <li class="items" (click)="navSubirProducto()" >Subir producto</li>
+  </ul>
+</nav>
+
+
 <div class="barra_busqueda" *ngIf="bandera_loading">
+
   <select class="form-select" id="filtros" (change)="filtrosProductos()" >
     <option value="none">Organizar</option>
     <option value="nombre">Nombre</option>
@@ -16,7 +31,7 @@
   </select>
 
   <input
-  class="form-control me-2"
+  class="form-control me-3"
   type="search"
   [(ngModel)]="busqueda_clave"
   (input)="barraBusquedaProductos()"
@@ -28,7 +43,7 @@
 
 <section *ngIf="bandera_loading">
   <div class="main_product">
-    <div class="card" *ngFor="let item of productArray">
+    <div class="card" *ngFor="let item of productArray" (click)="verproductoIndividual(item.product_id)">
       <div class="cont_imag">
         <img [src]="item.pro_image" class="card-img-top" alt="" />
       </div>
