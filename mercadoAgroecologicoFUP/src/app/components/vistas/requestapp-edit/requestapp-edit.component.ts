@@ -28,6 +28,7 @@ export class RequestappEDITComponent {
   people_name: string = '';
   type_request: string = '';
   request_status: number = 0;
+  request_description: string = "";
 
   constructor(
     private route: Router,
@@ -119,10 +120,11 @@ export class RequestappEDITComponent {
 
   buscarTipoRespuesta(){
     this.requestS.getRequestAppId(this.id_ruta_request).subscribe((info) => {
-      console.log(info,"datos request")
+
       this.requestForm.get('req_dateRequest')?.setValue(info.data.req_dateRequest || null);
       this.requestForm.get('req_type')?.setValue(info.data.req_type || null);
-      this.requestForm.get('req_description')?.setValue(info.data.req_description);
+      this.requestForm.get('req_description')?.setValue(info.data.req_description || null);
+      this.request_description = info.data.req_description; //para mostrar la descripcion de request
       this.requestForm.get('people_id')?.setValue(info.data.people_id || null);
       this.requestForm.get('req_status')?.setValue(info.data.req_status || null);
       this.type_request = info.data.req_type;

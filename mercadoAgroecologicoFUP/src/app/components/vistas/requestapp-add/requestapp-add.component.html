@@ -1,7 +1,10 @@
 <app-header></app-header>
 
+<h1 style="width: 100%; text-align:center; margin:10px; color:seagreen; text-shadow: 1px 1px 1px black;">
+  Enviar solicitud para ser productor
+</h1>
+
 <div class="container" aria-readonly="false">
-  <h3 style="color: seagreen;">Enviar solicitud para ser productor</h3>
 
 
     <form [formGroup]="requestForm" *ngFor="let item of requestArray"
@@ -24,7 +27,7 @@
           class="form-control" readonly formControlName="req_type" />
 
         <div class="form-group">
-          <label for="req_description">Descripción</label>
+          <label for="req_description">Descripción *</label>
           <input type="text"
             placeholder="Ingrese una descipción de su solucitud"
             class="form-control" formControlName="req_description">

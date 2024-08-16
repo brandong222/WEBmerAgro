@@ -1,8 +1,8 @@
 <app-header></app-header>
 
 <div class="container-sm">
-  <h2 class="text-center">Información de registro</h2>
-  <div>
+
+  <div class="change_password_style">
     <span>cambiar contraseña</span>
      <input type="checkbox" (click)="cambiarPasseord()">
   </div>
@@ -73,7 +73,7 @@
         <label for="email">Id de la persona</label>
         <input type="number" class="form-control" formControlName="people_id" readonly />
       </div>
-      <input  type="button" class="btn btn-success boton_style" (click)="actualzarUsuarioPassword(userFormNoPassword.value)"  value="Guardar cambios con contra">
+      <input  type="button" class="btn btn-success boton_style" (click)="actualzarUsuarioPassword(userFormNoPassword.value)"  value="Guardar cambios">
 
       </div>
 

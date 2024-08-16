@@ -42,6 +42,16 @@ form {
 
 }
 
+.change_password_style{
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.change_password_style span{
+  font-size: 20px;
+}
+
 
 /*RESPONSIVE*/
 

@@ -17,10 +17,11 @@
           <option value="3">Aprobado</option>
           <option value="4">No aprobado</option>
         </select>
+        <br>
+        <h3>Descripcion</h3>
 
         <br>
-        <label for="Des">descripcion</label>
-        <input type="text" class="form-control" formControlName="'req_description">
+        <textarea style="font-size: 22px; background: transparent; width: 100%; border: none; text-align: center;" [value]="request_description"></textarea>
       </form>
 
     <form [formGroup]="peopleForm">

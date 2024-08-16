@@ -4,6 +4,7 @@ import { CategoryService } from 'src/app/services/category/category.service';
 import { JoinService } from 'src/app/services/join/join.service';
 import { PeopleService } from 'src/app/services/people/people.service';
 import { ProviderService } from 'src/app/services/provider/provider.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-category-edit',
@@ -38,11 +39,19 @@ export class CategoryEditComponent implements OnInit{
     this.bandera_loading= false;
 
     this.categoryS.filterProductCategoryID(this.id_category).subscribe((data) => {
-      let title: any = data[0];
-      this.title_category =  (title.cat_name);
-      this.productArray = data;
-      this.productArray.sort(() => Math.random() - 0.5);
-      this.bandera_loading= true;
+
+      if (data.length === 0) {
+        Swal.fire('Productos', 'Por el momento no hay productos con esta categoria', 'info')
+        this.route.navigate(['/home']);
+      }else{
+        let title: any = data[0];
+        this.title_category =  (title.cat_name);
+        this.productArray = data;
+        this.productArray.sort(() => Math.random() - 0.5);
+        this.bandera_loading= true;
+      }
+
+
 
     });
   }

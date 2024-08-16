@@ -147,7 +147,7 @@ export class ProductADDComponent implements OnInit {
   guardarProducto(form: ProductI) {
     const numericCategoriesId = Number(form.categories_id);
 
-    if(!this.productForm.validator){
+    if (this.productForm.valid) {
 
     // Actualizar el valor de categories_id en el formulario
     this.productForm.patchValue({

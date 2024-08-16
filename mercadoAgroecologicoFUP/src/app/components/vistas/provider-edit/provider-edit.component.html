@@ -72,9 +72,13 @@
 
   <div class="main_product">
 
+    <div *ngIf="productArray.length == 0">
+      <h5>No hay productos</h5>
+    </div>
 
 
-    <div class="card" *ngFor="let item of productArray">
+    <div class="card" *ngFor="let item of productArray" >
+
       <div class="cont_imag">
         <img [src]="item.pro_image" class="card-img-top" alt="" />
       </div>
@@ -82,6 +86,7 @@
       <div class="card_body">
         <h5 class="card-title">
           <strong>{{ item.pro_name }}</strong>
+
         </h5>
       </div>
       <div class="info_product">

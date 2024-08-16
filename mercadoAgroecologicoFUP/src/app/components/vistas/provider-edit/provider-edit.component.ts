@@ -59,11 +59,12 @@ export class ProviderEditComponent  implements OnInit{
 
   ngOnInit(): void {
   this.datosProductoId();
+  this.mostrarProductos();
   }
 
   datosPersonaID(id_people: number){
   this.peopleS.getPersonById(id_people).subscribe(data=>{
-    if (data) {
+    if (data.status) {
       const dataR: PeopleI = data.data;
 
       this.people_id = Number(dataR.id);
@@ -83,6 +84,7 @@ export class ProviderEditComponent  implements OnInit{
       this.peopleForm.get('peo_phone')?.setValue(dataR.peo_phone || null);
 
     } else {
+      console.log('no hY')
 
     }
   })
@@ -91,8 +93,10 @@ export class ProviderEditComponent  implements OnInit{
 
 
   mostrarProductos() {
-
+    console.log(this.providerIdNumber)
     this.fkjoinS.joinProduProviderID(this.providerIdNumber).subscribe((data) => {
+
+      console.log(data.data)
       this.productArray = data.data;
       this.productArray.sort(() => Math.random() - 0.5);
     });
@@ -113,28 +117,15 @@ export class ProviderEditComponent  implements OnInit{
         this.providerForm.get('prov_status')?.setValue(dataR.prov_status || null);
         this.providerForm.get('people_peo_id')?.setValue(dataR.people_peo_id || null);
 
-
         this.datosPersonaID(Number(dataR.people_peo_id));
       } else {
         console.log('No hay datos guardados del producto.');
     }
-    this.mostrarProductos();
+
     });
   }
 
-  //BARRA DE BUSQUEDA
-  barraBusquedaProductos(): void {
-    if (!this.busqueda_clave.trim()) {
-      this.mostrarProductos();
-      this.noProductsFound = false;
-      return;
-    }else{
-      this.noProductsFound = true;
-    }
-    this.productArray = this.productArray.filter((product) =>
-      product.pro_name.toLowerCase().includes(this.busqueda_clave.toLowerCase())
-    );
-  }
+
 
   //NAVEGACION
   verproductoIndividual(id: number) {

@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product/product.service';
 import { Router } from '@angular/router';
 import { PeopleService } from 'src/app/services/people/people.service';
+import { UserI } from 'src/app/models/user.interface';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -17,7 +18,7 @@ export class ProductComponent implements OnInit {
   productArray: any[] = [];
   //busqueda
   busqueda_clave = '';
-
+  RolUser:string = 'usuario';
 
 
   //segundo se inyecta las dependencias de servicio y rutas
@@ -32,6 +33,14 @@ export class ProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.mostrarProductos();
+
+    let datosSesion = sessionStorage.getItem('usuario_login');
+    if (datosSesion) {
+      let usuarioLogin: UserI = JSON.parse(datosSesion);
+      this.RolUser = String(usuarioLogin.use_rol);
+    } else {
+      console.log('No hay datos en el almacenamiento de sesión.');
+    }
 
   }
 

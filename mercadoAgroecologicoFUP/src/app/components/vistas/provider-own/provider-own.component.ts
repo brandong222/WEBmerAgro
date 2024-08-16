@@ -102,4 +102,17 @@ export class ProviderOWNComponent implements OnInit {
 
     this.bandera_edit_provider = !this.bandera_edit_provider;
   }
+
+
+/*NAVEGATION Middle*/
+ //ver datos de sesion
+ navDatosSesion() {
+  this.route.navigate(['/user/']);
+}
+
+navPerfil(){
+  this.route.navigate(['/people/']);
+
+}
+
 }

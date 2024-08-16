@@ -59,14 +59,20 @@ export class ProductEditComponent implements OnInit {
   //Metodo actualizar
   actualizarProductos(form: ProductI) {
 
-    this.productS.updateProduct(Number(form.id), form).subscribe((data) => {
-      if(data.status){
-        Swal.fire('Producto','Producto actualizado exitosamente','success')
-      }else{
-        Swal.fire('Producto','No se puede producto actualizar','error')
+    if (this.productForm.valid) {
+      this.productS.updateProduct(Number(form.id), form).subscribe((data) => {
+        if(data.status){
+          Swal.fire('Producto','Producto actualizado exitosamente','success')
+        }else{
+          Swal.fire('Producto','No se puede producto actualizar','error')
 
-      }
-    });
+        }
+      });
+    }else{
+      Swal.fire('Producto','No se puede producto actualizar, verifique la información','error')
+    }
+
+
   }
 
   datosProductoId() {

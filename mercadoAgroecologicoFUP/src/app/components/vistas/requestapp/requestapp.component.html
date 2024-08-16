@@ -10,22 +10,24 @@
       <ul class="navbar-nav">
 
         <li class="nav-item">
-          <a class="nav-link" (click)="cambioMenuLocal(1)">Solicitud de certificados</a>
+          <a class="nav-link" id="menu1" (click)="cambioMenuLocal(1)">Solicitud de certificados</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" (click)="cambioMenuLocal(2)">Solicitud para ser proveedor</a>
+          <a class="nav-link" id="menu2" (click)="cambioMenuLocal(2)">Solicitud para ser proveedor</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link"(click)="cambioMenuLocal(3)">Cambio de contraseña</a>
+          <a class="nav-link" id="menu3" (click)="cambioMenuLocal(3)">Cambio de contraseña</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
 
+<h3 [hidden]="verSiHayElementos" style="width: 80%; margin: 40px auto; color: darkgreen; text-align: center;"> No hay solicitudes</h3>
+
 <section class="container" *ngIf="navegacion_local == 1">
 <div class="container">
-  <table class="table table-hover">
+  <table class="table table-hover" [hidden]="!verSiHayElementos">
     <thead class="contenedor">
       <tr>
         <th class="idPersonaTH">persona id</th>
@@ -75,9 +77,11 @@
 </section>
 
 <section class="container" *ngIf="navegacion_local == 2">
+
+
   <div class="container">
     <table class="table table-hover">
-      <thead class="contenedor">
+      <thead class="contenedor"  [hidden]="!verSiHayElementos">
         <tr>
           <th class="idPersonaTH">persona id</th>
           <th>Tipo de Solicitud</th>
@@ -128,7 +132,7 @@
   <section class="container" *ngIf="navegacion_local == 3">
     <div class="container">
       <table class="table table-hover">
-        <thead class="contenedor">
+        <thead class="contenedor"  [hidden]="!verSiHayElementos">
           <tr>
             <th class="idPersonaTH">persona id</th>
             <th>Tipo de Solicitud</th>

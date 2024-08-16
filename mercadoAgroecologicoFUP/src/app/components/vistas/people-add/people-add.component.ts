@@ -15,7 +15,7 @@ import Swal from 'sweetalert2';
 export class PeopleADDComponent implements OnInit {
   selectedFile: File | null = null;
   imageURL: string = 'API image';
-  link_imagen_subida: string = '';
+  link_imagen_subida: string = '../../../../assets/img/perfilDefecto.png';
   peopleForm: FormGroup;
 
   bandera_loading: boolean = true;
@@ -42,7 +42,7 @@ export class PeopleADDComponent implements OnInit {
       ]),
       peo_adress: new FormControl('', [Validators.required]),
       peo_dateBirth: new FormControl('', [Validators.required]),
-      peo_image: new FormControl(''),
+      peo_image: new FormControl('../../../../assets/img/perfilDefecto.png'),
       peo_mail: new FormControl('', [Validators.required, Validators.email]),
       peo_phone: new FormControl('', [Validators.required,Validators.minLength(10),Validators.maxLength(10),Validators.pattern(/^\d+$/),
       ]),
@@ -139,7 +139,7 @@ export class PeopleADDComponent implements OnInit {
           // Aquí manejas el error alertas
           Swal.fire(
             'Datos de registro',
-            'Verifique su información e incluir una imagen',
+            'Verifique su información e intente nuevamente',
             'error'
           );
         }

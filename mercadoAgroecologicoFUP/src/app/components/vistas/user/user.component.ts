@@ -53,6 +53,14 @@ navEditUser(){
   this.route.navigate(['/user/edit'])
 }
 
+navDatosProductor() {
+  this.route.navigate(['/provider/own/']);
+}
+
+navPerfil(){
+  this.route.navigate(['/people/']);
+
+}
 
 
 }

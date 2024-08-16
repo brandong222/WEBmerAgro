@@ -50,7 +50,7 @@ export class PeopleEditComponent implements OnInit {
       peo_name: new FormControl('', Validators.required),
       peo_lastName: new FormControl('', Validators.required),
       peo_adress: new FormControl('', Validators.required),
-      peo_dateBirth: new FormControl(null),
+      peo_dateBirth: new FormControl('', [Validators.required, Validators.email]),
       peo_image: new FormControl('', Validators.required),
       peo_mail: new FormControl('', Validators.required),
       peo_phone: new FormControl(0, Validators.required),
@@ -249,14 +249,25 @@ export class PeopleEditComponent implements OnInit {
   //guardar cambios (actualizar)
 
   actualizarPersona(form: PeopleI) {
-    this.peopleS.updatePerson(Number(form.id), form).subscribe((data) => {
+    if (this.peopleForm.valid) {
+      this.peopleS.updatePerson(Number(form.id), form).subscribe((data) => {
+        Swal.fire(
+          'Datos personales',
+          'Datos actualizados exitosamente',
+          'success'
+        );
+        this.route.navigate(['/user/list']);
+      });
+
+    }else{
       Swal.fire(
         'Datos personales',
-        'Datos actualizados exitosamente',
-        'success'
+        'No se actualizo los datos, verifique su información',
+        'error'
       );
-      this.route.navigate(['/user/list']);
-    });
+    }
+
+
   }
 
   //guardarActualizarProveedor

@@ -80,6 +80,12 @@
         <div class="form-group">
           <span>Correo Electronico:</span>
           <input type="email" class="form-control" formControlName="peo_mail" />
+          <div *ngIf="peopleForm.get('peo_mail')?.touched && peopleForm.get('peo_mail')?.errors?.['required']"  class="alert alert-danger">
+            El correo electrónico es requerido.
+          </div>
+          <div *ngIf="peopleForm.get('peo_mail')?.touched && peopleForm.get('peo_mail')?.errors?.['email']"  class="alert alert-danger">
+            El correo electrónico debe ser valido
+          </div>
         </div>
 
         <div class="form-group">

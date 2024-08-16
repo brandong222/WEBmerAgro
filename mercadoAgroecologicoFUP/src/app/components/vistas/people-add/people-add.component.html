@@ -12,7 +12,7 @@
 
         <div class="form-group">
           <label for="nombre" >Nombre</label>
-          <input type="text" placeholder="ingrese su nombre" class="form-control" id="nombre" formControlName="peo_name"/>
+          <input type="text" placeholder="Ingrese su nombre" class="form-control" id="nombre" formControlName="peo_name"/>
 
           <div *ngIf="peopleForm.get('peo_name')?.touched && peopleForm.get('peo_name')?.errors?.['required']"  class="alert alert-danger">
        El nombre es requerido.
@@ -27,7 +27,7 @@
         </div>
         <div class="form-group">
           <label for="apellido">Apellido</label>
-          <input type="text" placeholder="ingrese su apellido" class="form-control" id="apellido" formControlName="peo_lastName"/>
+          <input type="text" placeholder="Ingrese su apellido" class="form-control" id="apellido" formControlName="peo_lastName"/>
           <div *ngIf="peopleForm.get('peo_lastName')?.touched && peopleForm.get('peo_lastName')?.errors?.['required']"  class="alert alert-danger">
             El apellido es requerido.
           </div>
@@ -40,21 +40,21 @@
 
         </div>
         <div class="form-group">
-          <label for="email">correo electronico</label>
+          <label for="email">Correo electrónico</label>
           <input type="email" placeholder="ingrese su correo electrónico" class="form-control" id="email" formControlName="peo_mail" />
           <div *ngIf="peopleForm.get('peo_mail')?.touched && peopleForm.get('peo_mail')?.errors?.['required']"  class="alert alert-danger">
-            El correo electronico es requerido.
+            El correo electrónico es requerido.
           </div>
           <div *ngIf="peopleForm.get('peo_mail')?.touched && peopleForm.get('peo_mail')?.errors?.['email']"  class="alert alert-danger">
-            El correo electronico debe ser valido
+            El correo electrónico debe ser valido
           </div>
         </div>
           <div class="form-group">
-            <label for="telefono">Telefono</label>
-            <input type="text" class="form-control" placeholder="ingrese su número de telefono" formControlName="peo_phone"/>
+            <label for="telefono">Teléfono</label>
+            <input type="text" class="form-control" placeholder="ingrese su número de teléfono" formControlName="peo_phone"/>
 
             <div *ngIf="peopleForm.get('peo_phone')?.touched && peopleForm.get('peo_phone')?.errors?.['required']"  class="alert alert-danger">
-              El número de telefono es requerido.
+              El número de teléfono es requerido.
             </div>
             <div *ngIf="peopleForm.get('peo_phone')?.touched && peopleForm.get('peo_phone')?.errors?.['minlength']" class="alert alert-danger">
               El número de teléfono debe tener 10 dígitos.
@@ -63,7 +63,7 @@
               El número de teléfono debe tener 10 dígitos.
             </div>
             <div *ngIf="peopleForm.get('peo_phone')?.touched && peopleForm.get('peo_phone')?.errors?.['pattern']" class="alert alert-danger">
-              Debe ingresar un numero valido
+              Debe ingresar un número valido
             </div>
 
           </div>
@@ -94,6 +94,8 @@
       </div>
 
       <div class="lado-der">
+
+
         <label for="formFile" class="form-label">Foto de perfil</label>
         <img
           id="mostrar_imagen"
@@ -101,14 +103,13 @@
           alt=" "
           style="max-width: 100%"
         />
+        <label style="font-weight: bold; font-style: italic; color: seagreen;" for="info"> Si decea poner una foto diferente, clic en es siguiente cuadro:</label>
 
         <input class="form-control" type="file" (change)="onFileSelected($event)">
-        <input type="button" class="btn btn-dark"  value="Subir" hidden>
 
       </div>
     </div>
       <div class="boton_style">
-        <input type="submit" class="btn btn-dark" (click)="navegateToRegresar()" value="regresar" hidden>
 
         <input type="submit" class="btn btn-success"  (click)="guardarPersona(peopleForm.value)" value="Siguiente">
 

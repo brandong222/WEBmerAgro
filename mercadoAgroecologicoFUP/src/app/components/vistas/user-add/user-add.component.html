@@ -6,7 +6,7 @@
   <div class="data">
     <div class="lado-izq">
       <div class="form-group">
-        <label for="nombre">Numero de identificación</label>
+        <label for="nombre">Número de identificación</label>
         <input type="text" class="form-control" id="nombre" placeholder="Ingrese su número de identificación" formControlName="use_cc" />
         <div *ngIf="userForm.get('use_cc')?.touched && userForm.get('use_cc')?.errors?.['required']" class="alert alert-danger">
           El número de cuenta es requerido.

@@ -1,14 +1,14 @@
-
 <div class="container">
   <div
     class="card"
     *ngFor="let item of categories"
     (click)="mostrarProductos(item.id)"
   >
-    <div class="cont_card" >
-      <div class="card_title">{{ item.cat_name }}</div>
-      <div class="card_text" style="display: none;">{{ item.cat_description }}</div>
+    <div class="card_title">{{ item.cat_name }}</div>
+    <div class="card_image">
+      <img [src]="item.cat_image" alt="" />
     </div>
-    <div class="barra_color"></div>
+    <div class="card_text">{{ item.cat_description }}</div>
   </div>
+  <div class="barra_color"></div>
 </div>

@@ -118,7 +118,6 @@ export class UserEditComponent implements OnInit {
 
   //metodo para actualizar datos de usuario
   actualizarUsuario(form: UserI) {
-    console.log(form)
     if (this.userForm.validator) {
       Swal.fire(
         'Datos de usuario',

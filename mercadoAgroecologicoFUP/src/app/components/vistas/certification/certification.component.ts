@@ -8,9 +8,11 @@ import Swal from 'sweetalert2';
 })
 export class CertificationComponent {
   checkList = [
-    { id: 'checklist4', label: 'Cultiva sus productos con fertilizantes argánicos o en su defecto no usa fertilizantes' },
+    { id: 'checklist4', label: 'Cultiva sus productos con fertilizantes orgánicos' },
     { id: 'checklist5', label: 'Deja madurar sus productos' },
-    { id: 'checklist6', label: 'No usa pesticidas' }
+    { id: 'checklist6', label: 'No usa pesticidas o fertilizantes' },
+    { id: 'checklist7', label: 'Cuenta con diversidad de cultivos' }
+
   ];
 
   selectedCount = 0;

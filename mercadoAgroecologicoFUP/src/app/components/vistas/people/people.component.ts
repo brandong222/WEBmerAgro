@@ -38,7 +38,7 @@ export class PeopleComponent implements OnInit {
       peo_adress: new FormControl('', Validators.required),
       peo_dateBirth: new FormControl(null),
       peo_image: new FormControl('', Validators.required),
-      peo_mail: new FormControl('', Validators.required),
+      peo_mail: new FormControl('', [Validators.required, Validators.email]),
       peo_phone: new FormControl('', [Validators.required,Validators.minLength(10),Validators.maxLength(10),Validators.pattern(/^\d+$/),
       ]),
     });

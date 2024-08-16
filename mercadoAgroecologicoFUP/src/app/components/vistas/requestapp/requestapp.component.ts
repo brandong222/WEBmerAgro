@@ -10,14 +10,17 @@ import { JoinService } from 'src/app/services/join/join.service';
   styleUrls: ['./requestapp.component.css'],
 })
 export class RequestappComponent implements OnInit {
-  constructor(private requestS: RequestappService,
+  constructor(
+    private requestS: RequestappService,
     private route: Router,
-    private FK_joinS: JoinService) { }
+    private FK_joinS: JoinService
+  ) {}
 
   requestArray: any[] = [];
   filteredRequests: any[] = [];
   //variable para controlar nevegacion local
   navegacion_local: number = 1;
+  verSiHayElementos: boolean = false;
 
   ngOnInit(): void {
     this.datosUnidos();
@@ -26,7 +29,6 @@ export class RequestappComponent implements OnInit {
   datosUnidos() {
     this.FK_joinS.showReqPeoUsu().subscribe((info) => {
       this.requestArray = info.data;
-      console.log(info)
 
       this.cambioMenuLocal(this.navegacion_local);
     });
@@ -54,8 +56,18 @@ export class RequestappComponent implements OnInit {
     }
   }
 
+
   filtroSolicitudes(filter: string) {
-    this.filteredRequests = this.requestArray.filter(item => item.req_type === filter);
+    this.filteredRequests = this.requestArray.filter((item) => item.req_type === filter);
+
+    if(this.filteredRequests.length > 0){
+     this.verSiHayElementos = true;
+    }else{
+      this.verSiHayElementos = false;
+
+    }
+
+
   }
 
   //NAVEGAR
@@ -63,7 +75,4 @@ export class RequestappComponent implements OnInit {
   nvEditRequest(id_request: number) {
     this.route.navigate(['/request/edit/' + id_request]);
   }
-
-
-
 }

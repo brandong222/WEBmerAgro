@@ -10,7 +10,7 @@
   Productos
 </h1>
 
-<nav class="submenu"  *ngIf="bandera_loading">
+<nav class="submenu"  *ngIf="bandera_loading && RolUser !== 'usuario'">
   <ul>
     <li class="items" (click)="navProductos()">Productos</li>
     <li class="items" (click)="navMisProductos()" >Mis productos</li>
@@ -26,7 +26,7 @@
     <option value="nombre">Nombre</option>
     <option value="menor">Precio de menor a mayor</option>
     <option value="mayor">Precio de mayor a menor</option>
-    <option value="ubicacion">Ubicación</option>
+    <option value="ubicacion" hidden>Ubicación</option>
     <option value="certificado">Productos certificados</option>
   </select>
 

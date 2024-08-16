@@ -6,7 +6,8 @@
 <section *ngIf="bandera_loading" class="container">
   <div class="botones_navegacion">
     <div class="cont_btn">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAO5JREFUSEvVldENwjAMRK+bwCTAJjAJMAlsApsAkwCHEtS6jm0ligSWqvaj9bPPznVA5xg650cUsACwB7B9X3cAVwDH9GzWGAGsAVyULATtEqwIiQBuANiBFoQsrRY8ACU5OXPaWF14gEPS3mJwFnxPDQ9Q0n+cjHM41wKoPQfcbQYszOrC1J8fexLlzvM5IIyRV5T35nPg5fhtANdvleYgK82W8ahZU2rNA1baHg2m2oY25Mjul3SfbZUGsLzHG/jMmyQgYg0eZGIdEkDdaXAtwX8FpfqEBLTIk3NOZJKAZ0vpo2+/eaNWUc39f8ALCDsoGfKFTMgAAAAASUVORK5CYII="/>
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAPxJREFUSEu1lesNwjAMhK+bwCawCUwCTAJMQjeBTaCHGpSktuskxH8itep9Pj/SAZ1j6KyPEsAOwAnABsB9SuzsSc4DoPB1Fo41Xx6QBdCE88RNkATwCrtAOeABgICWGAHsg0AOeLcoR99uAbB0iyn6F+CXeO7gKUxLjSkV0L0HXB4uU0vcABy1JnOC6KIlKE7IN/Ie8Brg1raMaqIpLdphhtS4SMojOeAzumCZeJbGImHtLqpxwe3lFidhXXYlE5VcDzHBArBEdLI2tqq41oM4AUIIIEgKU9wDCKJSuS7Ty9W/muePFiBhR3hymRYNlSyWAEpHVtzkKhHrow+7wycZbvxT/gAAAABJRU5ErkJggg=="/>
+
       <input
         type="button"
         class="btn"
@@ -36,6 +37,8 @@
     </div>
   </div>
 
+
+  <!--Para cuando se desea actualizar-->
   <form [formGroup]="peopleForm">
     <div class="parte_derecha">
       <div class="div_img">
@@ -85,6 +88,13 @@
           formControlName="peo_mail"
           [readOnly]="!bandera_edit_people"
         />
+        <div *ngIf="peopleForm.get('peo_mail')?.touched && peopleForm.get('peo_mail')?.errors?.['required']"  class="alert alert-danger">
+          El correo electrónico es requerido.
+        </div>
+        <div *ngIf="peopleForm.get('peo_mail')?.touched && peopleForm.get('peo_mail')?.errors?.['email']"  class="alert alert-danger">
+          El correo electrónico debe ser valido
+        </div>
+
       </div>
 
       <div class="form-group">
@@ -110,7 +120,7 @@
       </div>
 
       <div class="form-group">
-        <span>Fecha</span>
+        <span>Fecha de nacimiento</span>
         <input
           type="date"
           class="form-control"
