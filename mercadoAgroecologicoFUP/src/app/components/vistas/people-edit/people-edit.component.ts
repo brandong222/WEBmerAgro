@@ -275,9 +275,9 @@ export class PeopleEditComponent implements OnInit {
     if (form.id == null) {
       this.providerS.addProvider(form).subscribe((data) => {
         if (data.status) {
-          Swal.fire('Datos de productor', '' + data.status, 'success');
+          Swal.fire('Datos de productor', 'Datos de actualizados exitosamente', 'success');
         } else {
-          Swal.fire('Datos de productor', '' + data.status, 'error');
+          Swal.fire('Datos de productor', 'verifique la información y vuelva a intentar', 'error');
         }
       });
     } else {

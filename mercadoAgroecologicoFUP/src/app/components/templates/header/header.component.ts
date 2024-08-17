@@ -17,7 +17,6 @@ export class HeaderComponent implements OnInit {
   FKusuarioName: string = '';
 
   ngOnInit(): void {
-
     const user_name = localStorage.getItem('user_name');
     if (user_name) {
       this.FKusuarioName = user_name;
@@ -32,10 +31,7 @@ export class HeaderComponent implements OnInit {
     } else {
       console.log('No hay datos en el almacenamiento de sesión.');
     }
-
-
   }
-
 
   //**NAVEGACIÓN****//
 
@@ -61,7 +57,7 @@ export class HeaderComponent implements OnInit {
     this.route.navigate(['/provider']);
   }
 
-  navEnviarSolicitud(){
+  navEnviarSolicitud() {
     this.route.navigate(['/request/add']);
   }
 
@@ -81,22 +77,21 @@ export class HeaderComponent implements OnInit {
   }
 
   //ver productos propios
-  navMisProductos(){
-    this.route.navigate(['/product/own'])
+  navMisProductos() {
+    this.route.navigate(['/product/own']);
   }
 
   //ver todos los usuarios
-  navUserList(){
+  navUserList() {
     this.route.navigate(['/user/list']);
   }
 
   //cerrar sesion borrar token
   cerrarSesion() {
-
     Swal.fire({
       title: 'cerrar sesión',
-      text: "¿Desea cerrar sesión?",
-      icon:'question',
+      text: '¿Desea cerrar sesión?',
+      icon: 'question',
       showCancelButton: true,
       cancelButtonColor: '#222',
       confirmButtonColor: '#944',
@@ -104,25 +99,21 @@ export class HeaderComponent implements OnInit {
       confirmButtonText: 'Si, salir',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.loginS.logout().subscribe((data) => {
-        });
+        this.loginS.logout().subscribe((data) => {});
         localStorage.removeItem('token');
-          localStorage.removeItem('user_name');
-          localStorage.removeItem('id_user');
-          sessionStorage.removeItem('usuario_login');
-          this.route.navigate(['']);
-
+        localStorage.removeItem('user_name');
+        localStorage.removeItem('id_user');
+        sessionStorage.removeItem('usuario_login');
+        this.route.navigate(['']);
       }
-    })
+    });
   }
 
-
-  showDocumentation(){
+  showDocumentation() {
     Swal.fire('', '', 'question');
 
-
     Swal.fire({
-      title:'Documentación',
+      title: 'Documentación',
       html: '¿Decea ver la documentación de mercado agroecológico 4.0?',
       showCancelButton: true,
       cancelButtonColor: '#222',
@@ -133,9 +124,7 @@ export class HeaderComponent implements OnInit {
       if (result.isConfirmed) {
         const ruta = '../../../../assets/documentation/manual.pdf';
         window.open(ruta, '_blank');
-
       }
     });
   }
-
 }

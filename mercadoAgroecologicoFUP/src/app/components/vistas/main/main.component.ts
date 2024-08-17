@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthTokenService } from 'src/app/services/login/auth-token.service';
+import { LoginService } from 'src/app/services/login/login.service';
 
 
 @Component({
@@ -9,18 +11,42 @@ import { Router } from '@angular/router';
 })
 export class MainComponent {
 
-  constructor(private router: Router) { }
+  constructor(
+    private route: Router,
+    private authS: AuthTokenService,
 
-
-
+  ) { }
 
 
   //navegacion
   navigateToLogin() {
-    this.router.navigate(['/login']);
+
+  var token = localStorage.getItem('token');
+  if(token){
+  this.authS.verTokenVencido(token).subscribe(data=>{
+    if(data.status){
+      this.route.navigate(['/home']);
+
+    }else{
+      localStorage.removeItem('token');
+      localStorage.removeItem('user_name');
+      localStorage.removeItem('id_user');
+      sessionStorage.removeItem('usuario_login');
+      this.route.navigate(['']);
+
+    }
+  })
+
+  }else{
+    this.route.navigate(['/login']);
+
+  }
+
+
+
    }
 
    navigateToRegister(){
-    this.router.navigate(['/people/add']);
+    this.route.navigate(['/people/add']);
    }
 }
