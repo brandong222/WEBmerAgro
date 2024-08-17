@@ -59,7 +59,6 @@ export class ProviderEditComponent  implements OnInit{
 
   ngOnInit(): void {
   this.datosProductoId();
-  this.mostrarProductos();
   }
 
   datosPersonaID(id_people: number){
@@ -88,18 +87,6 @@ export class ProviderEditComponent  implements OnInit{
 
     }
   })
-
-  }
-
-
-  mostrarProductos() {
-    console.log(this.providerIdNumber)
-    this.fkjoinS.joinProduProviderID(this.providerIdNumber).subscribe((data) => {
-
-      console.log(data.data)
-      this.productArray = data.data;
-      this.productArray.sort(() => Math.random() - 0.5);
-    });
   }
 
 
@@ -121,11 +108,20 @@ export class ProviderEditComponent  implements OnInit{
       } else {
         console.log('No hay datos guardados del producto.');
     }
+    this.mostrarProductos();
 
     });
   }
 
 
+  mostrarProductos() {
+    this.fkjoinS.joinProduProviderID(this.providerIdNumber).subscribe((data) => {
+
+      console.log(data)
+      this.productArray = data.data;
+      this.productArray.sort(() => Math.random() - 0.5);
+    });
+  }
 
   //NAVEGACION
   verproductoIndividual(id: number) {
