@@ -197,6 +197,8 @@ span {
 
   .main_product {
     flex-direction: column;
+    border: none;
+    box-shadow: none;
   }
   .card {
     width: 100%;

@@ -64,7 +64,7 @@
         <label  for="pro_certs">Certificado:</label>
 
         <select *ngIf="rolUser == 'admin'" formControlName="pro_certs" class="form-select">
-          <option value="No">No</option>
+          <option value="en transición">En transición</option>
           <option value="certificado">Certificado</option>
         </select>
 
@@ -86,7 +86,6 @@
       <div class="form-group">
         <label for="categories_id">Categoria: </label>
         <select class="form-select" formControlName="categories_id">
-          <option value=0>seleccione</option>
           <option *ngFor="let item of fkCategoryList" [value]="item.id">
             {{ item.cat_name }}
           </option>
