@@ -154,5 +154,13 @@ transition: all 0.3s ease-in;
      flex-direction: column;
    }
 
+   .botones_navegacion{
+    width: 100%;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+
 
  }

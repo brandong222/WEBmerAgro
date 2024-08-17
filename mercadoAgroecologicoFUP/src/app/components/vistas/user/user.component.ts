@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
 })
 export class UserComponent implements OnInit {
 
+  RolUser: string = "usuario";
+
 
   userForm = new FormGroup({
     use_cc: new FormControl('', Validators.required),
@@ -40,6 +42,7 @@ export class UserComponent implements OnInit {
       const dataR: UserI = JSON.parse(datosGuardados);
       this.userForm.get('use_cc')?.setValue(dataR.use_cc || null);
       this.userForm.get('use_rol')?.setValue(dataR.use_rol || null);
+      this.RolUser = String(dataR.use_rol);
       this.userForm.get('use_status')?.setValue(dataR.use_status || null);
       this.userForm.get('people_id')?.setValue(dataR.people_id || null);
     } else {
