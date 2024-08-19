@@ -32,6 +32,7 @@ import { StarComponent } from './components/vistas/star/star.component';
 import { PeopleSHOWComponent } from './components/vistas/people-show/people-show.component';
 import { UserLISTComponent } from './components/vistas/user-list/user-list.component';
 import { ForgetPASSWORDComponent } from './components/templates/forget-password/forget-password.component';
+import { AddressComponent } from './components/vistas/address/address.component';
 
 
 const routes: Routes = [
@@ -54,6 +55,8 @@ const routes: Routes = [
   {path: 'product/edit/:id', component: ProductEditComponent,canActivate:[AuthGuard]},
   {path: 'product/own', component: ProductOWNComponent,canActivate:[AuthGuard]},
   {path: 'product/show/:id', component: ProductSHOWComponent,canActivate:[AuthGuard]},
+  {path: 'address', component: AddressComponent,canActivate:[AuthGuard]}, //para productos por ubicación
+
 
 
   {path: 'request/edit/:id', component: RequestappEDITComponent, canActivate:[AuthGuard]},

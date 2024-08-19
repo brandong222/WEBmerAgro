@@ -59,10 +59,10 @@ export class ProductService {
     return this.http.get<ProductI[]>(`${this.filterUrl}filtrarPorNombre`, { headers });
   }
 
-  filtrarPorUbicacion(): Observable<ProductI[]> {
+  filtrarPorUbicacion(address: string): Observable<ProductI[]> {
     const token = localStorage.getItem('token');
     const headers = { Authorization: `Bearer ${token}` };
-    return this.http.get<ProductI[]>(`${this.filterUrl}filtrarPorUbicacion`, { headers });
+    return this.http.get<ProductI[]>(`${this.filterUrl}filtrarPorUbicacion/${address}`, { headers });
   }
 
 

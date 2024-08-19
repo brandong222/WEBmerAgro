@@ -27,6 +27,13 @@
           placeholder="ingrese el nombre de su producto"
         />
       </div>
+      <div
+      *ngIf="productForm.get('pro_name')?.touched && productForm.get('pro_name')?.errors?.['required']"
+      class="alert alert-danger"
+    >
+      El Nombre del producto es requerido
+    </div>
+
 
       <div class="form-group">
         <label for="pro_unit">Unidad de venta:</label>
@@ -36,6 +43,7 @@
           <option value="Kg">Kilogramo</option>
           <option value="Caja">Caja</option>
           <option value="Lote">Lote</option>
+          <option value="Unidad">Unidad</option>
           <option value="otra">Otra</option>
         </select>
       </div>
@@ -47,9 +55,22 @@
           type="number"
           formControlName="pro_price"
           class="form-control"
-          placeholder="poner el precio sin puntos ni comas"
+          placeholder="Ingrese el precio, sin puntos ni comas"
         />
+
       </div>
+      <div
+      *ngIf="productForm.get('pro_price')?.touched && productForm.get('pro_price')?.errors?.['required']"
+      class="alert alert-info"
+    >
+      El precio del producto es requerido, si es trueque ponga 0 (cero)
+    </div>
+    <div
+      *ngIf="productForm.get('pro_price')?.touched && productForm.get('pro_price')?.errors?.['pattern']"
+      class="alert alert-danger"
+    >
+      Ingrese el precio solo con números
+    </div>
 
       <div class="form-group">
         <label for="pro_type">tipo de venta:</label>
@@ -78,8 +99,14 @@
         <input
           formControlName="pro_description"
           class="form-control"        >
-      </div>
 
+      </div>
+      <div
+      *ngIf="productForm.get('pro_description')?.touched && productForm.get('pro_description')?.errors?.['required']"
+      class="alert alert-danger"
+    >
+      Es necesario poner una descripción sobre el producto
+    </div>
 
 
 
@@ -94,7 +121,7 @@
 
     </div>
 
-    <button style="margin-top: 15px;" type="submit" class="btn btn-success">Guardar</button>
+    <button style="margin-top: 15px;" type="submit" class="btn btn-success">Guardar cambios</button>
   </form>
 
 

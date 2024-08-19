@@ -5,6 +5,7 @@ import { PeopleI } from 'src/app/models/people.interface';
 import { superInterfazI } from 'src/app/models/superInterfaz.interface';
 import { UserI } from 'src/app/models/user.interface';
 import { JoinService } from 'src/app/services/join/join.service';
+import { LoginService } from 'src/app/services/login/login.service';
 import { PeopleService } from 'src/app/services/people/people.service';
 import { ImagenService } from 'src/app/services/subirIMAGEN/imagen.service';
 import Swal from 'sweetalert2';
@@ -22,7 +23,7 @@ export class PeopleComponent implements OnInit {
   imageURL: string = 'API image';
   link_imagen_subida:string ="";
 
-  rol_user: string = '';
+  rol_user: string = 'usuario';
   bandera_loading: boolean = true;
 
   constructor(
@@ -30,6 +31,7 @@ export class PeopleComponent implements OnInit {
     private peopleS: PeopleService,
     private fkjoinS: JoinService,
     private imagenS: ImagenService,
+    private loginS: LoginService,
   ) {
     this.peopleForm = new FormGroup({
       id: new FormControl('', Validators.required),
@@ -51,24 +53,35 @@ export class PeopleComponent implements OnInit {
   mostrarPeople() {
     this.bandera_loading = false;
     const user_id: UserI = this.traerDatosSesion();
-    this.rol_user = String(user_id.use_rol);
+    if(user_id){
+      this.rol_user = String(user_id.use_rol);
+      this.fkjoinS.getjoinUserPeople(Number(user_id.id)).subscribe(
+        (data) => {
+        this.peopleForm.get('id')?.setValue(Number(data.data[0].people_id));
+        this.peopleForm.get('peo_name')?.setValue(data.data[0].peo_name);
+        this.peopleForm.get('peo_lastName')?.setValue(data.data[0].peo_lastname);
+        this.peopleForm.get('peo_adress')?.setValue(data.data[0].peo_adress);
+        this.peopleForm
+          .get('peo_dateBirth')
+          ?.setValue(data.data[0].peo_dateBirth);
+        this.peopleForm.get('peo_image')?.setValue(data.data[0].peo_image);
+        this.link_imagen_subida = String(data.data[0].peo_image);
+        this.peopleForm.get('peo_mail')?.setValue(data.data[0].peo_mail);
+        this.peopleForm.get('peo_phone')?.setValue(data.data[0].peo_phone);
+      this.bandera_loading = true;
 
-    this.fkjoinS.getjoinUserPeople(Number(user_id.id)).subscribe((data) => {
-      console.log(data.data[0].people_id);
-      this.peopleForm.get('id')?.setValue(Number(data.data[0].people_id));
-      this.peopleForm.get('peo_name')?.setValue(data.data[0].peo_name);
-      this.peopleForm.get('peo_lastName')?.setValue(data.data[0].peo_lastname);
-      this.peopleForm.get('peo_adress')?.setValue(data.data[0].peo_adress);
-      this.peopleForm
-        .get('peo_dateBirth')
-        ?.setValue(data.data[0].peo_dateBirth);
-      this.peopleForm.get('peo_image')?.setValue(data.data[0].peo_image);
-      this.link_imagen_subida = String(data.data[0].peo_image);
-      this.peopleForm.get('peo_mail')?.setValue(data.data[0].peo_mail);
-      this.peopleForm.get('peo_phone')?.setValue(data.data[0].peo_phone);
-    this.bandera_loading = true;
+      }, (Error)=>{
+      this.bandera_loading = true;
+      this.route.navigate(['/home']);
 
-    });
+      });
+    }else{
+      this.loginS.logout().subscribe(data=>{
+        Swal.fire('Debe volver a ingresar', 'Su tiempo limite ha expirado, vuelva a iniciar sesión', 'info')
+      })
+    }
+
+
   }
 
 

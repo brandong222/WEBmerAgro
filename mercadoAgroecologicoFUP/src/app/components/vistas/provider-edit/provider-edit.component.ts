@@ -91,10 +91,8 @@ export class ProviderEditComponent  implements OnInit{
 
 
   datosProductoId() {
-    console.log(this.providerIdNumber);
     this.providerS.getProviderId(this.providerIdNumber).subscribe((data) => {
       if (data) {
-        console.log(data.data);
         const dataR: ProviderI = data.data;
         this.providerForm.get('id')?.setValue(Number(dataR.id));
         this.providerForm.get('prov_ranking')?.setValue(dataR.prov_ranking || null);
@@ -116,8 +114,6 @@ export class ProviderEditComponent  implements OnInit{
 
   mostrarProductos() {
     this.fkjoinS.joinProduProviderID(this.providerIdNumber).subscribe((data) => {
-
-      console.log(data)
       this.productArray = data.data;
       this.productArray.sort(() => Math.random() - 0.5);
     });

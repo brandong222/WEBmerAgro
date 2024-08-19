@@ -1,31 +1,55 @@
-
-
-
-/*barra de busqueda*/
-.barra_busqueda{
-  width: 90%;
+.card_container_m {
   display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  background: transparent;
-  margin: auto;
-}
-
-.barra_busqueda{
-  width: 80%;
-  display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
+  gap: 30px;
+  height: 80vh;
 }
 
-.barra_busqueda select{
-  width: 30%;
-}
-
-.barra_busqueda input{
+.card_m {
+  margin: auto;
+  border: none;
   display: flex;
-  width: 30%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 220px;
+  height: 40vh;
+  overflow: hidden;
+  background: seagreen;
+  border-radius: 10px;
 }
+
+.card_m:hover {
+box-shadow: 5px 5px 40px seagreen;
+}
+
+.card_title {
+  text-align: center;
+  color: white;
+  font-size: 20px;
+}
+
+.card_image {
+  text-align: center;
+}
+
+.card_image img {
+  width: 100%;
+  object-fit: cover;
+  transition: all 0.4s ease-in-out;
+}
+
+.card_image img:hover {
+filter: opacity(120%) saturate(120%);
+transform: scale(1.1);
+cursor: pointer;
+}
+
+
+/*PARa LOS PRODUCTOS*/
+
 
 section {
   width: 80%;
@@ -122,80 +146,38 @@ span{
 }
 
 
-/*submenu styles*/
-.submenu{
+@media (width< 750px) {
+
+.card_m {
+width: 300px;
+}
+
+
+section{
   width: 90%;
-  margin: auto;
 }
 
-.submenu ul{
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 40px;
+.main_product {
+  background: transparent;
+  padding: 5px;
+  box-shadow: none;
+  padding: 30px;
+  border: none;
+
 }
 
-.submenu ul li{
-  font-size: 18px;
-  color: seagreen;
-  text-decoration: underline;
-  cursor: pointer;
+
+.card {
+  width: 90%;
+
 }
 
-@media (max-width: 768px) {
+
+.mostrar_certificado::before {
+  padding: 3px 8px;
+  font-size: 16px;
+
+}
 
 
-  .submenu ul{
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 10px;
-  }
-
-  .header_inp{
-  margin: 0px;
-  }
-
-  section{
-    width: 90%;
-  }
-
-  .main_product {
-    background: transparent;
-    padding: 5px;
-    box-shadow: none;
-    padding: 30px;
-    border: none;
-
-  }
-
-
-  .card {
-    width: 90%;
-
-  }
-
-
-  .mostrar_certificado::before {
-    padding: 3px 8px;
-    font-size: 16px;
-
-  }
-
-  .barra_busqueda{
-    flex-direction: column-reverse;
-    padding: 0px 15px;
-    margin: auto;
-  }
-
-  .barra_busqueda input{
-    width: 100%;
-
-  }
-
-  .barra_busqueda select{
-    width: 100%;
-  }
-
- }
+}

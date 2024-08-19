@@ -196,7 +196,7 @@
       />
       </li>
 
-      <li class="respo_item">
+      <li class="respo_item"  *ngIf="RolUser != 'admin'">
         <img
         (click)="navEnviarSolicitud()"
         style="width: 40px; height: 40px;"

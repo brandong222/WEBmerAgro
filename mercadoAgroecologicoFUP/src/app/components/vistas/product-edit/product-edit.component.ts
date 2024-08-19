@@ -60,9 +60,11 @@ export class ProductEditComponent implements OnInit {
   actualizarProductos(form: ProductI) {
 
     if (this.productForm.valid) {
+
       this.productS.updateProduct(Number(form.id), form).subscribe((data) => {
         if(data.status){
           Swal.fire('Producto','Producto actualizado exitosamente','success')
+          this.route.navigate(['/product']);
         }else{
           Swal.fire('Producto','No se puede producto actualizar','error')
 
@@ -80,13 +82,12 @@ export class ProductEditComponent implements OnInit {
 
     this.productS.getProductId(this.productIdNumber).subscribe((data) => {
       if (data) {
-        console.log(data[0]);
 
         this.productForm.get('id')?.setValue(Number(data[0].id));
         this.productForm.get('pro_name')?.setValue(data[0].pro_name || null);
         this.productForm.get('pro_type')?.setValue(data[0].pro_type || null);
         this.productForm.get('pro_certs')?.setValue(data[0].pro_certs || null);
-        this.productForm.get('pro_price')?.setValue(data[0].pro_price || null);
+        pro_price: new FormControl(null, [Validators.required,  Validators.pattern(/^\d+$/)]),
         this.productForm.get('pro_image')?.setValue(data[0].pro_image || null);
         this.link_imagen_producto = String(data[0].pro_image); //usado para poner la imagen en un img
         this.productForm.get('pro_unit')?.setValue(data[0].pro_unit || null);

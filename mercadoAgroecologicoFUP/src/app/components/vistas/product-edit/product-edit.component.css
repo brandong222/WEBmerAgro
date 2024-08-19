@@ -12,20 +12,10 @@
 }
 
 form {
-  flex: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
+  margin: auto;
+  width: 70%;
 }
 
-form div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
 
 form div div {
   width: 80%;
@@ -33,6 +23,7 @@ form div div {
 
 form button {
   width: 80%;
+  margin: auto;
 }
 
 form div div label {
@@ -42,7 +33,7 @@ form div div label {
 }
 
 .container_imagen {
-  flex: 1;
+  width: 40%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -63,7 +54,6 @@ form div div label {
 
   .container {
     margin: 20px auto;
-    background: violet;
     flex-direction: column;
     width: 90%;
 
@@ -75,4 +65,17 @@ form div div label {
     object-fit: cover;
     box-shadow: 2px 2px 10px black;
   }
+
+
+  form div {
+   width: 130%;
+   max-width: 130%;
+  }
+
+  form button {
+    width: 100%;
+    margin: auto;
+  }
+
+
 }

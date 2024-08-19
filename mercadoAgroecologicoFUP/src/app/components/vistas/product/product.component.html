@@ -35,9 +35,11 @@
   type="search"
   [(ngModel)]="busqueda_clave"
   (input)="barraBusquedaProductos()"
-  placeholder="Buscar producto"
+  placeholder="🔍 Buscar producto"
   aria-label="Search"
 />
+
+<input type="button"  (click)="navfiltrarPorUbicacion()" class="btn btn-outline-dark" value="Buscar ubicaciones">
 
 </div>
 
