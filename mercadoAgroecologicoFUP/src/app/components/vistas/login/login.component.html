@@ -1,7 +1,7 @@
 <app-help></app-help>
 
 
-<div>
+<div class="main">
   <div class="formContent">
 
     <form [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm.value)" >
@@ -13,11 +13,13 @@
       <label for="">Contraseña</label>
       <input required type="password"  id="use_password" class="form-control" formControlName="use_password" placeholder="ingrese su contraseña">
 
-      <span *ngIf="intentos_contrasena>1">
-        <a (click)="navRecuperarContra()">Olvidé mi contraseña</a>
-      </span>
+
 
       <input type="submit" class="btn btn-success" value="Ingresar">
+
+      <span style="margin-top: 20px;">
+        <a (click)="navRecuperarContra()">Olvidé mi contraseña</a>
+      </span>
 
       <span>¿No tienes una cuenta? <a (click)="navigateToRegister()"  ><span class="register">registrarse</span> </a></span>
 

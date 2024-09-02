@@ -21,6 +21,9 @@ export class ForgetPASSWORDComponent implements OnInit {
   requestForm: FormGroup;
   bandera_comprobar_user: boolean = false;
 
+  correo_use_id: number = 0;
+  correo_peo_mail: string = '';
+
 
   constructor(
     private requestS: RequestappService,
@@ -78,21 +81,22 @@ export class ForgetPASSWORDComponent implements OnInit {
   evaluarCuentaUsuario(){
 
     const valorUseCc = String(this.requestForm.get('use_cc')?.value??'');
-    const valorUseCcConf = String(this.requestForm.get('use_cc_conf')?.value??'');
 
-
-    if (valorUseCc === valorUseCcConf) {
+    if (valorUseCc.length >0) {
 
       this.loginS.searchPhoneCCid(valorUseCc).subscribe(
         (data) => {
           if(data.length>0){
+
+            this.correo_peo_mail = data[0].peo_mail
+            this.correo_use_id = data[0].use_id
+
             if(data[0].use_cc == valorUseCc){
-              console.log(data[0].people_id)
               this.requestForm.get('people_id')?.setValue(Number(data[0].people_id));
               this.bandera_comprobar_user = true;
               Swal.fire(
                 'Verificación de datos',
-                'Por favor envie su solicitud para recuperar su contraseña',
+                'Por favor Elija el metodo para recuperar su contraseña',
                 'success'
               )
 
@@ -117,7 +121,7 @@ export class ForgetPASSWORDComponent implements OnInit {
 
 
     } else {
-      console.log("Los valores no son iguales.");
+      console.log("no hay valores");
     }
   }
 
@@ -158,6 +162,24 @@ if(this.requestForm.valid){
 
 
   }
+
+//Enviar correo electronico
+
+enviarCorreoElectronico(){
+  this.loginS.sendEmailUser(this.correo_peo_mail, this.correo_use_id).subscribe(
+    data=>{
+      Swal.fire('Restablecer contraseña',
+        'Se envio los pasos para restablecer la contraseña a este correo: \n'+this.correo_peo_mail,
+        'success'
+      )
+  }, Error=>{
+    Swal.fire('Restablecer contraseña',
+      'Se ha producido un error, verifique su información o envie una solicitud a un administrador',
+      'warning'
+    )
+  })
+}
+
 
   //regresar
   nvRegresar() {

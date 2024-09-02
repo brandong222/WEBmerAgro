@@ -13,6 +13,9 @@ export class LoginService {
   private apiUrl: string = `${environment.urlMain}auth/login`;
   private apiLogout: string =  `${environment.urlMain}auth/logout`;
   private apiSearchCC: string =  `${environment.urlMain}auth/searchPhoneCCid`;
+  private apiSendMail: string =  `${environment.urlMain}crearTokenAndEnviarCorreo`;
+  private apiResetPassword: string =  `${environment.urlMain}contraseniaNueva`;
+
 
 
   loginCC(form: loginI): Observable<any> {
@@ -30,6 +33,16 @@ export class LoginService {
     return this.http.get<any[]>(`${this.apiSearchCC}/${cc}`);
   }
 
+
+  sendEmailUser(peo_mail: string, use_id: number): Observable<any> {
+    return this.http.post<any>(`${this.apiSendMail}`,{peo_mail, use_id});
+  }
+
+
+  resetNewPassword(use_password: string, token: string, id: number): Observable<any> {
+    return this.http.put<any>(`${this.apiResetPassword}/${id}`,{use_password, token});
+
+  }
 
 
 }

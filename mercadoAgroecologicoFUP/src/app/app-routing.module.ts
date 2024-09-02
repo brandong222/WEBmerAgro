@@ -33,12 +33,15 @@ import { PeopleSHOWComponent } from './components/vistas/people-show/people-show
 import { UserLISTComponent } from './components/vistas/user-list/user-list.component';
 import { ForgetPASSWORDComponent } from './components/templates/forget-password/forget-password.component';
 import { AddressComponent } from './components/vistas/address/address.component';
+import { ResetPasswordComponent } from './components/vistas/reset-password/reset-password.component';
 
 
 const routes: Routes = [
   {path: "" , component: MainComponent},
   {path: "login" , component: LoginComponent},
   {path: "forget/password" , component: ForgetPASSWORDComponent},
+  { path: 'reset/password/:token', component: ResetPasswordComponent },
+
 
   {path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
 

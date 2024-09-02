@@ -1,10 +1,10 @@
 .formContent {
   width: 100%;
-  background: transparent;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: linear-gradient(lightgray, seagreen);
 }
 
 h3{
@@ -22,11 +22,11 @@ form {
   justify-content: space-around;
   align-items: center;
   width: 50%;
-  height: auto;
+  height: 80vh;
   background: lightgray;
-  box-shadow: 2px 2px 10px black;
+  box-shadow: 2px 2px 5px black;
   padding: 30px 20px;
-  border-radius: 10px;
+  border-radius: 50px;
 }
 
 

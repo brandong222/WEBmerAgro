@@ -45,6 +45,7 @@ import { LoadingComponent } from './components/templates/loading/loading.compone
 import { HomeTemplateComponent } from './components/templates/home-template/home-template.component';
 import { HelpComponent } from './components/templates/help/help.component';
 import { AddressComponent } from './components/vistas/address/address.component';
+import { ResetPasswordComponent } from './components/vistas/reset-password/reset-password.component';
 
 
 
@@ -87,7 +88,8 @@ import { AddressComponent } from './components/vistas/address/address.component'
     LoadingComponent,
     HomeTemplateComponent,
     HelpComponent,
-    AddressComponent
+    AddressComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
