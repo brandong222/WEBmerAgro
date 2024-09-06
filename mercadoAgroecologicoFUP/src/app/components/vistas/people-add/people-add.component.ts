@@ -110,6 +110,7 @@ export class PeopleADDComponent implements OnInit {
         Swal.fire('Imagen', 'Subida con exito', 'success');
         this.link_imagen_subida = String(data.data);
 
+
       }, (Error)=>{
         console.log(Error);
       });

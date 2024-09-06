@@ -1,96 +1,92 @@
-.formContent {
-  width: 100%;
-  height: 100vh;
+.main {
   display: flex;
-  align-items: center;
   justify-content: center;
-  background: linear-gradient(lightgray, seagreen);
-}
-
-h3{
-  margin: 10px auto;
-  text-align: center;
-  color: seagreen;
-  text-shadow: 1px 2px 2px rgb(255, 255, 255);
-}
-
-
-
-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
   align-items: center;
-  width: 50%;
-  height: 80vh;
-  background: lightgray;
-  box-shadow: 2px 2px 5px black;
-  padding: 30px 20px;
-  border-radius: 50px;
+  height: 100vh;
+  background-color: #f7f7f7;
+  font-family: Arial, sans-serif;
 }
 
-
-form label {
-  color: black;
-  font-size: 18px;
-  width: 60%;
-  text-align: left;
+.formContent {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
 }
 
-form input {
-  margin: 5px 0px;
-  width: 60%;
-  height: auto;
-  padding: 5px;
-  font-size: 18px;
-  text-align: left;
-  border: 1px solid rgba(0, 0, 0, 0.466);
-}
-
-form .btn {
+h2 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+  color: #333;
   text-align: center;
-  border: 1px solid transparent;
-  margin: 15px 0px;
-  width: 50%;
 }
 
-form span a {
-  text-decoration: underline;
-  color: rgb(13, 70, 38);
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+  font-weight: bold;
 }
 
-form span a:hover {
-  text-decoration: none;
-  color: seagreen;
+input[type="number"], input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+input[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  background-color: #2ecc71; /* Seagreen */
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+  background-color: #27ae60;
+}
+
+.forgot-password {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
   cursor: pointer;
 }
 
-@media (max-width: 600px) {
-
-  h3{
-    font-size: 24px;
-  }
-
-  form {
-    width: 90%;
-    padding: 50px;
-  }
-
-  form label{
-    width: 120%;
-  }
-
-  form input {
-    padding: 7px;
-  }
-
-  form .btn {
-    margin: 10px 0px;
-    width: 70%;
-  }
-
-  form .form-control{
-    width: 120%;
-  }
+.forgot-password a {
+  color: #27ae60;
+  text-decoration: none;
+  font-weight: bold;
 }
 
+.register-link {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.register-link a {
+  color: #333;
+  text-decoration: none;
+}
+
+.register-link .register {
+  font-weight: bold;
+  color: #27ae60;
+  cursor: pointer;
+
+}
+
+.register-link a:hover, .forgot-password a:hover {
+  text-decoration: underline;
+}

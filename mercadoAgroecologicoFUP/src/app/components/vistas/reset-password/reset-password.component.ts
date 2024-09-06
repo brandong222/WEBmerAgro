@@ -12,6 +12,8 @@ export class ResetPasswordComponent implements OnInit {
   token: string | null = null;
   use_id: string | null = null;
 
+  bandera_barra_carga: boolean= true;
+
   password: string = '';
   confirmPassword: string = '';
   bandera_confirmar_password: boolean = false;
@@ -36,6 +38,7 @@ export class ResetPasswordComponent implements OnInit {
 
 
   actualizarNuevaPassword(){
+    this.bandera_barra_carga = false;
 
 this.loginS.resetNewPassword(this.password, String(this.token), Number(this.use_id)).subscribe(
   data=>{
@@ -47,10 +50,13 @@ this.loginS.resetNewPassword(this.password, String(this.token), Number(this.use_
     }
 
     this.route.navigate(['/']);
+    this.bandera_barra_carga = true;
+
   },
   Error =>{
-    Swal.fire('Restablecer contraseña', 'Error al actualizar, caduco el token', 'error')
+    Swal.fire('Restablecer contraseña', 'Error al actualizar, caduco el tiempo de restablecimiento', 'error')
     this.route.navigate(['/']);
+    this.bandera_barra_carga = true;
 
 
   }

@@ -14,7 +14,7 @@
   <ul>
     <li class="items" (click)="navProductos()">Productos</li>
     <li class="items" (click)="navMisProductos()" >Mis productos</li>
-    <li class="items" (click)="navSubirProducto()" >Subir producto</li>
+    <li class="items" (click)="navSubirProducto()">Subir producto</li>
   </ul>
 </nav>
 
@@ -26,7 +26,6 @@
     <option value="nombre">Nombre</option>
     <option value="menor">Precio de menor a mayor</option>
     <option value="mayor">Precio de mayor a menor</option>
-    <option value="ubicacion" hidden>Ubicación</option>
     <option value="certificado">Productos certificados</option>
   </select>
 
@@ -39,7 +38,7 @@
   aria-label="Search"
 />
 
-<input type="button"  (click)="navfiltrarPorUbicacion()" class="btn btn-outline-dark" value="Buscar ubicaciones">
+<input type="button"  (click)="navfiltrarPorUbicacion()" class="btn btn-success" value="🗺️ Buscar ubicaciones">
 
 </div>
 

@@ -40,7 +40,6 @@
 
 .card_image {
   flex: 2;
-  padding: 10px 0px;
   border-radius: 10%;
   overflow: hidden;
 }

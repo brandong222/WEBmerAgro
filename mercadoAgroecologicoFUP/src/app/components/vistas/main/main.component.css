@@ -1,58 +1,123 @@
-.container_login {
-  height: 100vh;
-  width: 100%;
-  background: transparent;
+.principal {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-.container_login img {
-  width: 100%; /* Ajusta el ancho para que sea responsive */
-  max-width: 600px; /* Máximo ancho para dispositivos grandes */
-  margin-bottom: 40px;
-}
-
-.container_login button {
-  padding: 5px;
-  border: 1px solid transparent;
-  border-radius: 45px;
-  width: 100%; /* Ajusta el ancho para que sea responsive */
-  max-width: 200px; /* Máximo ancho para dispositivos grandes */
-  margin: 10px 0;
-}
-
-.container_login button a {
-  color: white;
-  font-size: 18px;
-  text-decoration: none;
-}
-
-/* Media query para dispositivos móviles */
-@media (max-width: 768px) {
- .container_login img {
-    max-width: 90%; /* Ajusta el ancho máximo para dispositivos móviles */
-  }
-
- .container_login button {
-    max-width: 80%;
-  }
-
-  .container_login{
-    margin: 10px auto;
-  }
-}
-
-
-
-/*INFORMACION EN CARD SOBRE LA APP*/
-
-.main_container {
   padding: 20px;
-  margin: 20px auto;
+  background-color: #f7f7f7;
+  color: #333;
+  font-family: Arial, sans-serif;
+}
+
+.container_main {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin-bottom: 20px;
+}
+
+.main_first {
+  flex: 1;
+  padding: 20px;
+}
+
+.main_first h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.main_first p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.main_first h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.main_second {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.image {
+  max-width: 100%;
+  height: auto;
+}
+
+.main_buttons {
+  display: flex;
   gap: 20px;
+}
+
+.main_buttons .btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: 2px solid #333;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.main_buttons .btn:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+/* Estilos Responsivos */
+@media (max-width: 768px) {
+  .container_main {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .main_second {
+    margin-top: 20px;
+    justify-content: center;
+  }
+
+  .main_first h1 {
+    font-size: 2rem;
+  }
+
+  .main_first p {
+    font-size: 0.9rem;
+  }
+
+  .main_first h3 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main_buttons {
+    width: 80%;
+    gap: 10px;
+  }
+
+  .main_buttons .btn {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .main_first h1 {
+    font-size: 1.8rem;
+  }
+
+  .main_first p {
+    font-size: 0.85rem;
+  }
+
+  .main_first h3 {
+    font-size: 1rem;
+  }
 }

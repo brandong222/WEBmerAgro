@@ -1,40 +1,45 @@
-
-
 <div class="container-sm">
-  <h2 class="text-center">Formulario de sesion</h2>
-<form [formGroup]="userForm" (ngSubmit)="guardarUser(userForm.value)">
-  <div class="data">
-    <div class="lado-izq">
-      <div class="form-group">
-        <label for="nombre">Número de identificación</label>
-        <input type="text" class="form-control" id="nombre" placeholder="Ingrese su número de identificación" formControlName="use_cc" />
-        <div *ngIf="userForm.get('use_cc')?.touched && userForm.get('use_cc')?.errors?.['required']" class="alert alert-danger">
-          El número de cuenta es requerido.
-        </div>
-        <div *ngIf="userForm.get('use_cc')?.touched && userForm.get('use_cc')?.errors?.['pattern'] || userForm.get('use_cc')?.errors?.['minlength']" class="alert alert-danger">
-          Debe ingresar un número válido.
+  <h2 class="text-center">Formulario de sesión</h2>
+  <form [formGroup]="userForm" (ngSubmit)="guardarUser(userForm.value)">
+    <div class="data">
+      <div class="lado-izq">
+        <div class="form-group">
+          <label for="nombre">Número de identificación</label>
+          <input type="text" class="form-control" id="nombre" placeholder="Ingrese su número de identificación" formControlName="use_cc" />
+          <div *ngIf="userForm.get('use_cc')?.touched && userForm.get('use_cc')?.errors?.['required']" class="alert alert-danger">
+            El número de identificación es requerido.
+          </div>
+          <div *ngIf="userForm.get('use_cc')?.touched && userForm.get('use_cc')?.errors?.['pattern'] " class="alert alert-danger">
+            Debe ingresar un número válido.
+          </div>
+
+          <div *ngIf="userForm.get('use_cc')?.errors?.['minlength']" class="alert alert-danger">
+           El documento de identificación debe ser valido
+          </div>
         </div>
 
-      </div>
-      <div class="form-group">
-        <label for="apellido">Contraseña</label>
-        <input type="password" (change)="almacenarContrasenaValor(userForm.value.use_password)" placeholder="ingrese su contraseña " class="form-control" id="apellido" formControlName="use_password" />
-        <div *ngIf="userForm.get('use_passwords')?.touched && userForm.get('use_password')?.errors?.['required']" class="alert alert-danger">
-          la contraseña es requerida.
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="confi_password">Confirmar Contraseña</label>
-        <input type="password" placeholder="Confirmar Contraseña" class="form-control"  id="confirmar_password"   (input)="verificarContrasena($event)"/>
-        <div *ngIf="userForm.get('use_passwords')?.touched && userForm.get('use_password')?.errors?.['required']" class="alert alert-danger">
-          la contraseña es requerida.
-        </div>
-      </div>
+        <div class="form-group">
+          <label for="apellido">Contraseña</label>
+          <input type="password" (change)="almacenarContrasenaValor(userForm.value.use_password)" placeholder="Ingrese su contraseña" class="form-control" id="apellido" formControlName="use_password" />
+          <div *ngIf="userForm.get('use_password')?.touched && userForm.get('use_password')?.errors?.['required']" class="alert alert-danger">
+            La contraseña es requerida.
+          </div>
 
+          <div *ngIf="userForm.get('use_password')?.touched && userForm.get('use_password')?.errors?.['minlength']" class="alert alert-danger">
+            La contraseña debe ser más extensa.
+          </div>
+        </div>
 
+        <div class="form-group">
+          <label for="confi_password">Confirmar Contraseña</label>
+          <input type="password" placeholder="Confirmar Contraseña" class="form-control" id="confirmar_password" (input)="verificarContrasena($event)" />
+          <div *ngIf="userForm.get('use_password')?.touched && userForm.get('use_password')?.errors?.['required']" class="alert alert-danger">
+            La confirmación de la contraseña es requerida.
+          </div>
+        </div>
       </div>
     </div>
 
-  <input type="submit" class="btn btn-success boton_style" [disabled] ="!bandera_confirmar_password" value="Registrarse">
-</form>
+    <input type="submit" class="btn btn-success boton_style" [disabled]="!bandera_confirmar_password" value="Registrarse">
+  </form>
 </div>
