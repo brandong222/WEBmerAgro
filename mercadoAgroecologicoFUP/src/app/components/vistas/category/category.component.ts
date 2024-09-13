@@ -3,6 +3,7 @@ import { CategoryService } from 'src/app/services/category/category.service';
 import { Router } from '@angular/router';
 import { categoryI } from 'src/app/models/category.interface';
 import Swal from 'sweetalert2';
+import { AuthTokenService } from 'src/app/services/login/auth-token.service';
 
 @Component({
   selector: 'app-category',
@@ -10,21 +11,25 @@ import Swal from 'sweetalert2';
   styleUrls: ['./category.component.css'],
 })
 export class CategoryComponent implements OnInit {
-
-  categories: categoryI[] =[];
-  constructor(private categoryS: CategoryService, private route: Router) {}
+  categories: categoryI[] = [];
+  constructor(
+    private categoryS: CategoryService,
+    private route: Router,
+    private authS: AuthTokenService
+  ) {}
 
   ngOnInit() {
     this.categoryS.getCategory().subscribe((data) => {
       this.categories = data;
     });
+
   }
 
-  mostrarProductos(id:any){
-    this.route.navigate(['category/edit/'+id]);
+  mostrarProductos(id: any) {
+    this.route.navigate(['category/edit/' + id]);
   }
 
-  agregarCategory(){
+  agregarCategory() {
     this.route.navigate(['category/add']);
   }
 

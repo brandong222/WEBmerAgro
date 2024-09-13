@@ -1,6 +1,8 @@
 .card_container_m {
+  height: 80vh;
   place-items: center;
   display: grid;
+  place-items: center;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
 }

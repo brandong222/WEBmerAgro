@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthTokenService } from 'src/app/services/login/auth-token.service';
 import { LoginService } from 'src/app/services/login/login.service';
 
 @Component({
@@ -8,17 +9,36 @@ import { LoginService } from 'src/app/services/login/login.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  constructor( private route: Router) {}
+  constructor( private route: Router,
+    private authS: AuthTokenService
+  ) {}
 
 
 
   ngOnInit(): void {
-    const token = localStorage.getItem('token');
+    this.validarSesionActiva()
+  }
 
+  validarSesionActiva(){
+    var token = localStorage.getItem('token');
     if(token){
+    this.authS.verTokenVencido(token).subscribe(data=>{
+      if(data.status){
+        alert(data.status)
+
+
+        localStorage.removeItem('token');
+        localStorage.removeItem('user_name');
+        localStorage.removeItem('id_user');
+        sessionStorage.removeItem('usuario_login');
+        this.route.navigate(['']);
+
+      }
+    })
 
     }else{
-      this.route.navigate(['']);
+      this.route.navigate(['/login']);
+
     }
   }
 
