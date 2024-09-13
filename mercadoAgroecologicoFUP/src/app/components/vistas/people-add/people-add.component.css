@@ -85,6 +85,29 @@ h2.text-center {
   border: 2px solid #ccc;
 }
 
+/*terminos y condiciones*/
+
+.terminosCondicionesText{
+  background: transparent;
+  padding: 10px 5px;
+}
+
+.terminosCondicionesText h4{
+  font-size: 14px;
+  font-weight: bold;
+
+}
+
+
+
+.terminosCondicionesText h5{
+  font-size: 12px;
+  text-align: justify;
+
+}
+
+
+
 /* Estilos Responsivos */
 @media (max-width: 768px) {
   .form_cont {

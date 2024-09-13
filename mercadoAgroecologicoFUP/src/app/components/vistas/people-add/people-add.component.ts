@@ -18,6 +18,10 @@ export class PeopleADDComponent implements OnInit {
   link_imagen_subida: string = '../../../../assets/img/perfilDefecto.png';
   peopleForm: FormGroup;
 
+  //para terminos y condiciones de privacidad
+bandera_btn_register: boolean = false;
+bandera_show_terminos: boolean = false;
+
   bandera_loading: boolean = true;
 
   bandera_valid_form: boolean = false;
@@ -154,7 +158,14 @@ export class PeopleADDComponent implements OnInit {
     }
   }
 
-  //guardar persona
+  //aceptar terminos y condiciones
+  terminosYcondiciones(){
+    this.bandera_btn_register = !this.bandera_btn_register;
+  }
+
+  terminosYcondicionesText(){
+    this.bandera_show_terminos = !this.bandera_show_terminos;
+  }
 
   //navegation
   navegateToRegresar() {

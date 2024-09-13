@@ -87,7 +87,7 @@ export class ProductEditComponent implements OnInit {
         this.productForm.get('pro_name')?.setValue(data[0].pro_name || null);
         this.productForm.get('pro_type')?.setValue(data[0].pro_type || null);
         this.productForm.get('pro_certs')?.setValue(data[0].pro_certs || null);
-        pro_price: new FormControl(null, [Validators.required,  Validators.pattern(/^\d+$/)]),
+        this.productForm.get('pro_price')?.setValue(data[0].pro_price || null);
         this.productForm.get('pro_image')?.setValue(data[0].pro_image || null);
         this.link_imagen_producto = String(data[0].pro_image); //usado para poner la imagen en un img
         this.productForm.get('pro_unit')?.setValue(data[0].pro_unit || null);

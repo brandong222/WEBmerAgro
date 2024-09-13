@@ -222,11 +222,32 @@
 
       <li class="respo_item">
         <img
+        (click)="navEnviarSolicitud()"
+        style="width: 40px; height: 40px;"
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAPVJREFUSEvtldENwjAMRK+TAJvAJjAJMAkwCYzCJtCH4soKTR0KFRLCPy3EuVef3bTRxNFMrK/fBCwlHSTNR9p3lbSRdGF/n0XndhHIOwFkUQLckjJJp/Z+V0lap8ot/fHwfRUYwBL3FRAsBeAjBCC8ddWsWhGq8kGfEDdL8Z7f3cMPVcAaAvSEa26Zt8Q31hwIKzA44ohZNVQ2c5Yc09RYZSGg1FOabRDLwRIAPoqAvLlPDUtW2TvSzfonATUTO9qiGnFyQkDJqtqD8fuAyIqhYbC9HHS8mOH3IBfDpggQnqZ9M23/1fah03h5Q+Rfvv4HhI7dAdBdNBkUMEaKAAAAAElFTkSuQmCC"/>
+
+      </li>
+
+      <li class="respo_item">
+        <img
+        (click)="navUserList()"
+        *ngIf="RolUser == 'admin'"
+        style="width: 40px; height: 40px;"
+       src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAORJREFUSEvtVcENwjAMvG4Cm8AmMAkwCTAJ3QQ2gRxKJMuNYweUXy1VqpT0zr67NBMG1zQYHyuBq7Al0QbACcAhPS8AM4BLfndB5QaL4JFAdwqJRNsu9NRVjYBdXw2gfZ6Gy2+H7ItdIzhneWrfUyau/0VAaShRrY4Abj0y1SagwZRIe0CjKVFXtVJEL5ikkiJ2r6vlg+lBT4c/EVAadi4lKlPcRYpCjWiJWhEtgDJJLokkaKVHA0XOw8IDJocTREomyvJhQfBMGWdEIxX+bUiJvKOviUN3SWhTZCRrz0rgqjdcog8frCQZMk9/4QAAAABJRU5ErkJggg=="/>
+      </li>
+
+
+
+
+      <li class="respo_item">
+        <img
         (click)="cerrarSesion()"
         style="width: 40px; height: 40px;"
         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAN1JREFUSEvVVcENwjAMdOQMUl60W5RNyiS0k3QUukXKCwaJFWSUSCWC1pESVPy2fb6LL1ZQOFTh/rAPAKN1q5y7AEArYDw5pYbG2olzRQxmxDsAVILmIWWqiU4pAI6Ta6LNgWbEt9zNAm4cF60x2Q/ADXE8Ep2zMzAAlUIceWMkmsdyrUrk1/EairICGMROAfDkSREP8ZWB0br3ZioDwF29/izRy1RZJQpjL0GKAAQmoHXXWNtnX9NPD/CfTl4y+QWD1O/6URMdxN+1dzibUHIT0g9OkvOiZNE92DXAE2ynmBmdXIhwAAAAAElFTkSuQmCC"/>
 
       </li>
+
+
 
 
     </ul>

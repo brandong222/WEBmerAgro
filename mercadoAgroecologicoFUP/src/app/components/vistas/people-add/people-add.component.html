@@ -10,58 +10,79 @@
           <div class="lado-izq">
 
             <div class="form-group">
-              <label for="nombre">Nombre</label>
-              <input type="text" placeholder="Ingrese su nombre" class="form-control" id="nombre" formControlName="peo_name" />
+              <label for="nombre">Nombre (Personal o de su emprendimiento / empresa)</label>
+              <input type="text" placeholder="Ingrese su nombre" class="form-control" id="nombre"
+                formControlName="peo_name" />
 
-              <div *ngIf="peopleForm.get('peo_name')?.touched && peopleForm.get('peo_name')?.errors?.['required']" class="alert alert-danger">
+              <div *ngIf="peopleForm.get('peo_name')?.touched && peopleForm.get('peo_name')?.errors?.['required']"
+                class="alert alert-danger">
                 El nombre es requerido.
               </div>
-              <div *ngIf="peopleForm.get('peo_name')?.touched && peopleForm.get('peo_name')?.errors?.['minlength']" class="alert alert-danger">
-                El nombre debe ser mayor a {{peopleForm.get('peo_name')?.errors?.['minlength']?.requiredLength}} caracteres.
+              <div *ngIf="peopleForm.get('peo_name')?.touched && peopleForm.get('peo_name')?.errors?.['minlength']"
+                class="alert alert-danger">
+                El nombre debe ser mayor a {{peopleForm.get('peo_name')?.errors?.['minlength']?.requiredLength}}
+                caracteres.
               </div>
-              <div *ngIf="peopleForm.get('peo_name')?.touched && peopleForm.get('peo_name')?.errors?.['maxlength']" class="alert alert-danger">
+              <div *ngIf="peopleForm.get('peo_name')?.touched && peopleForm.get('peo_name')?.errors?.['maxlength']"
+                class="alert alert-danger">
                 El nombre debe ser menor a 40 caracteres.
               </div>
             </div>
 
             <div class="form-group">
-              <label for="apellido">Apellido</label>
-              <input type="text" placeholder="Ingrese su apellido" class="form-control" id="apellido" formControlName="peo_lastName" />
-              <div *ngIf="peopleForm.get('peo_lastName')?.touched && peopleForm.get('peo_lastName')?.errors?.['required']" class="alert alert-danger">
+              <label for="apellido">Apellido (Personal o ubicacion de su negocio)</label>
+              <input type="text" placeholder="Ingrese su apellido" class="form-control" id="apellido"
+                formControlName="peo_lastName" />
+              <div
+                *ngIf="peopleForm.get('peo_lastName')?.touched && peopleForm.get('peo_lastName')?.errors?.['required']"
+                class="alert alert-danger">
                 El apellido es requerido.
               </div>
-              <div *ngIf="peopleForm.get('peo_lastName')?.touched && peopleForm.get('peo_lastName')?.errors?.['minlength']" class="alert alert-danger">
-                El apellido debe ser mayor a {{peopleForm.get('peo_lastName')?.errors?.['minlength']?.requiredLength}} caracteres.
+              <div
+                *ngIf="peopleForm.get('peo_lastName')?.touched && peopleForm.get('peo_lastName')?.errors?.['minlength']"
+                class="alert alert-danger">
+                El apellido debe ser mayor a {{peopleForm.get('peo_lastName')?.errors?.['minlength']?.requiredLength}}
+                caracteres.
               </div>
-              <div *ngIf="peopleForm.get('peo_lastName')?.touched && peopleForm.get('peo_lastName')?.errors?.['maxlength']" class="alert alert-danger">
+              <div
+                *ngIf="peopleForm.get('peo_lastName')?.touched && peopleForm.get('peo_lastName')?.errors?.['maxlength']"
+                class="alert alert-danger">
                 El apellido debe ser menor a 40 caracteres.
               </div>
             </div>
 
             <div class="form-group">
               <label for="email">Correo electrónico</label>
-              <input type="email" placeholder="Ingrese su correo electrónico" class="form-control" id="email" formControlName="peo_mail" />
-              <div *ngIf="peopleForm.get('peo_mail')?.touched && peopleForm.get('peo_mail')?.errors?.['required']" class="alert alert-danger">
+              <input type="email" placeholder="Ingrese su correo electrónico" class="form-control" id="email"
+                formControlName="peo_mail" />
+              <div *ngIf="peopleForm.get('peo_mail')?.touched && peopleForm.get('peo_mail')?.errors?.['required']"
+                class="alert alert-danger">
                 El correo electrónico es requerido.
               </div>
-              <div *ngIf="peopleForm.get('peo_mail')?.touched && peopleForm.get('peo_mail')?.errors?.['email']" class="alert alert-danger">
+              <div *ngIf="peopleForm.get('peo_mail')?.touched && peopleForm.get('peo_mail')?.errors?.['email']"
+                class="alert alert-danger">
                 El correo electrónico debe ser válido.
               </div>
             </div>
 
             <div class="form-group">
               <label for="telefono">Teléfono</label>
-              <input type="text" class="form-control" placeholder="Ingrese su número de teléfono" formControlName="peo_phone" />
-              <div *ngIf="peopleForm.get('peo_phone')?.touched && peopleForm.get('peo_phone')?.errors?.['required']" class="alert alert-danger">
+              <input type="text" class="form-control" placeholder="Ingrese su número de teléfono"
+                formControlName="peo_phone" />
+              <div *ngIf="peopleForm.get('peo_phone')?.touched && peopleForm.get('peo_phone')?.errors?.['required']"
+                class="alert alert-danger">
                 El número de teléfono es requerido.
               </div>
-              <div *ngIf="peopleForm.get('peo_phone')?.touched && peopleForm.get('peo_phone')?.errors?.['minlength']" class="alert alert-danger">
+              <div *ngIf="peopleForm.get('peo_phone')?.touched && peopleForm.get('peo_phone')?.errors?.['minlength']"
+                class="alert alert-danger">
                 El número de teléfono debe tener 10 dígitos.
               </div>
-              <div *ngIf="peopleForm.get('peo_phone')?.touched && peopleForm.get('peo_phone')?.errors?.['maxlength']" class="alert alert-danger">
+              <div *ngIf="peopleForm.get('peo_phone')?.touched && peopleForm.get('peo_phone')?.errors?.['maxlength']"
+                class="alert alert-danger">
                 El número de teléfono debe tener 10 dígitos.
               </div>
-              <div *ngIf="peopleForm.get('peo_phone')?.touched && peopleForm.get('peo_phone')?.errors?.['pattern']" class="alert alert-danger">
+              <div *ngIf="peopleForm.get('peo_phone')?.touched && peopleForm.get('peo_phone')?.errors?.['pattern']"
+                class="alert alert-danger">
                 Debe ingresar un número válido.
               </div>
             </div>
@@ -69,7 +90,9 @@
             <div class="form-group">
               <label for="fecha">Fecha de Nacimiento</label>
               <input type="date" class="form-control" id="fecha" formControlName="peo_dateBirth" [max]="minDate" />
-              <div *ngIf="peopleForm.get('peo_dateBirth')?.touched && peopleForm.get('peo_dateBirth')?.errors?.['required']" class="alert alert-danger">
+              <div
+                *ngIf="peopleForm.get('peo_dateBirth')?.touched && peopleForm.get('peo_dateBirth')?.errors?.['required']"
+                class="alert alert-danger">
                 Seleccione una fecha de nacimiento.
               </div>
             </div>
@@ -83,7 +106,8 @@
                 <option value="Timbío">Timbío</option>
                 <option value="Otra">Otra</option>
               </select>
-              <div *ngIf="peopleForm.get('peo_adress')?.touched && peopleForm.get('peo_adress')?.errors?.['required']" class="alert alert-danger">
+              <div *ngIf="peopleForm.get('peo_adress')?.touched && peopleForm.get('peo_adress')?.errors?.['required']"
+                class="alert alert-danger">
                 Seleccione una ubicación válida.
               </div>
             </div>
@@ -93,14 +117,63 @@
           <div class="lado-der">
             <label for="formFile" class="form-label">Foto de perfil</label>
             <img id="mostrar_imagen" [src]="link_imagen_subida" alt=" " style="max-width: 100%" />
-            <label class="image-instruction" for="info">Si desea poner una foto diferente, clic en el siguiente cuadro:</label>
+            <label class="image-instruction" for="info">Si desea poner una foto diferente, clic en el siguiente
+              cuadro:</label>
             <input class="form-control" type="file" (change)="onFileSelected($event)">
           </div>
         </div>
 
-        <div class="boton_style">
-          <input type="submit" class="btn btn-success" (click)="guardarPersona(peopleForm.value)" value="Siguiente">
+        <div class="terminosCondicionesText" *ngIf="bandera_show_terminos">
+          <h4>Autorización Tratamiento de Datos Personales</h4>
+
+          <h5>
+            Autorizo a mercado agroecologico y su equipo de trabajo para que recolecte mis datos personales y los
+            conserve dentro de sus bases cuyo uso se encuentra destinado a seguir una trazabilidad sobre las
+            interaciones que se realizan dentro de la aplicación.
+            <br> <br>
+            Autorizo que mis datos puedan ser modificados por un administrador en caso de que sea necesario o no cumpla
+            con las politicas de la aplicación:
+            <br>
+
+            <h5>
+              <ul>
+                <li> Se permiten productos agroecológicos o en proceso de transición.
+                </li>
+                <li> No se aceptan productos ni contenido sexualmente explícito.
+                </li>
+                <li> Prohibida la publicidad de estafas o prácticas fraudulentas.</li>
+                <li>
+                  Se fomenta un ambiente respetuoso sin lenguaje ofensivo.</li>
+
+              </ul>
+            </h5>
+
+            Tomamos medidas técnicas y organizativas para proteger su información personal contra pérdida, daño u otro
+            uso no autorizado. Sin embargo, no podemos garantizar la absoluta seguridad de su información.
+            <br><br>
+            Si tiene alguna pregunta sobre esta política de privacidad o cómo manejamos su información personal, por
+            favor, no dude en contactarnos en <span
+              style=" font-weight: bold; text-decoration: underline;">mercado.agroecologico&#64;fup.edu.co</span>
+
+
+          </h5>
+
+
         </div>
+
+
+        <div id="termsContainer" style="width: 100%; text-align: center; margin: 20px 0px;">
+          <input type="checkbox" (click)="terminosYcondiciones()" style="margin-right: 20px;">
+          <span style="color: seagreen; text-decoration: underline; cursor: pointer;"
+            (click)="terminosYcondicionesText()">Ver términos y condiciones de privacidad</span>
+        </div>
+
+        <div class="boton_style">
+          <input type="submit" class="btn btn-success" [disabled]="!bandera_btn_register"
+            (click)="guardarPersona(peopleForm.value)" value="Siguiente">
+        </div>
+
+
 
       </form>
     </div>
