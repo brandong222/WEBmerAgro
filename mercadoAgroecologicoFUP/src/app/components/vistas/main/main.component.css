@@ -2,10 +2,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 70vh;
   justify-content: center;
   padding: 20px;
-  background-color: #f7f7f7;
-  color: #333;
+  background:  rgb(250, 250, 250);
+ 
   font-family: Arial, sans-serif;
 }
 
