@@ -1,0 +1,64 @@
+
+<div class="barra_busqueda" >
+
+  <input
+  class="form-control me-3"
+  type="search"
+  [(ngModel)]="busqueda_clave"
+  (input)="barraBusquedaProductos()"
+  placeholder="🔍 Buscar producto"
+  aria-label="Search"
+/>
+</div>
+
+
+
+<section>
+    <div class="main_product">
+      <div class="card" *ngFor="let item of productArray">
+        
+        <div class="cont_imag">
+          <img [src]="item.pro_image" class="card-img-top" alt="{{ item.pro_name }}" />
+        </div>
+  
+        <div class="card_body">
+          <h5 class="card-title">
+            <strong>{{ item.pro_name }}</strong>
+          </h5>
+        </div>
+  
+        <div class="info_product">
+          <li class="list-group-item">
+            Unidad: <span>{{ item.pro_unit }}</span>
+          </li>
+
+       
+        
+  
+          
+          <li class="list-group-item" *ngIf="item.pro_price > 0">
+            <span style="font-size: 30px">$ {{ item.pro_price }}</span>
+          </li>
+
+          <li class="list-group-item">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAT1JREFUSEu1ldtVw0AMRCeVECoBOgmVAJVAKoFOgErA9xxvzkYeaTcf1o8fK2s0o4cP2tkOO8fXDMBR0knSg6TH5f5nuX5J+pX0sT6neY4AXiW9FCwBOy/n+FmrAD7XjGdUhNGTc8wAkOR9JnLn8+aYOAA0/w7BkYIAaM45tUA67pvh87zW5/LSAUTd+fDesCE4MvYgGxYOAGmQqBlZkbkzmADSbFMLB4A8fVZkDwtnUc4NWwfwFyJVALhG/6uYDiC2J+0HdWex26YkijW4pcjUipqVXRQLh3Ob2FZsfNycbNhmg3bLFKcdxEEG4IYtKcPlta1VtYtGi64HtGuiYsAZLNAZvStLF90IoIHEddCDZR1WdlHM1u2c1lluR119P/rhNOcIUsoymoNM7/brvIvDVBVolsGoRdPz3QH+AeGzPRm5E7zQAAAAAElFTkSuQmCC"/>
+            {{ item.peo_adress }} 
+          </li>
+
+       
+        </div>
+        <a class="btn btn-outline-dark"  style="width: 90%;" *ngIf="item.peo_phone > 0" href="https://wa.me/57{{ item.peo_phone }}?text=Estoy interesad@ en su producto {{ item.pro_name }} de ${{ item.pro_price }}, ¿aun esta disponible?" target="_blank">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAcNJREFUSEvFVUFuwjAQHAsOlcIDcgwvKbwE+EXVIBUkUvUX8JPCS4CbH0CkHojcrGMb42wciQrVEhKQ9c7O7sxG4MlHPDk//h8gfXvJMBzOodQrgAmAk/soHORnuYt1IcogXY5WUOrDJKDEe/M9M2CAEGu5uay6QFgAXfVg8A0g60rgMaMCTlBYc2x4gDyxyRdyc7FVs0V6xQBVNZVfP8TUnRaAa4sQU0pOCcJLIZIBOdaMd7IoF50AXGCaJ4paIItyHBtm+p7MIbCFKczG3jFwQVU1pqrdb4oOLnayCIZ+D5An27rauSxK/X+6HE1qedI8egF0fDM7yKKc8gzyhPq4t330WkaXek1p5jfz2xkyIADqt6vAa1NrgK02BR3QxP0gjqJplTWcBjHMaKAH32Rp0IE2QOPcWajnlqnIgLfjmGnFRYfcOJjVs2bSPCch0E6ic4IQ2oyhf9ghGyUQAA21U/eGUWZd7qktbjQDQMbqHait0F8VXFG80YRY3ynket2F66I1F9OqUFms0bwgWlw00Ns7QIiz926g0ChbVqYkP204s+y8F45Vz74e7hkMsyiD2DJ79Fmv/R9N3CnTvyYM7/8Cw/0MKFR3USgAAAAASUVORK5CYII="/>
+        </a>
+
+  
+        <div *ngIf="item.pro_certs === 'certificado'" class="mostrar_certificado"></div>
+      
+      </div>
+    </div>
+  </section>
+  
+  <ng-template #noProductos>
+    <p>No hay productos disponibles.</p>
+  </ng-template>
+  

@@ -1,91 +1,68 @@
+/* Estilos generales para el contenedor */
 .container {
-  margin-top: 20px;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-wrap: wrap; /* Permitir que las tarjetas se ajusten en filas */
+  justify-content: space-between; /* Espaciado uniforme entre tarjetas */
+  gap: 20px; /* Espaciado entre tarjetas */
+  padding: 20px; /* Espaciado interno del contenedor */
+  background-color: #f8f9fa; /* Fondo claro */
+  border-top: 2px solid seagreen; /* Línea superior decorativa */
 }
 
+/* Estilo general para cada tarjeta */
 .card {
-  box-shadow: 0px 0px 10px seagreen;
-  border: none;
-  border-radius: 10px;
-  height: 200px;
-  width: 20%;
-  padding: 0px;
-  background: white;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: all 0.7s ease-in-out;
-  background: linear-gradient(white, rgb(198, 233, 200), seagreen);
-  overflow: hidden;
+  flex-direction: row; /* Organización en fila */
+  align-items: center; /* Centrado vertical */
+  background-color: white; /* Fondo blanco */
+  border: 1px solid #ddd; /* Borde ligero */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  width: 100%; /* Ancho ajustable */
+  max-width: 500px; /* Tamaño máximo */
+  padding: 10px; /* Espaciado interno */
+  transition: transform 0.3s, box-shadow 0.3s; /* Animación suave */
+  cursor: pointer; /* Cursor de mano */
 }
 
+/* Efecto hover en la tarjeta */
 .card:hover {
-  transform: translateY(-3%);
-  cursor: pointer;
+  transform: translateY(-5px); /* Movimiento hacia arriba */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
 }
 
+/* Estilo para el título */
 .card_title {
-  background: transparent;
-  flex: 1;
-  font-size: 26px;
-  color: seagreen;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  flex: 1; /* Ocupa el espacio restante */
+  font-size: 1rem; /* Tamaño de fuente del título */
+  color: seagreen; /* Color destacado */
+  font-weight: bold; /* Texto en negrita */
+  margin-right: 10px; /* Espaciado a la derecha */
 }
 
-.card_image {
-  flex: 2;
-  overflow: hidden;
-}
-
+/* Estilo para la imagen */
 .card_image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(88%);
+  width: 60px; /* Tamaño fijo de la imagen */
+  height: 60px;
+  border-radius: 50%; /* Forma circular */
+  object-fit: cover; /* Ajuste de la imagen */
+  border: 2px solid seagreen; /* Borde decorativo */
+  margin-right: 10px; /* Espaciado a la derecha */
 }
 
+/* Estilo para el texto */
 .card_text {
-  flex: 1;
-  padding: 10px;
-  background: seagreen;
-  color: white;
-  text-align: center;
-  display: none;
+  flex: 2; /* Más espacio para la descripción */
+  font-size: 0.9rem; /* Tamaño reducido */
+  color: #555; /* Color gris para legibilidad */
+  line-height: 1.4; /* Altura de línea */
 }
 
-.card_text:hover {
-  cursor: pointer;
-}
-
-.card:hover > .card_text {
-  display: block;
-}
-
-.card:hover > .card_image {
-  display: none;
-}
-
-/*RESPONSIVE*/
-
-@media (max-width: 1200px) {
-  .container {
-    width: 100%;
-    height: auto;
-  }
-
-  .card {
-    width: 23%;
-    height: auto;
-    border-radius: 0px;
-    box-shadow: 0px 0px 5px seagreen;
-  }
-
-  .card_title {
-    font-size: 10px;
-  }
+/* Barra decorativa al final del contenedor */
+.barra_color {
+  width: 100%; /* Barra de ancho completo */
+  height: 5px; /* Altura de la barra */
+  background-color: seagreen; /* Color seagreen */
+  border-radius: 3px; /* Bordes redondeados */
+  margin-top: 20px; /* Espaciado superior */
 }

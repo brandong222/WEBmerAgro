@@ -49,4 +49,8 @@ export class MainComponent {
    navigateToRegister(){
     this.route.navigate(['/people/add']);
    }
+
+   navigateToExtraProduct(){
+    this.route.navigate(['/extra/product']);
+   }
 }

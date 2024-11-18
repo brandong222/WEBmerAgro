@@ -13,4 +13,16 @@
   --fondo-card:rgb(177, 167, 167);
 }
 
+::-webkit-scrollbar{
+  width: 15px;
+}
 
+::-webkit-scrollbar-track{
+  background: lightgrey;
+}
+
+::-webkit-scrollbar-thumb{
+  background: seagreen;
+  border-radius: 12px;
+  border: 2px solid transparent;
+}

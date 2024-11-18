@@ -96,4 +96,8 @@ export class LoginComponent implements OnInit {
   navRecuperarContra(){
     this.router.navigate(['/forget/password'])
   }
+
+  navigatevolverMain(){
+    this.router.navigate(['/'])
+  }
 }

@@ -1,0 +1,163 @@
+nav {
+    padding: 7px;
+}
+
+.resp_nav {
+    display: none;
+}
+
+nav .logo {
+    margin-left: 20px;
+}
+
+nav div div ul li a {
+    display: flex;
+    gap: 10px;
+}
+
+.navbar {
+    position: sticky;
+    top: 0px;
+}
+
+
+.dropdown {
+    border-radius: 0;
+    border: 0;
+}
+
+.dropdown-menu {
+    background: #ffffff;
+    border: 0;
+    top: 80%;
+    border-radius: 0px 0px 5px 5px;
+}
+
+.dropdown-item {
+    font-size: 18px;
+}
+
+.dropdown-item:hover {
+    color: seagreen;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/*para cerrar sesion*/
+.usuario {
+    color: red;
+}
+
+.usuario:hover {
+    color: lightcoral;
+}
+
+
+
+/*para dar espacio entre items del menu */
+.nav-item {
+    margin: 0px 10px;
+    font-size: 20px;
+}
+
+.nav-link {
+    color: black;
+}
+
+.nav-link:hover,
+.nav-link:active {
+    color: seagreen;
+    text-decoration: seagreen;
+}
+
+
+/*para separar del logo*/
+.container-fluid {
+    margin-left: 120px;
+}
+
+
+.nav-item.dropdown.user.dropdown-menu {
+    margin-right: 100px;
+}
+
+img {
+    width: 15%;
+    height: auto;
+    padding: 5px;
+}
+
+.boton:active,
+.boton:focus {
+    background-color: #24dd6b;
+    border-radius: 15px;
+}
+
+.custom-dropdown:active,
+.custom-dropdown:focus {
+    background-color: #24dd6b;
+    border-radius: 15px;
+}
+
+
+.navbar-nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    background: transparent;
+}
+
+header {
+    display: none;
+}
+
+
+/* Oculta el menú en dispositivos pequeños */
+@media (max-width: 992px) {
+    nav {
+        display: none;
+    }
+
+    header {
+        display: block;
+        padding: 30px;
+
+    }
+
+
+    .logo_mobile{
+        width: auto;
+        height: 90px;
+        object-fit: cover;
+    }
+
+    .barra_menu_mobile ul{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        
+    }
+
+    .barra_menu_mobile ul li{
+        width: auto;
+    }
+
+}
+
+@media (max-width: 576px) {
+    .logo_mobile {
+        height: 50px; /* Tamaño más pequeño del logo para móviles */
+    }
+
+    .barra_menu_mobile ul {
+        flex-direction: column; /* Cambia a columna en móviles */
+        gap: 8px;
+    }
+
+    .barra_menu_mobile ul li {
+        width: 100%; /* Cada elemento ocupa el ancho total */
+        text-align: center; /* Alineación centrada */
+    }
+}

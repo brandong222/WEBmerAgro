@@ -1,124 +1,176 @@
-.principal {
+.mm_main{
+  height: 100vh;
+}
+
+.principal{
+  padding: 30px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 70vh;
-  justify-content: center;
-  padding: 20px;
-  background:  rgb(250, 250, 250);
- 
-  font-family: Arial, sans-serif;
+  flex-wrap: wrap;
 }
 
-.container_main {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin-bottom: 20px;
+.container_main{
+  flex: 3;
+  background: transparent;
 }
 
-.main_first {
-  flex: 1;
-  padding: 20px;
-}
-
-.main_first h1 {
-  font-size: 2.5rem;
-  color: #333;
-  margin-bottom: 10px;
-}
-
-.main_first p {
-  font-size: 1rem;
-  color: #555;
-  line-height: 1.6;
-  margin-bottom: 15px;
-}
-
-.main_first h3 {
-  font-size: 1.5rem;
-  color: #333;
-  margin-bottom: 20px;
-}
-
-.main_second {
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.image {
-  max-width: 100%;
+.main_second img{
+  width: 200px;
   height: auto;
+  object-fit: cover;
 }
 
-.main_buttons {
+
+.main_buttons{
+  flex: 1;
+  align-items: center;
   display: flex;
-  gap: 20px;
+  justify-content: space-evenly;
 }
 
-.main_buttons .btn {
-  padding: 10px 20px;
-  font-size: 1rem;
-  border: 2px solid #333;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+.second_main{
+  padding: 0px 30px;
 }
 
-.main_buttons .btn:hover {
-  background-color: #333;
-  color: #fff;
+p{
+  padding: 0px 30px;
+  color: gray;
+  font-size: 20px;
 }
 
-/* Estilos Responsivos */
-@media (max-width: 768px) {
+
+.color_letras{
+  background: linear-gradient(to right, seagreen, rgb(166, 235, 169));
+  background-clip: text;
+}
+
+
+
+h4{
+  text-align: center;
+  font-weight: bold;
+  padding: 30px 150px;
+  font-size: 35px;
+  color: transparent;
+ 
+}
+
+
+.btn_productos{
+  padding: 60px 0px;
+  background: transparent;
+  text-align: center;
+}
+
+.btn_productos button{
+  width: 250px;
+  height: 50px;
+}
+
+
+.organizaciones{
+  padding: 20px 30px;
+  background: white;
+}
+
+.aliados{
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.aliados img{
+  width: 150px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.aliados .logo_fup{
+  width: 200px;
+  transform: scale(1.6);
+}
+
+
+
+
+@media (max-width: 988px) {
+  .principal {
+    padding: 20px;
+  }
+
   .container_main {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    flex: 1;
+    padding: 20px;
   }
 
-  .main_second {
-    margin-top: 20px;
-    justify-content: center;
+  .main_second img {
+    width: 150px;
+    height: auto;
   }
 
-  .main_first h1 {
-    font-size: 2rem;
+  .main_buttons {
+    flex: 3;
+    flex-direction: row;
+    justify-content: space-around;
   }
 
-  .main_first p {
-    font-size: 0.9rem;
+  p {
+    font-size: 18px;
+    padding: 0 20px;
   }
 
-  .main_first h3 {
-    font-size: 1.2rem;
+  h4 {
+    font-size: 28px;
+    padding: 20px 80px;
+  }
+
+  .btn_productos button {
+    width: 200px;
+    height: 45px;
   }
 }
 
+/* Ajuste para móviles */
 @media (max-width: 480px) {
+  .principal {
+    padding: 15px;
+  }
+
+  .container_main {
+    padding: 15px;
+  }
+
+  .main_second img {
+    width: 100px;
+    height: auto;
+  }
+
   .main_buttons {
-    width: 80%;
+    flex: 3;
+    flex-direction: row;
+    align-items: center;
     gap: 10px;
   }
 
-  .main_buttons .btn {
-    width: 100%;
-    padding: 12px;
+  .main_buttons button{
+    font-size: 14px;
   }
 
-  .main_first h1 {
-    font-size: 1.8rem;
+  .second_main, p {
+    padding: 0 15px;
+    font-size: 16px;
   }
 
-  .main_first p {
-    font-size: 0.85rem;
+  h4 {
+    font-size: 24px;
+    padding: 10px 40px;
   }
 
-  .main_first h3 {
-    font-size: 1rem;
+  .btn_productos {
+    padding: 40px 0;
+  }
+
+  .btn_productos button {
+    width: 150px;
+    height: 40px;
   }
 }

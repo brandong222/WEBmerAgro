@@ -1,42 +1,53 @@
+/* Estilo general para el footer */
 footer {
-  background-color: #f8f9fa;
-  padding: 20px;
-  text-align: center;
-  border-top: 1px solid #e7e7e7;
+  background-color: #f8f9fa; 
+  color: #333;
+  padding: 20px 0px 0px 0px;
+  text-align: center; 
+  font-family: 'Arial', sans-serif; 
+  border-top: 2px solid seagreen; 
 }
+
+/* Estilo para el título del footer */
 footer h2 {
-  margin-top: 0;
+  font-size: 1.5rem; /* Tamaño del título */
+  color: seagreen; /* Color seagreen */
+  margin-bottom: 10px; /* Espaciado debajo del título */
 }
-footer ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+
+/* Estilo para los párrafos del footer */
+footer p {
+  font-size: 0.9rem; /* Tamaño de texto */
+  margin: 5px 0; /* Espaciado entre párrafos */
+  line-height: 1.5; /* Altura de línea para mejor legibilidad */
 }
-footer ul li {
-  margin-bottom: 10px;
+
+/* Estilo para los textos en negrita */
+footer p strong {
+  color: seagreen; /* Color seagreen para resaltar */
 }
-footer a {
-  color: #007bff;
-  text-decoration: none;
+
+/* Sección de derechos de autor con fondo seagreen */
+footer p:last-of-type {
+  width: 100%;
+  background-color: seagreen; /* Fondo de derechos de autor */
+  color: white; /* Texto blanco */
+  padding: 10px 0px; /* Espaciado interno */
+  margin-top: 15px; /* Separación del resto */
+  display: inline-block; /* Ajuste del ancho */
 }
-footer a:hover {
-  text-decoration: underline;
-}
+
+/* Responsividad para pantallas pequeñas */
 @media (max-width: 600px) {
-  footer ul {
-      padding: 0;
-      margin: 0;
+  footer {
+    padding: 20px 10px; /* Reducción de padding en pantallas pequeñas */
   }
-  footer ul li {
-      font-size: 14px;
+
+  footer h2 {
+    font-size: 1.2rem; /* Tamaño más pequeño para el título */
   }
+
   footer p {
-      font-size: 14px;
+    font-size: 0.8rem; /* Reducción de tamaño de texto */
   }
-}
-
-
-
-@media (width < 780px) {
-
 }

@@ -46,6 +46,10 @@ import { HomeTemplateComponent } from './components/templates/home-template/home
 import { HelpComponent } from './components/templates/help/help.component';
 import { AddressComponent } from './components/vistas/address/address.component';
 import { ResetPasswordComponent } from './components/vistas/reset-password/reset-password.component';
+import { ProductOffComponent } from './components/vistas/product-off/product-off.component';
+import { ExheaderComponent } from './components/extra/exheader/exheader.component';
+import { ExhomeComponent } from './components/extra/exhome/exhome.component';
+import { ExproductComponent } from './components/extra/exproduct/exproduct.component';
 
 
 
@@ -89,7 +93,11 @@ import { ResetPasswordComponent } from './components/vistas/reset-password/reset
     HomeTemplateComponent,
     HelpComponent,
     AddressComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    ProductOffComponent,
+    ExheaderComponent,
+    ExhomeComponent,
+    ExproductComponent
   ],
   imports: [
     BrowserModule,

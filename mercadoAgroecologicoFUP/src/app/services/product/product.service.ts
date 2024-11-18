@@ -12,6 +12,7 @@ export class ProductService {
   constructor(private http: HttpClient) {}
 
   private apiUrl: string = `${environment.urlMain}product`;
+  private apiProduct: string = `${environment.urlMain}product`;
   private filterUrl: string = `${environment.urlMain}`;
 
   //para traer datos de la api
@@ -84,6 +85,12 @@ export class ProductService {
     const headers = { Authorization: `Bearer ${token}` };
     return this.http.get<ProductI[]>(`${this.filterUrl}filtrarPorCertificado`, { headers });
   }
+
+
+
+  mostrarProductosSinToken(): Observable<ProductI[]> {
+    return this.http.get<ProductI[]>(this.apiProduct);
+}
 
 
 }

@@ -34,6 +34,9 @@ import { UserLISTComponent } from './components/vistas/user-list/user-list.compo
 import { ForgetPASSWORDComponent } from './components/templates/forget-password/forget-password.component';
 import { AddressComponent } from './components/vistas/address/address.component';
 import { ResetPasswordComponent } from './components/vistas/reset-password/reset-password.component';
+import { ProductOffComponent } from './components/vistas/product-off/product-off.component';
+import { ExproductComponent } from './components/extra/exproduct/exproduct.component';
+import { ExhomeComponent } from './components/extra/exhome/exhome.component';
 
 
 const routes: Routes = [
@@ -50,9 +53,11 @@ const routes: Routes = [
   {path: "user/edit" , component: UserEditComponent},
   {path: "user/list" , component: UserLISTComponent},
 
+  //rutas extra para sin login
+  {path: 'extra/product', component: ExproductComponent},
+  {path: 'extra/home', component: ExhomeComponent},
 
-
-
+  
   {path: 'product', component: ProductComponent,canActivate:[AuthGuard]},
   {path: 'product/add', component: ProductADDComponent,canActivate:[AuthGuard]},
   {path: 'product/edit/:id', component: ProductEditComponent,canActivate:[AuthGuard]},
