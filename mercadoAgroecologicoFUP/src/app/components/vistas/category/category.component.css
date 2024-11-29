@@ -66,3 +66,15 @@
   border-radius: 3px; /* Bordes redondeados */
   margin-top: 20px; /* Espaciado superior */
 }
+
+
+@media (max-width: 1190px) {
+.container{
+  width: 90%;
+}
+
+.card_text{
+  display: none;
+}
+
+}

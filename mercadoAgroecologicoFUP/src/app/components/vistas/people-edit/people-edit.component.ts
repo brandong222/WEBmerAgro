@@ -50,9 +50,9 @@ export class PeopleEditComponent implements OnInit {
       peo_name: new FormControl('', Validators.required),
       peo_lastName: new FormControl('', Validators.required),
       peo_adress: new FormControl('', Validators.required),
-      peo_dateBirth: new FormControl('', [Validators.required, Validators.email]),
+      peo_dateBirth: new FormControl('', Validators.required),
       peo_image: new FormControl('', Validators.required),
-      peo_mail: new FormControl('', Validators.required),
+      peo_mail: new FormControl('', [Validators.required, Validators.email]),
       peo_phone: new FormControl(0, Validators.required),
     });
 
@@ -176,10 +176,8 @@ export class PeopleEditComponent implements OnInit {
   mostrarDatosProveedor() {
     this.fkjoinS.joinProvedorpeopleID(this.peopleIdNumber).subscribe((data) => {
       if (data.data.length === 0) {
-        console.log('no proveedor');
         //this.providerForm.removeControl('id');
       } else {
-        console.log('es provider');
         console.log(data.data[0]);
         const dataR: superInterfazI = data.data[0];
 
@@ -290,7 +288,7 @@ export class PeopleEditComponent implements OnInit {
 
     if (this.userForm.valid) {
       Swal.fire('Datos personales', 'No se registro los datos', 'success');
-      console.log(form);
+     
 
       this.userS.updateUser(Number(form.id), form).subscribe(
         (data) => {

@@ -15,13 +15,11 @@
   justify-content: center;
 }
 
-.barra_busqueda select{
-  width: 40%;
-}
 
 .barra_busqueda input{
   display: flex;
-  width: 40%;
+  width: 80%;
+  border: 1px solid lightblue;
 }
 
 
@@ -32,7 +30,7 @@ section {
     background: transparent;
     padding: 30px 0px;
   }
-  
+
   .main_product {
     padding: 30px;
     display: flex;
@@ -40,9 +38,9 @@ section {
     justify-content: space-around;
     flex-wrap: wrap;
     gap: 25px;
-  
+
   }
-  
+
 
   .card {
     width: 18%;
@@ -56,7 +54,7 @@ section {
     justify-content: space-around;
     padding: 5px;
   }
-  
+
   .card .cont_imag{
     width: 100%;
     min-height: 18vh;
@@ -65,15 +63,15 @@ section {
     border-radius: 5px solid transparent;
     box-shadow: 1px 1px 5px gray;
     background: transparent;
-  
+
   }
-  
+
   .card .cont_imag img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
-  
+
 
   .card .card_body{
     height: 10vh;
@@ -82,10 +80,10 @@ section {
     display: flex;
     align-items: center;
     background: transparent;
-  
+
   }
-  
-  
+
+
   .card .info_product{
     width: 100%;
     text-align: center;
@@ -111,7 +109,7 @@ section {
 span{
     color: seagreen;
   }
-  
+
   /*para certificado en caso de cumplirse*/
   .mostrar_certificado::before {
     content: "Agroecológico";
@@ -126,9 +124,9 @@ span{
     box-shadow: 2px 2px 20px seagreen;
     transform: rotate(-40deg);
     transform-origin: top left;
-  
+
   }
-  
+
 
   @media (max-width: 768px) {
 
@@ -140,50 +138,50 @@ span{
       justify-content: center;
       gap: 10px;
     }
-  
+
     .header_inp{
     margin: 0px;
     }
-  
+
     section{
       width: 90%;
     }
-  
+
     .main_product {
       background: transparent;
       padding: 5px;
       box-shadow: none;
       padding: 30px;
       border: none;
-  
+
     }
-  
-  
+
+
     .card {
       width: 90%;
-  
+
     }
-  
-  
+
+
     .mostrar_certificado::before {
       padding: 3px 8px;
       font-size: 16px;
-  
+
     }
-  
+
     .barra_busqueda{
       flex-direction: column-reverse;
       padding: 0px 15px;
       margin: auto;
     }
-  
+
     .barra_busqueda input{
       width: 100%;
-  
+
     }
-  
+
     .barra_busqueda select{
       width: 100%;
     }
-  
+
    }

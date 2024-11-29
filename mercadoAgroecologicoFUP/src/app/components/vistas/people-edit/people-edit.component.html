@@ -37,7 +37,6 @@
     <h2>Datos personales</h2>
     <form
       [formGroup]="peopleForm"
-      (ngSubmit)="actualizarPersona(peopleForm.value)"
     >
       <div class="parte_derecha">
         <div class="div_img">
@@ -60,7 +59,7 @@
           />
         </div>
 
-        <input type="submit" class="btn btn-success" value="Guardar cambios" />
+        <input type="submit" (click)="actualizarPersona(peopleForm.value)" class="btn btn-success" value="Guardar cambios" />
       </div>
       <div class="parte_izquierda">
         <div class="form-group">
